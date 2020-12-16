@@ -4,7 +4,7 @@ from Classes.Starship import *
 
 class Player:
     def __init__(self):
-        self.ship = Starship(500, 500, "Assets/Images/Ships/Starship1.png", 76, 40, 1000, 76, 40, 100)
+        self.ship = Starship(100, 250, "Assets/Images/Ships/Starship1.png", 38, 20, 1000, 38, 20)
         self.camera = None
 
     def control(self, events):

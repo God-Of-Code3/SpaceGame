@@ -25,15 +25,14 @@ class Starship:
         self.acceleration_x = 0
         self.acceleration_y = 0
         # Максимальная скорость корабля
-        self.max_speed_x = 10
-        self.max_speed_y = 10
+        self.max_speed_x = 5
+        self.max_speed_y = 5
         # Ускорение корабля по осям
         self.ship_acceleration_x = 0.1
         self.ship_acceleration_y = 0.1
         # Трение
-        self.friction_x = 0.01
-        self.friction_y = 1
-        # Упругость
+        self.friction_x = 0.03
+        self.friction_y = 0.05
 
     def update(self):  # Обновление
         # Изменение координат в зависимости от скорости
@@ -49,26 +48,45 @@ class Starship:
         if abs(self.speed_y) > self.max_speed_y:
             self.speed_y = self.max_speed_y * (abs(self.speed_y) / self.speed_y)
 
+        # Трение
         if self.acceleration_x == 0 and self.speed_x != 0:
-            self.speed_x -= self.friction_x * abs(self.speed_x) / self.speed_x
+            if abs(self.speed_x) < 0.01:
+                self.speed_x = 0
+            else:
+                self.speed_x -= self.friction_x * abs(self.speed_x) / self.speed_x
 
         if self.acceleration_y == 0 and self.speed_y != 0:
-            self.speed_y -= self.friction_y * abs(self.speed_y) / self.speed_y * (abs(self.speed_y) / self.max_speed_y)
+            if abs(self.speed_y) < 0.01:
+                self.speed_y = 0
+            else:
+                self.speed_y -= self.friction_y * abs(self.speed_y) / self.speed_y
 
+    # Удар об противника
     def kick(self, other, give=False):
         self.cancel_movement()
         other.cancel_movement()
-        self.speed_x, other.speed_x = speed_calcs(self.speed_x, other.speed_x, self.mass, other.mass)
-        self.speed_y, other.speed_y = speed_calcs(self.speed_y, other.speed_y, self.mass, other.mass)
-        self.x += self.speed_x
-        self.y += self.speed_y
-        other.x += other.speed_x
-        other.y += other.speed_y
+        self_speed, other_speed = speed_calcs2((self.x, self.y), (other.x, other.y), (self.speed_x, self.speed_y),
+                                                   (other.speed_x, other.speed_y), self.mass, other.mass)
+        self.speed_x, self.speed_y = self_speed
+        other.speed_x, other.speed_y = other_speed
+        if abs(self.x - other.x) / (self.width / 2 + other.width / 2) > abs(self.y - other.y) / (self.height / 2 +
+                                                                                             other.height / 2):
+            if self.x < other.x:
+                other.x = self.x + self.width / 2 + other.width / 2 + 10
+            else:
+                other.x = self.x - self.width / 2 - other.width / 2 - 10
+        else:
+            if self.y < other.y:
+                other.y = self.y + self.height / 2 + other.height / 2 + 10
+            else:
+                other.y = self.y - self.height / 2 - other.height / 2 - 10
 
+    # Отмена действия
     def cancel_movement(self):
         self.x -= self.speed_x
         self.y -= self.speed_y
 
+    # Проверка пересечения
     def check_intersection_with_ship(self, other):
         if self.x - self.width / 2 <= other.x - other.width / 2 <= self.x + self.width / 2 or \
                 self.x - self.width / 2 <= other.x + other.width / 2 <= self.x + self.width / 2:
