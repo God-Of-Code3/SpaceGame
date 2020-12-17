@@ -80,8 +80,7 @@ class Menu(Button): # Кнопка меню
         self.on = value
 
     def on_button(self, mouse_pos):
-        if self.rect.bottomright[0] > mouse_pos[0] > self.rect.topleft[0] and\
-           self.rect.bottomright[1] > mouse_pos[1] > self.rect.topleft[1]:
+        if self.rect.collidepoint(mouse_pos):
             return True
         else:
             return False
