@@ -15,14 +15,12 @@ class SpriteAnimation(pygame.sprite.Sprite):
         self.rect.y = y
         
         self.actions = actions
+        self.action_now = self.actions.keys()[0]
+        self.time = self.actions[self.actions.keys()[0]]['frames'][1]
         
     def draw(self, screen, action): # Анимация
-        for frame in self.actions[action]['frames']:
-            image = pygame.image.load(frame[0]) # Загрузка изображения
-            screen.blit(image, (self.rect.x, self.rect.x))
-            time.sleep(frame[1] * 1000) # Ожидание
-            
-        self.draw(camera, self.actions[action]['next'], rotation) # Следующее действие
+        image = pygame.image.load(self.actions[self.action_now]['frames'][0]) # Загрузка изображения
+        self.time = self.actions[self.action_now]['frames'][1]
         
     def update(self, camera, rotation, *events): # Изменение параметров
         # Изменение размера картинки
@@ -43,7 +41,8 @@ class SpriteAnimation(pygame.sprite.Sprite):
         y = SIZE[1] / 2 + (self.rect.y - self.rect.height / 2 - camera.get_position()[1]) * camera.get_zoom()
         self.rect.center = (x, y)
         
-        # Pygame.events
-        if events and events[0].type == pygame.MOUSEBUTTONDOWN and\
-           self.rect.collidepoint(events[0].pos):
-            pass
+        # Таймер кадров
+        MYEVENTTYPE = pygame.USEREVENT + 1
+        pygame.time.set_timer(MYEVENTTYPE, self.time)
+        if events[0].type == MYEVENTTYPE:
+            self.action_now = self.actions[self.action_now]['next']
