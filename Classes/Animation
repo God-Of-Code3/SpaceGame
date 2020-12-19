@@ -1,0 +1,49 @@
+import pygame
+import os
+import sys
+import time
+
+
+class SpriteAnimation(pygame.sprite.Sprite):
+    frames = pygame.sprite.Group()
+    
+    def __init__(self, *group, x, y, original, actions):
+        super().__init__(*group)
+        self.original = original.image
+        self.rect = self.original.get_rect() # Прямоугольник
+        self.rect.x = x
+        self.rect.y = y
+        
+        self.actions = actions
+        
+    def draw(self, screen, action): # Анимация
+        for frame in self.actions[action]['frames']:
+            image = pygame.image.load(frame[0]) # Загрузка изображения
+            screen.blit(image, (self.rect.x, self.rect.x))
+            time.sleep(frame[1] * 1000) # Ожидание
+            
+        self.draw(camera, self.actions[action]['next'], rotation) # Следующее действие
+        
+    def update(self, camera, rotation, *events): # Изменение параметров
+        # Изменение размера картинки
+        w = int(self.rect.width * camera.get_zoom())
+        h = int(self.rect.height * camera.get_zoom())
+        self.original = pygame.transform.scale(self.original, (w, h))
+        self.rect.width *= camera.get_zoom()
+        self.rect.height *= camera.get_zoom()
+        
+        # Вращение изображения с прямоугольником
+        rot_image = pygame.transform.rotate(self.original, rotation)
+        rot_rect = self.rect.copy()
+        rot_rect.center = rot_image.get_rect().center
+        self.original = rot_image.subsurface(rot_rect).copy()      
+        
+        # Перемещение изображения относительно камеры
+        x = SIZE[0] / 2 + (self.rect.x - self.rect.width / 2 - camera.get_position()[0]) * camera.get_zoom()
+        y = SIZE[1] / 2 + (self.rect.y - self.rect.height / 2 - camera.get_position()[1]) * camera.get_zoom()
+        self.rect.center = (x, y)
+        
+        # Pygame.events
+        if events and events[0].type == pygame.MOUSEBUTTONDOWN and\
+           self.rect.collidepoint(events[0].pos):
+            pass
