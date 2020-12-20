@@ -20,13 +20,16 @@ class SpriteAnimation(pygame.sprite.Sprite):
         self.actions = actions
         self.action_now = self.actions.keys()[0]
         self.time = self.actions[self.actions.keys()[0]]['frames'][1]
+        
         # Таймер
-        pygame.time.set_timer(MYEVENTTYPE, self.time)
+        self.MYEVENTTYPE = pygame.USEREVENT + 1
+        pygame.time.set_timer(self.MYEVENTTYPE, self.time)
         
     def draw(self, screen, action): # Анимация
         image = pygame.image.load(self.actions[self.action_now]['frames'][0]) # Загрузка изображения
+        screen.blit(image, (self.x, self.y))
         self.time = self.actions[self.action_now]['frames'][1]
-        pygame.time.set_timer(MYEVENTTYPE, self.time)
+        pygame.time.set_timer(self.MYEVENTTYPE, self.time)
         
     def update(self, camera, rotation, *events): # Изменение параметров
         # Изменение размера картинки
@@ -48,7 +51,6 @@ class SpriteAnimation(pygame.sprite.Sprite):
         self.rect.center = (x, y)
         
         # Таймер кадров
-        MYEVENTTYPE = pygame.USEREVENT + 1
         for e in events:
-            if e.type == MYEVENTTYPE:
+            if e.type == self.MYEVENTTYPE:
                 self.action_now = self.actions[self.action_now]['next']
