@@ -16,7 +16,7 @@ class Starship:
         self.mass = mass
         self.image_width = width if image_width == 0 else image_width
         self.image_height = height if image_height == 0 else image_height
-        self.effects = []
+        self.effects = dict()
         # Текущая скорость
         self.direction = 0  # направление вектора скорости
         self.speed_x = 0  # проекция вектора скорости на x
@@ -27,14 +27,18 @@ class Starship:
         # Максимальная скорость корабля
         self.max_speed_x = 5
         self.max_speed_y = 5
+        self.max_speed_x = 7
+        self.max_speed_y = 7
         # Ускорение корабля по осям
         self.ship_acceleration_x = 0.1
         self.ship_acceleration_y = 0.1
         # Трение
         self.friction_x = 0.03
         self.friction_y = 0.05
+        self.friction_x = 0.05
+        self.friction_y = 0.1
 
-    def update(self):  # Обновление
+    def update(self, objects):  # Обновление
         # Изменение координат в зависимости от скорости
         self.x += self.speed_x
         self.y += self.speed_y
@@ -61,8 +65,15 @@ class Starship:
             else:
                 self.speed_y -= self.friction_y * abs(self.speed_y) / self.speed_y
 
+        for effect in self.effects:
+            self.effects[effect].update(objects)
+
+        for obj in objects:
+            if obj != self:
+                self.check_intersection_with_ship(obj)
+
     # Удар об противника
-    def kick(self, other, give=False):
+    def kick(self, other):
         self.cancel_movement()
         other.cancel_movement()
         self_speed, other_speed = speed_calcs2((self.x, self.y), (other.x, other.y), (self.speed_x, self.speed_y),
@@ -92,7 +103,8 @@ class Starship:
                 self.x - self.width / 2 <= other.x + other.width / 2 <= self.x + self.width / 2:
             if self.y - self.height / 2 <= other.y - other.height / 2 <= self.y + self.height / 2 or \
                     self.y - self.height / 2 <= other.y + other.height / 2 <= self.y + self.height / 2:
-                self.kick(other, True)
+
+                self.kick(other)
                 return True
         return False
 
