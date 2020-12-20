@@ -4,6 +4,9 @@ import sys
 import time
 
 
+SIZE = (500, 500)
+
+
 class SpriteAnimation(pygame.sprite.Sprite):
     frames = pygame.sprite.Group()
     
@@ -11,8 +14,8 @@ class SpriteAnimation(pygame.sprite.Sprite):
         super().__init__(*group)
         self.original = original.image
         self.rect = self.original.get_rect() # Прямоугольник
-        self.rect.x = x
-        self.rect.y = y
+        self.x = x
+        self.y = y
         # Действия
         self.actions = actions
         self.action_now = self.actions.keys()[0]
@@ -40,8 +43,8 @@ class SpriteAnimation(pygame.sprite.Sprite):
         self.original = rot_image.subsurface(rot_rect).copy()      
         
         # Перемещение изображения относительно камеры
-        x = SIZE[0] / 2 + (self.rect.x - self.rect.width / 2 - camera.get_position()[0]) * camera.get_zoom()
-        y = SIZE[1] / 2 + (self.rect.y - self.rect.height / 2 - camera.get_position()[1]) * camera.get_zoom()
+        x = SIZE[0] / 2 + (self.x - self.rect.width / 2 - camera.get_position()[0]) * camera.get_zoom()
+        y = SIZE[1] / 2 + (self.y - self.rect.height / 2 - camera.get_position()[1]) * camera.get_zoom()
         self.rect.center = (x, y)
         
         # Таймер кадров
