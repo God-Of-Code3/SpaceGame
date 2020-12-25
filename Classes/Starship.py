@@ -1,9 +1,11 @@
 import pygame
 from Functions.Math import *
+from Classes.Animation import *
 
 
 class Starship:
-    def __init__(self, x, y, image, width, height, health, image_width=0, image_height=0, mass=100):
+    def __init__(self, x, y, image, width, height, health, cam, sprites_group, sprite_frames, image_width=0,
+                 image_height=0, mass=100):
         # Определение свойств объекта корабля
         self.x = x
         self.y = y
@@ -25,18 +27,16 @@ class Starship:
         self.acceleration_x = 0
         self.acceleration_y = 0
         # Максимальная скорость корабля
-        self.max_speed_x = 5
-        self.max_speed_y = 5
-        self.max_speed_x = 7
-        self.max_speed_y = 7
+        self.max_speed_x = 20
+        self.max_speed_y = 20
         # Ускорение корабля по осям
         self.ship_acceleration_x = 0.1
         self.ship_acceleration_y = 0.1
         # Трение
         self.friction_x = 0.03
         self.friction_y = 0.05
-        self.friction_x = 0.05
-        self.friction_y = 0.1
+        # Спрайт
+        self.sprite = Anim(sprites_group, cam, sprite_frames, self, self.image_width, self.image_height)
 
     def update(self, objects):  # Обновление
         # Изменение координат в зависимости от скорости
@@ -56,11 +56,15 @@ class Starship:
         if self.acceleration_x == 0 and self.speed_x != 0:
             if abs(self.speed_x) < 0.01:
                 self.speed_x = 0
+            elif abs(self.speed_x) < self.friction_x:
+                self.speed_x = 0
             else:
                 self.speed_x -= self.friction_x * abs(self.speed_x) / self.speed_x
 
         if self.acceleration_y == 0 and self.speed_y != 0:
             if abs(self.speed_y) < 0.01:
+                self.speed_y = 0
+            elif abs(self.speed_y) < self.friction_y:
                 self.speed_y = 0
             else:
                 self.speed_y -= self.friction_y * abs(self.speed_y) / self.speed_y
@@ -112,11 +116,18 @@ class Starship:
         self.acceleration_x += self.ship_acceleration_x * x
         self.acceleration_y += self.ship_acceleration_y * y
 
+    def stop(self, x=False, y=False):
+        if x:
+            self.acceleration_x = 0
+
+        if y:
+            self.acceleration_y = 0
+
     def info_for_drawing(self):  # Выдача информации для отрисовки
         data = dict()
         data["x"] = self.x
         data["y"] = self.y
-        data["img"] = self.img
+        data["img"] = self.img if self.acceleration_x >= 0 else pygame.transform.flip(self.img, True, False)
         data["width"] = self.image_width
         data["height"] = self.image_height
         data["rot"] = 0

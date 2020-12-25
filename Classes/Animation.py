@@ -1,54 +1,82 @@
 import pygame
-import os
-import sys
-import time
+
+frames_tree = {
+    "main": {
+        "frames": [["./Assets/Images/Ships/Starship1.png", 20],
+                   ["./Assets/Images/Ships/Starship1_frame1.png", 20],
+                   ["./Assets/Images/Ships/Starship1_frame2.png", 20],
+                   ["./Assets/Images/Ships/Starship1_frame3.png", 20],
+                   ["./Assets/Images/Ships/Starship1_frame2.png", 20],
+                   ["./Assets/Images/Ships/Starship1_frame1.png", 20]],
+        "next": "main"
+    }
+}
+
+all_sprites = pygame.sprite.Group()
 
 
-SIZE = (500, 500)
+class Anim(pygame.sprite.Sprite):
+    def __init__(self, group, cam, frames, master, width, height):
+        super().__init__(group)
+        self.cam = cam
+        self.frames = self.upload_frames(frames)
+        self.master = master
+        self.width, self.height = width, height
+        self.state = "main"
+        self.frame = 0
+        self.timer = 0
+        self.step = 10
+        self.image = self.get_current_image()
+        self.rect = self.image.get_rect()
 
+    def load_image(self, img):
+        return pygame.image.load(img).convert_alpha()
 
-class SpriteAnimation(pygame.sprite.Sprite):
-    frames = pygame.sprite.Group()
-    
-    def __init__(self, *group, x, y, original, actions):
-        super().__init__(*group)
-        self.original = original.image
-        self.rect = self.original.get_rect() # Прямоугольник
-        self.x = x
-        self.y = y
-        # Действия
-        self.actions = actions
-        self.action_now = self.actions.keys()[0]
-        self.time = self.actions[self.actions.keys()[0]]['frames'][1]
-        # Таймер
-        self.MYEVENTTYPE = pygame.USEREVENT + 1
-        pygame.time.set_timer(self.MYEVENTTYPE, self.time)
-        
-    def draw(self, screen, action): # Анимация
-        image = pygame.image.load(self.actions[self.action_now]['frames'][0]) # Загрузка изображения
-        self.time = self.actions[self.action_now]['frames'][1]
-        pygame.time.set_timer(self.MYEVENTTYPE, self.time)
-        
-    def update(self, camera, rotation, *events): # Изменение параметров
-        # Изменение размера картинки
-        w = int(self.rect.width * camera.get_zoom())
-        h = int(self.rect.height * camera.get_zoom())
-        self.original = pygame.transform.scale(self.original, (w, h))
-        self.rect.width *= camera.get_zoom()
-        self.rect.height *= camera.get_zoom()
-        
-        # Вращение изображения с прямоугольником
-        rot_image = pygame.transform.rotate(self.original, rotation)
-        rot_rect = self.rect.copy()
-        rot_rect.center = rot_image.get_rect().center
-        self.original = rot_image.subsurface(rot_rect).copy()      
-        
-        # Перемещение изображения относительно камеры
-        x = SIZE[0] / 2 + (self.x - self.rect.width / 2 - camera.get_position()[0]) * camera.get_zoom()
-        y = SIZE[1] / 2 + (self.y - self.rect.height / 2 - camera.get_position()[1]) * camera.get_zoom()
-        self.rect.center = (x, y)
-        
-        # Таймер кадров
-        for e in events:
-            if e.type == self.MYEVENTTYPE:
-                self.action_now = self.actions[self.action_now]['next']
+    def upload_frames(self, frames):
+        frames_images = dict()
+        for st in frames:
+            state = frames[st]
+            current_state = dict()
+            current_state["next"] = state["next"]
+            current_state["frames"] = list()
+            for frame in state["frames"]:
+                current_state["frames"].append([self.load_image(frame[0]), frame[1]])
+            frames_images[st] = current_state
+
+        return frames_images
+
+    def get_current_image(self):
+        return self.frames[self.state]["frames"][self.frame][0]
+
+    def get_current_time(self):
+        return self.frames[self.state]["frames"][self.frame][1]
+
+    def check_next(self):
+        return self.frame >= len(self.frames[self.state]["frames"])
+
+    def set_next_state(self):
+        next_state = self.frames[self.state]["next"]
+        self.timer = 0
+        self.frame = 0
+        self.state = next_state
+
+    def set_current_image(self):
+
+        self.image = self.get_current_image()
+        self.timer = 0
+
+    def update(self):
+        if self.timer >= self.get_current_time():
+            self.frame += 1
+            if self.check_next():
+                self.set_next_state()
+            self.set_current_image()
+        else:
+            self.timer += self.step
+        w, h = self.width * self.cam.zoom_value, self.height * self.cam.zoom_value
+        self.image = pygame.transform.scale(self.image, (int(w), int(h)))
+        self.rect = self.image.get_rect()
+        self.rect.center = (int(self.cam.size[0] / 2 + (self.master.x - self.cam.cam_pos[0]) * self.cam.zoom_value),
+                            int(self.cam.size[1] / 2 + (self.master.y - self.cam.cam_pos[1]) * self.cam.zoom_value))
+        if self.master.mass > 100:
+            print(self.master.speed_x)

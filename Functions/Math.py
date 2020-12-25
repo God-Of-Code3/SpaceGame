@@ -1,5 +1,13 @@
 import math
 
+timer_counter = 0
+
+
+def get_counter():
+    global timer_counter
+    timer_counter += 1
+    return timer_counter
+
 
 def to_point(x1, y1, x2, y2):
     if y1 == y2:
@@ -19,6 +27,9 @@ def speed_calcs(v1, v2, m1, m2):
     v3 = (2 * m2 * v2 + (m1 - m2) * v1) / (m1 + m2)
     v4 = (2 * m1 * v1 + (m2 - m1) * v2) / (m1 + m2)
     return v3, v4
+
+
+print(speed_calcs(20, 0, 1000, 70))
 
 
 def rotate_vector(vector, direction):
@@ -62,3 +73,10 @@ def get_coords(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2):
     v4 = (ax2-ax1)*(by2-ay1)-(ay2-ay1)*(bx2-ax1)
     values = (v1*v2 < 0) and (v3*v4 < 0)
     return values
+
+
+def click_coords_to_real(camera, pos):
+
+    real_x = camera.cam_pos[0] + (pos[0] - camera.size[0] / 2) / camera.zoom_value
+    real_y = camera.cam_pos[1] + (pos[1] - camera.size[1] / 2) / camera.zoom_value
+    return real_x, real_y

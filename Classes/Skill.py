@@ -9,7 +9,7 @@ SKILL_RECHARGE_MARGIN = 4
 
 
 class SkillList:
-    def __init__(self, x, y, size, master):
+    def __init__(self, x, y, size, master, timer):
         self.x = x
         self.y = y
         self.size = size
@@ -17,8 +17,6 @@ class SkillList:
         self.tile_size = 50
         self.skills = []
         self.selected = 0
-        self.update_timer = pygame.USEREVENT + 1
-        pygame.time.set_timer(self.update_timer, 100)
 
     def add(self, skill_class):
         self.skills.append(skill_class(self.master, self))
@@ -48,11 +46,9 @@ class SkillList:
                     self.selected = i
             return True
 
-    def update(self, events):
-        for event in events:
-            if event.type == self.update_timer:
-                for skill in self.skills:
-                    skill.update()
+    def update(self):
+        for skill in self.skills:
+            skill.update()
 
     def use(self, args):
         self.skills[self.selected].use(args)
@@ -102,7 +98,7 @@ class PlasmaShot(Skill):
             dist = math.hypot(self.master.width, self.master.height) / 2
             x = self.master.x + math.cos(math.pi / 180 * direction) * dist
             y = self.master.y + math.sin(math.pi / 180 * direction) * dist
-            args["bullets"].append(Plasma(x, y, direction, 10, "Assets/Images/Bullets/Bullet1.png", 14, 5, 120))
+            args["bullets"].append(Plasma(x, y, direction, 10, "Assets/Images/Bullets/Bullet1.png", 14, 5, 520))
             self.timer = self.recharge_time
 
 

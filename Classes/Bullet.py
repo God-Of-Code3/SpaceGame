@@ -29,7 +29,7 @@ class Bullet:
         data["img"] = self.img
         data["width"] = self.image_width
         data["height"] = self.image_height
-        data["rot"] = -(self.direction + 180) % 360
+        data["rot"] = (self.direction - 180) % 360
         return data
 
     def check_intersection(self, other):
@@ -87,10 +87,16 @@ class Laser:
             self.end_x = self.x + math.cos(math.pi / 180 * self.direction) * LASER_MAX_LENGTH
             self.end_y = self.y + math.sin(math.pi / 180 * self.direction) * LASER_MAX_LENGTH
 
-    def draw(self, screen):
-        pygame.draw.line(screen, (255, 100, 0), (self.x, self.y), (self.end_x, self.end_y), 5)
-        pygame.draw.line(screen, (255, 0, 0), (self.x, self.y), (self.end_x, self.end_y), 3)
-        pygame.draw.line(screen, (255, 255, 255), (self.x, self.y), (self.end_x, self.end_y), 1)
+    def draw(self, screen, camera):
+        x1 = camera.size[0] / 2 + (self.x - camera.cam_pos[0]) * camera.zoom_value
+        y1 = camera.size[1] / 2 + (self.y - camera.cam_pos[1]) * camera.zoom_value
+
+        x2 = camera.size[0] / 2 + (self.end_x - camera.cam_pos[0]) * camera.zoom_value
+        y2 = camera.size[1] / 2 + (self.end_y - camera.cam_pos[1]) * camera.zoom_value
+
+        pygame.draw.line(screen, (255, 100, 0), (x1, y1), (x2, y2), 5)
+        pygame.draw.line(screen, (255, 0, 0), (x1, y1), (x2, y2), 3)
+        pygame.draw.line(screen, (255, 255, 255), (x1, y1), (x2, y2), 1)
 
     def update(self, objects, **kwargs):
         self.x = self.master.x
