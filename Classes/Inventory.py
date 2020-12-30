@@ -56,9 +56,6 @@ class Inventory():
                                           self.size - PAD3 * 2)
                                           
     def drawing(self, screen):
-        # Заливка
-        screen.fill(pygame.Color('black'))
-        
         # Рисование инвентаря
         pygame.draw.rect(screen, INVENTORY_COLOR,
                          ((SIZE[0] - self.size * self.w1) / 2 - PAD2,
@@ -111,9 +108,6 @@ class Inventory():
             x, y = self.player_slots[q][0], self.player_slots[q][1]
             if self.player_items[x][y].moving:
                 self.player_items[x][y].drawing(screen)
-            
-        # Обновление экрана
-        pygame.display.flip()
     
     # Притягивание квадрата    
     def square_pulling(self, x, y, arr, q, dictionary):
@@ -292,10 +286,12 @@ if __name__ == '__main__':
 
     running = True
     while running:
+        screen.fill(pygame.Color('black'))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
             else:
                 inv.controller(event)
         inv.drawing(screen)
+        pygame.display.flip()
     pygame.quit()
