@@ -75,15 +75,16 @@ class Inventory():
                 pygame.draw.rect(screen, CELLS_COLOR,
                                  ((SIZE[0] - self.size * self.w1) / 2 + i * self.size,
                                  PAD1 + j * self.size,
-                                 self.size + i % 2 + 1,
+                                 self.size + 1,
                                  self.size + j % 2 + 1),
                                  CELLS_WIDTH)
         for i in range(self.w2):
             for j in range(self.h2):
                 pygame.draw.rect(screen, CELLS_COLOR,
                                  ((SIZE[0] - self.size * self.w2) / 2 + i * self.size,
-                                 SIZE[1] - (j + 1) * self.size - PAD1 - PAD2 + PAD3,
-                                 self.size + i % 2 + 1, self.size + j % 2 + 1),
+                                 SIZE[1] - (j + 1) * self.size - PAD1,
+                                 self.size + 1,
+                                 self.size + j % 2 + 1),
                                  CELLS_WIDTH)
     
         # Рисование слотов инвентаря
@@ -128,8 +129,8 @@ class Inventory():
                     if ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5 <= m:
                         pos = (i, j)
                         m = ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5
-                        nearest_square = (sqx - arr[x][y].w / 2,
-                                          sqy - arr[x][y].h / 2)
+                        nearest_square = (sqx - self.size / 2 + PAD3 + 1,
+                                          sqy - self.size / 2 + PAD3 + 1)
                         to_inventory = True                    
                     
         for i in range(self.w2):
@@ -141,8 +142,8 @@ class Inventory():
                     if ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5 <= m:
                         pos = (i, j)
                         m = ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5
-                        nearest_square = (sqx - arr[x][y].w / 2,
-                                          sqy - arr[x][y].h / 2)
+                        nearest_square = (sqx - self.size / 2 + PAD3 + 1,
+                                          sqy - self.size / 2 + PAD3 + 1)
                         to_inventory = False                    
                     
         # Изменение координат
@@ -281,8 +282,8 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(size)
     screen.fill(pygame.Color('black'))
 
-    inv = Inventory({'1.jpg': (4, 0), '2.jpg': (3, 1), '3.jpg': (5, 2)}, 6, 6,
-                    {'4.png': (2, 0), '5.png': (1, 0), '6.jpg': (3, 1)}, 11, 2)
+    inv = Inventory({'1.jpg': (4, 0), '2.jpg': (3, 1), '3.jpg': (5, 2)}, 10, 8,
+                    {'4.png': (2, 0), '5.png': (1, 0), '6.jpg': (3, 0)}, 8, 1)
 
     running = True
     while running:
