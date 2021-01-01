@@ -4,49 +4,91 @@ from Classes.Bullet import *
 from Classes.Skill import *
 
 
-MAX_DIST_TO_ENEMY = 600  # Максимальное расстояние до противника
+MAX_DIST_TO_ENEMY = 2500  # Максимальное расстояние до противника
 MAX_DIST_FOR_ACCELERATION = 1000  # Максимальное расстояние до противника для разгона
+MIN_DIST_TO_SHIP = 400
+MIN_DIST_TO_ENEMY = 600
+PLASMA_SHOT_DIST = 800
+COPPER_SHELL_SHOT_DIST = 1200
 
 
 class AI:
     def __init__(self, ship, enemy):
         self.ship = ship
         self.skills_list = SkillList(0, 0, 5, self.ship, random.randint(3, 120))
-        self.skills_list.add(PlasmaShot)
+        self.skills_list.add(CopperShellShot)
         self.skills_list.add(LaserShot)
 
         self.enemy = enemy
         self.timer = 0
+        self.behaviour = "attack"
 
     def control(self, events, bullets, camera, objects):
+        self.ship.stop(True, True)
         dist_to_enemy = math.hypot(self.ship.x - self.enemy.ship.x, self.ship.y - self.enemy.ship.y)
         direction_to_enemy = to_point(self.ship.x, self.ship.y, self.enemy.ship.x, self.enemy.ship.y)
-        if dist_to_enemy < MAX_DIST_TO_ENEMY:
-            self.move_to_direction(180 + direction_to_enemy)
-        elif MAX_DIST_FOR_ACCELERATION > dist_to_enemy > MAX_DIST_TO_ENEMY:
-            self.skills_list.selected = 0
-            if random.randint(0, 1) == 0:
-                dist_x = self.enemy.ship.x - self.ship.x
-                dist_y = self.enemy.ship.y - self.ship.y
-                x_sp = math.cos(direction_to_enemy * math.pi / 180) * 10
-                y_sp = math.sin(direction_to_enemy * math.pi / 180) * 10
-                x = self.enemy.ship.x + (dist_x / x_sp) * self.enemy.ship.speed_x + (dist_x / x_sp) ** 2 * \
-                    self.enemy.ship.acceleration_x / 2
-                y = self.enemy.ship.y + (dist_y / y_sp) * self.enemy.ship.speed_y + (dist_y / y_sp) ** 2 * \
-                    self.enemy.ship.acceleration_y / 2
-                if math.hypot(self.enemy.ship.x - x, self.enemy.ship.y - y) > 300:
-                    x, y = self.enemy.ship.x, self.enemy.ship.y
-                self.skills_list.use({"real_click_x": x, "real_click_y": y,
-                                      "bullets": bullets})
-            self.timer += 1
-            self.timer %= 100
-            if self.timer == 0:
-                self.ship.set_acceleration(x=random.randint(-1, 1) / 4, y=random.randint(-1, 1) / 4)
-        else:
-            self.move_to_direction(direction_to_enemy)
+        if self.behaviour == "attack":
+            n = 0
+            for obj in objects:
+                if obj != self.ship:
+                    dist = math.hypot(obj.x - self.enemy.ship.x, obj.y - self.enemy.ship.y)
+                    if dist < dist_to_enemy:
+                        n += 1
+            if n < 5:
+                if dist_to_enemy < 1000:
+                    if self.ship.y > self.enemy.ship.y - MIN_DIST_TO_ENEMY:
+                        self.ship.set_acceleration(y=-1)
 
-        if "laser" in self.ship.effects:
-            self.ship.effects["laser"].set_direction(direction_to_enemy % 360)
+                    if self.enemy.ship.y - MAX_DIST_TO_ENEMY < self.ship.y < self.enemy.ship.y - MIN_DIST_TO_ENEMY:
+                        if self.ship.speed_y < 0:
+                            self.ship.set_acceleration(y=1)
+                        if self.ship.speed_y > 0:
+                            self.ship.set_acceleration(y=-1)
+
+                    if self.ship.y < self.enemy.ship.y - MAX_DIST_TO_ENEMY:
+                        self.ship.set_acceleration(y=1)
+
+                    if self.ship.x < self.enemy.ship.x - MIN_DIST_TO_ENEMY:
+                        self.ship.set_acceleration(x=-1)
+                    elif self.ship.x > self.enemy.ship.x + MIN_DIST_TO_ENEMY:
+                        self.ship.set_acceleration(x=1)
+                else:
+                    self.move_to_direction(direction_to_enemy)
+                if dist_to_enemy <= COPPER_SHELL_SHOT_DIST:
+                    self.skills_list.use({"real_click_x": self.enemy.ship.x, "real_click_y": self.enemy.ship.y,
+                                          "bullets": bullets})
+                if self.ship.health < self.ship.max_health / 2:
+                    self.behaviour = "escape"
+        if self.behaviour == "escape":
+            if dist_to_enemy < MAX_DIST_TO_ENEMY:
+                self.move_to_direction(direction_to_enemy + 180)
+            if dist_to_enemy > MAX_DIST_TO_ENEMY:
+                self.move_to_direction(direction_to_enemy)
+            self.skills_list.use({"real_click_x": self.enemy.ship.x, "real_click_y": self.enemy.ship.y,
+                                  "bullets": bullets})
+
+        for obj in objects:
+            dist = math.hypot(obj.x - self.ship.x, obj.y - self.ship.y)
+            if obj != self.ship and dist < MIN_DIST_TO_SHIP:
+                direction = to_point(obj.x, obj.y, self.ship.x, self.ship.y)
+                self.ship.stop(True, True)
+                self.move_to_direction(direction)
+
+        for obj in bullets:
+            dist = math.hypot(obj.x - self.ship.x, obj.y - self.ship.y)
+            direction_from_bullet = to_point(obj.x, obj.y, self.ship.x, self.ship.y) % 360
+            angle = obj.direction % 360 - direction_from_bullet
+            if angle > 180:
+                angle = 360 - angle
+            if angle < -180:
+                angle = - (360 + angle)
+            if dist < MIN_DIST_TO_SHIP * 10 and abs(angle) < 10:
+                direction = to_point(obj.x, obj.y, self.ship.x, self.ship.y)
+                self.ship.stop(True, True)
+                dop = 90
+                if angle < 0:
+                    dop = -90
+                self.move_to_direction(direction - dop)
 
     def move_to_direction(self, direction):
         x, y = math.cos(direction * math.pi / 180), math.sin(direction * math.pi / 180)

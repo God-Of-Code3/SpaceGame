@@ -8,7 +8,7 @@ class Bullet:
     def __init__(self, x, y, direction, speed, image, image_width, image_height):
         self.x = x
         self.y = y
-
+        self.damage = 100
         self.direction = direction
         self.speed = speed
         self.image = image
@@ -42,6 +42,24 @@ class Plasma(Bullet):
     def __init__(self, x, y, direction, speed, image, image_width, image_height, age):
         super().__init__(x, y, direction, speed, image, image_width, image_height)
         self.age = age
+        self.damage = 300
+
+    def update(self):
+        super().update()
+        self.age -= 1
+
+        self.speed *= 0.97
+        self.damage *= 0.97
+        if abs(self.speed) < 5:
+            self.age = 0
+        return self.age > 0
+
+
+class CopperShell(Bullet):
+    def __init__(self, x, y, direction, speed, image, image_width, image_height, age):
+        super().__init__(x, y, direction, speed, image, image_width, image_height)
+        self.age = age
+        self.damage = 20
 
     def update(self):
         super().update()
@@ -83,6 +101,7 @@ class Laser:
             dist = math.hypot(min_obj[1].x - self.x, min_obj[1].y - self.y)
             self.end_x, self.end_y = self.x + math.cos(self.direction * math.pi / 180) * dist, \
                 self.y + math.sin(self.direction * math.pi / 180) * dist
+            min_obj[1].health -= 10
         else:
             self.end_x = self.x + math.cos(math.pi / 180 * self.direction) * LASER_MAX_LENGTH
             self.end_y = self.y + math.sin(math.pi / 180 * self.direction) * LASER_MAX_LENGTH

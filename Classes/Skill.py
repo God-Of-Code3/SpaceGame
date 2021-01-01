@@ -58,14 +58,14 @@ class Skill:
     def __init__(self, master, skills_list):
         self.master = master
         self.timer = 0
-        self.recharge_time = 20
+        self.recharge_time = 100
         self.image = pygame.image.load("Assets/Images/Skills/PlasmaShot.png")
         self.skills_list = skills_list
         self.image = pygame.transform.scale(self.image, (self.skills_list.tile_size, self.skills_list.tile_size))
         self.shade = pygame.Surface((self.skills_list.tile_size, self.skills_list.tile_size))
         self.shade.fill((0, 0, 0))
         self.shade.set_alpha(180)
-
+        self.number = 125
         self.active = True
 
     def update(self):
@@ -85,6 +85,13 @@ class Skill:
                                                       width, height))
             pygame.draw.rect(screen, (200, 200, 200), (x, y + self.skills_list.tile_size + TILE_MARGIN * 2,
                                                        self.skills_list.tile_size, height), 1)
+        if self.number != -1:
+            font = pygame.font.Font(None, 30)
+            string_rendered = font.render(str(self.number), 1, pygame.Color('black'))
+            rect = string_rendered.get_rect()
+            rect.bottom = y + self.image.get_rect().height
+            rect.left = x + 2
+            screen.blit(string_rendered, rect)
 
     def use(self, args):
         pass
@@ -93,12 +100,13 @@ class Skill:
 class PlasmaShot(Skill):
 
     def use(self, args):
-        if self.timer == 0:
+        if self.timer == 0 and self.number > 0:
+            self.number -= 1
             direction = to_point(self.master.x, self.master.y, args["real_click_x"], args["real_click_y"])
             dist = math.hypot(self.master.width, self.master.height) / 2
             x = self.master.x + math.cos(math.pi / 180 * direction) * dist
             y = self.master.y + math.sin(math.pi / 180 * direction) * dist
-            args["bullets"].append(Plasma(x, y, direction, 10, "Assets/Images/Bullets/Bullet1.png", 14, 5, 520))
+            args["bullets"].append(Plasma(x, y, direction, 50, "Assets/Images/Bullets/Bullet1.png", 56, 20, 520))
             self.timer = self.recharge_time
 
 
@@ -106,6 +114,7 @@ class LaserShot(Skill):
     def __init__(self, *args):
         super().__init__(*args)
         self.recharge_time = 200
+        self.number = -1
         self.image = pygame.image.load("Assets/Images/Skills/LaserRay.png")
         self.image = pygame.transform.scale(self.image, (self.skills_list.tile_size, self.skills_list.tile_size))
 
@@ -114,3 +123,21 @@ class LaserShot(Skill):
             self.master.effects["laser"] = Laser(self.master.x, self.master.y,
                                                  to_point(self.master.x, self.master.y, args["real_click_x"],
                                                           args["real_click_y"]), self.master)
+
+
+class CopperShellShot(Skill):
+    def __init__(self, *args):
+        super().__init__(*args)
+        self.recharge_time = 50
+        self.image = pygame.image.load("Assets/Images/Skills/CopperShell.png")
+        self.image = pygame.transform.scale(self.image, (self.skills_list.tile_size, self.skills_list.tile_size))
+
+    def use(self, args):
+        if self.timer == 0 and self.number > 0:
+            self.number -= 1
+            direction = to_point(self.master.x, self.master.y, args["real_click_x"], args["real_click_y"])
+            dist = math.hypot(self.master.width, self.master.height) / 2
+            x = self.master.x + math.cos(math.pi / 180 * direction) * dist
+            y = self.master.y + math.sin(math.pi / 180 * direction) * dist
+            args["bullets"].append(CopperShell(x, y, direction, 50, "Assets/Images/Bullets/Bullet2.png", 32, 12, 520))
+            self.timer = self.recharge_time

@@ -1,20 +1,19 @@
 import pygame
 from Functions.Math import *
 from Classes.Animation import *
+import json
 
 
 class Starship:
-    def __init__(self, x, y, image, width, height, health, cam, sprites_group, sprite_frames, image_width=0,
+    def __init__(self, world, x, y, width, height, health, cam, sprites_group, sprite_frames, image_width=0,
                  image_height=0, mass=100):
         # Определение свойств объекта корабля
         self.x = x
         self.y = y
-        self.image = image
-        self.img = pygame.image.load(self.image).convert()  # Загрузка и конвертирование иображения
-        self.img.set_colorkey((255, 255, 255))
         self.width = width
         self.height = height
         self.health = health
+        self.max_health = health
         self.mass = mass
         self.image_width = width if image_width == 0 else image_width
         self.image_height = height if image_height == 0 else image_height
@@ -27,8 +26,8 @@ class Starship:
         self.acceleration_x = 0
         self.acceleration_y = 0
         # Максимальная скорость корабля
-        self.max_speed_x = 20
-        self.max_speed_y = 20
+        self.max_speed_x = 10
+        self.max_speed_y = 10
         # Ускорение корабля по осям
         self.ship_acceleration_x = 0.1
         self.ship_acceleration_y = 0.1
@@ -37,6 +36,8 @@ class Starship:
         self.friction_y = 0.05
         # Спрайт
         self.sprite = Anim(sprites_group, cam, sprite_frames, self, self.image_width, self.image_height)
+        # Мир
+        self.world = world
 
     def update(self, objects):  # Обновление
         # Изменение координат в зависимости от скорости
@@ -75,6 +76,12 @@ class Starship:
         for obj in objects:
             if obj != self:
                 self.check_intersection_with_ship(obj)
+
+        if self.y + self.height / 2 > 0:
+            self.y = -self.height / 2 - 1
+            self.speed_y = -self.speed_y * 0.5
+
+        return self.health > 0
 
     # Удар об противника
     def kick(self, other):
@@ -123,12 +130,20 @@ class Starship:
         if y:
             self.acceleration_y = 0
 
-    def info_for_drawing(self):  # Выдача информации для отрисовки
-        data = dict()
-        data["x"] = self.x
-        data["y"] = self.y
-        data["img"] = self.img if self.acceleration_x >= 0 else pygame.transform.flip(self.img, True, False)
-        data["width"] = self.image_width
-        data["height"] = self.image_height
-        data["rot"] = 0
-        return data
+
+def create_ship(world, cam, sprites_group, x, y, cls):
+    file = open("Data/classes.json", "r", encoding="utf-8")
+    data0 = json.load(file)
+    data = data0[cls]
+    file.close()
+
+    ship = Starship(world, x, y, data["cwidth"], data["cheight"], data["hp"], cam, sprites_group, data["anim"],
+                    data["width"], data["height"], data["mass"])
+    ship.ship_acceleration_x = data["ax"]
+    ship.ship_acceleration_y = data["ay"]
+    ship.max_speed_x = data["msx"]
+    ship.max_speed_y = data["msy"]
+    ship.friction_x = data["fx"]
+    ship.friction_y = data["fy"]
+
+    return ship
