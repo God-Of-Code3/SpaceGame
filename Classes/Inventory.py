@@ -258,8 +258,6 @@ class Square:
         
     # Ниже функции для определения нажатия
     def selected(self, value):
-        if not value:
-            self.down = False
         self.on = value
 
     def on_button(self, mouse_pos):
