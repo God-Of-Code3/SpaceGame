@@ -1,7 +1,10 @@
 import pygame
 import math
 from Functions.Math import *
+from Classes.Animation import *
+from Classes.Starship import *
 LASER_MAX_LENGTH = 12000
+LASER_ROTATION_SPEED = 0.1
 
 
 class Bullet:
@@ -11,15 +14,20 @@ class Bullet:
         self.damage = 100
         self.direction = direction
         self.speed = speed
+        self.speed_x, self.speed_y = math.cos(self.direction * math.pi / 180) * self.speed, \
+                                     math.sin(self.direction * math.pi / 180) * self.speed
         self.image = image
-        self.img = pygame.image.load(self.image).convert()  # Загрузка и конвертирование иображения
+        self.img = pygame.image.load(self.image).convert()  # Загрузка и
+        # конвертирование
+        # иображения
         self.img.set_colorkey((255, 255, 255))
         self.image_width = image_width
         self.image_height = image_height
+        self.type = "standart"
 
     def update(self):  # Обновление
-        self.x += math.cos(self.direction * math.pi / 180) * self.speed
-        self.y += math.sin(self.direction * math.pi / 180) * self.speed
+        self.x += self.speed_x * ACCELERATION
+        self.y += self.speed_y * ACCELERATION
         return True
 
     def info_for_drawing(self):  # Выдача информации для отрисовки
@@ -27,8 +35,8 @@ class Bullet:
         data["x"] = self.x
         data["y"] = self.y
         data["img"] = self.img
-        data["width"] = self.image_width
-        data["height"] = self.image_height
+        data["width"] = int(self.image_width)
+        data["height"] = int(self.image_height)
         data["rot"] = (self.direction - 180) % 360
         return data
 
@@ -36,6 +44,9 @@ class Bullet:
         if other.x - other.width / 2 < self.x < other.x + other.width / 2:
             if other.y - other.height / 2 < self.y < other.y + other.height / 2:
                 return True
+
+    def hit(self, object):
+        object.health -= self.damage
 
 
 class Plasma(Bullet):
@@ -47,9 +58,9 @@ class Plasma(Bullet):
     def update(self):
         super().update()
         self.age -= 1
-
-        self.speed *= 0.97
         self.damage *= 0.97
+        self.image_width *= 0.97
+        self.image_height *= 0.97
         if abs(self.speed) < 5:
             self.age = 0
         return self.age > 0
@@ -65,6 +76,67 @@ class CopperShell(Bullet):
         super().update()
         self.age -= 1
         return self.age > 0
+
+
+class SmallRocket(Bullet):
+    def __init__(self, x, y, direction, speed, image, image_width, image_height, age, target, sx, sy, level):
+        super().__init__(x, y, direction, speed, image, image_width, image_height)
+        self.age = age
+        self.damage = 20
+        self.acceleration = 0.4
+        self.target = target
+        self.type = "rocket"
+        self.speed_x, self.speed_y = sx, sy
+        self.level = level
+
+    def update(self):
+        self.x += self.speed_x
+        self.y += self.speed_y
+
+        self.speed_x += math.cos(math.pi / 180 * self.direction) * self.acceleration * ACCELERATION
+        self.speed_y += math.sin(math.pi / 180 * self.direction) * self.acceleration * ACCELERATION
+
+        self.age -= 1
+        #self.direction += 4
+
+        return self.age > 0
+
+    def hit(self, object):
+        if "health" in dir(object):
+            object.health -= 300
+        if isinstance(object, Bullet):
+            object.age = 0
+        sp = math.hypot(self.speed_x, self.speed_y)
+        lx = self.x - math.cos(math.pi / 180 * self.direction) * sp
+        ly = self.y - math.sin(math.pi / 180 * self.direction) * sp
+        self.level.get("expls").append(SmallRocketDirectionalExplosion(self.direction, self.level,
+                                                                       lx, ly, 170, self.level.get("cam")))
+
+
+class MediumRocket(SmallRocket):
+    def __init__(self, *args):
+        super().__init__(*args)
+        self.acceleration = 0.5
+
+    def hit(self, object):
+        if "health" in dir(object):
+            object.health -= 500
+        if isinstance(object, Bullet):
+            object.age = 0
+        sp = math.hypot(self.speed_x, self.speed_y)
+        lx = self.x - math.cos(math.pi / 180 * self.direction) * sp
+        ly = self.y - math.sin(math.pi / 180 * self.direction) * sp
+        self.level.get("expls").append(SmallRocketDirectionalExplosion(self.direction, self.level,
+                                                                       lx, ly, 200, self.level.get("cam")))
+
+    def update(self):
+        if self.target:
+            direction = to_point(self.x, self.y, self.target.x, self.target.y) % 360
+            angle2 = get_angle(self.direction % 360, to_point(0, 0, self.speed_x, self.speed_y))
+            direction -= angle2 * 0.1
+            angle = get_angle(self.direction, direction)
+            self.direction += angle
+        return super().update()
 
 
 class Laser:
@@ -101,7 +173,8 @@ class Laser:
             dist = math.hypot(min_obj[1].x - self.x, min_obj[1].y - self.y)
             self.end_x, self.end_y = self.x + math.cos(self.direction * math.pi / 180) * dist, \
                 self.y + math.sin(self.direction * math.pi / 180) * dist
-            min_obj[1].health -= 10
+            if min_obj[1] != self.master:
+                min_obj[1].health -= 10
         else:
             self.end_x = self.x + math.cos(math.pi / 180 * self.direction) * LASER_MAX_LENGTH
             self.end_y = self.y + math.sin(math.pi / 180 * self.direction) * LASER_MAX_LENGTH

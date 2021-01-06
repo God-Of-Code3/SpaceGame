@@ -2,6 +2,8 @@ import math
 
 timer_counter = 0
 
+ACCELERATION = 1.6
+
 
 def get_counter():
     global timer_counter
@@ -29,7 +31,13 @@ def speed_calcs(v1, v2, m1, m2):
     return v3, v4
 
 
-print(speed_calcs(20, 0, 1000, 70))
+def get_angle(direction1, direction2):
+    angle = direction2 - direction1
+    if angle > 180:
+        angle = 180 - angle
+    if angle < -180:
+        angle = - (180 + angle)
+    return angle
 
 
 def rotate_vector(vector, direction):

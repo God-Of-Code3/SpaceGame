@@ -21,6 +21,9 @@ frames_tree2 = {
 
 all_sprites = pygame.sprite.Group()
 
+ROCKET_EXPLOSION_DIST = 400
+ROCKET_EXPLOSION_DAMAGE = 40
+
 
 class Anim(pygame.sprite.Sprite):
     def __init__(self, group, cam, frames, master, width, height):
@@ -35,6 +38,9 @@ class Anim(pygame.sprite.Sprite):
         self.step = 10
         self.image = self.get_current_image()
         self.rect = self.image.get_rect()
+        self.flip_timer = 0
+        self.flip = False
+        self.flipped = False
 
     def load_image(self, img):
         return pygame.image.load(img).convert_alpha()
@@ -61,6 +67,12 @@ class Anim(pygame.sprite.Sprite):
     def check_next(self):
         return self.frame >= len(self.frames[self.state]["frames"])
 
+    def set_state(self, state):
+        if state in self.frames:
+            self.timer = 0
+            self.frame = 0
+            self.state = state
+
     def set_next_state(self):
         next_state = self.frames[self.state]["next"]
         self.timer = 0
@@ -70,6 +82,7 @@ class Anim(pygame.sprite.Sprite):
     def set_current_image(self):
         self.image = self.get_current_image()
         self.timer = 0
+        self.flipped = False
 
     def update(self):
         if self.timer >= self.get_current_time():
@@ -79,6 +92,18 @@ class Anim(pygame.sprite.Sprite):
             self.set_current_image()
         else:
             self.timer += self.step
+        if "acceleration_x" in dir(self.master):
+            if self.master.acceleration_x < 0 and self.flip_timer == 0:
+                self.flip = True
+                self.flip_timer = 20
+            if self.flip:
+                if self.master.acceleration_x > 0 and self.flip_timer == 0:
+                    self.flip = False
+                    self.flip_timer = 20
+        if self.flip != self.flipped:
+            self.image = pygame.transform.flip(self.image, True, False)
+            self.flipped = self.flip
+        self.flip_timer = max(0, self.flip_timer - 1)
         w, h = self.width * self.cam.zoom_value, self.height * self.cam.zoom_value
         self.image = pygame.transform.scale(self.image, (int(w), int(h)))
         self.rect = self.image.get_rect()
@@ -103,6 +128,9 @@ class Explosion:
         self.cam = cam
         for _ in range(200):
             self.add_particle()
+        self.EXPL_CENTER_COLOR = EXPL_CENTER_COLOR
+        self.EXPL_SECOND_COLOR = EXPL_SECOND_COLOR
+        self.EXPL_THIRD_COLOR = EXPL_THIRD_COLOR
 
     def add_circle(self):
         if self.size > 10:
@@ -124,7 +152,7 @@ class Explosion:
                                    "age": random.randint(10, 100)})
 
     def update(self, objects):
-        self.size += self.step * self.expansion
+        self.size += self.step * self.expansion * ACCELERATION
         if self.size > self.max_size:
             self.expansion = -1
         if self.size < 1:
@@ -147,21 +175,11 @@ class Explosion:
             self.particles[i]["y"] += self.particles[i]["speed"][1]
             self.particles[i]["age"] -= 1
 
-        for obj in objects:
-            if self.size * 5 - self.step * 5 < math.hypot(obj.x - self.x, obj.y - self.y) < self.size * 5 and \
-                    self.expansion > 0:
-                d = to_point(self.x, self.y, obj.x, obj.y)
-                kick = self.size / self.max_size * 20
-                """obj.speed_x += math.cos(math.pi / 180 * d) * kick
-                obj.speed_y += math.sin(math.pi / 180 * d) * kick"""
-
         self.circles = list(filter(lambda x: x["size"] > 1, self.circles))
         self.particles = list(filter(lambda x: x["age"] > 0, self.particles))
 
     def draw(self, screen):
         r_circle = max(1, int(self.size * 5 * self.cam.zoom_value))
-        f_circle = max(1, int(self.size * 0.5 * self.cam.zoom_value))
-        s_circle = max(2, int(self.size * 0.6 * self.cam.zoom_value))
         t_circle = max(3, int(self.size * self.cam.zoom_value))
         circle_pos = (int(self.cam.size[0] / 2 + (self.x - self.cam.cam_pos[0]) * self.cam.zoom_value),
                       int(self.cam.size[1] / 2 + (self.y - self.cam.cam_pos[1]) * self.cam.zoom_value))
@@ -175,17 +193,14 @@ class Explosion:
             return interpolated_color
 
         if self.expansion > 0:
-            col = interpolate_color(EXPL_CENTER_COLOR, EXPL_SECOND_COLOR, self.size, self.max_size)
+            col = interpolate_color(self.EXPL_CENTER_COLOR, self.EXPL_SECOND_COLOR, self.size, self.max_size)
         else:
-            col = interpolate_color(EXPL_THIRD_COLOR, EXPL_CENTER_COLOR, self.size, self.max_size)
-
-        pygame.draw.circle(screen, col, circle_pos, t_circle)
-        """pygame.draw.circle(screen, EXPL_THIRD_COLOR, circle_pos, t_circle)
-        pygame.draw.circle(screen, EXPL_SECOND_COLOR, circle_pos, s_circle)
-        pygame.draw.circle(screen, EXPL_CENTER_COLOR, circle_pos, f_circle)"""
+            col = interpolate_color(self.EXPL_THIRD_COLOR, self.EXPL_CENTER_COLOR, self.size, self.max_size)
+        if self.size > 3:
+            pygame.draw.circle(screen, col, circle_pos, t_circle)
 
         if self.expansion > 0:
-            pygame.draw.circle(screen, EXPL_CENTER_COLOR, circle_pos, r_circle, 2)
+            pygame.draw.circle(screen, self.EXPL_CENTER_COLOR, circle_pos, r_circle, 2)
 
         for particle in self.particles:
             x, y = particle["x"], particle["y"]
@@ -207,14 +222,47 @@ class Explosion:
                 circle_pos = (int(self.cam.size[0] / 2 + (x - self.cam.cam_pos[0]) * self.cam.zoom_value),
                               int(self.cam.size[1] / 2 + (y - self.cam.cam_pos[1]) * self.cam.zoom_value))
 
-                if circle["expansion"] > 0:
-                    col = interpolate_color(EXPL_CENTER_COLOR, EXPL_SECOND_COLOR, circle["size"], circle["max_size"])
-                else:
-                    col = interpolate_color(EXPL_THIRD_COLOR, EXPL_SECOND_COLOR, circle["size"], circle["max_size"])
-
-                """pygame.draw.circle(screen, (255, 0, 0), circle_pos, t_circle + int(2 * self.cam.zoom_value))
-                pygame.draw.circle(screen, col, circle_pos, t_circle)"""
-                pygame.draw.circle(screen, EXPL_THIRD_COLOR, circle_pos, t_circle)
-                pygame.draw.circle(screen, EXPL_SECOND_COLOR, circle_pos, s_circle)
+                pygame.draw.circle(screen, self.EXPL_THIRD_COLOR, circle_pos, t_circle)
+                pygame.draw.circle(screen, self.EXPL_SECOND_COLOR, circle_pos, s_circle)
                 #pygame.draw.circle(screen, EXPL_CENTER_COLOR, circle_pos, f_circle)
 
+
+class SmallRocketDirectionalExplosion(Explosion):
+    def __init__(self, direction, level, *args):
+        self.direction = direction
+        super().__init__(*args)
+        self.particles = []
+        for _ in range(20):
+            self.add_particle()
+        self.EXPL_CENTER_COLOR = (255, 255, 255)
+        self.EXPL_SECOND_COLOR = (250, 223, 17)
+        self.EXPL_THIRD_COLOR = (255, 154, 71)
+        self.level = level
+        for obj in [*self.level.get("enemys_ships"), self.level.get("player").ship]:
+            direction = to_point(self.x, self.y, obj.x, obj.y)
+            dist = math.hypot(self.x - obj.x, self.y - obj.y)
+            angle = get_angle(self.direction % 360, direction)
+            if abs(angle) < 40 and dist < ROCKET_EXPLOSION_DIST:
+                obj.health -= (1 - dist / ROCKET_EXPLOSION_DIST) * ROCKET_EXPLOSION_DAMAGE
+
+    def add_circle(self):
+        if self.size > 10:
+            direction = self.direction + random.randint(-90, 90)
+            dist = self.size + random.randint(-int(self.size * 0.1), int(self.size * 0.2)) * 3
+            x = self.x + math.cos(direction * math.pi / 180) * dist
+            y = self.y + math.sin(direction * math.pi / 180) * dist
+            self.circles.append({"x": x, "y": y, "size": 1,
+                                 "max_size": max(random.randint(int(self.size * 0.4), int(self.size * 0.6)), 1),
+                                 "step": self.step, "expansion": 1})
+
+    def add_particle(self):
+        if self.size > 10:
+            direction = self.direction + random.randint(-20, 20)
+            speed = self.step * 2 * random.randint(0, 20) / 10
+            speed_x = math.cos(direction * math.pi / 180) * speed
+            speed_y = math.sin(direction * math.pi / 180) * speed
+            self.particles.append({"x": self.x, "y": self.y, "speed": (speed_x, speed_y),
+                                   "age": random.randint(10, 100)})
+
+    def update(self, *args):
+        super().update(args)

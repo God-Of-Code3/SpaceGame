@@ -13,6 +13,7 @@
 		"height": 83,
 		"cwidth": 100,
 		"cheight": 83,
+		"behaviour": "attack",
 		"description": "Беспилотные корабли, сотнями тысяч производимые на заводах Содружества. Они составляют основную часть истребителей на планетах. Однако далеко не все они принадлежат Содружеству, их выкупают и используют различные группировки. Корабли класса \"Жук\" являются одними из самых легких.",
 		"anim": {
 			"main": {
@@ -21,12 +22,15 @@
 				],
 				"next": "main"
 			}
+		},
+		"equipment": {
+			"CopperShellShot": 125
 		}
 	},
 	"Inquisitor": {
 		"class": "Инквизитор",
-		"hp": 1000,
-		"mass": 1000,
+		"hp": 100000,
+		"mass": 100,
 		"msx": 10,
 		"msy": 10,
 		"ax": 0.1,
@@ -37,6 +41,7 @@
 		"height": 80,
 		"cwidth": 152,
 		"cheight": 80,
+		"behaviour": "attack",
 		"description": "Класс кораблей, созданный для поиска и уничтожения баз незаконных объединений: пиратов, рэкетиров.",
 		"anim": {
 			"main": {
@@ -49,6 +54,13 @@
 				],
 				"next": "main"
 			}
+		},
+		"equipment": {
+			"CopperShellShot": 50,
+			"PlasmaShot": 5,
+			"SmallRocketLaunch": 120,
+			"MediumRocketLaunch": 120,
+			"LaserShot": -1
 		}
 	},
 	"Auror": {
@@ -72,6 +84,75 @@
 				],
 				"next": "main"
 			}
+		}
+	},
+	"Hindenburg": {
+		"class": "Гинденбург",
+		"hp": 10000,
+		"mass": 1000,
+		"msx": 6,
+		"msy": 6,
+		"ax": 0.1,
+		"ay": 0.03,
+		"fx": 0.03,
+		"fy": 0.05,
+		"width": 825,
+		"height": 300,
+		"cwidth": 825,
+		"cheight": 300,
+		"behaviour": "air_attack",
+		"description": "Конструкция корабля была изначально разработана Содружеством, однако впоследвстии чертежи были выкрадены и стали общедоступными, \"Авроры\" стали производиться противниками Содружества. Вскоре Содружество признало конструкцию и оснащение кораблей класса \"Аврор\" неудачными для реального боя.",
+		"anim": {
+			"moving": {
+				"frames": [
+					["./Assets/Images/Ships/Starship4_frame1.png", 20],
+					["./Assets/Images/Ships/Starship4_frame2.png", 20],
+					["./Assets/Images/Ships/Starship4_frame3.png", 20],
+					["./Assets/Images/Ships/Starship4_frame4.png", 20],
+					["./Assets/Images/Ships/Starship4_frame5.png", 20],
+					["./Assets/Images/Ships/Starship4_frame6.png", 20],
+					["./Assets/Images/Ships/Starship4_frame7.png", 20],
+					["./Assets/Images/Ships/Starship4_frame8.png", 20]
+				],
+				"next": "moving"
+			},
+			"start": {
+				"frames": [
+					["./Assets/Images/Ships/Starship4_frame_start1.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start2.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start3.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start4.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start5.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start6.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start7.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start8.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start9.png", 20]
+				],
+				"next": "moving"
+			},
+			"stop": {
+				"frames": [
+					["./Assets/Images/Ships/Starship4_frame_start9.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start8.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start7.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start6.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start5.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start4.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start3.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start2.png", 20],
+					["./Assets/Images/Ships/Starship4_frame_start1.png", 20]
+				],
+				"next": "main"
+			},
+			"main": {
+				"frames": [
+					["./Assets/Images/Ships/Starship4_frame_main.png", 20]
+				],
+				"next": "main"
+			}
+		},
+		"equipment": {
+			"LaserShot": -1
 		}
 	}
 }

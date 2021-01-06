@@ -8,7 +8,7 @@ class Camera:
     def __init__(self, color, screen, min_zoom, max_zoom, zoom_step):  # Определения класса
         self.color = color
         self.cam_pos = (0, 0)
-        self.zoom_value = 1
+        self.zoom_value = min_zoom
         self.min_zoom = min_zoom
         self.max_zoom = max_zoom
         self.zoom_step = zoom_step
@@ -52,15 +52,22 @@ class Camera:
     def drawing(self, objects, center, zoom):  # center - кортеж с x и y камеры
         # Отрисовка списков словарей
         for v in objects:
-            x = SIZE[0] / 2 + (v['x'] - v['width'] / 2 - center[0]) * zoom
-            y = SIZE[1] / 2 + (v['y'] - v['height'] / 2 - center[1]) * zoom
-            w = int(v['width'] * zoom)
-            h = int(v['height'] * zoom)
+
+            img = v['img']
+            img2 = pygame.transform.scale(img, (v['width'], v['height']))
+            img2 = pygame.transform.rotate(img2, -v['rot'])
+            # Поворот картинки
+            r = img2.get_rect()
+            w, h = r.width, r.height
+            x = SIZE[0] / 2 + (v['x'] - w / 2 - center[0]) * zoom
+            y = SIZE[1] / 2 + (v['y'] - h / 2 - center[1]) * zoom
+            w = int(w * zoom)
+            h = int(h * zoom)
+            w0, h0 = int(v['width'] * zoom), int(v['height'] * zoom)
+            img = pygame.transform.scale(img, (w0, h0))  # Изменение размера картинки
             if self.point_in_zone((x, y)) or self.point_in_zone((x + w, y)) or\
                self.point_in_zone((x + w, y + h)) or self.point_in_zone((x, y + h)):  # Отрисовка того, что на экране
-                img = v['img']
-                img = pygame.transform.scale(img, (w, h))  # Изменение размера картинки
-                img = pygame.transform.rotate(img, -v['rot'])  # Поворот картинки
+                img = pygame.transform.rotate(img, -v['rot'])
                 self.screen.blit(img, (x, y))
 
     def drawing_planet(self, planet, center, zoom):  # center - кортеж с x и y камеры

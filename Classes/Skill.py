@@ -9,7 +9,7 @@ SKILL_RECHARGE_MARGIN = 4
 
 
 class SkillList:
-    def __init__(self, x, y, size, master, timer):
+    def __init__(self, x, y, size, master):
         self.x = x
         self.y = y
         self.size = size
@@ -76,7 +76,7 @@ class Skill:
     def draw(self, screen, x, y):
         screen.blit(self.image, (x, y))
 
-        if self.timer != 0:
+        if self.timer != 0 or self.number == 0:
             screen.blit(self.shade, (x, y))
             percent = (self.recharge_time - self.timer) / self.recharge_time
             width = int(self.skills_list.tile_size * percent)
@@ -106,7 +106,8 @@ class PlasmaShot(Skill):
             dist = math.hypot(self.master.width, self.master.height) / 2
             x = self.master.x + math.cos(math.pi / 180 * direction) * dist
             y = self.master.y + math.sin(math.pi / 180 * direction) * dist
-            args["bullets"].append(Plasma(x, y, direction, 50, "Assets/Images/Bullets/Bullet1.png", 56, 20, 520))
+            args["level"].get("bullets").append(Plasma(x, y, direction, 50, "Assets/Images/Bullets/Bullet1.png",
+                                                       56, 20, 520))
             self.timer = self.recharge_time
 
 
@@ -139,5 +140,58 @@ class CopperShellShot(Skill):
             dist = math.hypot(self.master.width, self.master.height) / 2
             x = self.master.x + math.cos(math.pi / 180 * direction) * dist
             y = self.master.y + math.sin(math.pi / 180 * direction) * dist
-            args["bullets"].append(CopperShell(x, y, direction, 50, "Assets/Images/Bullets/Bullet2.png", 32, 12, 520))
+            args["level"].get("bullets").append(CopperShell(x, y, direction, 50, "Assets/Images/Bullets/Bullet2.png",
+                                                            32, 12, 520))
+            self.timer = self.recharge_time
+
+
+class SmallRocketLaunch(Skill):
+    def __init__(self, *args):
+        super().__init__(*args)
+        self.recharge_time = 5
+        self.number = 125
+        self.image = pygame.image.load("Assets/Images/Skills/SmallRocket.png")
+        self.image = pygame.transform.scale(self.image, (self.skills_list.tile_size, self.skills_list.tile_size))
+
+    def use(self, args):
+        if self.timer == 0 and self.number > 0:
+            self.number -= 1
+            direction = to_point(self.master.x, self.master.y, args["real_click_x"], args["real_click_y"])
+            dist = math.hypot(self.master.width, self.master.height) / 2+ 10
+            x = self.master.x + math.cos(math.pi / 180 * direction) * dist
+            y = self.master.y + math.sin(math.pi / 180 * direction) * dist
+            """n = 30
+            for i in range(-n, n * 2, n):"""
+            args["level"].get("bullets").append(SmallRocket(x, y, direction, 50,
+                                                            "Assets/Images/Bullets/SmallRocket.png",
+                                                            82, 20, 520, None,
+                                                            self.master.speed_x, self.master.speed_y, args["level"]))
+            self.timer = self.recharge_time
+
+
+class MediumRocketLaunch(Skill):
+    def __init__(self, *args):
+        super().__init__(*args)
+        self.recharge_time = 5
+        self.number = 125
+        self.image = pygame.image.load("Assets/Images/Skills/MediumRocket.png")
+        self.image = pygame.transform.scale(self.image, (self.skills_list.tile_size, self.skills_list.tile_size))
+
+    def use(self, args):
+        if self.timer == 0 and self.number > 0:
+            self.number -= 1
+            direction = to_point(self.master.x, self.master.y, args["real_click_x"], args["real_click_y"])
+            dist = math.hypot(self.master.width, self.master.height) / 2 + 10
+            x = self.master.x + math.cos(math.pi / 180 * direction) * dist
+            y = self.master.y + math.sin(math.pi / 180 * direction) * dist
+            target = None
+            for obj in [args["level"].get("player").ship, *args["level"].get("enemys_ships")]:
+                if obj.check_intersection_with_point((args["real_click_x"], args["real_click_y"])):
+                    target = obj
+            """n = 30
+            for i in range(-n, n * 2, n):"""
+            args["level"].get("bullets").append(MediumRocket(x, y, direction, 50,
+                                                             "Assets/Images/Bullets/MediumRocket.png",
+                                                             140, 20, 520, target,
+                                                             self.master.speed_x, self.master.speed_y, args["level"]))
             self.timer = self.recharge_time

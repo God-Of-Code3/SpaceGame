@@ -1,0 +1,10 @@
+from PIL import Image
+import os
+
+_, _, filenames = next(os.walk("./"))
+for file in filenames:
+    if file.startswith("Starship4"):
+        print(file)
+        image = Image.open(file)
+        resized_image = image.resize((320, 320))
+        resized_image.save(file)
