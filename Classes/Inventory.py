@@ -171,7 +171,7 @@ class Inventory():
                         if self.player_items[i][j] != None and q == self.player_items[i][j].image_name:
                             union = True
                         else:
-                            union = False                        
+                            union = False
                     
         # Изменение координат
         if not arr[x][y].moving:
@@ -208,10 +208,10 @@ class Inventory():
                     n += other_arr[pos[0]][pos[1]].count
                         
                 other_arr[pos[0]][pos[1]] = Square(screen, q,
-                                                       arr[x][y].xm,
-                                                       arr[x][y].ym,
-                                                       arr[x][y].w,
-                                                       arr[x][y].h, n)
+                                                    arr[x][y].xm,
+                                                    arr[x][y].ym,
+                                                    arr[x][y].w,
+                                                    arr[x][y].h, n)
                 arr[x][y] = None
                 other_icons.append((q, pos[0], pos[1], n))
                 del icons[q_index]
@@ -222,14 +222,109 @@ class Inventory():
     def get_player_slots(self):
         return self.player_slots
      
-    def controller(self, event):
+    def add_square(self, screen, image, x, y, arr, slots):
+        if slots == self.inv_slots:
+            xp = (SIZE[0] - self.size * self.w1) / 2 + x * self.size + PAD3
+            yp = PAD1 + y * self.size + PAD3
+        else:
+            xp = (SIZE[0] - self.size * self.w2) / 2 + x * self.size + PAD3
+            yp = SIZE[1] - self.size * self.h2 + y * self.size - PAD1 + PAD3
+        
+        if (image, x, y) in [(i[0], i[1], i[2]) for i in slots]:
+            a = [(i[0], i[1], i[2]) for i in slots].index((image, x, y))
+            slots[a] = (image, x, y, slots[a][3] + 1)
+            arr[x][y] = Square(screen, image, xp, yp,
+                                self.size - PAD3 * 2,
+                                self.size - PAD3 * 2,
+                                slots[a][3])
+        else:
+            slots.append((image, x, y, 1))
+            arr[x][y] = Square(screen, image, xp, yp,
+                                self.size - PAD3 * 2,
+                                self.size - PAD3 * 2, 1)
+            
+    def get_cell(self, mouse_pos, q):
+        # Присвоение ближайшей клетке
+        m = 1000000
+        pos = (0, 0)
+        
+        px = mouse_pos[0]
+        py = mouse_pos[1]
+        for i in range(self.w1):
+            for j in range(self.h1):
+                if self.items[i][j] == None or (self.items[i][j] != None and\
+                   q == self.items[i][j].image_name and self.items[i][j].count != -1):
+                    sqx = (SIZE[0] - self.size * self.w1) / 2 + (i + 0.5) * self.size
+                    sqy = PAD1 + (j + 0.5) * self.size
+                    
+                    if ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5 <= m:
+                        pos = (i, j)
+                        m = ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5
+                        arr = self.items
+                        slots = self.inv_slots
+                    
+        for i in range(self.w2):
+            for j in range(self.h2):
+                if self.player_items[i][j] == None or (self.player_items[i][j] != None and\
+                   q == self.player_items[i][j].image_name and self.player_items[i][j].count != -1):
+                    sqx = (SIZE[0] - self.size * self.w2) / 2 + (i + 0.5) * self.size
+                    sqy = SIZE[1] - (j + 0.5) * self.size - PAD1
+                        
+                    if ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5 <= m:
+                        pos = (i, j)
+                        m = ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5
+                        arr = self.player_items
+                        slots = self.player_slots
+        return (q, *pos, arr, slots)
+    
+    def controller(self, event, screen):
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 3:
+                for i in self.inv_slots:
+                    x, y = i[1], i[2]
+                    if self.items[x][y].down and self.items[x][y].count > 1:
+                        a = self.inv_slots.index(i)
+                        self.inv_slots[a] = (self.inv_slots[a][0],
+                                             self.inv_slots[a][1],
+                                             self.inv_slots[a][2],
+                                             self.items[x][y].count - 1)
+                        self.items[x][y].count -= 1
+
+                        self.add_square(screen,
+                                        *self.get_cell(event.pos,
+                                                       self.inv_slots[a][0]))
+                        break
+                    elif self.items[x][y].down and self.items[x][y].count == 1:
+                        self.items[x][y].down = False
+                    elif not self.items[x][y].down and self.items[x][y].count > 1:
+                        pass                      
+                            
+                for i in self.player_slots:
+                    x, y = i[1], i[2]
+                    if self.player_items[x][y].down and self.player_items[x][y].count > 1:
+                        a = self.player_slots.index(i)
+                        self.player_slots[a] = (self.player_slots[a][0],
+                                                self.player_slots[a][1],
+                                                self.player_slots[a][2],
+                                                self.player_items[x][y].count - 1)
+                        self.player_items[x][y].count -= 1
+
+                        self.add_square(screen,
+                                        *self.get_cell(event.pos,
+                                                       self.player_slots[a][0]))                      
+                        break
+                    elif self.player_items[x][y].down and self.player_items[x][y].count == 1:
+                        self.player_items[x][y].down = False
+                    elif not self.player_items[x][y].down and self.player_items[x][y].count > 1:
+                        pass
+        
         for i in self.inv_slots:
             x, y = i[1], i[2]
             self.items[x][y].controller(event)
-            
+                    
         for i in self.player_slots:
             x, y = i[1], i[2]
-            self.player_items[x][y].controller(event)
+            self.player_items[x][y].controller(event)  
 
 
 class Square:
@@ -264,12 +359,12 @@ class Square:
                 self.selected(True)
             else:
                 self.selected(False)
-        elif event.type == pygame.MOUSEBUTTONDOWN:
+        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if self.on_button(event.pos):
-                self.pressed(True, screen)
+                self.pressed(True, screen)                
         
         if self.down:
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 if not self.moving:
                     if self.on_button(event.pos):
                         self.moving = True
@@ -304,8 +399,8 @@ class Square:
         if self.count != -1:
             text = pygame.font.Font(FONT, TEXT_SIZE).render(str(self.count),
                                                             True, TEXT_COLOR)
-            screen.blit(text, (self.xm + self.w - TEXT_SIZE / 5,
-                        self.ym - TEXT_SIZE / 5))
+            screen.blit(text, (self.xm + self.w - TEXT_SIZE * len(str(self.count)) / 5,
+                               self.ym - TEXT_SIZE / 5))
         
     # Ниже функции для определения нажатия
     def selected(self, value):
@@ -327,8 +422,6 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(size)
     screen.fill(pygame.Color('black'))
 
-    '''inv = Inventory({'1.jpg': [(4, 0), 5], '2.jpg': [(3, 1), 3], '3.jpg': [(5, 2), 1]}, 10, 8,
-                    {'4.png': [(2, 0), 4], '5.png': [(1, 0), 2], '6.jpg': [(3, 0), -1]}, 8, 1)'''
     inv = Inventory([('1.jpg', 4, 0, 5), ('1.jpg', 3, 1, -1)], 10, 8,
                     [('1.jpg', 4, 0, 100)], 8, 1)
 
@@ -339,7 +432,7 @@ if __name__ == '__main__':
             if event.type == pygame.QUIT:
                 pygame.quit()
             else:
-                inv.controller(event)
+                inv.controller(event, screen)
         inv.drawing(screen)
         pygame.display.flip()
     pygame.quit()
