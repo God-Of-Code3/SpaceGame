@@ -348,6 +348,40 @@ class Inventory():
         self.clone_info[4][self.clone_info[1]][self.clone_info[2]].down = False
         self.square_clone = None
         self.clone_info = None
+        
+    def minus_1(self, x, y, arr, slots, elem):
+        a = slots.index(elem)
+        slots[a] = (slots[a][0], slots[a][1], slots[a][2], arr[x][y].count - 1)
+        arr[x][y].count -= 1
+
+        data = self.get_cell(event.pos, slots[a][0])
+        if (data[1], data[2]) == (x, y) and data[3] == arr:
+            self.add_square(screen, *data, False)
+        else:
+            self.add_square(screen, *data, True)
+            
+    def minus_half(self, x, y, arr, slots, elem):
+        a = slots.index(elem)
+        slots[a] = (slots[a][0], slots[a][1], slots[a][2],
+                    arr[x][y].count // 2 + arr[x][y].count % 2)
+        
+        if slots == self.inv_slots:
+            xp = (SIZE[0] - self.size * self.w1) / 2 + (slots[a][1] + 0.5) * self.size
+            yp = PAD1 + (slots[a][2] + 0.5) * self.size
+        else:
+            xp = (SIZE[0] - self.size * self.w2) / 2 + (slots[a][1] + 0.5) * self.size
+            yp = SIZE[1] - (slots[a][2] + 0.5) * self.size - PAD1        
+        
+        self.square_clone = Square(screen, slots[a][0],
+                                   xp - self.size / 2 + PAD3 + 1,
+                                   yp - self.size / 2 + PAD3 + 1,
+                                   self.size - PAD3 * 2,
+                                   self.size - PAD3 * 2,
+                                   arr[x][y].count // 2)
+        self.clone_info = (slots[a][0], slots[a][1], slots[a][2],
+                           arr[x][y].count // 2, arr, slots)
+        
+        arr[x][y].count = arr[x][y].count // 2 + arr[x][y].count % 2        
     
     def controller(self, event, screen):
         global global_pressed
@@ -360,113 +394,54 @@ class Inventory():
             if event.button == 3:
                 for i in self.inv_slots:
                     x, y = i[1], i[2]
-                    if self.items[x][y].down and self.items[x][y].count > 1:
-                        a = self.inv_slots.index(i)
-                        self.inv_slots[a] = (self.inv_slots[a][0],
-                                             self.inv_slots[a][1],
-                                             self.inv_slots[a][2],
-                                             self.items[x][y].count - 1)
-                        self.items[x][y].count -= 1
-
-                        data = self.get_cell(event.pos, self.inv_slots[a][0])
-                        if (data[1], data[2]) == (x, y) and data[3] == self.items:
-                            self.add_square(screen, *data, False)
-                        else:
-                            self.add_square(screen, *data, True)                        
-                        break
-                    elif self.items[x][y].down and self.items[x][y].count == 1:
-                        self.items[x][y].down = False
-                        break
-                    elif self.items[x][y].on and\
-                         not self.items[x][y].down and\
-                         self.items[x][y].count > 1:
-                        a = self.inv_slots.index(i)
-                        self.inv_slots[a] = (self.inv_slots[a][0],
-                                             self.inv_slots[a][1],
-                                             self.inv_slots[a][2],
-                                             self.items[x][y].count // 2 + self.items[x][y].count % 2)
-                                             
-                        xp = (SIZE[0] - self.size * self.w1) / 2 + (self.inv_slots[a][1] + 0.5) * self.size
-                        yp = PAD1 + (self.inv_slots[a][2] + 0.5) * self.size                 
-                        self.square_clone = Square(screen,
-                                                   self.inv_slots[a][0],
-                                                   xp - self.size / 2 + PAD3 + 1,
-                                                   yp - self.size / 2 + PAD3 + 1,
-                                                   self.size - PAD3 * 2,
-                                                   self.size - PAD3 * 2,
-                                                   self.items[x][y].count // 2)
-                        self.clone_info = (self.inv_slots[a][0],
-                                           self.inv_slots[a][1],
-                                           self.inv_slots[a][2],
-                                           self.items[x][y].count // 2,
-                                           self.items,
-                                           self.inv_slots)
-                        
-                        self.items[x][y].count = self.items[x][y].count // 2 + self.items[x][y].count % 2
-                        break
+                    if self.items[x][y].down and global_pressed:
+                        if self.items[x][y].count > 1:
+                            self.minus_1(x, y, self.items, self.inv_slots, i)
+                            pressing = True
+                            break
+                        elif self.items[x][y].count == 1:
+                            self.items[x][y].down = False
+                            pressing = False
+                            break
+                    elif not global_pressed:
+                        if self.items[x][y].count > 1:
+                            if self.items[x][y].on:
+                                self.minus_half(x, y, self.items, self.inv_slots, i)
+                                pressing = True
+                                break
                             
                 for i in self.player_slots:
                     x, y = i[1], i[2]
-                    if self.player_items[x][y].down and self.player_items[x][y].count > 1:
-                        a = self.player_slots.index(i)
-                        self.player_slots[a] = (self.player_slots[a][0],
-                                                self.player_slots[a][1],
-                                                self.player_slots[a][2],
-                                                self.player_items[x][y].count - 1)
-                        self.player_items[x][y].count -= 1
-
-                        data = self.get_cell(event.pos, self.player_slots[a][0])
-                        if (data[1], data[2]) == (x, y) and data[3] == self.player_items:
-                            self.add_square(screen, *data, False)
-                        else:
-                            self.add_square(screen, *data, True)
-                        break
-                    elif self.player_items[x][y].down and self.player_items[x][y].count == 1:
-                        self.player_items[x][y].down = False
-                        break
-                    elif self.player_items[x][y].on and\
-                         not self.player_items[x][y].down and\
-                         self.player_items[x][y].count > 1:
-                        a = self.player_slots.index(i)
-                        self.player_slots[a] = (self.player_slots[a][0],
-                                             self.player_slots[a][1],
-                                             self.player_slots[a][2],
-                                             self.player_items[x][y].count // 2 + self.player_items[x][y].count % 2)
-                        
-                        xp = (SIZE[0] - self.size * self.w2) / 2 + (self.player_slots[a][1] + 0.5) * self.size
-                        yp = SIZE[1] - (self.player_slots[a][2] + 0.5) * self.size - PAD1
-                        self.square_clone = Square(screen,
-                                                   self.player_slots[a][0],
-                                                   xp - self.size / 2 + PAD3 + 1,
-                                                   yp - self.size / 2 + PAD3 + 1,
-                                                   self.size - PAD3 * 2,
-                                                   self.size - PAD3 * 2,
-                                                   self.player_items[x][y].count // 2)
-                        self.clone_info = (self.player_slots[a][0],
-                                           self.player_slots[a][1],
-                                           self.player_slots[a][2],
-                                           self.player_items[x][y].count // 2,
-                                           self.player_items,
-                                           self.player_slots)
-                        
-                        self.player_items[x][y].count = self.player_items[x][y].count // 2 + self.player_items[x][y].count % 2
-                        break
+                    if self.player_items[x][y].down and global_pressed:
+                        if self.player_items[x][y].count > 1:
+                            self.minus_1(x, y, self.player_items, self.player_slots, i)
+                            pressing = True
+                            break                            
+                        elif self.player_items[x][y].count == 1:
+                            self.player_items[x][y].down = False
+                            pressing = False
+                            break
+                    elif not global_pressed:
+                        if self.player_items[x][y].count > 1:
+                            if self.player_items[x][y].on and not global_pressed:
+                                self.minus_half(x, y, self.player_items, self.player_slots, i)
+                                pressing = True
+                                break
         
         for i in self.inv_slots:
             x, y = i[1], i[2]
             if self.items[x][y].controller(event):
                 pressing = True
-            global_pressed = pressing
-                    
+                 
         for i in self.player_slots:
             x, y = i[1], i[2]
             if self.player_items[x][y].controller(event):
                 pressing = True
-            global_pressed = pressing
         
         if self.square_clone:
             if self.square_clone.controller(event):
                 pressing = True
+
         global_pressed = pressing
 
 
@@ -506,27 +481,32 @@ class Square:
             else:
                 self.selected(False)
         elif event.type == pygame.MOUSEBUTTONDOWN and\
-             (event.button == 1 or (event.button == 3 and not global_pressed)):
+             (event.button == 1 or event.button == 3) and not global_pressed:
             if self.on_button(event.pos):
                 self.pressed(True, screen)
+                global_pressed = True
                 pressing = True
         
         if self.down:
             pressing = True
             if event.type == pygame.MOUSEBUTTONDOWN and\
-             (event.button == 1 or event.button == 3 and not self.moving):
+             (event.button == 1 or (event.button == 3 and not self.moving)):
                 if not self.moving:
                     if self.on_button(event.pos):
                         self.moving = True
                         self.x, self.y = event.pos[0] - self.xm, event.pos[1] - self.ym
                 else:
                     self.move_screen.blit(screen, (0, 0))
+                    pressing = False
                     self.moving = False
-            if event.type == pygame.MOUSEMOTION:
+            elif event.type == pygame.MOUSEMOTION:
                 if self.moving:
                     self.xm, self.ym = event.pos[0] - self.x, event.pos[1] - self.y
                     pressing = True
+                else:
+                    pressing = False
         else:
+            pressing = False
             self.moving = False
             
         return pressing
