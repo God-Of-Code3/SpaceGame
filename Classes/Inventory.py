@@ -19,9 +19,14 @@ FONT = None
 TEXT_SIZE = 32
 TEXT_COLOR = pygame.Color(255, 255, 255)
 
+global_pressed = False
+
 
 class Inventory():
     def __init__(self, inv_slots, wi, hi, player_slots, wp, hp):
+        self.square_clone = None
+        self.clone_info = ('image', 'x', 'y', 'count', 'arr', 'slots')
+        
         self.inv_slots = inv_slots
         self.player_slots = player_slots
         
@@ -40,9 +45,9 @@ class Inventory():
         
         for i in self.inv_slots:
             x, y, n = i[1], i[2], i[3]
-            self.items[x][y] = Square(screen, i[0],
-                                      (SIZE[0] - self.size * self.w1) / 2 + x * self.size + PAD3,
-                                      PAD1 + y * self.size + PAD3,
+            xpos = (SIZE[0] - self.size * self.w1) / 2 + x * self.size + PAD3
+            ypos = PAD1 + y * self.size + PAD3         
+            self.items[x][y] = Square(screen, i[0], xpos, ypos,
                                       self.size - PAD3 * 2,
                                       self.size - PAD3 * 2, n)
             
@@ -53,9 +58,9 @@ class Inventory():
         
         for i in self.player_slots:
             x, y, n = i[1], i[2], i[3]
-            self.player_items[x][y] = Square(screen, i[0],
-                                          (SIZE[0] - self.size * self.w2) / 2 + x * self.size + PAD3,
-                                          SIZE[1] - self.size * self.h2 + y * self.size - PAD1 + PAD3,
+            xpos = (SIZE[0] - self.size * self.w2) / 2 + x * self.size + PAD3
+            ypos = SIZE[1] - self.size * self.h2 + y * self.size - PAD1 + PAD3
+            self.player_items[x][y] = Square(screen, i[0], xpos, ypos,
                                           self.size - PAD3 * 2,
                                           self.size - PAD3 * 2, n)
                                           
@@ -104,6 +109,10 @@ class Inventory():
             self.player_items[x][y].drawing(screen)
             self.square_pulling(x, y, self.player_items,
                                 i[0], self.player_slots, n)
+            
+        # Рисование слота движущегося предмета
+        if self.square_clone:
+            self.square_clone.drawing(screen)          
                     
         # Рисование движущегося квадрата поверх остальных
         for q in self.inv_slots:
@@ -123,6 +132,7 @@ class Inventory():
         nearest_square = (0, 0)
         to_inventory = False
         union = False
+        clone = False
         pos = (0, 0)
         
         px = arr[x][y].xm + arr[x][y].w / 2
@@ -172,49 +182,79 @@ class Inventory():
                             union = True
                         else:
                             union = False
+                            
+        if self.square_clone:
+            if self.clone_info[5] == self.inv_slots:
+                sqx = (SIZE[0] - self.size * self.w1) / 2 + (self.clone_info[1] + 0.5) * self.size
+                sqy = PAD1 + (self.clone_info[2] + 0.5) * self.size
+            else:
+                sqx = (SIZE[0] - self.size * self.w2) / 2 + (self.clone_info[1] + 0.5) * self.size
+                sqy = SIZE[1] - (self.clone_info[2] + 0.5) * self.size - PAD1
+            
+            if ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5 <= m:
+                pos = (self.clone_info[1], self.clone_info[2])
+                m = ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5
+                nearest_square = (sqx - self.size / 2 + PAD3 + 1,
+                                  sqy - self.size / 2 + PAD3 + 1)
+                clone = True
                     
         # Изменение координат
-        if not arr[x][y].moving:
-            arr[x][y].xm = nearest_square[0]
-            arr[x][y].ym = nearest_square[1]
-            
-            q_index = [i[1:4] for i in icons].index((x, y, n))
-            if ((arr == self.items and to_inventory) or\
-               (arr == self.player_items and not to_inventory)):
-                if (icons[q_index][1], icons[q_index][2]) != pos:
-                    if union:
-                        del icons[[i[1:3] for i in icons].index((pos[0], pos[1]))]
-                        q_index = [i[1:4] for i in icons].index((x, y, n))
-                        n += arr[pos[0]][pos[1]].count
-                        
-                    arr[pos[0]][pos[1]] = Square(screen, q,
-                                             arr[x][y].xm,
-                                             arr[x][y].ym,
-                                             arr[x][y].w,
-                                             arr[x][y].h, n)
-                    arr[x][y] = None
-                    icons[q_index] = (q, pos[0], pos[1], n)
-            else:
-                if arr == self.items:
-                    other_arr = self.player_items
-                    other_icons = self.player_slots
-                else:
-                    other_arr = self.items
-                    other_icons = self.inv_slots
+        if clone:
+            if not arr[x][y].moving:
+                arr[x][y].xm = nearest_square[0]
+                arr[x][y].ym = nearest_square[1]
+                del icons[[i[1:3] for i in icons].index((pos[0], pos[1]))]
+                n += self.square_clone.count
                     
-                if union:
-                    del other_icons[[i[1:3] for i in other_icons].index((pos[0], pos[1]))]
-                    q_index = [i[1:4] for i in icons].index((x, y, n))
-                    n += other_arr[pos[0]][pos[1]].count
+                self.square_clone = Square(screen, q,
+                                         arr[x][y].xm,
+                                         arr[x][y].ym,
+                                         arr[x][y].w,
+                                         arr[x][y].h, n)
+                self.clone_info = (q, pos[0], pos[1], n, arr, icons)
+                self.destroy_clone()
+        else:
+            if not arr[x][y].moving:
+                arr[x][y].xm = nearest_square[0]
+                arr[x][y].ym = nearest_square[1]
+                
+                q_index = [i[1:4] for i in icons].index((x, y, n))
+                if ((arr == self.items and to_inventory) or\
+                   (arr == self.player_items and not to_inventory)):
+                    if (icons[q_index][1], icons[q_index][2]) != pos:
+                        if union:
+                            del icons[[i[1:3] for i in icons].index((pos[0], pos[1]))]
+                            q_index = [i[1:4] for i in icons].index((x, y, n))
+                            n += arr[pos[0]][pos[1]].count
+                            
+                        arr[pos[0]][pos[1]] = Square(screen, q,
+                                                 arr[x][y].xm,
+                                                 arr[x][y].ym,
+                                                 arr[x][y].w,
+                                                 arr[x][y].h, n)
+                        arr[x][y] = None
+                        icons[q_index] = (q, pos[0], pos[1], n)
+                else:
+                    if arr == self.items:
+                        other_arr = self.player_items
+                        other_icons = self.player_slots
+                    else:
+                        other_arr = self.items
+                        other_icons = self.inv_slots
                         
-                other_arr[pos[0]][pos[1]] = Square(screen, q,
-                                                    arr[x][y].xm,
-                                                    arr[x][y].ym,
-                                                    arr[x][y].w,
-                                                    arr[x][y].h, n)
-                arr[x][y] = None
-                other_icons.append((q, pos[0], pos[1], n))
-                del icons[q_index]
+                    if union:
+                        del other_icons[[i[1:3] for i in other_icons].index((pos[0], pos[1]))]
+                        q_index = [i[1:4] for i in icons].index((x, y, n))
+                        n += other_arr[pos[0]][pos[1]].count
+                            
+                    other_arr[pos[0]][pos[1]] = Square(screen, q,
+                                                        arr[x][y].xm,
+                                                        arr[x][y].ym,
+                                                        arr[x][y].w,
+                                                        arr[x][y].h, n)
+                    arr[x][y] = None
+                    other_icons.append((q, pos[0], pos[1], n))
+                    del icons[q_index]            
         
     def get_inventory_slots(self):
         return self.inv_slots
@@ -222,26 +262,48 @@ class Inventory():
     def get_player_slots(self):
         return self.player_slots
      
-    def add_square(self, screen, image, x, y, arr, slots):
-        if slots == self.inv_slots:
-            xp = (SIZE[0] - self.size * self.w1) / 2 + x * self.size + PAD3
-            yp = PAD1 + y * self.size + PAD3
-        else:
-            xp = (SIZE[0] - self.size * self.w2) / 2 + x * self.size + PAD3
-            yp = SIZE[1] - self.size * self.h2 + y * self.size - PAD1 + PAD3
-        
-        if (image, x, y) in [(i[0], i[1], i[2]) for i in slots]:
+    def add_square(self, screen, image, x, y, arr, slots, change_pos):
+        if not change_pos:
             a = [(i[0], i[1], i[2]) for i in slots].index((image, x, y))
-            slots[a] = (image, x, y, slots[a][3] + 1)
-            arr[x][y] = Square(screen, image, xp, yp,
-                                self.size - PAD3 * 2,
-                                self.size - PAD3 * 2,
-                                slots[a][3])
+            
+            if slots == self.inv_slots:
+                xp = (SIZE[0] - self.size * self.w1) / 2 + (self.inv_slots[a][1] + 0.5) * self.size
+                yp = PAD1 + (self.inv_slots[a][2] + 0.5) * self.size
+            else:
+                xp = (SIZE[0] - self.size * self.w2) / 2 + (self.player_slots[a][1] + 0.5) * self.size
+                yp = SIZE[1] - (self.player_slots[a][2] + 0.5) * self.size - PAD1            
+            
+            if self.square_clone:
+                n = self.square_clone.count + 1
+            else:
+                n = 1
+            self.square_clone = Square(screen, slots[a][0],
+                                       xp - self.size / 2 + PAD3 + 1,
+                                       yp - self.size / 2 + PAD3 + 1,
+                                       self.size - PAD3 * 2,
+                                       self.size - PAD3 * 2, n)
+            self.clone_info = (slots[a][0], slots[a][1], slots[a][2],
+                               arr[x][y].count // 2, arr, slots)
         else:
-            slots.append((image, x, y, 1))
-            arr[x][y] = Square(screen, image, xp, yp,
-                                self.size - PAD3 * 2,
-                                self.size - PAD3 * 2, 1)
+            if slots == self.inv_slots:
+                xp = (SIZE[0] - self.size * self.w1) / 2 + x * self.size + PAD3
+                yp = PAD1 + y * self.size + PAD3
+            else:
+                xp = (SIZE[0] - self.size * self.w2) / 2 + x * self.size + PAD3
+                yp = SIZE[1] - self.size * self.h2 + y * self.size - PAD1 + PAD3
+                
+            if (image, x, y) in [(i[0], i[1], i[2]) for i in slots]:
+                a = [(i[0], i[1], i[2]) for i in slots].index((image, x, y))
+                slots[a] = (image, x, y, slots[a][3] + 1)
+                arr[x][y] = Square(screen, image, xp, yp,
+                                    self.size - PAD3 * 2,
+                                    self.size - PAD3 * 2,
+                                    slots[a][3])
+            else:
+                slots.append((image, x, y, 1))
+                arr[x][y] = Square(screen, image, xp, yp,
+                                    self.size - PAD3 * 2,
+                                    self.size - PAD3 * 2, 1)                
             
     def get_cell(self, mouse_pos, q):
         # Присвоение ближайшей клетке
@@ -277,7 +339,23 @@ class Inventory():
                         slots = self.player_slots
         return (q, *pos, arr, slots)
     
+    def destroy_clone(self):
+        self.clone_info[4][self.clone_info[1]][self.clone_info[2]] = self.square_clone
+        self.clone_info[5].append((self.clone_info[0],
+                                   self.clone_info[1],
+                                   self.clone_info[2],
+                                   self.clone_info[3]))
+        self.clone_info[4][self.clone_info[1]][self.clone_info[2]].down = False
+        self.square_clone = None
+        self.clone_info = None
+    
     def controller(self, event, screen):
+        global global_pressed
+        pressing = False
+        
+        if not global_pressed and self.square_clone:
+            self.destroy_clone()
+        
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 3:
                 for i in self.inv_slots:
@@ -290,14 +368,42 @@ class Inventory():
                                              self.items[x][y].count - 1)
                         self.items[x][y].count -= 1
 
-                        self.add_square(screen,
-                                        *self.get_cell(event.pos,
-                                                       self.inv_slots[a][0]))
+                        data = self.get_cell(event.pos, self.inv_slots[a][0])
+                        if (data[1], data[2]) == (x, y) and data[3] == self.items:
+                            self.add_square(screen, *data, False)
+                        else:
+                            self.add_square(screen, *data, True)                        
                         break
                     elif self.items[x][y].down and self.items[x][y].count == 1:
                         self.items[x][y].down = False
-                    elif not self.items[x][y].down and self.items[x][y].count > 1:
-                        pass                      
+                        break
+                    elif self.items[x][y].on and\
+                         not self.items[x][y].down and\
+                         self.items[x][y].count > 1:
+                        a = self.inv_slots.index(i)
+                        self.inv_slots[a] = (self.inv_slots[a][0],
+                                             self.inv_slots[a][1],
+                                             self.inv_slots[a][2],
+                                             self.items[x][y].count // 2 + self.items[x][y].count % 2)
+                                             
+                        xp = (SIZE[0] - self.size * self.w1) / 2 + (self.inv_slots[a][1] + 0.5) * self.size
+                        yp = PAD1 + (self.inv_slots[a][2] + 0.5) * self.size                 
+                        self.square_clone = Square(screen,
+                                                   self.inv_slots[a][0],
+                                                   xp - self.size / 2 + PAD3 + 1,
+                                                   yp - self.size / 2 + PAD3 + 1,
+                                                   self.size - PAD3 * 2,
+                                                   self.size - PAD3 * 2,
+                                                   self.items[x][y].count // 2)
+                        self.clone_info = (self.inv_slots[a][0],
+                                           self.inv_slots[a][1],
+                                           self.inv_slots[a][2],
+                                           self.items[x][y].count // 2,
+                                           self.items,
+                                           self.inv_slots)
+                        
+                        self.items[x][y].count = self.items[x][y].count // 2 + self.items[x][y].count % 2
+                        break
                             
                 for i in self.player_slots:
                     x, y = i[1], i[2]
@@ -309,22 +415,59 @@ class Inventory():
                                                 self.player_items[x][y].count - 1)
                         self.player_items[x][y].count -= 1
 
-                        self.add_square(screen,
-                                        *self.get_cell(event.pos,
-                                                       self.player_slots[a][0]))                      
+                        data = self.get_cell(event.pos, self.player_slots[a][0])
+                        if (data[1], data[2]) == (x, y) and data[3] == self.player_items:
+                            self.add_square(screen, *data, False)
+                        else:
+                            self.add_square(screen, *data, True)
                         break
                     elif self.player_items[x][y].down and self.player_items[x][y].count == 1:
                         self.player_items[x][y].down = False
-                    elif not self.player_items[x][y].down and self.player_items[x][y].count > 1:
-                        pass
+                        break
+                    elif self.player_items[x][y].on and\
+                         not self.player_items[x][y].down and\
+                         self.player_items[x][y].count > 1:
+                        a = self.player_slots.index(i)
+                        self.player_slots[a] = (self.player_slots[a][0],
+                                             self.player_slots[a][1],
+                                             self.player_slots[a][2],
+                                             self.player_items[x][y].count // 2 + self.player_items[x][y].count % 2)
+                        
+                        xp = (SIZE[0] - self.size * self.w2) / 2 + (self.player_slots[a][1] + 0.5) * self.size
+                        yp = SIZE[1] - (self.player_slots[a][2] + 0.5) * self.size - PAD1
+                        self.square_clone = Square(screen,
+                                                   self.player_slots[a][0],
+                                                   xp - self.size / 2 + PAD3 + 1,
+                                                   yp - self.size / 2 + PAD3 + 1,
+                                                   self.size - PAD3 * 2,
+                                                   self.size - PAD3 * 2,
+                                                   self.player_items[x][y].count // 2)
+                        self.clone_info = (self.player_slots[a][0],
+                                           self.player_slots[a][1],
+                                           self.player_slots[a][2],
+                                           self.player_items[x][y].count // 2,
+                                           self.player_items,
+                                           self.player_slots)
+                        
+                        self.player_items[x][y].count = self.player_items[x][y].count // 2 + self.player_items[x][y].count % 2
+                        break
         
         for i in self.inv_slots:
             x, y = i[1], i[2]
-            self.items[x][y].controller(event)
+            if self.items[x][y].controller(event):
+                pressing = True
+            global_pressed = pressing
                     
         for i in self.player_slots:
             x, y = i[1], i[2]
-            self.player_items[x][y].controller(event)  
+            if self.player_items[x][y].controller(event):
+                pressing = True
+            global_pressed = pressing
+        
+        if self.square_clone:
+            if self.square_clone.controller(event):
+                pressing = True
+        global_pressed = pressing
 
 
 class Square:
@@ -354,17 +497,24 @@ class Square:
         self.ym = self.y
         
     def controller(self, event): # Обработка событий мыши
+        pressing = False
+        global global_pressed
+
         if event.type == pygame.MOUSEMOTION:
             if self.on_button(event.pos):
                 self.selected(True)
             else:
                 self.selected(False)
-        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+        elif event.type == pygame.MOUSEBUTTONDOWN and\
+             (event.button == 1 or (event.button == 3 and not global_pressed)):
             if self.on_button(event.pos):
-                self.pressed(True, screen)                
+                self.pressed(True, screen)
+                pressing = True
         
         if self.down:
-            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            pressing = True
+            if event.type == pygame.MOUSEBUTTONDOWN and\
+             (event.button == 1 or event.button == 3 and not self.moving):
                 if not self.moving:
                     if self.on_button(event.pos):
                         self.moving = True
@@ -375,8 +525,11 @@ class Square:
             if event.type == pygame.MOUSEMOTION:
                 if self.moving:
                     self.xm, self.ym = event.pos[0] - self.x, event.pos[1] - self.y
+                    pressing = True
         else:
             self.moving = False
+            
+        return pressing
 
     def animation(self): # Смена цвета квадрата
         if self.moving:
