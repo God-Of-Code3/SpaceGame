@@ -48,7 +48,7 @@ class World:
         self.events = pygame.event.get()
         for controller in self.controllers:
             controller.control()
-        skills_list.control()
+            controller.update()
 
         self.cam.control(self.events)
 
@@ -64,12 +64,12 @@ class World:
 
         fps = clock.get_fps()
         self.planet.draw(self.screen)
+        self.controllers[0].skills.draw()
 
         self.draw_fps(fps)
         self.draw_sprites_number()
         self.draw_player_coords()
         self.draw_health()
-        skills_list.draw()
 
         pygame.display.flip()
         clock.tick(REAL_FPS)
@@ -140,7 +140,6 @@ class World:
 
 
 world = World()
-skills_list = SkillList(0, 200, None, world, [1, None, 1, None, 1, 1, 1])
 world.add(-100, -700, world.player, 10000, 304, 160)
 world.add_bullet(-300, -900, 0)
 for i in range(2):

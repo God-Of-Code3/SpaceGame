@@ -1,5 +1,6 @@
 from V2.Code.Constants import *
 from V2.Code.Methods import *
+from V2.Code.Skills import *
 
 import pygame
 
@@ -8,6 +9,14 @@ class Controller:
     def __init__(self, world):
         self.managed = None
         self.world = world
+        self.skills = SkillList(0, SIZE[1] - SKILL_TILE_SIZE - 90, self, self.world, [Skill(self.world,
+                                                                                      "CopperShellShot", 20, self),
+                                                                                      Skill(self.world,
+                                                                                      "PlasmaShot", 20, self)])
+        self.skills_args = dict()
+        self.skills_args["use"] = False
+        self.skills_args["using"] = False
+        self.skills_args["using_cords"] = (0, 0)
 
     def set_managed(self, managed):
         self.managed = managed
@@ -18,9 +27,17 @@ class Controller:
     def control_object(self, obj):
         pass
 
+    def update(self):
+        self.skills.control()
+        self.skills.update(self.skills_args)
+
+    def update_skills_args(self):
+        self.skills_args["use"] = False
+
 
 class Player(Controller):
     def control(self):
+        self.update_skills_args()
         acceleration = 0.1
         for event in self.world.events:
             if event.type == pygame.KEYDOWN:
@@ -42,6 +59,16 @@ class Player(Controller):
                     self.managed.acceleration[0] -= -acceleration
                 if event.key == pygame.K_d:
                     self.managed.acceleration[0] += -acceleration
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1 and not self.skills.check_pos(event.pos):
+                    self.skills_args["use"] = True
+                    self.skills_args["using"] = True
+
+            if event.type == pygame.MOUSEBUTTONUP:
+                if event.button == 1:
+                    self.skills_args["using"] = False
+        self.skills_args["using_cords"] = pygame.mouse.get_pos()
 
 
 class Enemy(Controller):
