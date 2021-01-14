@@ -17,6 +17,7 @@ SQUARE_COLOR = pygame.Color(255, 0, 0) # цвета предметов
 SELECTED_COLOR = pygame.Color(150, 0, 0)
 PRESSED_COLOR = pygame.Color(100, 0, 0)
 #INFO_COLOR = pygame.Color(0, 100, 100)
+
 CELLS_WIDTH = 2 # ширина границы ячеек
 # Отступы инвентаря
 PAD1 = 75 # внешний
@@ -35,6 +36,7 @@ SHOP_SQUARE_COLOR = pygame.Color(255, 255, 255)
 SHOP_ICON_COLOR = pygame.Color(0, 0, 0)
 SELECTED_ICON_COLOR = pygame.Color(50, 50, 50)
 PRESSED_ICON_COLOR = pygame.Color(100, 100, 100)
+
 SHOP_NAME = 'shop_icon.png' # имя файла иконки магазина
 SHOP_HEIGHT = 80 # размер панели магазина
 # Отступы магазина
@@ -61,7 +63,8 @@ CLOSE_COLOR2 = pygame.Color(125, 0, 0)
 CLOSE_COLOR3 = pygame.Color(100, 0, 0)
 
 CLOSE_BUTTON = 40 # размер кнопки выхода
-BETWEEN = 5
+BETWEEN = 5 # расстояние между строками значений
+INDENT = 5 # Отступ перед абзацем (в пробелах)
 # Отступы информации
 PAD8 = 30 # внешний
 PAD9 = 20 # между панелями
@@ -72,7 +75,8 @@ PAD11 = 125 # от рамок окна
 def get_info(image_name):
     return {'image': HIGH_FILES_WAY + image_name,
             'name': "Супер мега пушка Сокрушитель миров 3000 ультра экстрим круть",
-            'description': "Бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла",
+            'description': ["Слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова",
+                            "Слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова"],
             'cost': 10,
             'specifications': {'spec1': "Значение свойства spec1",
                                'spec2': "Значение свойства spec2",
@@ -177,7 +181,7 @@ class Information():
         pygame.draw.rect(screen, DESCR_COLOR, (x, y, w, h))
         
         line1 = 0
-        text = ''
+        text = ' ' * INDENT
         test = ''
         for i in self.info['name'].split():
             test = text
@@ -196,22 +200,28 @@ class Information():
         line2 = 0
         text = ''
         test = ''
-        for i in self.info['description'].split():
-            test = text
-            test += (i + ' ')
+        par_num_orig = 0
+        for paragraph in self.info['description']:
+            par_num = 0
+            text = ' ' * INDENT
+            for i in paragraph.split():
+                test = text
+                test += (i + ' ')
+                name = pygame.font.SysFont(FONT, int(TEXT_SIZE / 1.5)).render(test, True, TEXT_COLOR)
+                if name.get_width() > w - PAD10 * 3:
+                    name = pygame.font.SysFont(FONT, int(TEXT_SIZE / 1.5)).render(text, True, TEXT_COLOR)
+                    screen.blit(name, (x + PAD10 * 2,
+                                       y + PAD10 * 7 + TEXT_SIZE * (line1 + line2) + par_num_orig))
+                    par_num += name.get_height()
+                    text = i + ' '
+                    line2 += 1
+                else:
+                    text = test
             name = pygame.font.SysFont(FONT, int(TEXT_SIZE / 1.5)).render(test, True, TEXT_COLOR)
-            if name.get_width() > w - PAD10 * 3:
-                name = pygame.font.SysFont(FONT, int(TEXT_SIZE / 1.5)).render(text, True, TEXT_COLOR)
-                screen.blit(name, (x + PAD10 * 2,
-                                   y + PAD10 * 7 + TEXT_SIZE * (line1 + line2)))
-                text = i + ' '
-                line2 += 1
-            else:
-                text = test
-        name = pygame.font.SysFont(FONT, int(TEXT_SIZE / 1.5)).render(test, True, TEXT_COLOR)
-        screen.blit(name, (x + PAD10 * 2, 
-                           y + PAD10 * 7 + TEXT_SIZE * (line1 + line2)))        
-        '''self.info['description']'''        
+            screen.blit(name, (x + PAD10 * 2, 
+                               y + PAD10 * 7 + TEXT_SIZE * (line1 + line2) + par_num_orig))
+            line2 += 1
+            par_num_orig = par_num
         # Покупка
         x = PAD11 + PAD8 + HIGH_QUALITY[0] + PAD10 * 2 + PAD9
         y = PAD11 + PAD8 + HIGH_QUALITY[1] + PAD10 * 2 + PAD9
@@ -354,6 +364,7 @@ class Button():
 
 class Inventory():
     def __init__(self, inv_slots, wi, hi, player_slots, wp, hp, money_score):
+        self.blocked = None
         self.show_info = False
         self.double_click = None
         self.first_click = None
@@ -662,7 +673,7 @@ class Inventory():
                 else:
                     self.selected = False
                     self.pressed = False
-                    
+            
             # Для инвентаря
             pressing = False
             
@@ -698,7 +709,7 @@ class Inventory():
                                 self.minus_1(x, y, self.player_items, self.player_slots, i)
                                 pressing = True
                                 self.double_click = None
-                                break                            
+                                break
                             elif self.player_items[x][y].count == 1:
                                 self.player_items[x][y].down = False
                                 pressing = False
@@ -719,23 +730,45 @@ class Inventory():
                 x, y = i[1], i[2]
                 if self.items[x][y].controller(event):
                     pressing = True
-                if self.items[x][y].down and event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                    self.double_click = (x, y, self.items)
+                
+                cell = self.get_cell((self.items[x][y].xm, self.items[x][y].ym),
+                                     None, self.items, False)[1:4]
+                if cell != (x, y, self.items):
+                    self.blocked = (x, y, self.items)
+                if not global_pressed:
+                    self.first_click = None
+                    self.blocked = None
+               
+                if (x, y, self.items) != self.blocked and\
+                   self.items[x][y].down and\
+                   event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                    self.double_click = (x, y, self.items)               
                      
             for i in self.player_slots:
                 x, y = i[1], i[2]
                 if self.player_items[x][y].controller(event):
                     pressing = True
-                if self.player_items[x][y].down and event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                
+                cell = self.get_cell((self.player_items[x][y].xm, self.player_items[x][y].ym),
+                                     None, self.player_items, False)[1:4]
+                if cell != (x, y, self.player_items):
+                    self.blocked = (x, y, self.player_items)
+                if not global_pressed:
+                    self.first_click = None
+                    self.blocked = None
+               
+                if (x, y, self.player_items) != self.blocked and\
+                   self.player_items[x][y].down and\
+                   event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                     self.double_click = (x, y, self.player_items)
             
             if self.square_clone:
                 if self.square_clone.controller(event):
                     pressing = True
-                x, y = self.clone_info[1], self.clone_info[2]
+                '''x, y = self.clone_info[1], self.clone_info[2]
                 if self.clone_info[4][x][y] and self.clone_info[4][x][y].down and event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                    self.double_click = (x, y, self.player_items)
-                    
+                    self.double_click = (x, y, self.player_items)'''
+                
             global_pressed = pressing
             
             # Для информации
@@ -801,6 +834,8 @@ class Inventory():
             self.clone_info = (slots[a][0], slots[a][1], slots[a][2],
                                n, arr, slots)
         else:
+            #self.first_click = None
+            #self.double_click = None
             if slots == self.inv_slots:
                 xp = (SIZE[0] - self.size * self.w1) / 2 + x * self.size + PAD3
                 yp = y * self.size + PAD3 + SHOP_HEIGHT + PAD5
@@ -826,7 +861,7 @@ class Inventory():
                                     self.size - PAD3 * 2,
                                     self.size - PAD3 * 2, n)                
             
-    def get_cell(self, mouse_pos, q, inf_arr=None):
+    def get_cell(self, mouse_pos, q=None, inf_arr=None, near=True):
         # Присвоение ближайшей клетке
         m = 1000000
         pos = (0, 0)
@@ -836,8 +871,10 @@ class Inventory():
         if inf_arr == self.items or not inf_arr:
             for i in range(self.w1):
                 for j in range(self.h1):
-                    if self.items[i][j] == None or (self.items[i][j] != None and\
-                       q == self.items[i][j].image_name and self.items[i][j].count != -1):
+                    if not near or (self.items[i][j] == None or\
+                        (self.items[i][j] != None and\
+                       q == self.items[i][j].image_name and\
+                       self.items[i][j].count != -1)):
                         sqx = (SIZE[0] - self.size * self.w1) / 2 + (i + 0.5) * self.size
                         sqy = (j + 0.5) * self.size + SHOP_HEIGHT + PAD5
                         
@@ -845,13 +882,15 @@ class Inventory():
                             pos = (i, j)
                             m = ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5
                             arr = self.items
-                            slots = self.inv_slots            
+                            slots = self.inv_slots
                         
         if inf_arr == self.player_items or not inf_arr:
             for i in range(self.w2):
                 for j in range(self.h2):
-                    if self.player_items[i][j] == None or (self.player_items[i][j] != None and\
-                       q == self.player_items[i][j].image_name and self.player_items[i][j].count != -1):
+                    if not near or (self.player_items[i][j] == None or\
+                       (self.player_items[i][j] != None and\
+                       q == self.player_items[i][j].image_name and\
+                       self.player_items[i][j].count != -1)):
                         sqx = (SIZE[0] - self.size * self.w2) / 2 + (i + 0.5) * self.size
                         sqy = SIZE[1] - (j + 0.5) * self.size - PAD1
                             
