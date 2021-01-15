@@ -6,7 +6,6 @@ from V2.Code.Camera import *
 from V2.Code.Controller import *
 from V2.Code.Planet import *
 from V2.Code.Skills import *
-import random
 
 clock = pygame.time.Clock()
 
@@ -39,25 +38,40 @@ class World:
 
         self.acceleration = 1
 
-        self.player = Player(self)
+        self.player = Player(self, skills=[None, None, {"skill": "PlasmaShot", "number": 200},
+                                           {"skill": "CopperShellShot", "number": 200},
+                                           {"skill": "LaserShot", "number": -1},
+                                           {"skill": "MediumRocketLaunch", "number": 200},
+                                           {"skill": "SmallRocketLaunch", "number": 200}])
         self.controllers = [self.player]
         self.planet = Planet(0, "Assets/Images/Planets/Planet1.png", 1000, 377, self)
         self.cam = Camera()
 
     def update(self):
+
+        self.screen.fill(BACKGROUND_COLOR)
+        self.events = []
         self.events = pygame.event.get()
+
         for controller in self.controllers:
             controller.control()
             controller.update()
 
         self.cam.control(self.events)
 
-        self.all_sprites.update(mode="standart")
         self.all_sprites.update(mode="check")
+        self.all_sprites.update(mode="standart")
+
+        killing = []
+        for sprite in self.all_sprites.sprites():
+            if isinstance(sprite, Entity):
+                if sprite.health <= 0:
+                    killing.append(sprite)
+
+        for sprite in killing:
+            self.remove_sprite(sprite)
 
     def draw(self):
-
-        self.screen.fill(BACKGROUND_COLOR)
 
         self.cam.posite(self.all_sprites.sprites()[0])
         self.all_sprites.draw(self.screen)
@@ -66,10 +80,14 @@ class World:
         self.planet.draw(self.screen)
         self.controllers[0].skills.draw()
 
-        self.draw_fps(fps)
-        self.draw_sprites_number()
-        self.draw_player_coords()
+        self.draw_fps(fps, 0, 300)
+        self.draw_sprites_number(0, 300)
+        self.draw_player_coords(0, 300)
         self.draw_health()
+
+        """print("--------------")
+        for sprite in self.all_sprites.sprites():
+            print(sprite.__class__.__name__)"""
 
         pygame.display.flip()
         clock.tick(REAL_FPS)
@@ -79,73 +97,83 @@ class World:
         else:
             self.acceleration = 1
 
-    def draw_fps(self, fps):
+    def draw_fps(self, fps, x, y):
 
         col = (0, 0, 0)
         if fps != 0:
             col = (int(max(0, min(255, 255 * (1 - fps / REAL_FPS)))), int(max(0, min(255, 255 * (fps / REAL_FPS)))), 0)
         text2 = font.render("FPS: " + str(int(fps)), True,
                             col)
-        self.screen.blit(text2, (40, 40))
+        self.screen.blit(text2, (x + 40, y + 40))
 
-    def draw_sprites_number(self):
+    def draw_sprites_number(self, x, y):
 
         col = (0, 255, 0)
 
         text2 = font.render("SPRITES: " + str(int(len(self.all_sprites.sprites()))), True,
                             col)
-        self.screen.blit(text2, (40, 80))
+        self.screen.blit(text2, (x + 40, y + 80))
 
-    def draw_player_coords(self):
+    def draw_player_coords(self, x, y):
 
         col = (0, 255, 0)
 
         text2 = font.render("X: " + str(int(self.player.managed.coords[0])) + "; Y: " + str(int(
             self.player.managed.coords[1])), True, col)
-        self.screen.blit(text2, (40, 120))
+        self.screen.blit(text2, (x + 40, y + 120))
 
     def draw_health(self):
         for sprite in self.all_sprites.sprites():
-            if "health" in dir(sprite):
-                health = max(0, sprite.health / sprite.max_health)
-                w = HEALTH_BAR_WIDTH
-                h = HEALTH_BAR_HEIGHT
-                w = max(HEALTH_BAR_MIN_WIDTH, w * self.cam.zoom)
-                h = max(HEALTH_BAR_MIN_HEIGHT, h * self.cam.zoom)
-                x = sprite.rect.center[0] - (w // 2)
-                y = sprite.rect.y - h - 10
-                pygame.draw.rect(self.screen, HEALTH_BAR_BACKGROUND, (x, y, w, h),
-                                 border_radius=HEALTH_BAR_BORDER_RADIUS)
-                pygame.draw.rect(self.screen, HEALTH_BAR_COLOR, (x, y, int(w * health), h),
-                                 border_radius=HEALTH_BAR_BORDER_RADIUS)
+                if isinstance(sprite, Starship):
+                    health = max(0, sprite.health / sprite.max_health)
+                    w = HEALTH_BAR_WIDTH
+                    h = HEALTH_BAR_HEIGHT
+                    w = max(HEALTH_BAR_MIN_WIDTH, w * self.cam.zoom)
+                    h = max(HEALTH_BAR_MIN_HEIGHT, h * self.cam.zoom)
+                    x = sprite.rect.center[0] - (w // 2)
+                    y = sprite.rect.y - h - 10
+                    pygame.draw.rect(self.screen, HEALTH_BAR_BACKGROUND, (x, y, w, h))
+                    pygame.draw.rect(self.screen, HEALTH_BAR_COLOR, (x, y, int(w * health), h))
 
     def remove_sprite(self, sprite):
         if sprite.controller is not None:
             controller = self.controllers.index(sprite.controller)
             self.controllers.pop(controller)
-            sprite.kill()
+        x, y = sprite.coords
+        if isinstance(sprite, Starship):
+            r = max(250, sprite.width)
+            Explosion(self.all_sprites, frames_tree2, self, health=150, coords=[x, y], width=r, height=r)
+        sprite.kill()
 
     def add(self, x, y, controller=None, mass=100, width=76, height=40):
-        Entity([self.all_sprites], frames_tree, self, width=width, height=height, coords=[x, y], controller=controller,
+        Entity(self.all_sprites, frames_tree, self, width=width, height=height, coords=[x, y], controller=controller,
                mass=mass)
 
-    def add_bullet(self, x, y, direction):
-        speed = 10
-        speeds = [
-            math.cos(direction * math.pi / 180) * speed,
-            math.sin(direction * math.pi / 180) * speed
-        ]
-        Bullet([self.all_sprites], frames_tree2, self, width=56, height=20, coords=[x, y], speed=speeds, mass=0,
-               rot=direction)
+    def create_ship(self, cls, x, y, controller=None, skills=None):
+        d = ships_data[cls]
+
+        if skills is None:
+            skills = []
+            eq = d["equipment"]
+            for skill in eq:
+                skills.append({"skill": skill, "number": eq[skill]})
+        if controller is None:
+            controller = Enemy(world.controllers[0], world, skills=skills, beh=d["behaviour"])
+            self.controllers.append(controller)
+
+        Starship(self.all_sprites, d["anim"], self, coords=[x, y], max_speed=[d["msx"], d["msy"]],
+                 max_acceleration=[d["ax"], d["ay"]], friction=[d["fx"], d["fy"]], mass=d["mass"], health=d["hp"],
+                 width=d["width"], height=d["height"], controller=controller)
 
 
 world = World()
-world.add(-100, -700, world.player, 10000, 304, 160)
-world.add_bullet(-300, -900, 0)
-for i in range(2):
-    for j in range(2):
-        world.controllers.append(Enemy(world))
-        world.add(i * 160, j * 160 - 1000, mass=1000, width=152, height=80, controller=world.controllers[-1])
+world.create_ship("Inquisitor", -200, -80, world.player)
+for i in range(0):
+    for j in range(0):
+        world.create_ship("Bug", i * 500, j * 300 - 1200)
+
+
+world.create_ship("Hindenburg",  -200, -MIN_AIR_ATTACK_HEIGHT-100)
 
 while True:
     world.update()

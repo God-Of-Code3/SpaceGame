@@ -1,3 +1,5 @@
+import json
+
 
 # Экран
 BACKGROUND_COLOR = (42, 18, 148)
@@ -13,9 +15,35 @@ ACCELERATION = 1
 
 # Параметры ИИ
 MIN_DIST_TO_OBJECTS = 600
+MAX_DIST_TO_ENEMY = 1200
+MIN_BULLET_ANGLE = 20
+MIN_AIR_ATTACK_HEIGHT = 1600
+
+# Данные
+file = open("Data/Skills.json", "r", encoding="utf-8")
+skills_data = json.load(file)
+file = open("Data/Guns.json", "r", encoding="utf-8")
+guns_data = json.load(file)
+file = open("Data/Ships.json", "r", encoding="utf-8")
+ships_data = json.load(file)
+frames_tree2 = {
+    "main": {
+        "frames": [["./Assets/Images/Bullets/Bullet1.png", 20]],
+        "next": "main"
+    }
+}
 
 # Параметры урона
-HIT_DAMAGE_COEFFICIENT = 10
+HIT_DAMAGE_COEFFICIENT = 3
+
+# Графика
+LASER_COLOR = (255, 255, 200)
+LASER_OUTER_LAYER_COLOR = (255, 174, 0)
+LASER_MAX_LENGTH = 12000
+
+EXPL_CENTER_COLOR = (242, 250, 255)
+EXPL_SECOND_COLOR = (255, 236, 0)
+EXPL_THIRD_COLOR = (255, 170, 0)
 
 # Интерфейс
 HEALTH_BAR_WIDTH = 100

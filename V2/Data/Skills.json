@@ -2,15 +2,36 @@
   "CopperShellShot": {
     "image": "CopperShell.png",
     "type": "active",
-    "recharge_time": 10,
+    "recharge_time": 50,
     "using_time": -1,
     "auto_using": false
   },
   "PlasmaShot": {
     "image": "PlasmaShot.png",
-    "type": "passive",
+    "type": "active",
+    "recharge_time": 10,
+    "using_time": -1,
+    "auto_using": false
+  },
+  "SmallRocketLaunch": {
+    "image": "SmallRocketLaunch.png",
+    "type": "active",
+    "recharge_time": 10,
+    "using_time": -1,
+    "auto_using": false
+  },
+  "MediumRocketLaunch": {
+    "image": "MediumRocketLaunch.png",
+    "type": "active",
     "recharge_time": 100,
-    "using_time": 500,
+    "using_time": -1,
+    "auto_using": false
+  },
+  "LaserShot": {
+    "image": "LaserRay.png",
+    "type": "active",
+    "recharge_time": 100,
+    "using_time": 300,
     "auto_using": false
   }
 }

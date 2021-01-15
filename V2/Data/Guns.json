@@ -1,0 +1,57 @@
+{
+  "Plasma": {
+    "speed": 40,
+    "width": 56,
+    "height": 20,
+    "health": 1000,
+    "damage": 10000,
+    "anim": {
+        "main": {
+            "frames": [["./Assets/Images/Bullets/Bullet1.png", 20]],
+            "next": "main"
+        }
+    }
+  },
+  "CopperShell": {
+    "speed": 40,
+    "width": 40,
+    "height": 15,
+    "health": 100,
+    "damage": 20,
+    "anim": {
+        "main": {
+            "frames": [["./Assets/Images/Bullets/Bullet2.png", 20]],
+            "next": "main"
+        }
+    }
+  },
+  "Laser": {
+    "damage": 20
+  },
+  "SmallRocket": {
+    "acceleration": 0.4,
+    "width": 126,
+    "height": 30,
+    "health": 500,
+    "damage": 100,
+    "anim": {
+        "main": {
+            "frames": [["./Assets/Images/Bullets/SmallRocket.png", 20]],
+            "next": "main"
+        }
+    }
+  },
+  "MediumRocket": {
+    "acceleration": 0.6,
+    "width": 139,
+    "height": 20,
+    "health": 500,
+    "damage": 200,
+    "anim": {
+        "main": {
+            "frames": [["./Assets/Images/Bullets/MediumRocket.png", 20]],
+            "next": "main"
+        }
+    }
+  }
+}

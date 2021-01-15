@@ -1,11 +1,9 @@
 from V2.Code.Constants import *
 from V2.Code.Methods import *
+from V2.Code.Entity import *
+from V2.Code.Bullet import *
 
 import pygame
-import json
-
-file = open("Data/Skills.json", "r", encoding="utf-8")
-skills_data = json.load(file)
 
 
 class SkillList:
@@ -13,7 +11,8 @@ class SkillList:
         self.x = x
         self.y = y
         self.master = master
-        self.skills = skills  # [Skill, None, None, Skill, Skill, Skill, None]
+        print(skills)
+        self.skills = [eval(s["skill"])(world, s["number"], self.master) if s is not None else None for s in skills]
         self.length = len(self.skills)
         self.world = world
         self.selected = 2
@@ -27,12 +26,13 @@ class SkillList:
             y = self.y
             x2 = x + SKILL_TILE_PADDING
             y2 = y + SKILL_TILE_PADDING
-            if self.selected == i:
-
-                pygame.draw.rect(sc, SKILL_BACKGROUND_ACTIVE, (x, y, SKILL_TILE_SIZE, SKILL_TILE_SIZE))
-            if skill.type == "passive":
-                pygame.draw.rect(sc, SKILL_BACKGROUND_PASSIVE, (x, y, SKILL_TILE_SIZE, SKILL_TILE_SIZE))
+            col = SKILL_BORDER_COLOR
             if skill is not None:
+                if self.selected == i:
+
+                    pygame.draw.rect(sc, SKILL_BACKGROUND_ACTIVE, (x, y, SKILL_TILE_SIZE, SKILL_TILE_SIZE))
+                if skill.type == "passive":
+                    pygame.draw.rect(sc, SKILL_BACKGROUND_PASSIVE, (x, y, SKILL_TILE_SIZE, SKILL_TILE_SIZE))
                 sc.blit(skill.image, (x2, y2))
                 if skill.recharge_timer != 0 or skill.number == 0:
                     shade = pygame.Surface((SKILL_TILE_SIZE, SKILL_TILE_SIZE))
@@ -59,13 +59,15 @@ class SkillList:
                         pygame.draw.rect(sc, SKILL_USING_BAR_COLOR,
                                          (x, y3, percent, SKILL_BAR_HEIGHT))
 
-            col = SKILL_BORDER_COLOR if skill.type == "active" else SKILL_BORDER_COLOR_PASSIVE
+                col = SKILL_BORDER_COLOR if skill.type == "active" else SKILL_BORDER_COLOR_PASSIVE
+
+                if skill.number != -1 and skill.type == "active":
+                    font = pygame.font.SysFont('Calibri', 20)
+                    string_rendered = font.render(str(skill.number), True, pygame.Color('black'))
+                    sc.blit(string_rendered, (x + SKILL_TILE_PADDING, y + SKILL_TILE_PADDING))
+
             pygame.draw.rect(sc, col, (x, y, SKILL_TILE_SIZE, SKILL_TILE_SIZE - 1),
                              SKILL_BORDER_WIDTH)
-            if skill.number != -1 and skill.type == "active":
-                font = pygame.font.SysFont('Calibri', 20)
-                string_rendered = font.render(str(skill.number), True, pygame.Color('black'))
-                sc.blit(string_rendered, (x + SKILL_TILE_PADDING, y + SKILL_TILE_PADDING))
 
     def select(self, i):
         if self.skills[i] is not None and self.skills[i].type == "active":
@@ -83,11 +85,11 @@ class SkillList:
 
     def update(self, args):
         for i, skill in enumerate(self.skills):
-            if self.selected == i:
-                skill.selected = True
-            else:
-                skill.selected = False
             if skill is not None:
+                if self.selected == i:
+                    skill.selected = True
+                else:
+                    skill.selected = False
                 skill.update(args)
 
     def check_pos(self, pos):
@@ -137,7 +139,7 @@ class Skill:
             return False
         if self.using_timer > 0 and (self.auto_using or args["using"]):
             self.using_code(args)
-            self.using_timer = max(self.using_timer - 1, 0)
+            self.using_timer = max(self.using_timer - ACCELERATION, 0)
             return True
         return False
 
@@ -157,17 +159,114 @@ class Skill:
         self.using_process = False
 
     def update(self, args):
+        self.number = max(-1, self.number)
         if self.type == "active" and (self.number == -1 or self.number > 0):
-            self.recharge_timer = max(self.recharge_timer - 1, 0)
+            self.recharge_timer = max(self.recharge_timer - ACCELERATION, 0)
             if self.using_process and self.recharge_timer == 0:
                 if self.auto_using or self.selected:
                     self.using(args)
                 if self.using_timer == 0 and self.using_time != -1:
                     self.using_process = False
+                    self.number -= 1
                     self.recharge_timer = self.recharge_time
 
             if self.selected:
                 if args["use"]:
                     self.use(args)
-        else:
+        elif self.type == "passive":
             self.passive_code()
+
+
+class PlasmaShot(Skill):
+    def __init__(self, world, number, master):
+        super().__init__(world, "PlasmaShot", number, master)
+
+    def use_code(self, args):
+        data = guns_data["Plasma"]
+        coords = self.master.managed.coords
+        coords2 = args["using_coords"]
+        angle = to_point(*coords, *coords2)
+        speed = [math.cos(angle * math.pi / 180) * data["speed"], math.sin(angle * math.pi / 180) * data["speed"]]
+        spawn_coords = [*self.master.managed.coords]
+        Plasma(self.world.all_sprites, data["anim"], self.world, speed=speed, coords=spawn_coords,
+               width=data["width"], height=data["height"], master=self.master.managed, friction=[0, 0],
+               max_speed=[data["speed"], data["speed"]], damage=data["damage"], health=data["health"],
+               rot=-angle, controller=None)
+
+
+class CopperShellShot(Skill):
+    def __init__(self, world, number, master):
+        super().__init__(world, "CopperShellShot", number, master)
+
+    def use_code(self, args):
+        data = guns_data["CopperShell"]
+        coords = self.master.managed.coords
+        coords2 = args["using_coords"]
+        angle = to_point(*coords, *coords2)
+        speed = [math.cos(angle * math.pi / 180) * data["speed"], math.sin(angle * math.pi / 180) * data["speed"]]
+        spawn_coords = [*self.master.managed.coords]
+        CopperShell(self.world.all_sprites, data["anim"], self.world, speed=speed, coords=spawn_coords,
+                    width=data["width"], height=data["height"], master=self.master.managed, friction=[0, 0],
+                    max_speed=[data["speed"], data["speed"]], damage=data["damage"], health=data["health"],
+                    rot=-angle, controller=None)
+
+
+class SmallRocketLaunch(Skill):
+    def __init__(self, world, number, master):
+        super().__init__(world, "SmallRocketLaunch", number, master)
+
+    def use_code(self, args):
+        data = guns_data["SmallRocket"]
+        coords = self.master.managed.coords
+        coords2 = args["using_coords"]
+        angle = to_point(*coords, *coords2)
+        acceleration = [math.cos(math.pi / 180 * angle) * data["acceleration"],
+                        math.sin(math.pi / 180 * angle) * data["acceleration"]]
+
+        speed = [*self.master.managed.speed]
+        spawn_coords = [*self.master.managed.coords]
+        rot = -angle
+        SmallRocket(self.world.all_sprites, data["anim"], self.world, speed=speed, coords=spawn_coords,
+                    width=data["width"], height=data["height"], master=self.master.managed, friction=[0, 0],
+                    max_speed=[90, 90], damage=data["damage"], health=data["health"],
+                    rot=rot, acceleration=acceleration)
+
+
+class MediumRocketLaunch(Skill):
+    def __init__(self, world, number, master):
+        super().__init__(world, "MediumRocketLaunch", number, master)
+
+    def use_code(self, args):
+        data = guns_data["MediumRocket"]
+        coords = self.master.managed.coords
+        coords2 = args["using_coords"]
+        angle = to_point(*coords, *coords2)
+        acceleration = [math.cos(math.pi / 180 * angle) * data["acceleration"],
+                        math.sin(math.pi / 180 * angle) * data["acceleration"]]
+        speed = [*self.master.managed.speed]
+        spawn_coords = [*self.master.managed.coords]
+        rot = -angle
+        target = None
+        for obj in self.world.all_sprites.sprites():
+            if isinstance(obj, Starship):
+                if obj.coords[0] - obj.width / 2 <= coords2[0] <= obj.coords[0] + obj.width / 2 and \
+                        obj.coords[1] - obj.height / 2 <= coords2[1] <= obj.coords[1] + obj.height / 2:
+                    target = obj
+                    break
+        r = MediumRocket(self.world.all_sprites, data["anim"], self.world, speed=speed, coords=spawn_coords,
+                    width=data["width"], height=data["height"], master=self.master.managed, friction=[0, 0],
+                    max_speed=[90, 90], damage=data["damage"], health=data["health"],
+                    rot=rot, acceleration=acceleration, target=target)
+
+
+class LaserShot(Skill):
+    def __init__(self, world, number, master):
+        super().__init__(world, "LaserShot", number, master)
+
+    def using_code(self, args):
+        print(909)
+        speed = [args["using_coords"][0] - self.master.managed.coords[0],
+                 args["using_coords"][1] - self.master.managed.coords[1]]
+        data = guns_data["Laser"]
+        Laser(self.world.all_sprites, frames_tree2, self.world, master=self.master.managed,
+              coords=self.master.managed.coords, speed=speed, damage=data["damage"])

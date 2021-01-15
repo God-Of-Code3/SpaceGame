@@ -24,12 +24,12 @@ clock = pygame.time.Clock()
 enemys = []
 ais = []
 
-for i in range(5):
+for i in range(0):
     ship, skills = create_ship(world, cam, all_sprites, i * 900 + 600, -200, "Hindenburg")
     enemys.append(ship)
     ais.append(AI(ship, player, skills))
 
-for i in range(5):
+for i in range(15):
     ship, skills = create_ship(world, cam, all_sprites, i * 900 + 600, -400, "Bug")
     enemys.append(ship)
     ais.append(AI(ship, player, skills))

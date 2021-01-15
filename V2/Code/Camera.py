@@ -5,7 +5,7 @@ from V2.Code.Constants import *
 class Camera:
     def __init__(self):
         self.pos = [0, 0]
-        self.zoom = 1
+        self.zoom = 0.2
         self.zoom_step = 0.1
         self.min_zoom = 0.2
         self.max_zoom = 1
