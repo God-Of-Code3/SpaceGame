@@ -1,4 +1,5 @@
 import pygame
+from Button import Button
 
 
 SIZE = (1200, 900) # Размер окна
@@ -105,20 +106,21 @@ class Information():
         w = SIZE[0] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[0] - PAD9
         h = SIZE[1] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[1] - PAD9
         
-        self.buttons = [Button('X', CLOSE_BUTTON, SIZE[0] - PAD11 - CLOSE_BUTTON,
+        self.buttons = [Button('X', TEXT_COLOR, CLOSE_BUTTON, FONT,
+                               SIZE[0] - PAD11 - CLOSE_BUTTON,
                                PAD11 - CLOSE_BUTTON,
                                CLOSE_BUTTON, CLOSE_BUTTON, (CLOSE_COLOR1,
                                                             CLOSE_COLOR2,
                                                             CLOSE_COLOR3)),
-                        Button('Купить', TEXT_SIZE,
+                        Button('Купить', TEXT_COLOR, TEXT_SIZE, FONT,
                                x + w / 2 + PAD10, y + h / 3 + PAD10,
                                w / 2 - PAD10 * 2, h * 2 / 3 - PAD10 * 2,
                                (BUY_COLOR1, BUY_COLOR2, BUY_COLOR3, BUY_COLOR4)),
-                        Button('<', TEXT_SIZE,
+                        Button('<', TEXT_COLOR, TEXT_SIZE, FONT,
                                x + PAD10, y + h / 3 + PAD10,
                                w / 2 / 5 - PAD10, h / 3 - PAD10,
                                (BUY_COLOR1, BUY_COLOR2, BUY_COLOR3, BUY_COLOR4)),
-                        Button('>', TEXT_SIZE,
+                        Button('>', TEXT_COLOR, TEXT_SIZE, FONT,
                                x + w / 2 / 5 * 4 + PAD10, y + h / 3 + PAD10,
                                w / 2 / 5 - PAD10, h / 3 - PAD10,
                                (BUY_COLOR1, BUY_COLOR2, BUY_COLOR3, BUY_COLOR4))]
@@ -300,67 +302,6 @@ class Information():
                     button.pressed(False)
         return True
     
-class Button():
-    def __init__(self, text, text_size, x, y, w, h, colors):
-        self.blocked = False
-        
-        self.text = text
-        self.text_size = text_size
-        
-        self.colors = colors
-        self.color = self.colors[0]
-
-        # Сохранение области нажатия
-        self.rect = pygame.Rect(x, y, w, h)
-
-        # Переменные размеров
-        self.x = x
-        self.y = y
-        self.w = w
-        self.h = h
-
-        # Значения нажатия
-        self.on = False
-        self.down = False
-
-    def animation(self): # Анимация при нажатии
-        if len(self.colors) == 4 and self.blocked:
-            self.color = self.colors[3]
-        elif self.on and self.down:
-            self.color = self.colors[2]
-        elif self.on:
-            self.color = self.colors[1]
-        else:
-            self.color = self.colors[0]
-
-    def drawing(self, screen): # Нарисовать кнопку
-        self.animation() # Запуск анимации
-
-        # Рисование кнопки
-        pygame.draw.rect(screen, self.color, self.rect, 0)
-        # Отрисовка текста
-        to_write = pygame.font.SysFont(FONT, int(self.text_size)).render(self.text, True, TEXT_COLOR)
-        screen.blit(to_write, ((self.x + self.w / 2) - to_write.get_width() / 2,
-                               (self.y + self.h / 2) - to_write.get_height() / 2))
-        
-    def block(self, value):
-        self.blocked = value
-
-    def selected(self, value): # Ниже функции для нажатия
-        if not value:
-            self.down = False
-        # self.down = False
-        self.on = value
-
-    def on_button(self, mouse_pos):
-        if self.rect.collidepoint(mouse_pos):
-            return True
-        else:
-            return False
-
-    def pressed(self, value):
-        if not self.blocked:
-            self.down = value
 
 class Inventory():
     def __init__(self, inv_slots, wi, hi, player_slots, wp, hp, money_score):
