@@ -73,6 +73,18 @@ PAD10 = 10 # внутри панели покупки
 PAD11 = 125 # от рамок окна
 
 
+# Кнопка "В бой"
+
+BTN_SIZE = (500, 50)
+BTN_CLR1 = pygame.Color(150, 150, 150)
+BTN_CLR2 = pygame.Color(100, 100, 100)
+BTN_CLR3 = pygame.Color(50, 50, 50)
+BTN_PAD = 5 # отступ от нижних слотов
+
+
+def start_game():
+    pass
+
 def get_info(image_name):
     return {'image': HIGH_FILES_WAY + image_name,
             'name': "Супер мега пушка Сокрушитель миров 3000 ультра экстрим круть",
@@ -109,13 +121,12 @@ class Information():
         self.buttons = [Button('X', TEXT_COLOR, CLOSE_BUTTON, FONT,
                                SIZE[0] - PAD11 - CLOSE_BUTTON,
                                PAD11 - CLOSE_BUTTON,
-                               CLOSE_BUTTON, CLOSE_BUTTON, (CLOSE_COLOR1,
-                                                            CLOSE_COLOR2,
-                                                            CLOSE_COLOR3)),
+                               CLOSE_BUTTON, CLOSE_BUTTON,
+                               (CLOSE_COLOR1, CLOSE_COLOR2, CLOSE_COLOR3), True),
                         Button('Купить', TEXT_COLOR, TEXT_SIZE, FONT,
                                x + w / 2 + PAD10, y + h / 3 + PAD10,
                                w / 2 - PAD10 * 2, h * 2 / 3 - PAD10 * 2,
-                               (BUY_COLOR1, BUY_COLOR2, BUY_COLOR3, BUY_COLOR4)),
+                               (BUY_COLOR1, BUY_COLOR2, BUY_COLOR3, BUY_COLOR4), True),
                         Button('<', TEXT_COLOR, TEXT_SIZE, FONT,
                                x + PAD10, y + h / 3 + PAD10,
                                w / 2 / 5 - PAD10, h / 3 - PAD10,
@@ -304,7 +315,10 @@ class Information():
     
 
 class Inventory():
-    def __init__(self, inv_slots, wi, hi, player_slots, wp, hp, money_score):
+    def __init__(self, screen,
+                 inv_slots, wi, hi,
+                 player_slots, wp, hp,
+                 money_score):
         self.blocked = None
         self.show_info = False
         self.double_click = None
@@ -330,12 +344,18 @@ class Inventory():
         self.player_slots = player_slots
         
         self.w1, self.h1 = wi, hi
-        self.w2, self.h2 = wp, hp
+        self.w2, self.h2 = wp, 2
         
         if self.w1 >= self.w2:
             self.size = (SIZE[0] - PAD1 * 2) / self.w1
         else:
             self.size = (SIZE[0] - PAD1 * 2) / self.w2
+            
+        self.to_battle = Button('Начать', TEXT_COLOR, TEXT_SIZE, FONT, 
+                                (SIZE[0] - BTN_SIZE[0]) / 2,
+                                SIZE[1] - self.size * self.h2 - PAD1 - PAD2 - BTN_SIZE[1] - BTN_PAD,
+                                *BTN_SIZE,
+                                (BTN_CLR1, BTN_CLR2, BTN_CLR3), True)
 
         # Добавление слотов
         self.items = [None] * self.w1
@@ -441,6 +461,9 @@ class Inventory():
                 
         if self.info:
             self.info.drawing(screen)
+        
+        # Рисование кнопки "В бой"
+        self.to_battle.drawing(screen)
     
     # Притягивание квадрата    
     def square_pulling(self, x, y, arr, q, icons, n):
@@ -601,7 +624,18 @@ class Inventory():
     
     def controller(self, event, screen):
         if not self.show_info:
-            global global_pressed
+            # Кнопка в бой
+            if event.type == pygame.MOUSEMOTION:
+                if self.to_battle.on_button(event.pos):
+                    self.to_battle.selected(True)
+                else:
+                    self.to_battle.selected(False)
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if self.to_battle.on_button(event.pos):
+                    self.to_battle.pressed(True)
+                    start_game()
+                else:
+                    self.to_battle.pressed(False)            
             
             # Для панели магазина
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -616,6 +650,7 @@ class Inventory():
                     self.pressed = False
             
             # Для инвентаря
+            global global_pressed
             pressing = False
             
             if not global_pressed and self.square_clone:
@@ -669,7 +704,7 @@ class Inventory():
             
             for i in self.inv_slots:
                 x, y = i[1], i[2]
-                if self.items[x][y].controller(event):
+                if self.items[x][y].controller(event, screen):
                     pressing = True
                 
                 cell = self.get_cell((self.items[x][y].xm, self.items[x][y].ym),
@@ -687,7 +722,7 @@ class Inventory():
                      
             for i in self.player_slots:
                 x, y = i[1], i[2]
-                if self.player_items[x][y].controller(event):
+                if self.player_items[x][y].controller(event, screen):
                     pressing = True
                 
                 cell = self.get_cell((self.player_items[x][y].xm, self.player_items[x][y].ym),
@@ -704,7 +739,7 @@ class Inventory():
                     self.double_click = (x, y, self.player_items)
             
             if self.square_clone:
-                if self.square_clone.controller(event):
+                if self.square_clone.controller(event, screen):
                     pressing = True
                 '''x, y = self.clone_info[1], self.clone_info[2]
                 if self.clone_info[4][x][y] and self.clone_info[4][x][y].down and event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
@@ -721,7 +756,6 @@ class Inventory():
                 if self.first_click[2][x][y]:
                     name = self.first_click[2][x][y].image_name
                     if self.first_click[2][x][y].count == -1:
-                        print(self.get_free_slots(self.first_click[2]))
                         self.info = Information(name, self.money_score,
                                                 self.get_free_slots(self.first_click[2]))
                     else:
@@ -914,7 +948,7 @@ class Square:
         self.ym = self.y
     
     
-    def controller(self, event): # Обработка событий мыши
+    def controller(self, event, screen): # Обработка событий мыши
         pressing = False
         global global_pressed
 
@@ -998,7 +1032,8 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(size)
     screen.fill(pygame.Color('black'))
 
-    inv = Inventory([('1.jpg', 4, 0, 5), ('2.jpg', 3, 1, -1)], 9, 3,
+    inv = Inventory(screen,
+                    [('1.jpg', 4, 0, 5), ('2.jpg', 3, 1, -1)], 9, 3,
                     [('3.jpg', 4, 0, 100)], 8, 1,
                     1000)
 
