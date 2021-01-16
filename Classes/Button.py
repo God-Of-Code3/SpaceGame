@@ -17,11 +17,8 @@ class Button:
         
         self.rounding = rounding
 
-        # Сохранение области нажатия
-        if rounding: # Круглая ли кнопка
-            self.rect = pygame.Rect(x - h / 2, y, w + h, h)
-        else:
-            self.rect = pygame.Rect(x, y, w, h)
+        # Область нажатия
+        self.rect = pygame.Rect(x, y, w, h)
 
         # Переменные размеров
         self.x = x
@@ -47,10 +44,19 @@ class Button:
         self.animation() # Запуск анимации
 
         # Рисование кнопки
-        pygame.draw.rect(screen, self.color, (self.x, self.y, self.w, self.h), 0)
         if self.rounding:
-            pygame.draw.circle(screen, self.color, (self.x, self.y + self.h / 2), self.h / 2)
-            pygame.draw.circle(screen, self.color, (self.x + self.w, self.y + self.h / 2), self.h / 2)
+            pygame.draw.rect(screen, self.color, (self.x + self.h / 2, self.y,
+                                                  self.w - self.h, self.h))            
+            pygame.draw.circle(screen, self.color, (self.x + self.h / 2,
+                                                    self.y + self.h / 2),
+                               self.h / 2)
+            pygame.draw.circle(screen, self.color, (self.x + self.w - self.h / 2,
+                                                    self.y + self.h / 2),
+                               self.h / 2)
+        else:
+            pygame.draw.rect(screen, self.color, (self.x, self.y,
+                                                  self.w, self.h))
+        
 
         # Отрисовка текста
         to_write = pygame.font.SysFont(self.font, self.text_size).render(self.text, 1, self.text_color)
