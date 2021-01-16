@@ -1066,7 +1066,7 @@ if __name__ == '__main__':
         screen.fill(pygame.Color('black'))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
+                running = False
             else:
                 inv.controller(event, screen)
         inv.drawing(screen)
