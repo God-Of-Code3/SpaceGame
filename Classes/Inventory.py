@@ -434,14 +434,14 @@ class Inventory():
         for i in self.inv_slots:
             x, y, n = i[1], i[2], i[3]
             self.items[x][y].drawing(screen)
-            self.square_pulling(x, y, self.items,
+            self.square_pulling(screen, x, y, self.items,
                                 i[0], self.inv_slots, n)
             
         # Рисование слотов игрока
         for i in self.player_slots:
             x, y, n = i[1], i[2], i[3]
             self.player_items[x][y].drawing(screen)
-            self.square_pulling(x, y, self.player_items,
+            self.square_pulling(screen, x, y, self.player_items,
                                 i[0], self.player_slots, n)
             
         # Рисование слота движущегося предмета
@@ -466,7 +466,7 @@ class Inventory():
         self.to_battle.drawing(screen)
     
     # Притягивание квадрата    
-    def square_pulling(self, x, y, arr, q, icons, n):
+    def square_pulling(self, screen, x, y, arr, q, icons, n):
         # Присвоение ближайшей клетке
         m = 1000000
         nearest_square = (0, 0)
