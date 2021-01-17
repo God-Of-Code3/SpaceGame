@@ -344,7 +344,7 @@ class Inventory():
         self.player_slots = player_slots
         
         self.w1, self.h1 = wi, hi
-        self.w2, self.h2 = wp, 2
+        self.w2, self.h2 = wp, hp
         
         if self.w1 >= self.w2:
             self.size = (SIZE[0] - PAD1 * 2) / self.w1
@@ -446,7 +446,10 @@ class Inventory():
             
         # Рисование слота движущегося предмета
         if self.square_clone:
-            self.square_clone.drawing(screen)          
+            self.square_clone.drawing(screen)
+            
+        # Рисование кнопки "В бой"
+        self.to_battle.drawing(screen)
         
         # Рисование движущегося квадрата поверх остальных
         for q in self.inv_slots:
@@ -461,9 +464,6 @@ class Inventory():
                 
         if self.info:
             self.info.drawing(screen)
-        
-        # Рисование кнопки "В бой"
-        self.to_battle.drawing(screen)
     
     # Притягивание квадрата    
     def square_pulling(self, screen, x, y, arr, q, icons, n):
@@ -662,7 +662,7 @@ class Inventory():
                         x, y = i[1], i[2]
                         if self.items[x][y].down and global_pressed:
                             if self.items[x][y].count > 1:
-                                self.minus_1(x, y, self.items, self.inv_slots, i)
+                                self.minus_1(screen, x, y, self.items, self.inv_slots, i, event.pos)
                                 pressing = True
                                 self.double_click = None
                                 break
@@ -673,7 +673,7 @@ class Inventory():
                         elif not global_pressed:
                             if self.items[x][y].count > 1:
                                 if self.items[x][y].on:
-                                    self.minus_half(x, y, self.items, self.inv_slots, i)
+                                    self.minus_half(screen, x, y, self.items, self.inv_slots, i)
                                     pressing = True
                                     self.double_click = None
                                     break
@@ -682,7 +682,7 @@ class Inventory():
                         x, y = i[1], i[2]
                         if self.player_items[x][y].down and global_pressed:
                             if self.player_items[x][y].count > 1:
-                                self.minus_1(x, y, self.player_items, self.player_slots, i)
+                                self.minus_1(screen, x, y, self.player_items, self.player_slots, i, event.pos)
                                 pressing = True
                                 self.double_click = None
                                 break
@@ -693,7 +693,7 @@ class Inventory():
                         elif not global_pressed:
                             if self.player_items[x][y].count > 1:
                                 if self.player_items[x][y].on and not global_pressed:
-                                    self.minus_half(x, y, self.player_items, self.player_slots, i)
+                                    self.minus_half(screen, x, y, self.player_items, self.player_slots, i)
                                     pressing = True
                                     self.double_click = None
                                     break
@@ -826,11 +826,19 @@ class Inventory():
                                     self.size - PAD3 * 2,
                                     slots[a][3])
             else:
-                a = [i[0] for i in slots].index(image)
-                if slots[a][3] == -1:
-                    n = -1
+                if image in [i[0] for i in self.inv_slots]:
+                    a = [i[0] for i in self.inv_slots].index(image)
+                    if self.inv_slots[a][3] == -1:
+                        n = -1
+                    else:
+                        n = 1
                 else:
-                    n = 1
+                    a = [i[0] for i in self.player_slots].index(image)
+                    if self.player_slots[a][3] == -1:
+                        n = -1
+                    else:
+                        n = 1
+                    
                 slots.append((image, x, y, n))
                 arr[x][y] = Square(screen, image, xp, yp,
                                     self.size - PAD3 * 2,
@@ -886,18 +894,18 @@ class Inventory():
         self.square_clone = None
         self.clone_info = None
         
-    def minus_1(self, x, y, arr, slots, elem):
+    def minus_1(self, screen, x, y, arr, slots, elem, pos):
         a = slots.index(elem)
         slots[a] = (slots[a][0], slots[a][1], slots[a][2], arr[x][y].count - 1)
         arr[x][y].count -= 1
 
-        data = self.get_cell(event.pos, slots[a][0])
+        data = self.get_cell(pos, slots[a][0])
         if (data[1], data[2]) == (x, y) and data[3] == arr:
             self.add_square(screen, *data, False)
         else:
             self.add_square(screen, *data, True)
             
-    def minus_half(self, x, y, arr, slots, elem):
+    def minus_half(self, screen, x, y, arr, slots, elem):
         a = slots.index(elem)
         slots[a] = (slots[a][0], slots[a][1], slots[a][2],
                     arr[x][y].count // 2 + arr[x][y].count % 2)
