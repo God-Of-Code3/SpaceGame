@@ -1,6 +1,6 @@
 import pygame
 from Button import Button
-from Slots import Inventory
+from Inventory import Inventory
 
 
 SIZE = (1200, 900) # Размер окна
