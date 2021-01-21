@@ -1,0 +1,32 @@
+{
+	"player_pos": [0, -800],
+	"ranges": [-2000, 2000],
+	"player_skills": false,
+	"ships": [
+		{
+			"class": "Hindenburg",
+			"coords": [-200, -3700]
+		},
+		{
+			"class": "Hindenburg",
+			"coords": [-300, -3700]
+		}
+	],
+	"nexuses": [
+		{
+			"class": "Nexus",
+			"coords": [0, -1800]
+		},
+		{
+			"class": "Nexus",
+			"coords": [100, -1800]
+		},
+		{
+			"class": "Nexus",
+			"coords": [200, -1800]
+		}
+	],
+	"goal": 0,
+	"planet": "Planet1.png",
+	"reward": 500
+}

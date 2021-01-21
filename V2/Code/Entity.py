@@ -211,12 +211,6 @@ class Entity(pygame.sprite.Sprite):
                 self.coords[i] += self.speed[i] * ACCELERATION * self.world.acceleration
                 self.speed[i] += self.acceleration[i] * ACCELERATION * self.world.acceleration
 
-            if max(self.width, self.height) / 2 + self.coords[1] > self.world.planet.y:
-
-                self.speed[1] = -self.speed[1]
-                self.coords[1] = self.world.planet.y - max(self.width, self.height) / 2
-                self.hit(None, abs(self.speed[1]))
-
             if abs(self.speed[0]) > self.max_speed[0]:
                 self.speed[0] = self.max_speed[0] * (abs(self.speed[0]) / self.speed[0])
 
@@ -268,6 +262,11 @@ class Entity(pygame.sprite.Sprite):
             self.draw()
 
         elif mode == "check":
+            if max(self.width, self.height) / 2 + self.coords[1] > self.world.planet.y and not isinstance(self, Station):
+
+                self.speed[1] = -self.speed[1]
+                self.coords[1] = self.world.planet.y - max(self.width, self.height) / 2
+                self.hit(None, abs(self.speed[1]))
             objects = self.world.all_sprites.sprites()
             for obj in objects:
                 if obj != self:
@@ -364,7 +363,7 @@ class Explosion(Entity):
                 self.params["particles"] = list(filter(lambda x: math.hypot(x["x"], x["y"]) < self.width, self.params[
                     "particles"]))
 
-                if random.randint(0, 1000) < 500:
+                if random.randint(0, 1000) < 200:
                     self.add_circle()
 
                 for i in range(len(self.params["circles"])):
@@ -376,3 +375,24 @@ class Explosion(Entity):
                         self.params["circles"][i]["size"] = 1
             self.draw()
             self.health -= 1
+
+
+class Station(Starship):
+    def __init__(self, group, frames, world, state="main", width=100, height=100, rot=0, coords=None, speed=None,
+                 acceleration=None, max_acceleration=None, max_speed=None, friction=None, mass=100, controller=None,
+                 health=1000):
+        super().__init__(group, frames, world, state=state, width=width, height=height, rot=rot, coords=coords,
+                         speed=speed, acceleration=acceleration, max_acceleration=max_acceleration,
+                         max_speed=max_speed, friction=friction, mass=mass, controller=controller, health=health)
+        self.params["direction"] = 0
+
+    def update(self, mode):
+        self.speed = [0, 0]
+        self.acceleration = [0, 0]
+        coords = self.coords.copy()
+        super().update(mode)
+        self.coords = coords.copy()
+
+
+class Nexus(Starship):
+    pass

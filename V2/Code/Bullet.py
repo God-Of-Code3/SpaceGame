@@ -112,9 +112,15 @@ class MediumRocket(Bullet):
                     self.acceleration = [math.cos(direction * math.pi / 180) * self.params["acceleration"],
                                          math.sin(direction * math.pi / 180) * self.params["acceleration"]]
                     self.rot = -direction
-                if self.health < 5:
+                dist = math.hypot(self.coords[0] - self.target.coords[0], self.coords[1] - self.target.coords[1])
+                if dist < 100 and self.health < 30:
                     self.health = 0
-                    self.hit(None, 0)
+            if self.coords[1] > self.world.planet.y:
+                self.health = 0
+
+            if self.health < 5:
+                self.health = 0
+                self.hit(None, 0)
 
 
 class Laser(Bullet):

@@ -90,18 +90,15 @@ class Enemy(Controller):
         self.target = target
         self.target_ship = target.managed
         self.beh = beh
-        self.args = {"attacking": 0, "dist_to_target": 0}
+        self.args = {"attacking": 0, "dist_to_target": 0, "direction": 0}
 
     def control_object(self, obj):
 
         if obj.material and obj != self:
             d = math.hypot(self.managed.coords[0] - obj.coords[0], self.managed.coords[1] - obj.coords[1])
-            if d < MIN_DIST_TO_OBJECTS and self.beh != "escape":
-                if isinstance(obj, Bullet) and obj.master != self.managed:
-                    self.move_to_direction(180 + to_point(*self.managed.coords, *obj.coords))
             if obj == self.target_ship:
                 self.skills_args["use"] = False
-                direction_to_target = to_point(*self.managed.coords, *obj.coords)
+                direction_to_target = to_point(*self.managed.coords, *obj.coords) % 360
                 if self.beh == "attack":
                     attacking = self.args["attacking"]
                     self.args["attacking"] = 0
@@ -140,14 +137,51 @@ class Enemy(Controller):
                         self.skills.select(1)
                     if self.skills.skills[self.skills.selected].number != 0:
                         self.skills_args["use"] = True
-                        self.skills_args["using"] = True
-                        self.skills_args["using_coords"] = obj.coords
+                        if self.skills.selected == 1:
+                            direction = self.args["direction"] % 360
+
+                            angle = get_angle(direction_to_target, direction)
+                            if angle == 0:
+                                angle = 1
+                            if abs(angle) >= ACCELERATION * ROTATION_SPEED:
+                                direction -= ACCELERATION * (angle / abs(angle)) * ROTATION_SPEED
+                            else:
+                                direction = direction_to_target
+
+                            self.args["direction"] = direction
+                            coords = [self.managed.coords[0] + math.cos(math.pi / 180 * self.args["direction"])
+                                      * LASER_MAX_LENGTH,
+                                      self.managed.coords[1] + math.sin(math.pi / 180 * self.args["direction"])
+                                      * LASER_MAX_LENGTH]
+                            inter = check_line(self.world.all_sprites.sprites(),
+                                               [self.managed.coords.copy(), coords.copy()], [self.managed])
+
+                            self.skills_args["using"] = inter == obj or inter is None
+
+                            self.skills_args["using_coords"] = coords
+                        else:
+                            self.skills_args["using_coords"] = obj.coords
+
+                    if self.managed.coords[0] < obj.coords[0] - 100:
+                        self.move_to_direction(0)
+                    elif self.managed.coords[0] > obj.coords[0] + 100:
+                        self.move_to_direction(180)
+
                     if abs(self.managed.coords[1]) < MIN_AIR_ATTACK_HEIGHT:
                         self.move_to_direction(270)
+
+                elif self.beh == "nexus":
+                    self.skills.select(0)
+                    if self.managed.coords[1] < -NEXUS_HEIGHT:
+                        self.managed.set_acceleration(y=2)
+                    else:
+                        self.managed.set_acceleration(y=-2)
+
             else:
                 if math.hypot(obj.coords[0] - self.target.managed.coords[0],
                               obj.coords[1] - self.target.managed.coords[1]) < self.args["dist_to_target"]:
                     self.args["attacking"] += 1
+
             if isinstance(obj, Bullet) and obj.master != self.managed:
                 direction = to_point(0, 0, *obj.speed) % 360
                 direction2 = to_point(*obj.coords, *self.managed.coords) % 360
@@ -155,6 +189,9 @@ class Enemy(Controller):
                 if abs(angle) < MIN_BULLET_ANGLE:
                     delta = 90 if angle > 0 else -90
                     self.move_to_direction(direction2 + delta)
+            if d < MIN_DIST_TO_OBJECTS and self.beh != "escape":
+                if isinstance(obj, Starship) and obj.material:
+                    self.move_to_direction(180 + to_point(*self.managed.coords, *obj.coords))
 
         if abs(self.managed.coords[1]) < 600:
             self.managed.set_acceleration(y=-2)

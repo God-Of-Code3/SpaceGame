@@ -1,6 +1,9 @@
 {
   "CopperShellShot": {
     "image": "CopperShell.png",
+    "name": "Медный снаряд",
+    "description": ["Шмаляет медью в противника"],
+    "cost": 5,
     "type": "active",
     "recharge_time": 50,
     "using_time": -1,
@@ -8,6 +11,9 @@
   },
   "PlasmaShot": {
     "image": "PlasmaShot.png",
+    "name": "Плазменный заряд",
+    "description": ["Плюет плазмой в противника"],
+    "cost": 20,
     "type": "active",
     "recharge_time": 10,
     "using_time": -1,
@@ -15,6 +21,9 @@
   },
   "SmallRocketLaunch": {
     "image": "SmallRocketLaunch.png",
+    "name": "Малая ракета",
+    "description": ["Ракета, взрывается при попадании"],
+    "cost": 50,
     "type": "active",
     "recharge_time": 10,
     "using_time": -1,
@@ -22,16 +31,32 @@
   },
   "MediumRocketLaunch": {
     "image": "MediumRocketLaunch.png",
+    "name": "Средняя ракета",
+    "description": ["Самонаводящаяся ракета, взрывается при попадании"],
+    "cost": 75,
     "type": "active",
-    "recharge_time": 100,
+    "recharge_time": 500,
     "using_time": -1,
     "auto_using": false
   },
   "LaserShot": {
     "image": "LaserRay.png",
+    "name": "Лазерный луч",
+    "description": ["Лазерный луч, несущий СМЭРТ"],
+    "cost": 100,
     "type": "active",
     "recharge_time": 100,
     "using_time": 300,
+    "auto_using": false
+  },
+  "HealthBoost": {
+    "image": "HealthBoost.png",
+    "name": "Быстрый ремонт",
+    "description": ["Восстанавливает 500 единиц прочности"],
+    "cost": 60,
+    "type": "active",
+    "recharge_time": 1000,
+    "using_time": -1,
     "auto_using": false
   }
 }

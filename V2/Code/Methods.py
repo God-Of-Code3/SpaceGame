@@ -124,7 +124,8 @@ def get_angle(direction1, direction2):
     if angle > 180:
         angle = 180 - angle
     if angle < -180:
-        angle = - (360 + angle)
+        angle = 360 + angle
+
     return angle
 
 
@@ -144,3 +145,26 @@ def get_coords(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2):
     v4 = (ax2-ax1)*(by2-ay1)-(ay2-ay1)*(bx2-ax1)
     values = (v1*v2 < 0) and (v3*v4 < 0)
     return values
+
+
+def check_line(objects, line, exceptions):
+    min_dist = []
+    for obj in objects:
+        if obj.material and obj not in exceptions:
+            intersection = False
+            dist = [0, (0, 0)]
+            for ln in obj.get_lines():
+                coords = line_intersection(ln, line, True)
+                if coords:
+                    cur_dist = math.hypot(line[0][0] - coords[0], line[0][1] - coords[1])
+                    if coords is not False and (dist[0] == 0 or cur_dist < dist[0]):
+                        dist = [cur_dist, coords]
+                        intersection = True
+            if intersection:
+                if len(min_dist) == 0:
+                    min_dist = [obj, dist]
+                else:
+                    if min_dist[1][0] > dist[0]:
+                        min_dist = [obj, dist]
+    if min_dist:
+        return min_dist[0]

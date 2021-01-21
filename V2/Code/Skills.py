@@ -62,7 +62,7 @@ class SkillList:
                 col = SKILL_BORDER_COLOR if skill.type == "active" else SKILL_BORDER_COLOR_PASSIVE
 
                 if skill.number != -1 and skill.type == "active":
-                    font = pygame.font.SysFont('Calibri', 20)
+                    font = pygame.font.SysFont('Arial', 20)
                     string_rendered = font.render(str(skill.number), True, pygame.Color('black'))
                     sc.blit(string_rendered, (x + SKILL_TILE_PADDING, y + SKILL_TILE_PADDING))
 
@@ -264,9 +264,17 @@ class LaserShot(Skill):
         super().__init__(world, "LaserShot", number, master)
 
     def using_code(self, args):
-        print(909)
         speed = [args["using_coords"][0] - self.master.managed.coords[0],
                  args["using_coords"][1] - self.master.managed.coords[1]]
         data = guns_data["Laser"]
         Laser(self.world.all_sprites, frames_tree2, self.world, master=self.master.managed,
               coords=self.master.managed.coords, speed=speed, damage=data["damage"])
+
+
+class HealthBoost(Skill):
+    def __init__(self, world, number, master):
+        super().__init__(world, "HealthBoost", number, master)
+
+    def use_code(self, args):
+        d = guns_data["HealthBoost"]
+        self.master.managed.health = min(self.master.managed.max_health, d["health"] + self.master.managed.health)

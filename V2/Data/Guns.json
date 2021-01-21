@@ -4,7 +4,7 @@
     "width": 56,
     "height": 20,
     "health": 1000,
-    "damage": 10000,
+    "damage": 100,
     "anim": {
         "main": {
             "frames": [["./Assets/Images/Bullets/Bullet1.png", 20]],
@@ -26,7 +26,7 @@
     }
   },
   "Laser": {
-    "damage": 20
+    "damage": 200
   },
   "SmallRocket": {
     "acceleration": 0.4,
@@ -46,12 +46,15 @@
     "width": 139,
     "height": 20,
     "health": 500,
-    "damage": 200,
+    "damage": 150,
     "anim": {
         "main": {
             "frames": [["./Assets/Images/Bullets/MediumRocket.png", 20]],
             "next": "main"
         }
     }
+  },
+  "HealthBoost": {
+    "health": 500
   }
 }

@@ -27,8 +27,8 @@
 	},
 	"Inquisitor": {
 		"class": "Инквизитор",
-		"hp": 100000,
-		"mass": 100000,
+		"hp": 1000,
+		"mass": 1000,
 		"msx": 10,
 		"msy": 10,
 		"ax": 0.5,
@@ -83,7 +83,7 @@
 	"Hindenburg": {
 		"class": "Гинденбург",
 		"hp": 10000,
-		"mass": 1000,
+		"mass": 10000,
 		"msx": 6,
 		"msy": 6,
 		"ax": 0.1,
@@ -144,8 +144,63 @@
 			}
 		},
 		"equipment": {
-			"LaserShot": -1,
-			"MediumRocketLaunch": 200
+			"MediumRocketLaunch": 200,
+			"LaserShot": -1
+
+		}
+	},
+
+	"Station1": {
+		"class": "Защитная станция - 1",
+		"hp": 10000,
+		"mass": 1000000000000,
+		"msx": 8,
+		"msy": 8,
+		"ax": 0.3,
+		"ay": 0.3,
+		"fx": 0.1,
+		"fy": 0.1,
+		"width": 400,
+		"height": 400,
+		"behaviour": "attack",
+		"description": "Защитная станция.",
+		"anim": {
+			"main": {
+				"frames": [
+					["./Assets/Images/Station/Station1.png", 20]
+				],
+				"next": "main"
+			}
+		},
+		"equipment": {
+			"LaserShot": 125
+		}
+	},
+
+	"Nexus": {
+		"class": "Командный пункт",
+		"hp": 10000,
+		"mass": 10000,
+		"msx": 12,
+		"msy": 12,
+		"ax": 0.1,
+		"ay": 0.5,
+		"fx": 0.05,
+		"fy": 0.05,
+		"width": 349,
+		"height": 315,
+		"behaviour": "nexus",
+		"description": "Главные пункты управления планетарными флотами",
+		"anim": {
+			"main": {
+				"frames": [
+					["./Assets/Images/Ships/Nexus/Nexus.png", 20]
+				],
+				"next": "main"
+			}
+		},
+		"equipment": {
+			"HealthBoost": 50
 		}
 	}
 }
