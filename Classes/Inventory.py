@@ -247,9 +247,9 @@ class Inventory():
                     self.items[x][y].drawing(screen)
                 
             for q in self.player_slots:
-                x, y =             q[1], q[2]
-            if self.player_items[x][y].moving:
-                self.player_items[x][y].drawing(screen)
+                x, y = q[1], q[2]
+                if self.player_items[x][y].moving:
+                    self.player_items[x][y].drawing(screen)
                 
             if self.info:
                 self.info.drawing(screen)
