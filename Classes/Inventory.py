@@ -2,100 +2,15 @@ import pygame
 from Shop import Shop
 from Button import Button
 from Information import Information
+from Constants import *
+from GetInfo import get_info
 
 
-SIZE = (1200, 900) # Размер окна
-FONT = None # Шрифт
 global_pressed = False # Производится ли перемещение
-FILES_WAY = 'data\\' # Путь для файлов
-HIGH_FILES_WAY = 'data\\high-quality-textures\\' # Путь для файлов в высоком разрешении
-HIGH_QUALITY = (400, 400) # Разрешение картинок в описании
-
-
-# Константы инвентаря
-
-INVENTORY_COLOR = pygame.Color(100, 100, 100) # цвета ячеек
-CELLS_COLOR = pygame.Color(255, 255, 255)
-SQUARE_COLOR = pygame.Color(255, 0, 0) # цвета предметов
-SELECTED_COLOR = pygame.Color(150, 0, 0)
-PRESSED_COLOR = pygame.Color(100, 0, 0)
-#INFO_COLOR = pygame.Color(0, 100, 100)
-
-CELLS_WIDTH = 2 # ширина границы ячеек
-# Отступы инвентаря
-PAD1 = 75 # внешний
-PAD2 = 10 # ячейки от стен
-PAD3 = 10 # внутри ячеек
-PAD4 = 5 # картинки от квадрата
-# Текст кол-ва предметов
-TEXT_SIZE = 32
-TEXT_COLOR = pygame.Color(255, 255, 255)
-
-
-# Константы магазина
-
-SHOP_COLOR = pygame.Color(150, 150, 150) # цвета
-SHOP_SQUARE_COLOR = pygame.Color(255, 255, 255)
-SHOP_ICON_COLOR = pygame.Color(0, 0, 0)
-SELECTED_ICON_COLOR = pygame.Color(50, 50, 50)
-PRESSED_ICON_COLOR = pygame.Color(100, 100, 100)
-
-SHOP_NAME = 'shop_icon.png' # имя файла иконки магазина
-SHOP_HEIGHT = 80 # размер панели магазина
-# Отступы магазина
-PAD5 = 30 # панель магазина от инвентаря (-PAD2)
-PAD6 = 10 # кол-во денег
-PAD7 = 2 # кнопка магазина
-# Текст кол-ва денег
-MONEY_SIZE = 32
-MONEY_COLOR = pygame.Color(0, 0, 0)
-
-
-# Константы окна информации
-
-INFO_COLOR = pygame.Color(125, 125, 125) # цвета
-PANEL_COLOR = pygame.Color(150, 0, 0)
-CLOSE_PANEL_COLOR = pygame.Color(100, 0, 0)
-DESCR_COLOR = pygame.Color(150, 150, 150)
-BUY_COLOR1 = pygame.Color(150, 150, 150)
-BUY_COLOR2 = pygame.Color(125, 125, 125)
-BUY_COLOR3 = pygame.Color(100, 100, 100)
-BUY_COLOR4 = pygame.Color(75, 75, 75)
-CLOSE_COLOR1 = pygame.Color(150, 0, 0)
-CLOSE_COLOR2 = pygame.Color(125, 0, 0)
-CLOSE_COLOR3 = pygame.Color(100, 0, 0)
-
-CLOSE_BUTTON = 40 # размер кнопки выхода
-BETWEEN = 5 # расстояние между строками значений
-INDENT = 5 # Отступ перед абзацем (в пробелах)
-# Отступы информации
-PAD8 = 30 # внешний
-PAD9 = 20 # между панелями
-PAD10 = 10 # внутри панели покупки
-PAD11 = 125 # от рамок окна
-
-
-# Кнопка "В бой"
-
-BTN_SIZE = (500, 50)
-BTN_CLR1 = pygame.Color(150, 150, 150)
-BTN_CLR2 = pygame.Color(100, 100, 100)
-BTN_CLR3 = pygame.Color(50, 50, 50)
-BTN_PAD = 5 # отступ от нижних слотов
 
 
 def start_game():
     pass
-
-def get_info(image_name):
-    return {'image': HIGH_FILES_WAY + image_name,
-            'name': "Супер мега пушка Сокрушитель миров 3000 ультра экстрим круть",
-            'description': ["Слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова",
-                            "Слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова"],
-            'cost': 10,
-            'specifications': {'spec1': "Значение свойства spec1",
-                               'spec2': "Значение свойства spec2",
-                               'spec3': "Значение свойства spec3"}}
 
 
 class Inventory():
@@ -104,7 +19,7 @@ class Inventory():
                  player_slots, wp, hp,
                  money_score):
         self.shop = None
-        
+
         self.blocked = None
         self.show_info = False
         self.double_click = None
@@ -113,8 +28,9 @@ class Inventory():
         
         self.selected = False
         self.pressed = False
-        
-        self.shop_icon = pygame.image.load(FILES_WAY + SHOP_NAME)
+
+        print(FILES_WAY + TO_SHOP_NAME)
+        self.shop_icon = pygame.image.load(FILES_WAY + TO_SHOP_NAME)
         self.shop_icon = pygame.transform.scale(self.shop_icon,
                                             (int(SHOP_HEIGHT / 2),
                                              int(SHOP_HEIGHT / 2)))
@@ -138,9 +54,9 @@ class Inventory():
             self.size = (SIZE[0] - PAD1 * 2) / self.w2
             
         self.to_battle = Button('Начать', TEXT_COLOR, TEXT_SIZE, FONT, 
-                                (SIZE[0] - BTN_SIZE[0]) / 2,
-                                SIZE[1] - self.size * self.h2 - PAD1 - PAD2 - BTN_SIZE[1] - BTN_PAD,
-                                *BTN_SIZE,
+                                (SIZE[0] - TO_BATTLE_BTN_SIZE[0]) / 2,
+                                SIZE[1] - self.size * self.h2 - PAD1 - PAD2 - TO_BATTLE_BTN_SIZE[1] - BTN_PAD,
+                                *TO_BATTLE_BTN_SIZE,
                                 (BTN_CLR1, BTN_CLR2, BTN_CLR3), True)
 
         # Добавление слотов
@@ -383,7 +299,7 @@ class Inventory():
                                                         arr[x][y].h, n)
                     arr[x][y] = None
                     other_icons.append((q, pos[0], pos[1], n))
-                    del icons[q_index]            
+                    del icons[q_index]
         
     def get_free_slots(self, arr):
         n = 0
@@ -399,8 +315,16 @@ class Inventory():
     def get_player_slots(self):
         return self.player_slots
     
+    def in_arrays(self, elem):
+        if elem in [i[0] for i in self.inv_slots]:
+            return True
+        elif elem in [i[0] for i in self.player_slots]:
+            return True
+        else:
+            return False
+    
     def go_to_skills_shop(self):
-        self.shop = Shop(self.money_score)
+        self.shop = Shop(self)
     
     def shop_color(self):
         if self.selected:
@@ -576,7 +500,7 @@ class Inventory():
                             self.first_click[2][x][y].count += self.info.count
                         self.money_score -= self.info.count * self.info.info['cost']
                     
-                    self.first_click = None                
+                    self.first_click = None
                     self.show_info = False
                     self.info = None
      
@@ -603,8 +527,6 @@ class Inventory():
             self.clone_info = (slots[a][0], slots[a][1], slots[a][2],
                                n, arr, slots)
         else:
-            #self.first_click = None
-            #self.double_click = None
             if slots == self.inv_slots:
                 xp = (SIZE[0] - self.size * self.w1) / 2 + x * self.size + PAD3
                 yp = y * self.size + PAD3 + SHOP_HEIGHT + PAD5
