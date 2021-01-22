@@ -1,42 +1,8 @@
 import pygame
 from Button import Button
 from Information import Information
-
-
-SIZE = (1200, 900) # Размер окна
-FILES_WAY = 'data\\' # путь к файлам
-HIGH_FILES_WAY = 'data\\high-quality-textures\\' # Путь для файлов в высоком разрешении
-
-ICON_SIZE = (100, 100) # Размер квадрата для предмета
-DISTANCE_X = 300 # Расстояние между предметами
-DISTANCE_Y = 200 # Расстояние между предметами
-
-FONT = None # Шрифт
-TEXT_SIZE = 24
-TEXT_COLOR = pygame.Color(255, 255, 255)
-BTN_SIZE = (120, 30)
-BTN_CLR1 = pygame.Color(150, 150, 150)
-BTN_CLR2 = pygame.Color(100, 100, 100)
-BTN_CLR3 = pygame.Color(50, 50, 50)
-BTN_PAD = 5 # отступ кнопки от предмета
-
-# Константы магазина
-
-SHOP_COLOR = pygame.Color(150, 150, 150) # цвета
-SHOP_SQUARE_COLOR = pygame.Color(255, 255, 255)
-SHOP_ICON_COLOR = pygame.Color(0, 0, 0)
-SELECTED_ICON_COLOR = pygame.Color(50, 50, 50)
-PRESSED_ICON_COLOR = pygame.Color(100, 100, 100)
-
-SHOP_NAME = 'inventory_icon.png' # имя файла иконки магазина
-SHOP_HEIGHT = 80 # размер панели магазина
-# Отступы магазина
-PAD5 = 30 # панель магазина от инвентаря (-PAD2)
-PAD6 = 10 # кол-во денег
-PAD7 = 2 # кнопка магазина
-# Текст кол-ва денег
-MONEY_SIZE = 32
-MONEY_COLOR = pygame.Color(0, 0, 0)
+from Constants import *
+from GetInfo import get_info
 
 
 def get_products():
@@ -44,26 +10,18 @@ def get_products():
             ['1.jpg', '2.jpg', '3.jpg', '3.jpg'],
             ['1.jpg', '2.jpg', '3.jpg', '3.jpg']]
 
-def get_skills_info(image_name):
-    return {'image': HIGH_FILES_WAY + image_name,
-            'name': "Заморозка 3 лвл",
-            'description': ["Замораживает заморозкой",
-                            "Усиливается холодным холодом"],
-            'cost': 10,
-            'specifications': {'spec1': "Значение свойства spec1",
-                               'spec2': "Значение свойства spec2",
-                               'spec3': "Значение свойства spec3"}}
-
 
 class Shop():
-    def __init__(self, money_score):
-        #self.inventory = inventory
+    def __init__(self, inventory):
+        self.inv = inventory
+        self.purchased_name = None
+        
         self.shop_icon = pygame.image.load(FILES_WAY + SHOP_NAME)
         self.shop_icon = pygame.transform.scale(self.shop_icon,
                                             (int(SHOP_HEIGHT / 2),
                                              int(SHOP_HEIGHT / 2)))
         
-        self.money_score = money_score
+        self.money_score = self.inv.money_score
         self.shop_icon_color = SHOP_ICON_COLOR
         self.selected = False
         self.pressed = True
@@ -92,11 +50,11 @@ class Shop():
             
         for i in range(len(self.buttons)):
             for j in range(len(self.buttons[i])):
-                self.buttons[i][j] = Button(str(get_skills_info(self.image_names[i][j])['cost']) + '$',
-                                            TEXT_COLOR, TEXT_SIZE, FONT, 
-                                            self.pad_x + (j + 1) * DISTANCE_X - BTN_SIZE[0] / 2,
-                                            self.pad_y + (i + 1) * DISTANCE_Y + ICON_SIZE[1] / 2 + BTN_PAD,
-                                            *BTN_SIZE,
+                self.buttons[i][j] = Button(str(get_info(self.image_names[i][j])['cost']) + '$',
+                                            TEXT_COLOR, SHOP_TEXT_SIZE, FONT, 
+                                            self.pad_x + (j + 1) * DISTANCE_X - SHOP_BTN_SIZE[0] / 2,
+                                            self.pad_y + (i + 1) * DISTANCE_Y + ICON_SIZE[1] / 2 + SHOP_BTN_PAD,
+                                            *SHOP_BTN_SIZE,
                                             (BTN_CLR1, BTN_CLR2, BTN_CLR3), True)
                 
     def shop_color(self):
@@ -117,12 +75,12 @@ class Shop():
                          (0, 0, SHOP_HEIGHT, SHOP_HEIGHT))
         pygame.draw.circle(screen, self.shop_icon_color,
                            (SHOP_HEIGHT / 2, SHOP_HEIGHT / 2),
-                           SHOP_HEIGHT / 2 - PAD7 * 2)
+                           SHOP_HEIGHT / 2 - PAD14 * 2)
         screen.blit(self.shop_icon, (SHOP_HEIGHT / 4, SHOP_HEIGHT / 4))
         
         text = pygame.font.Font(FONT, MONEY_SIZE).render(str(self.money_score) + '$',
                                                          True, MONEY_COLOR)
-        screen.blit(text, (SHOP_HEIGHT + PAD6, (SHOP_HEIGHT - MONEY_SIZE / 2) / 2))
+        screen.blit(text, (SHOP_HEIGHT + PAD13, (SHOP_HEIGHT - MONEY_SIZE / 2) / 2))
         
         for i in range(len(self.images)):
             for j in range(len(self.images[i])):
@@ -163,9 +121,16 @@ class Shop():
                         if self.buttons[i][j].on_button(event.pos):
                             self.buttons[i][j].pressed(True)
                             
-                            self.info = Information(self.image_names[i][j],
+                            self.purchased_name = self.image_names[i][j]
+                            if get_info(self.purchased_name)['indivisible']:
+                                self.info = Information(self.purchased_name,
                                                     self.money_score,
-                                                    get_skills_info(self.image_names[i][j]))
+                                                    get_info(self.purchased_name),
+                                                    self.inv.get_free_slots(self.inv.items) + self.inv.get_free_slots(self.inv.player_items))
+                            else:
+                                self.info = Information(self.purchased_name,
+                                                    self.money_score,
+                                                    get_info(self.purchased_name))
                             self.show_info = True
                         else:
                             self.buttons[i][j].pressed(False)
@@ -174,6 +139,9 @@ class Shop():
         else:
             if not self.info.controller(event, screen):
                 if self.info.buy:
+                    for _ in range(self.info.count):
+                        cell = self.inv.get_cell((0, 0), self.purchased_name)
+                        self.inv.add_square(screen, *cell, True)
                     self.money_score -= self.info.count * self.info.info['cost']
                 self.show_info = False
                 self.info = None
