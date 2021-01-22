@@ -154,7 +154,7 @@ class Information():
         cost1 = pygame.font.SysFont(FONT, int(h / 4 - PAD10)).render('Цена', True, TEXT_COLOR)
         screen.blit(cost1, (x + PAD10 * 2,
                             (y + h / 5) - cost1.get_height() / 2))
-        cost2 = pygame.font.SysFont(FONT, int(h / 4 - PAD10)).render(str(self.info['cost'] * self.count) + '$', True, TEXT_COLOR)
+        cost2 = pygame.font.SysFont(FONT, int(h / 4 - PAD10)).render(str(self.info['cost']) + '$', True, TEXT_COLOR)
         screen.blit(cost2, (x + w - cost2.get_width() - PAD10 * 2,
                             (y + h / 5) - cost2.get_height() / 2))
         if self.got_money:
@@ -169,7 +169,7 @@ class Information():
             pygame.draw.rect(screen, BUY_COLOR1, (x + PAD10, y + h * 2 / 3 + PAD10,
                                                  w / 2 - PAD10,
                                                  h / 3 - PAD10 * 2))        
-            money = pygame.font.SysFont(FONT, int(h / 4 - PAD10)).render(str(self.money_score) + '$', True, TEXT_COLOR) # + ' (-' + str(self.info['cost'] * self.count) + '$)'
+            money = pygame.font.SysFont(FONT, int(h / 4 - PAD10)).render(str(self.info['cost'] * self.count) + '$', True, TEXT_COLOR) # + ' (-' + str(self.info['cost'] * self.count) + '$)'
             screen.blit(money, ((x + w / 4) - money.get_width() / 2,
                                 (y + h / 6 * 5) - money.get_height() / 2))
             
