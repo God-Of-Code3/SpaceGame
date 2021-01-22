@@ -45,17 +45,11 @@ class Button:
 
         # Рисование кнопки
         if self.rounding:
-            pygame.draw.rect(screen, self.color, (self.x + self.h / 2, self.y,
-                                                  self.w - self.h, self.h))            
-            pygame.draw.circle(screen, self.color, (self.x + self.h / 2,
-                                                    self.y + self.h / 2),
-                               self.h / 2)
-            pygame.draw.circle(screen, self.color, (self.x + self.w - self.h / 2,
-                                                    self.y + self.h / 2),
-                               self.h / 2)
+            round = int(self.h / 2)
         else:
-            pygame.draw.rect(screen, self.color, (self.x, self.y,
-                                                  self.w, self.h))
+            round = 0
+        pygame.draw.rect(screen, self.color, (self.x, self.y,
+                                              self.w, self.h), 0, round)
         
 
         # Отрисовка текста
