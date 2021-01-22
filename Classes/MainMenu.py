@@ -1,24 +1,10 @@
 import pygame
 from Button import Button
-from Inventory import Inventory
+from aaa import Inventory
+from Constants import *
 
 
-SIZE = (1200, 900) # Размер окна
-SPEED = 0.1 # скорость прокрутки фона в (пикселей в кадр)
 #FPS = 60
-BACKGROUND = 'background.jpg' # файл фона
-FILES_WAY = 'data\\' # путь к файлам
-
-# Кнопка
-BTN_SIZE = (200, 100)
-
-TEXT_COLOR = pygame.Color(255, 255, 255)
-TEXT_SIZE = 32
-FONT = None # Шрифт
-
-BTN_CLR1 = pygame.Color(150, 150, 150)
-BTN_CLR2 = pygame.Color(100, 100, 100)
-BTN_CLR3 = pygame.Color(50, 50, 50)
 
 
 def get_inventory():
