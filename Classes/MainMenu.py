@@ -1,6 +1,6 @@
 import pygame
 from Button import Button
-from aaa import Inventory
+from Inventory import Inventory
 from Constants import *
 
 
@@ -18,9 +18,9 @@ class MainMenu():
         self.inventory = None
         
         self.to_battle = Button('В бой', TEXT_COLOR, TEXT_SIZE, FONT, 
-                                (SIZE[0] - BTN_SIZE[0]) / 2,
-                                (SIZE[1] - BTN_SIZE[1]) / 2,
-                                *BTN_SIZE,
+                                (SIZE[0] - BTN_SIZE[0] / 2) / 2,
+                                (SIZE[1] - BTN_SIZE[1] / 2) / 2,
+                                *START_BTN_SIZE,
                                 (BTN_CLR1, BTN_CLR2, BTN_CLR3), True)
         
         #self.speed = speed / FPS
