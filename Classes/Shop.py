@@ -33,7 +33,7 @@ class Shop():
         
         self.images = [None] * len(self.image_names)
         for i in range(len(self.image_names)):
-            self.images[i] = [None] * len(self.image_names[0])
+            self.images[i] = [None] * len(self.image_names[i])
         
         for i in range(len(self.images)):
             for j in range(len(self.images[i])):
@@ -46,7 +46,7 @@ class Shop():
                 
         self.buttons = [None] * len(self.image_names)
         for i in range(len(self.image_names)):
-            self.buttons[i] = [None] * len(self.image_names[0])
+            self.buttons[i] = [None] * len(self.image_names[i])
             
         for i in range(len(self.buttons)):
             for j in range(len(self.buttons[i])):
