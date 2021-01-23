@@ -7,6 +7,7 @@ from GetInfo import get_info
 
 
 global_pressed = False # Производится ли перемещение
+TICK = 10
 
 
 def start_game():
@@ -19,6 +20,7 @@ class Inventory():
                  player_slots, wp, hp,
                  money_score):
         self.items_away = None
+        self.tick = 0
 
         self.shop = None
 
@@ -39,7 +41,6 @@ class Inventory():
         
         self.money_score = money_score
         self.shop_icon_color = SHOP_ICON_COLOR
-        
         
         self.square_clone = None
         self.clone_info = ('image', 'x', 'y', 'count', 'arr', 'slots')
@@ -91,6 +92,11 @@ class Inventory():
         if self.shop:
             self.shop.drawing(screen)
         else:
+            if self.tick < TICK:
+                self.tick += 1
+            else:
+                self.tick = 0
+
             # Рисование панели магазина
             pygame.draw.rect(screen, SHOP_COLOR, (0, 0, SIZE[0], SHOP_HEIGHT))
             
@@ -171,6 +177,15 @@ class Inventory():
                 
             if self.info:
                 self.info.drawing(screen)
+
+            # Отделение более одного предмета от кучи
+            if self.items_away and global_pressed and self.tick == 0:
+                if self.items_away[3][self.items_away[1]][self.items_away[2]].count > 1:
+                    self.minus_1(*self.items_away)
+                elif self.items_away[3][self.items_away[1]][self.items_away[2]].count == 1:
+                    self.items_away[3][self.items_away[1]][self.items_away[2]].down = False
+                    self.items_away = None
+                self.double_click = None
     
     # Притягивание квадрата    
     def square_pulling(self, screen, x, y, arr, q, icons, n):
@@ -376,20 +391,12 @@ class Inventory():
                 if not global_pressed and self.square_clone:
                     self.destroy_clone()
 
-                if self.items_away:
-                    if self.items_away[3][self.items_away[1]][self.items_away[2]].count > 1:
-                        self.minus_1(*self.items_away)
-                        pressing = True
-                        self.double_click = None
-                        self.items_away = (*self.items_away[:6], event.pos)
-                    elif self.items_away[3][self.items_away[1]][self.items_away[2]].count == 1:
-                        self.items_away[3][self.items_away[1]][self.items_away[2]].down = False
-                        pressing = False
-                        self.items_away = None
-
                 if event.type == pygame.MOUSEBUTTONUP:
                     if event.button == 3:
                         self.items_away = None
+                elif event.type == pygame.MOUSEMOTION:
+                    if self.items_away:
+                        self.items_away = (*self.items_away[:6], event.pos)
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 3:
                         for i in self.inv_slots:
@@ -753,7 +760,7 @@ class Square:
     def pressed(self, value, screen):
         self.down = value
     
-# Пример
+'''# Пример
 if __name__ == '__main__':
     pygame.init()
     size = width, height = SIZE[0], SIZE[1]
@@ -775,4 +782,4 @@ if __name__ == '__main__':
                 inv.controller(event, screen)
         inv.drawing(screen)
         pygame.display.flip()
-    pygame.quit()
+    pygame.quit()'''
