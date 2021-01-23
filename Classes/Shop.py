@@ -6,9 +6,9 @@ from GetInfo import get_info
 
 
 def get_products():
-    return [['1.jpg', '2.jpg', '3.jpg', '3.jpg'],
-            ['1.jpg', '2.jpg', '3.jpg', '3.jpg'],
-            ['1.jpg', '2.jpg', '3.jpg', '3.jpg']]
+    return [['4.png', '2.jpg', '3.jpg', '3.jpg'],
+            ['1.jpg', '4.png', '3.jpg', '3.jpg'],
+            ['1.jpg', '2.jpg', '4.png', '3.jpg']]
 
 
 class Shop():
@@ -139,9 +139,14 @@ class Shop():
         else:
             if not self.info.controller(event, screen):
                 if self.info.buy:
-                    for _ in range(self.info.count):
-                        cell = self.inv.get_cell((0, 0), self.purchased_name)
-                        self.inv.add_square(screen, *cell, True)
+                    if self.inv.in_arrays(self.purchased_name):
+                        for _ in range(self.info.count):
+                            cell = self.inv.get_cell((0, 0), self.purchased_name)
+                            self.inv.add_square(screen, *cell, True)
+                    else:
+                        for _ in range(self.info.count):
+                            cell = self.inv.get_cell((0, 0), self.purchased_name)
+                            self.inv.add_square(screen, *cell, True)
                     self.money_score -= self.info.count * self.info.info['cost']
                 self.show_info = False
                 self.info = None
