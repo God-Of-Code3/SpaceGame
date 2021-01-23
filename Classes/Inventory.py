@@ -18,6 +18,8 @@ class Inventory():
                  inv_slots, wi, hi,
                  player_slots, wp, hp,
                  money_score):
+        self.items_away = None
+
         self.shop = None
 
         self.blocked = None
@@ -373,16 +375,24 @@ class Inventory():
                 
                 if not global_pressed and self.square_clone:
                     self.destroy_clone()
-                
-                if event.type == pygame.MOUSEBUTTONDOWN:
+
+                if self.items_away and self.items_away[3][self.items_away[1]][self.items_away[2]].count > 1:
+                    self.minus_1(*self.items_away)
+                    pressing = True
+                    self.double_click = None
+
+                if event.type == pygame.MOUSEMOTION and self.items_away:
+                    self.items_away = (*self.items_away[:6], event.pos)
+                elif event.type == pygame.MOUSEBUTTONUP:
+                    if event.button == 3:
+                        self.items_away = None
+                elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 3:
                         for i in self.inv_slots:
                             x, y = i[1], i[2]
                             if self.items[x][y].down and global_pressed:
                                 if self.items[x][y].count > 1:
-                                    self.minus_1(screen, x, y, self.items, self.inv_slots, i, event.pos)
-                                    pressing = True
-                                    self.double_click = None
+                                    self.items_away = (screen, x, y, self.items, self.inv_slots, i, event.pos)
                                     break
                                 elif self.items[x][y].count == 1:
                                     self.items[x][y].down = False
@@ -400,9 +410,7 @@ class Inventory():
                             x, y = i[1], i[2]
                             if self.player_items[x][y].down and global_pressed:
                                 if self.player_items[x][y].count > 1:
-                                    self.minus_1(screen, x, y, self.player_items, self.player_slots, i, event.pos)
-                                    pressing = True
-                                    self.double_click = None
+                                    self.items_away = (screen, x, y, self.player_items, self.player_slots, i, event.pos)
                                     break
                                 elif self.player_items[x][y].count == 1:
                                     self.player_items[x][y].down = False
@@ -611,7 +619,7 @@ class Inventory():
         self.clone_info = None
         
     def minus_1(self, screen, x, y, arr, slots, elem, pos):
-        a = slots.index(elem)
+        a = [i[:3] for i in slots].index(elem[:3])
         slots[a] = (slots[a][0], slots[a][1], slots[a][2], arr[x][y].count - 1)
         arr[x][y].count -= 1
 
