@@ -561,6 +561,11 @@ class Inventory():
         for i in self.inv_slots:
             x, y = i[1], i[2]
             if self.items[x][y].down:
+                if self.items[x][y].count == -1:
+                    self.money_score += int(get_info(self.items[x][y].image_name)['cost'] / 2)
+                else:
+                    self.money_score += int(self.items[x][y].count * get_info(self.items[x][y].image_name)['cost'] / 2)
+
                 del self.inv_slots[self.inv_slots.index((self.items[x][y].image_name,
                                                          x, y, self.items[x][y].count))]
                 self.items[x][y] = None
@@ -569,6 +574,11 @@ class Inventory():
         for i in self.player_slots:
             x, y = i[1], i[2]
             if self.player_items[x][y].down:
+                if self.player_items[x][y].count == -1:
+                    self.money_score += int(get_info(self.player_items[x][y].image_name)['cost'] / 2)
+                else:
+                    self.money_score += int(self.player_items[x][y].count * get_info(self.player_items[x][y].image_name)['cost'] / 2)
+
                 del self.player_slots[self.player_slots.index((self.player_items[x][y].image_name,
                                                                x, y, self.player_items[x][y].count))]
                 self.player_items[x][y] = None
