@@ -5,9 +5,6 @@ import pygame
 
 SIZE = (1200, 900) # Размер окна
 
-SPEED = 0.1 # скорость прокрутки фона в (пикселей в кадр)
-BACKGROUND = 'background.jpg' # файл фона
-
 # Кнопка
 START_BTN_SIZE = (200, 100)
 
