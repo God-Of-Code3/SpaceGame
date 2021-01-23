@@ -317,10 +317,10 @@ class Inventory():
     def get_player_slots(self):
         return self.player_slots
     
-    def in_arrays(self, elem):
-        if elem in [i[0] for i in self.inv_slots]:
+    def in_arrays(self, name):
+        if name in [i[0] for i in self.inv_slots]:
             return True
-        elif elem in [i[0] for i in self.player_slots]:
+        elif name in [i[0] for i in self.player_slots]:
             return True
         else:
             return False
@@ -376,14 +376,18 @@ class Inventory():
                 if not global_pressed and self.square_clone:
                     self.destroy_clone()
 
-                if self.items_away and self.items_away[3][self.items_away[1]][self.items_away[2]].count > 1:
-                    self.minus_1(*self.items_away)
-                    pressing = True
-                    self.double_click = None
+                if self.items_away:
+                    if self.items_away[3][self.items_away[1]][self.items_away[2]].count > 1:
+                        self.minus_1(*self.items_away)
+                        pressing = True
+                        self.double_click = None
+                        self.items_away = (*self.items_away[:6], event.pos)
+                    elif self.items_away[3][self.items_away[1]][self.items_away[2]].count == 1:
+                        self.items_away[3][self.items_away[1]][self.items_away[2]].down = False
+                        pressing = False
+                        self.items_away = None
 
-                if event.type == pygame.MOUSEMOTION and self.items_away:
-                    self.items_away = (*self.items_away[:6], event.pos)
-                elif event.type == pygame.MOUSEBUTTONUP:
+                if event.type == pygame.MOUSEBUTTONUP:
                     if event.button == 3:
                         self.items_away = None
                 elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -550,18 +554,10 @@ class Inventory():
                                     self.size - PAD3 * 2,
                                     slots[a][3])
             else:
-                if image in [i[0] for i in self.inv_slots]:
-                    a = [i[0] for i in self.inv_slots].index(image)
-                    if self.inv_slots[a][3] == -1:
-                        n = -1
-                    else:
-                        n = 1
+                if get_info(image)['indivisible']:
+                    n = -1
                 else:
-                    a = [i[0] for i in self.player_slots].index(image)
-                    if self.player_slots[a][3] == -1:
-                        n = -1
-                    else:
-                        n = 1
+                    n = 1
                     
                 slots.append((image, x, y, n))
                 arr[x][y] = Square(screen, image, xp, yp,
