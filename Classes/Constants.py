@@ -46,6 +46,7 @@ SHOP_ICON_COLOR = pygame.Color(0, 0, 0)
 SELECTED_ICON_COLOR = pygame.Color(50, 50, 50)
 PRESSED_ICON_COLOR = pygame.Color(100, 100, 100)
 
+TRASH_NAME = 'trash_icon.png' # имя файла мусорной корзины
 TO_SHOP_NAME = 'shop_icon.png' # имя файла иконки магазина
 SHOP_HEIGHT = 80 # размер панели магазина
 # Отступы магазина
