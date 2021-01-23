@@ -4,7 +4,9 @@ from Inventory import Inventory
 from Constants import *
 
 
-#FPS = 60
+FPS = 60
+SPEED = 1 # скорость прокрутки фона в (пикселей в кадр)
+BACKGROUND = 'background.jpg' # файл фона
 
 
 def get_inventory():
@@ -14,7 +16,7 @@ def get_inventory():
 
 
 class MainMenu():
-    def __init__(self, background, speed):
+    def __init__(self, background, speed, clock):
         self.inventory = None
         
         self.to_battle = Button('В бой', TEXT_COLOR, TEXT_SIZE, FONT, 
@@ -23,8 +25,8 @@ class MainMenu():
                                 *START_BTN_SIZE,
                                 (BTN_CLR1, BTN_CLR2, BTN_CLR3), True)
         
-        #self.speed = speed / FPS
         self.speed = speed
+        self.clock = clock
         
         self.background = pygame.image.load(FILES_WAY + background)
         self.height = int(self.background.get_height() * (SIZE[0] / self.background.get_width()))
@@ -32,6 +34,7 @@ class MainMenu():
         self.pos_y = 0
     
     def drawing(self, screen):
+        self.clock.tick(FPS)
         if self.inventory:
             self.inventory.drawing(screen)
         else:
@@ -56,7 +59,7 @@ class MainMenu():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if self.to_battle.on_button(event.pos):
                     self.to_battle.pressed(True)
-                    self.inventory = Inventory(screen, *get_inventory())                
+                    self.inventory = Inventory(screen, *get_inventory())
                 else:
                     self.to_battle.pressed(False)
         
@@ -68,10 +71,9 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(size)
     screen.fill(pygame.Color('black'))
 
-    menu = MainMenu(BACKGROUND, SPEED)
+    clock = pygame.time.Clock()
+    menu = MainMenu(BACKGROUND, SPEED, clock)
 
-    #fps = FPS
-    clock = pygame.time.Clock()    
     running = True
     while running:
         screen.fill(pygame.Color('black'))
@@ -82,5 +84,4 @@ if __name__ == '__main__':
                 menu.controller(event, screen)
         menu.drawing(screen)
         pygame.display.flip()
-        #clock.tick(fps)
     pygame.quit()
