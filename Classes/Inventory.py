@@ -32,15 +32,21 @@ class Inventory():
         
         self.selected = False
         self.pressed = False
-
-        print(FILES_WAY + TO_SHOP_NAME)
+        self.shop_icon_color = SHOP_ICON_COLOR
         self.shop_icon = pygame.image.load(FILES_WAY + TO_SHOP_NAME)
         self.shop_icon = pygame.transform.scale(self.shop_icon,
                                             (int(SHOP_HEIGHT / 2),
                                              int(SHOP_HEIGHT / 2)))
+
+        self.trsh_slctd = False
+        self.trsh_prssd = False
+        self.trash_icon_color = SHOP_ICON_COLOR
+        self.trash_icon = pygame.image.load(FILES_WAY + TRASH_NAME)
+        self.trash_icon = pygame.transform.scale(self.trash_icon,
+                                                 (int(SHOP_HEIGHT / 2),
+                                                  int(SHOP_HEIGHT / 2)))
         
         self.money_score = money_score
-        self.shop_icon_color = SHOP_ICON_COLOR
         
         self.square_clone = None
         self.clone_info = ('image', 'x', 'y', 'count', 'arr', 'slots')
@@ -111,6 +117,14 @@ class Inventory():
             text = pygame.font.Font(FONT, MONEY_SIZE).render(str(self.money_score) + '$',
                                                              True, MONEY_COLOR)
             screen.blit(text, (SHOP_HEIGHT + PAD6, (SHOP_HEIGHT - MONEY_SIZE / 2) / 2))
+
+            self.trash_color()
+            pygame.draw.rect(screen, SHOP_SQUARE_COLOR,
+                             (SIZE[0] - SHOP_HEIGHT, 0, SHOP_HEIGHT, SHOP_HEIGHT))
+            pygame.draw.circle(screen, self.trash_icon_color,
+                               (SIZE[0] - SHOP_HEIGHT / 2, SHOP_HEIGHT / 2),
+                               SHOP_HEIGHT / 2 - PAD7 * 2)
+            screen.blit(self.trash_icon, (SIZE[0] - SHOP_HEIGHT * 3 / 4, SHOP_HEIGHT / 4))
             
             # Рисование инвентаря
             pygame.draw.rect(screen, INVENTORY_COLOR,
@@ -351,6 +365,15 @@ class Inventory():
                 self.shop_icon_color = SELECTED_ICON_COLOR
         else:
             self.shop_icon_color = SHOP_ICON_COLOR
+
+    def trash_color(self):
+        if self.trsh_slctd:
+            if self.trsh_prssd:
+                self.trash_icon_color = PRESSED_ICON_COLOR
+            else:
+                self.trash_icon_color = SELECTED_ICON_COLOR
+        else:
+            self.trash_icon_color = SHOP_ICON_COLOR
     
     def controller(self, event, screen):
         if self.shop:
@@ -359,17 +382,29 @@ class Inventory():
                 self.shop = None
         else:
             if not self.show_info:
+                global global_pressed
+
                 # Для панели магазина
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if SHOP_HEIGHT > event.pos[0] > 0 and SHOP_HEIGHT > event.pos[1] > 0:
                         self.pressed = True
-                        self.go_to_skills_shop()                      
+                        self.go_to_skills_shop()
+                    elif SIZE[0] > event.pos[0] > SIZE[0] - SHOP_HEIGHT and SHOP_HEIGHT > event.pos[1] > 0:
+                        self.trsh_prssd = True
+                        if global_pressed:
+                            self.delete_square()
                 elif event.type == pygame.MOUSEMOTION:
                     if SHOP_HEIGHT > event.pos[0] > 0 and SHOP_HEIGHT > event.pos[1] > 0:
                         self.selected = True
                     else:
                         self.selected = False
                         self.pressed = False
+
+                    if SIZE[0] > event.pos[0] > SIZE[0] - SHOP_HEIGHT and SHOP_HEIGHT > event.pos[1] > 0:
+                        self.trsh_slctd = True
+                    else:
+                        self.trsh_slctd = False
+                        self.trsh_prssd = False
                 
                 # Кнопка в бой
                 if event.type == pygame.MOUSEMOTION:
@@ -385,7 +420,6 @@ class Inventory():
                         self.to_battle.pressed(False)
                 
                 # Для инвентаря
-                global global_pressed
                 pressing = False
                 
                 if not global_pressed and self.square_clone:
@@ -522,6 +556,23 @@ class Inventory():
                     self.first_click = None
                     self.show_info = False
                     self.info = None
+
+    def delete_square(self):
+        for i in self.inv_slots:
+            x, y = i[1], i[2]
+            if self.items[x][y].down:
+                del self.inv_slots[self.inv_slots.index((self.items[x][y].image_name,
+                                                         x, y, self.items[x][y].count))]
+                self.items[x][y] = None
+                break
+
+        for i in self.player_slots:
+            x, y = i[1], i[2]
+            if self.player_items[x][y].down:
+                del self.player_slots[self.player_slots.index((self.player_items[x][y].image_name,
+                                                               x, y, self.player_items[x][y].count))]
+                self.player_items[x][y] = None
+                break
      
     def add_square(self, screen, image, x, y, arr, slots, change_pos):
         if not change_pos:
@@ -582,7 +633,7 @@ class Inventory():
             for i in range(self.w1):
                 for j in range(self.h1):
                     if not near or (self.items[i][j] == None or\
-                        (self.items[i][j] != None and\
+                                    (self.items[i][j] != None and\
                        q == self.items[i][j].image_name and\
                        self.items[i][j].count != -1)):
                         sqx = (SIZE[0] - self.size * self.w1) / 2 + (i + 0.5) * self.size
