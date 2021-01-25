@@ -1,33 +1,35 @@
 import pygame
-
 import json
+from V2.Code.Shop import *
+from V2.Code.Button import Button
+from V2.Code.Information import Information
+from V2.Code.Constants import *
 
 
-SIZE = (1200, 900)  # Размер окна
 FONT = None  # Шрифт
 global_pressed = False  # Производится ли перемещение
-FILES_WAY = '../Assets/Images/Skills/'  # Путь для файлов
-HIGH_FILES_WAY = '../Assets/Images/Skills/'  # Путь для файлов в высоком разрешении
+FILES_WAY = 'Assets/Images/Skills/'  # Путь для файлов
+HIGH_FILES_WAY = 'Assets/Images/Skills/'  # Путь для файлов в высоком разрешении
 HIGH_QUALITY = (400, 400)  # Разрешение картинок в описании
 
 # Константы инвентаря
 
 INVENTORY_COLOR = pygame.Color(100, 100, 100)  # цвета ячеек
 CELLS_COLOR = pygame.Color(255, 255, 255)
-SQUARE_COLOR = pygame.Color(80, 80, 80)  # цвета предметов
-SELECTED_COLOR = pygame.Color(120, 120, 120)
-PRESSED_COLOR = pygame.Color(120, 120, 150)
+SQUARE_COLOR = pygame.Color(170, 170, 170)  # цвета предметов
+SELECTED_COLOR = pygame.Color(190, 190, 190)
+PRESSED_COLOR = pygame.Color(210, 210, 210)
 # INFO_COLOR = pygame.Color(0, 100, 100)
 
 CELLS_WIDTH = 2  # ширина границы ячеек
 # Отступы инвентаря
 PAD1 = 75  # внешний
-PAD2 = 10  # ячейки от стен
+PAD2 = 0  # ячейки от стен
 PAD3 = 10  # внутри ячеек
 PAD4 = 5  # картинки от квадрата
 # Текст кол-ва предметов
 TEXT_SIZE = 32
-TEXT_COLOR = pygame.Color(255, 255, 255)
+TEXT_COLOR = pygame.Color(40, 40, 40)
 
 # Константы магазина
 
@@ -37,7 +39,7 @@ SHOP_ICON_COLOR = pygame.Color(0, 0, 0)
 SELECTED_ICON_COLOR = pygame.Color(50, 50, 50)
 PRESSED_ICON_COLOR = pygame.Color(100, 100, 100)
 
-SHOP_NAME = 'LaserRay.png'  # имя файла иконки магазина
+SHOP_NAME = 'LaserShot.png'  # имя файла иконки магазина
 SHOP_HEIGHT = 80  # размер панели магазина
 # Отступы магазина
 PAD5 = 30  # панель магазина от инвентаря (-PAD2)
@@ -50,7 +52,7 @@ MONEY_COLOR = pygame.Color(0, 0, 0)
 # Константы окна информации
 
 INFO_COLOR = pygame.Color(125, 125, 125)  # цвета
-PANEL_COLOR = pygame.Color(150, 0, 0)
+PANEL_COLOR = pygame.Color(209, 223, 230)
 CLOSE_PANEL_COLOR = pygame.Color(100, 0, 0)
 DESCR_COLOR = pygame.Color(150, 150, 150)
 BUY_COLOR1 = pygame.Color(150, 150, 150)
@@ -70,324 +72,32 @@ PAD9 = 20  # между панелями
 PAD10 = 10  # внутри панели покупки
 PAD11 = 125  # от рамок окна
 
-file = open("../Data/Skills.json", "r", encoding="utf-8")
+# Кнопка "В бой"
+
+BTN_SIZE = (500, 50)
+BTN_CLR1 = pygame.Color(150, 150, 150)
+BTN_CLR2 = pygame.Color(100, 100, 100)
+BTN_CLR3 = pygame.Color(50, 50, 50)
+BTN_PAD = 5  # отступ от нижних слотов
+
+
+def start_game(inv):
+    inv.running = False
+
+
+file = open("./Data/Skills.json", "r", encoding="utf-8")
 skills_data = json.load(file)
 
 
-def get_info(image_name):
-    inf = None
-    for key in skills_data:
-        if skills_data[key]["image"] == image_name:
-            inf = skills_data[key]
-    if inf:
-        return {'image': HIGH_FILES_WAY + image_name,
-            'name': inf["name"],
-            'description': inf["description"],
-            'cost': inf["cost"],
-            'specifications': {'spec1': "Значение свойства spec1",
-                               'spec2': "Значение свойства spec2",
-                               'spec3': "Значение свойства spec3"}}
-
-    return {'image': HIGH_FILES_WAY + image_name,
-            'name': "Супер мега пушка Сокрушитель миров 3000 ультра экстрим круть",
-            'description': [
-                "Слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова",
-                "Слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова слова"],
-            'cost': 100,
-            'specifications': {'spec1': "Значение свойства spec1",
-                               'spec2': "Значение свойства spec2",
-                               'spec3': "Значение свойства spec3"}}
-
-
-class Information():
-    def __init__(self, item_name, money_score, free_slots=None):
-        self.free_slots = free_slots
-        self.got_space = True
-
-        self.count = 1
-        self.buy = False
-        self.got_money = True
-
-        self.item_name = item_name
-        self.money_score = money_score
-        self.info = get_info(self.item_name)
-
-        self.item_icon = pygame.image.load(self.info['image'])
-        self.item_icon = pygame.transform.scale(self.item_icon, HIGH_QUALITY)
-
-        # Для покупки
-        x = PAD11 + PAD8 + HIGH_QUALITY[0] + PAD10 * 2 + PAD9
-        y = PAD11 + PAD8 + HIGH_QUALITY[1] + PAD10 * 2 + PAD9
-        w = SIZE[0] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[0] - PAD9
-        h = SIZE[1] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[1] - PAD9
-
-        self.buttons = [Button('X', CLOSE_BUTTON, SIZE[0] - PAD11 - CLOSE_BUTTON,
-                               PAD11 - CLOSE_BUTTON,
-                               CLOSE_BUTTON, CLOSE_BUTTON, (CLOSE_COLOR1,
-                                                            CLOSE_COLOR2,
-                                                            CLOSE_COLOR3)),
-                        Button('Купить', TEXT_SIZE,
-                               x + w / 2 + PAD10, y + h / 3 + PAD10,
-                               w / 2 - PAD10 * 2, h * 2 / 3 - PAD10 * 2,
-                               (BUY_COLOR1, BUY_COLOR2, BUY_COLOR3, BUY_COLOR4)),
-                        Button('<', TEXT_SIZE,
-                               x + PAD10, y + h / 3 + PAD10,
-                               w / 2 / 5 - PAD10, h / 3 - PAD10,
-                               (BUY_COLOR1, BUY_COLOR2, BUY_COLOR3, BUY_COLOR4)),
-                        Button('>', TEXT_SIZE,
-                               x + w / 2 / 5 * 4 + PAD10, y + h / 3 + PAD10,
-                               w / 2 / 5 - PAD10, h / 3 - PAD10,
-                               (BUY_COLOR1, BUY_COLOR2, BUY_COLOR3, BUY_COLOR4))]
-
-    def drawing(self, screen):
-        for button in self.buttons:
-            button.block(False)
-
-        if self.count == 1:
-            self.buttons[2].block(True)
-        if self.count == self.money_score // self.info['cost']:
-            self.buttons[3].block(True)
-
-        if self.money_score < self.info['cost']:
-            self.got_money = False
-            self.buttons[1].block(True)
-            self.buttons[2].block(True)
-            self.buttons[3].block(True)
-        elif (self.free_slots or self.free_slots == 0) and self.count > self.free_slots:
-            self.got_space = False
-            self.buttons[1].block(True)
-            self.buttons[3].block(True)
-        elif self.money_score // self.info['cost'] > self.count > 1:
-            self.got_space = True
-        else:
-            self.got_space = True
-
-        # Верхняя панель
-        pygame.draw.rect(screen, CLOSE_PANEL_COLOR, (PAD11, PAD11 - CLOSE_BUTTON,
-                                                     SIZE[0] - PAD11 * 2,
-                                                     CLOSE_BUTTON))
-        window = pygame.font.SysFont(FONT, int(CLOSE_BUTTON - PAD10)).render('Оборудование и снаряжение', True,
-                                                                             TEXT_COLOR)
-        screen.blit(window, (PAD11 + PAD10,
-                             PAD11 - CLOSE_BUTTON + window.get_height() / 2))
-        # Окно
-        pygame.draw.rect(screen, INFO_COLOR, (PAD11, PAD11,
-                                              SIZE[0] - PAD11 * 2,
-                                              SIZE[1] - PAD11 * 2))
-        # Картинка
-        pygame.draw.rect(screen, PANEL_COLOR, (PAD11 + PAD8, PAD11 + PAD8,
-                                               HIGH_QUALITY[0] + PAD10 * 2,
-                                               HIGH_QUALITY[1] + PAD10 * 2))
-        screen.blit(self.item_icon, (PAD11 + PAD8 + PAD10, PAD11 + PAD8 + PAD10))
-        # Значения
-        pygame.draw.rect(screen, PANEL_COLOR, (PAD11 + PAD8,
-                                               PAD11 + PAD8 + HIGH_QUALITY[1] + PAD10 * 2 + PAD9,
-                                               HIGH_QUALITY[0] + PAD10 * 2,
-                                               SIZE[1] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[1] - PAD9))
-        line = 0
-        for value in list(self.info['specifications'].keys()):
-            line += 1
-            values = pygame.font.SysFont(FONT, int((HIGH_QUALITY[0]) / 15)).render(
-                value + ': ' + self.info['specifications'][value], True, TEXT_COLOR)
-            screen.blit(values, (PAD11 + PAD8 + PAD10 * 2,
-                                 PAD11 + PAD8 + HIGH_QUALITY[1] + PAD9 + PAD10 + line * (
-                                             values.get_height() + BETWEEN)))
-        # Описание
-        x = PAD11 + PAD8 + HIGH_QUALITY[0] + PAD10 * 2 + PAD9
-        y = PAD11 + PAD8
-        w = SIZE[0] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[0] - PAD9
-        h = HIGH_QUALITY[1] + PAD10 * 2
-        pygame.draw.rect(screen, DESCR_COLOR, (x, y, w, h))
-
-        line1 = 0
-        text = ' ' * INDENT
-        test = ''
-        for i in self.info['name'].split():
-            test = text
-            test += (i + ' ')
-            name = pygame.font.SysFont(FONT, int(TEXT_SIZE)).render(test, True, TEXT_COLOR)
-            if name.get_width() > w - PAD10 * 3:
-                name = pygame.font.SysFont(FONT, int(TEXT_SIZE)).render(text, True, TEXT_COLOR)
-                screen.blit(name, (x + PAD10 * 2, y + PAD10 * 2 + TEXT_SIZE * line1))
-                text = i + ' '
-                line1 += 1
-            else:
-                text = test
-        name = pygame.font.SysFont(FONT, int(TEXT_SIZE)).render(test, True, TEXT_COLOR)
-        screen.blit(name, (x + PAD10 * 2, y + PAD10 * 2 + TEXT_SIZE * line1))
-
-        line2 = 0
-        text = ''
-        test = ''
-        par_num_orig = 0
-        for paragraph in self.info['description']:
-            par_num = 0
-            text = ' ' * INDENT
-            for i in paragraph.split():
-                test = text
-                test += (i + ' ')
-                name = pygame.font.SysFont(FONT, int(TEXT_SIZE / 1.5)).render(test, True, TEXT_COLOR)
-                if name.get_width() > w - PAD10 * 3:
-                    name = pygame.font.SysFont(FONT, int(TEXT_SIZE / 1.5)).render(text, True, TEXT_COLOR)
-                    screen.blit(name, (x + PAD10 * 2,
-                                       y + PAD10 * 7 + TEXT_SIZE * (line1 + line2) + par_num_orig))
-                    par_num += name.get_height()
-                    text = i + ' '
-                    line2 += 1
-                else:
-                    text = test
-            name = pygame.font.SysFont(FONT, int(TEXT_SIZE / 1.5)).render(test, True, TEXT_COLOR)
-            screen.blit(name, (x + PAD10 * 2,
-                               y + PAD10 * 7 + TEXT_SIZE * (line1 + line2) + par_num_orig))
-            line2 += 1
-            par_num_orig = par_num
-        # Покупка
-        x = PAD11 + PAD8 + HIGH_QUALITY[0] + PAD10 * 2 + PAD9
-        y = PAD11 + PAD8 + HIGH_QUALITY[1] + PAD10 * 2 + PAD9
-        w = SIZE[0] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[0] - PAD9
-        h = SIZE[1] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[1] - PAD9
-        pygame.draw.rect(screen, PANEL_COLOR, (x, y, w, h))
-        pygame.draw.rect(screen, BUY_COLOR1, (x + PAD10, y + PAD10,
-                                              w - PAD10 * 2,
-                                              h / 3 - PAD10))
-        cost1 = pygame.font.SysFont(FONT, int(h / 4 - PAD10)).render('Цена', True, TEXT_COLOR)
-        screen.blit(cost1, (x + PAD10 * 2,
-                            (y + h / 5) - cost1.get_height() / 2))
-        cost2 = pygame.font.SysFont(FONT, int(h / 4 - PAD10)).render(str(self.info['cost']) + '$', True, TEXT_COLOR)
-        screen.blit(cost2, (x + w - cost2.get_width() - PAD10 * 2,
-                            (y + h / 5) - cost2.get_height() / 2))
-        if self.got_money:
-            pygame.draw.rect(screen, BUY_COLOR1, (x + w / 10 + PAD10,
-                                                  y + h / 3 + PAD10,
-                                                  w / 10 * 3 - PAD10,
-                                                  h / 3 - PAD10))
-            buy = pygame.font.SysFont(FONT, int(h / 4 - PAD10)).render(str(self.count), True, TEXT_COLOR)
-            screen.blit(buy, ((x + w / 4 + PAD10 / 2) - buy.get_width() / 2,
-                              (y + h / 2 + PAD10 / 2) - buy.get_height() / 2))
-
-            pygame.draw.rect(screen, BUY_COLOR1, (x + PAD10, y + h * 2 / 3 + PAD10,
-                                                  w / 2 - PAD10,
-                                                  h / 3 - PAD10 * 2))
-            money = pygame.font.SysFont(FONT, int(h / 4 - PAD10)).render(str(self.info['cost'] * self.count) + '$',
-                                                                         True,
-                                                                         TEXT_COLOR)  # + ' (-' + str(self.info['cost'] * self.count) + '$)'
-            screen.blit(money, ((x + w / 4) - money.get_width() / 2,
-                                (y + h / 6 * 5) - money.get_height() / 2))
-
-            if self.got_space or not (self.free_slots or self.free_slots == 0):
-                for button in self.buttons:
-                    button.drawing(screen)
-            else:
-                pygame.draw.rect(screen, BUY_COLOR4, (x + w / 2 + PAD10,
-                                                      y + h / 3 + PAD10,
-                                                      w / 2 - PAD10 * 2,
-                                                      h * 2 / 3 - PAD10 * 2))
-                no_space = pygame.font.SysFont(FONT, int(TEXT_SIZE / 1.5)).render('Недостаточно места', True,
-                                                                                  TEXT_COLOR)
-                screen.blit(no_space, ((x + w / 4 * 3) - no_space.get_width() / 2,
-                                       (y + h / 3 * 2) - no_space.get_height() / 2))
-                self.buttons[0].drawing(screen)
-                self.buttons[2].drawing(screen)
-                self.buttons[3].drawing(screen)
-        else:
-            no_money = pygame.font.SysFont(FONT, int(h / 3 - PAD10)).render('Недостаточно средств', True, TEXT_COLOR)
-            screen.blit(no_money, ((x + w / 2) - no_money.get_width() / 2,
-                                   (y + h / 3 * 2) - no_money.get_height() / 2))
-            self.buttons[0].drawing(screen)
-
-    def controller(self, event, screen):
-        if self.buttons[0].down:
-            return False
-        elif self.buttons[1].down:
-            self.buy = True
-            return False
-        elif self.buttons[2].down and self.count > 1:
-            self.buttons[2].down = False
-            self.count -= 1
-        elif self.buttons[3].down and self.count < self.money_score // self.info['cost']:
-            self.buttons[3].down = False
-            self.count += 1
-
-        if event.type == pygame.MOUSEMOTION:
-            for button in self.buttons:
-                if button.on_button(event.pos):
-                    button.selected(True)
-                else:
-                    button.selected(False)
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            for button in self.buttons:
-                if button.on_button(event.pos):
-                    button.pressed(True)
-                else:
-                    button.pressed(False)
-        return True
-
-
-class Button():
-    def __init__(self, text, text_size, x, y, w, h, colors):
-        self.blocked = False
-
-        self.text = text
-        self.text_size = text_size
-
-        self.colors = colors
-        self.color = self.colors[0]
-
-        # Сохранение области нажатия
-        self.rect = pygame.Rect(x, y, w, h)
-
-        # Переменные размеров
-        self.x = x
-        self.y = y
-        self.w = w
-        self.h = h
-
-        # Значения нажатия
-        self.on = False
-        self.down = False
-
-    def animation(self):  # Анимация при нажатии
-        if len(self.colors) == 4 and self.blocked:
-            self.color = self.colors[3]
-        elif self.on and self.down:
-            self.color = self.colors[2]
-        elif self.on:
-            self.color = self.colors[1]
-        else:
-            self.color = self.colors[0]
-
-    def drawing(self, screen):  # Нарисовать кнопку
-        self.animation()  # Запуск анимации
-
-        # Рисование кнопки
-        pygame.draw.rect(screen, self.color, self.rect, 0)
-        # Отрисовка текста
-        to_write = pygame.font.SysFont(FONT, int(self.text_size)).render(self.text, True, TEXT_COLOR)
-        screen.blit(to_write, ((self.x + self.w / 2) - to_write.get_width() / 2,
-                               (self.y + self.h / 2) - to_write.get_height() / 2))
-
-    def block(self, value):
-        self.blocked = value
-
-    def selected(self, value):  # Ниже функции для нажатия
-        if not value:
-            self.down = False
-        # self.down = False
-        self.on = value
-
-    def on_button(self, mouse_pos):
-        if self.rect.collidepoint(mouse_pos):
-            return True
-        else:
-            return False
-
-    def pressed(self, value):
-        if not self.blocked:
-            self.down = value
-
-
 class Inventory():
-    def __init__(self, inv_slots, wi, hi, player_slots, wp, hp, money_score):
+    def __init__(self, screen,
+                 inv_slots, wi, hi,
+                 player_slots, wp, hp,
+                 money_score):
+        self.items_away = None
+
+        self.shop = None
+
         self.blocked = None
         self.show_info = False
         self.double_click = None
@@ -396,8 +106,10 @@ class Inventory():
 
         self.selected = False
         self.pressed = False
+        self.running = True
 
-        self.shop_icon = pygame.image.load(FILES_WAY + SHOP_NAME)
+        print(FILES_WAY + TO_SHOP_NAME)
+        self.shop_icon = pygame.image.load(FILES_WAY + TO_SHOP_NAME)
         self.shop_icon = pygame.transform.scale(self.shop_icon,
                                                 (int(SHOP_HEIGHT / 2),
                                                  int(SHOP_HEIGHT / 2)))
@@ -418,6 +130,12 @@ class Inventory():
             self.size = (SIZE[0] - PAD1 * 2) / self.w1
         else:
             self.size = (SIZE[0] - PAD1 * 2) / self.w2
+
+        self.to_battle = Button('Начать', TEXT_COLOR, TEXT_SIZE, FONT,
+                                (SIZE[0] - TO_BATTLE_BTN_SIZE[0]) / 2,
+                                SIZE[1] - self.size * self.h2 - PAD1 - PAD2 - TO_BATTLE_BTN_SIZE[1] - BTN_PAD,
+                                *TO_BATTLE_BTN_SIZE,
+                                (BTN_CLR1, BTN_CLR2, BTN_CLR3), True)
 
         # Добавление слотов
         self.items = [None] * self.w1
@@ -445,90 +163,93 @@ class Inventory():
                                              self.size - PAD3 * 2,
                                              self.size - PAD3 * 2, n)
 
-    def get_items(self):
-        return self.player_items, self.items
-
     def drawing(self, screen):
-        # Рисование панели магазина
-        pygame.draw.rect(screen, SHOP_COLOR, (0, 0, SIZE[0], SHOP_HEIGHT))
+        if self.shop:
+            self.shop.drawing(screen)
+        else:
+            # Рисование панели магазина
+            pygame.draw.rect(screen, SHOP_COLOR, (0, 0, SIZE[0], SHOP_HEIGHT))
 
-        self.shop_color()
-        pygame.draw.rect(screen, SHOP_SQUARE_COLOR,
-                         (0, 0, SHOP_HEIGHT, SHOP_HEIGHT))
-        pygame.draw.circle(screen, self.shop_icon_color,
-                           (SHOP_HEIGHT / 2, SHOP_HEIGHT / 2),
-                           SHOP_HEIGHT / 2 - PAD7 * 2)
-        screen.blit(self.shop_icon, (SHOP_HEIGHT / 4, SHOP_HEIGHT / 4))
+            self.shop_color()
+            pygame.draw.rect(screen, SHOP_SQUARE_COLOR,
+                             (0, 0, SHOP_HEIGHT, SHOP_HEIGHT))
+            pygame.draw.circle(screen, self.shop_icon_color,
+                               (SHOP_HEIGHT / 2, SHOP_HEIGHT / 2),
+                               SHOP_HEIGHT / 2 - PAD7 * 2)
+            screen.blit(self.shop_icon, (SHOP_HEIGHT / 4, SHOP_HEIGHT / 4))
 
-        text = pygame.font.Font(FONT, MONEY_SIZE).render(str(self.money_score) + '$',
-                                                         True, MONEY_COLOR)
-        screen.blit(text, (SHOP_HEIGHT + PAD6, (SHOP_HEIGHT - MONEY_SIZE / 2) / 2))
+            text = pygame.font.Font(FONT, MONEY_SIZE).render(str(self.money_score) + '$',
+                                                             True, MONEY_COLOR)
+            screen.blit(text, (SHOP_HEIGHT + PAD6, (SHOP_HEIGHT - MONEY_SIZE / 2) / 2))
 
-        # Рисование инвентаря
-        pygame.draw.rect(screen, INVENTORY_COLOR,
-                         ((SIZE[0] - self.size * self.w1) / 2 - PAD2,
-                          SHOP_HEIGHT + PAD5 - PAD2,
-                          self.size * self.w1 + PAD2 * 2,
-                          self.size * self.h1 + PAD2 * 2))
+            # Рисование инвентаря
+            pygame.draw.rect(screen, INVENTORY_COLOR,
+                             ((SIZE[0] - self.size * self.w1) / 2 - PAD2,
+                              SHOP_HEIGHT + PAD5 - PAD2,
+                              self.size * self.w1 + PAD2 * 2,
+                              self.size * self.h1 + PAD2 * 2))
 
-        pygame.draw.rect(screen, INVENTORY_COLOR,
-                         ((SIZE[0] - self.size * self.w2) / 2 - PAD2,
-                          SIZE[1] - self.size * self.h2 - PAD1 - PAD2,
-                          self.size * self.w2 + PAD2 * 2,
-                          self.size * self.h2 + PAD2 * 2))
+            pygame.draw.rect(screen, INVENTORY_COLOR,
+                             ((SIZE[0] - self.size * self.w2) / 2 - PAD2,
+                              SIZE[1] - self.size * self.h2 - PAD1 - PAD2,
+                              self.size * self.w2 + PAD2 * 2,
+                              self.size * self.h2 + PAD2 * 2))
 
-        # Рисование сетки
-        for i in range(self.w1):
-            for j in range(self.h1):
-                pygame.draw.rect(screen, CELLS_COLOR,
-                                 ((SIZE[0] - self.size * self.w1) / 2 + i * self.size,
-                                  j * self.size + SHOP_HEIGHT + PAD5,
-                                  self.size + 1,
-                                  self.size + j % 2 + 1),
-                                 CELLS_WIDTH)
-        for i in range(self.w2):
-            for j in range(self.h2):
-                pygame.draw.rect(screen, CELLS_COLOR,
-                                 ((SIZE[0] - self.size * self.w2) / 2 + i * self.size,
-                                  SIZE[1] - (j + 1) * self.size - PAD1,
-                                  self.size + 1,
-                                  self.size + j % 2 + 1),
-                                 CELLS_WIDTH)
+            # Рисование сетки
+            for i in range(self.w1):
+                for j in range(self.h1):
+                    pygame.draw.rect(screen, CELLS_COLOR,
+                                     ((SIZE[0] - self.size * self.w1) / 2 + i * self.size,
+                                      j * self.size + SHOP_HEIGHT + PAD5,
+                                      self.size + 1,
+                                      self.size + j % 2 + 1),
+                                     CELLS_WIDTH)
+            for i in range(self.w2):
+                for j in range(self.h2):
+                    pygame.draw.rect(screen, CELLS_COLOR,
+                                     ((SIZE[0] - self.size * self.w2) / 2 + i * self.size,
+                                      SIZE[1] - (j + 1) * self.size - PAD1,
+                                      self.size + 1,
+                                      self.size + j % 2 + 1),
+                                     CELLS_WIDTH)
 
-        # Рисование слотов инвентаря
-        for i in self.inv_slots:
-            x, y, n = i[1], i[2], i[3]
-            self.items[x][y].drawing(screen)
-            self.square_pulling(x, y, self.items,
-                                i[0], self.inv_slots, n)
+            # Рисование слотов инвентаря
+            for i in self.inv_slots:
+                x, y, n = i[1], i[2], i[3]
+                self.items[x][y].drawing(screen)
+                self.square_pulling(screen, x, y, self.items,
+                                    i[0], self.inv_slots, n)
 
-        # Рисование слотов игрока
-        for i in self.player_slots:
-            x, y, n = i[1], i[2], i[3]
-            self.player_items[x][y].drawing(screen)
-            self.square_pulling(x, y, self.player_items,
-                                i[0], self.player_slots, n)
+            # Рисование слотов игрока
+            for i in self.player_slots:
+                x, y, n = i[1], i[2], i[3]
+                self.player_items[x][y].drawing(screen)
+                self.square_pulling(screen, x, y, self.player_items,
+                                    i[0], self.player_slots, n)
 
-        # Рисование слота движущегося предмета
-        if self.square_clone:
-            self.square_clone.drawing(screen)
+            # Рисование слота движущегося предмета
+            if self.square_clone:
+                self.square_clone.drawing(screen)
+
+            # Рисование кнопки "В бой"
+            self.to_battle.drawing(screen)
 
             # Рисование движущегося квадрата поверх остальных
-        for q in self.inv_slots:
-            x, y = q[1], q[2]
-            if self.items[x][y].moving:
-                self.items[x][y].drawing(screen)
+            for q in self.inv_slots:
+                x, y = q[1], q[2]
+                if self.items[x][y].moving:
+                    self.items[x][y].drawing(screen)
 
-        for q in self.player_slots:
-            x, y = q[1], q[2]
-            if self.player_items[x][y].moving:
-                self.player_items[x][y].drawing(screen)
+            for q in self.player_slots:
+                x, y = q[1], q[2]
+                if self.player_items[x][y].moving:
+                    self.player_items[x][y].drawing(screen)
 
-        if self.info:
-            self.info.drawing(screen)
+            if self.info:
+                self.info.drawing(screen)
 
     # Притягивание квадрата
-    def square_pulling(self, x, y, arr, q, icons, n):
+    def square_pulling(self, screen, x, y, arr, q, icons, n):
         # Присвоение ближайшей клетке
         m = 1000000
         nearest_square = (0, 0)
@@ -671,8 +392,16 @@ class Inventory():
     def get_player_slots(self):
         return self.player_slots
 
+    def in_arrays(self, name):
+        if name in [i[0] for i in self.inv_slots]:
+            return True
+        elif name in [i[0] for i in self.player_slots]:
+            return True
+        else:
+            return False
+
     def go_to_skills_shop(self):
-        pass
+        self.shop = Shop(self)
 
     def shop_color(self):
         if self.selected:
@@ -684,156 +413,183 @@ class Inventory():
             self.shop_icon_color = SHOP_ICON_COLOR
 
     def controller(self, event, screen):
-        if not self.show_info:
-            global global_pressed
-
-            # Для панели магазина
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if SHOP_HEIGHT > event.pos[0] > 0 and SHOP_HEIGHT > event.pos[1] > 0:
-                    self.pressed = True
-                    self.go_to_skills_shop()
-            elif event.type == pygame.MOUSEMOTION:
-                if SHOP_HEIGHT > event.pos[0] > 0 and SHOP_HEIGHT > event.pos[1] > 0:
-                    self.selected = True
-                else:
-                    self.selected = False
-                    self.pressed = False
-
-            # Для инвентаря
-            pressing = False
-
-            if not global_pressed and self.square_clone:
-                self.destroy_clone()
-
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 3:
-                    for i in self.inv_slots:
-                        x, y = i[1], i[2]
-                        if self.items[x][y].down and global_pressed:
-                            if self.items[x][y].count > 1:
-                                self.minus_1(x, y, self.items, self.inv_slots, i)
-                                pressing = True
-                                self.double_click = None
-                                break
-                            elif self.items[x][y].count == 1:
-                                self.items[x][y].down = False
-                                pressing = False
-                                break
-                        elif not global_pressed:
-                            if self.items[x][y].count > 1:
-                                if self.items[x][y].on:
-                                    self.minus_half(x, y, self.items, self.inv_slots, i)
-                                    pressing = True
-                                    self.double_click = None
-                                    break
-
-                    for i in self.player_slots:
-                        x, y = i[1], i[2]
-                        if self.player_items[x][y].down and global_pressed:
-                            if self.player_items[x][y].count > 1:
-                                self.minus_1(x, y, self.player_items, self.player_slots, i)
-                                pressing = True
-                                self.double_click = None
-                                break
-                            elif self.player_items[x][y].count == 1:
-                                self.player_items[x][y].down = False
-                                pressing = False
-                                break
-                        elif not global_pressed:
-                            if self.player_items[x][y].count > 1:
-                                if self.player_items[x][y].on and not global_pressed:
-                                    self.minus_half(x, y, self.player_items, self.player_slots, i)
-                                    pressing = True
-                                    self.double_click = None
-                                    break
-
-            if self.double_click:
-                self.first_click = self.double_click
-            self.double_click = None
-
-            for i in self.inv_slots:
-                x, y = i[1], i[2]
-                if self.items[x][y].controller(event):
-                    pressing = True
-
-                cell = self.get_cell((self.items[x][y].xm, self.items[x][y].ym),
-                                     None, self.items, False)[1:4]
-                if cell != (x, y, self.items):
-                    self.blocked = (x, y, self.items)
-                if not global_pressed:
-                    self.first_click = None
-                    self.blocked = None
-
-                if (x, y, self.items) != self.blocked and \
-                        self.items[x][y].down and \
-                        event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                    self.double_click = (x, y, self.items)
-
-            for i in self.player_slots:
-                x, y = i[1], i[2]
-                if self.player_items[x][y].controller(event):
-                    pressing = True
-
-                cell = self.get_cell((self.player_items[x][y].xm, self.player_items[x][y].ym),
-                                     None, self.player_items, False)[1:4]
-                if cell != (x, y, self.player_items):
-                    self.blocked = (x, y, self.player_items)
-                if not global_pressed:
-                    self.first_click = None
-                    self.blocked = None
-
-                if (x, y, self.player_items) != self.blocked and \
-                        self.player_items[x][y].down and \
-                        event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                    self.double_click = (x, y, self.player_items)
-
-            if self.square_clone:
-                if self.square_clone.controller(event):
-                    pressing = True
-                '''x, y = self.clone_info[1], self.clone_info[2]
-                if self.clone_info[4][x][y] and self.clone_info[4][x][y].down and event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                    self.double_click = (x, y, self.player_items)'''
-
-            global_pressed = pressing
-
-            # Для информации
-            if self.double_click and self.first_click == self.double_click:
-                self.show_info = True
-        elif not self.info:
-            if self.first_click:
-                x, y = self.first_click[0], self.first_click[1]
-                if self.first_click[2][x][y]:
-                    name = self.first_click[2][x][y].image_name
-                    if self.first_click[2][x][y].count == -1:
-                        self.info = Information(name, self.money_score,
-                                                self.get_free_slots(self.first_click[2]))
+        if self.shop:
+            if not self.shop.controller(event, screen):
+                self.money_score = self.shop.money_score
+                self.shop = None
+        else:
+            if not self.show_info:
+                # Для панели магазина
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if SHOP_HEIGHT > event.pos[0] > 0 and SHOP_HEIGHT > event.pos[1] > 0:
+                        self.pressed = True
+                        self.go_to_skills_shop()
+                elif event.type == pygame.MOUSEMOTION:
+                    if SHOP_HEIGHT > event.pos[0] > 0 and SHOP_HEIGHT > event.pos[1] > 0:
+                        self.selected = True
                     else:
-                        self.info = Information(name, self.money_score)
-                    self.first_click[2][x][y].down = False
+                        self.selected = False
+                        self.pressed = False
+
+                # Кнопка в бой
+                if event.type == pygame.MOUSEMOTION:
+                    if self.to_battle.on_button(event.pos):
+                        self.to_battle.selected(True)
+                    else:
+                        self.to_battle.selected(False)
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if self.to_battle.on_button(event.pos):
+                        self.to_battle.pressed(True)
+                        self.running = False
+                    else:
+                        self.to_battle.pressed(False)
+
+                # Для инвентаря
+                global global_pressed
+                pressing = False
+
+                if not global_pressed and self.square_clone:
+                    self.destroy_clone()
+
+                if self.items_away:
+                    if self.items_away[3][self.items_away[1]][self.items_away[2]].count > 1:
+                        self.minus_1(*self.items_away)
+                        pressing = True
+                        self.double_click = None
+                        self.items_away = (*self.items_away[:6], event.pos)
+                    elif self.items_away[3][self.items_away[1]][self.items_away[2]].count == 1:
+                        self.items_away[3][self.items_away[1]][self.items_away[2]].down = False
+                        pressing = False
+                        self.items_away = None
+
+                if event.type == pygame.MOUSEBUTTONUP:
+                    if event.button == 3:
+                        self.items_away = None
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 3:
+                        for i in self.inv_slots:
+                            x, y = i[1], i[2]
+                            if self.items[x][y].down and global_pressed:
+                                if self.items[x][y].count > 1:
+                                    self.items_away = (screen, x, y, self.items, self.inv_slots, i, event.pos)
+                                    break
+                                elif self.items[x][y].count == 1:
+                                    self.items[x][y].down = False
+                                    pressing = False
+                                    break
+                            elif not global_pressed:
+                                if self.items[x][y].count > 1:
+                                    if self.items[x][y].on:
+                                        self.minus_half(screen, x, y, self.items, self.inv_slots, i)
+                                        pressing = True
+                                        self.double_click = None
+                                        break
+
+                        for i in self.player_slots:
+                            x, y = i[1], i[2]
+                            if self.player_items[x][y].down and global_pressed:
+                                if self.player_items[x][y].count > 1:
+                                    self.items_away = (screen, x, y, self.player_items, self.player_slots, i, event.pos)
+                                    break
+                                elif self.player_items[x][y].count == 1:
+                                    self.player_items[x][y].down = False
+                                    pressing = False
+                                    break
+                            elif not global_pressed:
+                                if self.player_items[x][y].count > 1:
+                                    if self.player_items[x][y].on and not global_pressed:
+                                        self.minus_half(screen, x, y, self.player_items, self.player_slots, i)
+                                        pressing = True
+                                        self.double_click = None
+                                        break
+
+                if self.double_click:
+                    self.first_click = self.double_click
+                self.double_click = None
+
+                for i in self.inv_slots:
+                    x, y = i[1], i[2]
+                    if self.items[x][y].controller(event, screen):
+                        pressing = True
+
+                    cell = self.get_cell((self.items[x][y].xm, self.items[x][y].ym),
+                                         None, self.items, False)[1:4]
+                    if cell != (x, y, self.items):
+                        self.blocked = (x, y, self.items)
+                    if not global_pressed:
+                        self.first_click = None
+                        self.blocked = None
+
+                    if (x, y, self.items) != self.blocked and \
+                            self.items[x][y].down and \
+                            event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                        self.double_click = (x, y, self.items)
+
+                for i in self.player_slots:
+                    x, y = i[1], i[2]
+                    if self.player_items[x][y].controller(event, screen):
+                        pressing = True
+
+                    cell = self.get_cell((self.player_items[x][y].xm, self.player_items[x][y].ym),
+                                         None, self.player_items, False)[1:4]
+                    if cell != (x, y, self.player_items):
+                        self.blocked = (x, y, self.player_items)
+                    if not global_pressed:
+                        self.first_click = None
+                        self.blocked = None
+
+                    if (x, y, self.player_items) != self.blocked and \
+                            self.player_items[x][y].down and \
+                            event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                        self.double_click = (x, y, self.player_items)
+
+                if self.square_clone:
+                    if self.square_clone.controller(event, screen):
+                        pressing = True
+                    '''x, y = self.clone_info[1], self.clone_info[2]
+                    if self.clone_info[4][x][y] and self.clone_info[4][x][y].down and event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                        self.double_click = (x, y, self.player_items)'''
+
+                global_pressed = pressing
+
+                # Для информации
+                if self.double_click and self.first_click == self.double_click:
+                    self.show_info = True
+            elif not self.info:
+                if self.first_click:
+                    x, y = self.first_click[0], self.first_click[1]
+                    if self.first_click[2][x][y]:
+                        name = self.first_click[2][x][y].image_name
+                        if self.first_click[2][x][y].count == -1:
+                            self.info = Information(name, self.money_score,
+                                                    get_info(name),
+                                                    self.get_free_slots(self.first_click[2]))
+                        else:
+                            self.info = Information(name, self.money_score, get_info(name))
+                        self.first_click[2][x][y].down = False
+                    else:
+                        self.show_info = False
                 else:
                     self.show_info = False
+                self.double_click = None
             else:
-                self.show_info = False
-            self.double_click = None
-        else:
-            if not self.info.controller(event, screen):
-                if self.info.buy:
-                    x, y = self.first_click[0], self.first_click[1]
-                    if self.first_click[2][x][y].count == -1:
-                        for _ in range(self.info.count):
-                            cell = self.get_cell((self.first_click[2][x][y].xm + self.first_click[2][x][y].w / 2,
-                                                  self.first_click[2][x][y].ym + self.first_click[2][x][y].h / 2),
-                                                 self.first_click[2][x][y].image_name,
-                                                 self.first_click[2])
-                            self.add_square(screen, *cell, True)
+                if not self.info.controller(event, screen):
+                    if self.info.buy:
+                        x, y = self.first_click[0], self.first_click[1]
+                        if self.first_click[2][x][y].count == -1:
+                            for _ in range(self.info.count):
+                                cell = self.get_cell((self.first_click[2][x][y].xm + self.first_click[2][x][y].w / 2,
+                                                      self.first_click[2][x][y].ym + self.first_click[2][x][y].h / 2),
+                                                     self.first_click[2][x][y].image_name,
+                                                     self.first_click[2])
+                                self.add_square(screen, *cell, True)
+                        else:
+                            self.first_click[2][x][y].count += self.info.count
+                        self.money_score -= self.info.count * self.info.info['cost']
 
-                    else:
-                        self.first_click[2][x][y].count += self.info.count
-                    self.money_score -= self.info.count * self.info.info['cost']
-
-                self.first_click = None
-                self.show_info = False
-                self.info = None
+                    self.first_click = None
+                    self.show_info = False
+                    self.info = None
 
     def add_square(self, screen, image, x, y, arr, slots, change_pos):
         if not change_pos:
@@ -858,8 +614,6 @@ class Inventory():
             self.clone_info = (slots[a][0], slots[a][1], slots[a][2],
                                n, arr, slots)
         else:
-            # self.first_click = None
-            # self.double_click = None
             if slots == self.inv_slots:
                 xp = (SIZE[0] - self.size * self.w1) / 2 + x * self.size + PAD3
                 yp = y * self.size + PAD3 + SHOP_HEIGHT + PAD5
@@ -875,15 +629,11 @@ class Inventory():
                                    self.size - PAD3 * 2,
                                    slots[a][3])
             else:
-                arrr = [i[0] for i in slots]
-                if image in arrr:
-                    a = arrr.index(image)
-                    if slots[a][3] == -1:
-                        n = -1
-                    else:
-                        n = 1
+                if get_info(image)['indivisible']:
+                    n = -1
                 else:
                     n = 1
+
                 slots.append((image, x, y, n))
                 arr[x][y] = Square(screen, image, xp, yp,
                                    self.size - PAD3 * 2,
@@ -939,18 +689,18 @@ class Inventory():
         self.square_clone = None
         self.clone_info = None
 
-    def minus_1(self, x, y, arr, slots, elem):
-        a = slots.index(elem)
+    def minus_1(self, screen, x, y, arr, slots, elem, pos):
+        a = [i[:3] for i in slots].index(elem[:3])
         slots[a] = (slots[a][0], slots[a][1], slots[a][2], arr[x][y].count - 1)
         arr[x][y].count -= 1
 
-        data = self.get_cell(event.pos, slots[a][0])
+        data = self.get_cell(pos, slots[a][0])
         if (data[1], data[2]) == (x, y) and data[3] == arr:
             self.add_square(screen, *data, False)
         else:
             self.add_square(screen, *data, True)
 
-    def minus_half(self, x, y, arr, slots, elem):
+    def minus_half(self, screen, x, y, arr, slots, elem):
         a = slots.index(elem)
         slots[a] = (slots[a][0], slots[a][1], slots[a][2],
                     arr[x][y].count // 2 + arr[x][y].count % 2)
@@ -972,6 +722,24 @@ class Inventory():
                            arr[x][y].count // 2, arr, slots)
 
         arr[x][y].count = arr[x][y].count // 2 + arr[x][y].count % 2
+
+    def get_player_slots2(self):
+        slots = []
+        for i, slot_r in enumerate(self.player_items):
+            if slot_r is not None:
+                for j, slot in enumerate(slot_r):
+                    if slot is not None:
+                        slots.append((slot.image_name, i, j, slot.count))
+        return slots
+
+    def get_inventory_slots2(self):
+        slots = []
+        for i, slot_r in enumerate(self.items):
+            if slot_r is not None:
+                for j, slot in enumerate(slot_r):
+                    if slot is not None:
+                        slots.append((slot.image_name, i, j, slot.count))
+        return slots
 
 
 class Square:
@@ -1000,7 +768,7 @@ class Square:
         self.xm = self.x
         self.ym = self.y
 
-    def controller(self, event):  # Обработка событий мыши
+    def controller(self, event, screen):  # Обработка событий мыши
         pressing = False
         global global_pressed
 
@@ -1085,7 +853,7 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(size)
     screen.fill(pygame.Color('black'))
 
-    data = open("../Data/PlayerData.json", "r", encoding="utf-8")
+    data = open("./Data/PlayerData.json", "r", encoding="utf-8")
     inv_data = json.load(data)
 
     items = []
@@ -1096,7 +864,7 @@ if __name__ == '__main__':
     for d in inv_data["player_inv"]:
         items2.append(tuple(d))
 
-    inv = Inventory(items, inv_data["inv_width"], inv_data["inv_height"],
+    inv = Inventory(screen, items, inv_data["inv_width"], inv_data["inv_height"],
                     items2, inv_data["player_inv_width"], inv_data["player_inv_height"],
                     inv_data["money"])
 

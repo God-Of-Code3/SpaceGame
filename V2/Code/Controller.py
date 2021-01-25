@@ -9,7 +9,7 @@ class Controller:
     def __init__(self, world, skills=[]):
         self.managed = None
         self.world = world
-        self.skills = SkillList(0, 0, self, self.world, skills)
+        self.skills = SkillList(0, HEALTH_BAR_HEIGHT2, self, self.world, skills)
         self.skills_args = dict()
         self.skills_args["use"] = False
         self.skills_args["using"] = False
@@ -99,15 +99,27 @@ class Enemy(Controller):
             if obj == self.target_ship:
                 self.skills_args["use"] = False
                 direction_to_target = to_point(*self.managed.coords, *obj.coords) % 360
-                if self.beh == "attack":
+                if self.beh == "attack" or self.beh == "up-down-attack":
                     attacking = self.args["attacking"]
                     self.args["attacking"] = 0
                     self.args["dist_to_target"] = d
                     if attacking < 7:
-                        if d > MAX_DIST_TO_ENEMY:
+                        if d > MAX_DIST_TO_ENEMY and self.beh != "up-down-attack":
                             self.managed.stop(True, True)
-                            self.move_to_direction(direction_to_target)
-                        else:
+                            if self.beh == "attack":
+                                self.move_to_direction(direction_to_target)
+                        elif self.beh == "up-down-attack":
+                            if abs(self.managed.coords[1] - obj.coords[1]) > UP_DOWN_ATTACK_DIST:
+                                if self.managed.coords[1] < obj.coords[1]:
+                                    self.managed.set_acceleration(y=2)
+                                else:
+                                    self.managed.set_acceleration(y=-2)
+                            x = 2 if obj.coords[0] > self.managed.coords[0] else -2
+                            self.managed.set_acceleration(x=x)
+                            if abs(self.managed.coords[1] - obj.coords[1]) < UP_DOWN_ATTACK_AREA:
+                                self.skills_args["use"] = True
+                                self.skills_args["using_coords"] = obj.coords
+                        if d < SHOT_DIST:
                             isset = False
                             ready = False
                             for i, skill in enumerate(self.skills.skills):
@@ -131,6 +143,10 @@ class Enemy(Controller):
                     self.managed.stop(True, True)
                     if d < MAX_DIST_TO_ENEMY * 2:
                         self.move_to_direction(180 + direction_to_target)
+                    else:
+                        self.move_to_direction(direction_to_target)
+                    self.skills_args["use"] = True
+                    self.skills_args["using_coords"] = obj.coords
                 elif self.beh == "air_attack":
                     self.skills.select(0)
                     if self.skills.skills[self.skills.selected].number == 0:
@@ -189,12 +205,25 @@ class Enemy(Controller):
                 if abs(angle) < MIN_BULLET_ANGLE:
                     delta = 90 if angle > 0 else -90
                     self.move_to_direction(direction2 + delta)
-            if d < MIN_DIST_TO_OBJECTS and self.beh != "escape":
+            if d < MIN_DIST_TO_OBJECTS and self.beh not in ["escape", "up-down-attack"]:
                 if isinstance(obj, Starship) and obj.material:
                     self.move_to_direction(180 + to_point(*self.managed.coords, *obj.coords))
+            if self.beh == "up-down-attack" and d < MIN_DIST_TO_OBJECTS:
+                if isinstance(obj, Starship) and obj.material:
+                    if self.managed.coords[1] < obj.coords[1]:
+                        self.managed.set_acceleration(y=-2)
+                    else:
+                        self.managed.set_acceleration(y=2)
+
 
         if abs(self.managed.coords[1]) < 600:
             self.managed.set_acceleration(y=-2)
+
+        if self.managed.coords[0] < self.world.ranges[0]:
+            self.managed.set_acceleration(x=2)
+
+        if self.managed.coords[0] > self.world.ranges[1]:
+            self.managed.set_acceleration(x=-2)
 
     def control(self):
         """if self.sum_acceleration[0] != 0 or self.sum_acceleration[1] != 0:

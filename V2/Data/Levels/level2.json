@@ -1,25 +1,28 @@
 {
 	"player_pos": [0, -800],
-	"ranges": [-2000, 2000],
+	"ranges": [-4000, 4000],
 	"player_skills": [{"skill": "CopperShellShot", "number": 50},
 					  {"skill": "PlasmaShot", "number": 10},
 					  null, null, null, null, null, null, null],
 	"ships": [
 		{
 			"class": "Bug",
-			"coords": [2000, -800]
+			"coords": [-400, -3700]
 		},
 		{
 			"class": "Bug",
-			"coords": [2000, -800]
+			"coords": [400, -3700]
 		}
 	],
 	"nexuses": [
-
+		{
+			"class": "Nexus",
+			"coords": [0, -3700]
+		}
 	],
-	"goal": 1,
+	"goal": 0,
 	"planet": "Planet1.png",
 	"skills": null,
-	"reward": 500,
-	"next_level": "level2"
+	"reward": 600,
+	"next_level": "level3"
 }

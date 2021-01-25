@@ -116,7 +116,7 @@ class LaserShot(Skill):
         super().__init__(*args)
         self.recharge_time = 200
         self.number = -1
-        self.image = pygame.image.load("Assets/Images/Skills/LaserRay.png")
+        self.image = pygame.image.load("Assets/Images/Skills/LaserShot.png")
         self.image = pygame.transform.scale(self.image, (self.skills_list.tile_size, self.skills_list.tile_size))
 
     def use(self, args):
@@ -130,7 +130,7 @@ class CopperShellShot(Skill):
     def __init__(self, *args):
         super().__init__(*args)
         self.recharge_time = 50
-        self.image = pygame.image.load("Assets/Images/Skills/CopperShell.png")
+        self.image = pygame.image.load("Assets/Images/Skills/CopperShellShot.png")
         self.image = pygame.transform.scale(self.image, (self.skills_list.tile_size, self.skills_list.tile_size))
 
     def use(self, args):

@@ -48,6 +48,78 @@ class CopperShell(Bullet):
     pass
 
 
+class Antimatter(Bullet):
+    def draw(self):
+        self.rot = 0
+        super().draw()
+
+    def hit(self, other, force):
+
+        if other != self.master:
+            self.health = 0
+            r = 1500
+            AnnihilationExplosion(self.world.all_sprites, frames_tree2, self.world, health=500, coords=[*self.coords],
+                                  width=r, height=r, damage=0)
+
+
+class AntirocketDevice(Bullet):
+    def __init__(self, group, frames, world, state="main", width=100, height=100, rot=0, coords=None, speed=None,
+                 acceleration=None, max_acceleration=None, max_speed=None, friction=None, mass=100, controller=None,
+                 health=1000, master=None, damage=0, target=None, rot_speed=0.4, direction=0):
+        super().__init__(group, frames, world, state=state, width=width, height=height, rot=rot, coords=coords,
+                         speed=speed, acceleration=acceleration, max_acceleration=max_acceleration,
+                         max_speed=max_speed, friction=friction, mass=mass, controller=controller, health=health,
+                         damage=damage)
+        self.master = master
+        self.target = target
+        self.params["acceleration"] = math.hypot(*self.acceleration)
+        self.params["speed"] = 10
+        self.params["direction"] = direction
+        self.params["rot_speed"] = rot_speed
+        self.params["age"] = random.randint(400, 600)
+
+    def get_collision(self):
+        return {"type": "circle", "r": max(self.width, self.height)}
+
+    def update(self, mode):
+        lh = self.health
+        super().update(mode)
+        if self.health == lh - ACCELERATION:
+            self.health = lh
+        if mode == "standart":
+            acceleration_direction = self.params["direction"] + self.params["rot_speed"]
+            self.speed = [
+                self.master.speed[0] + math.cos(acceleration_direction * math.pi / 180) * self.params["speed"],
+                self.master.speed[1] + math.sin(acceleration_direction * math.pi / 180) * self.params["speed"]
+            ]
+            self.params["speed"] += self.params["acceleration"]
+            self.params["direction"] = acceleration_direction
+            self.params["age"] -= 1
+            if self.params["age"] < 1:
+                self.health = 0
+
+    def check_intersection(self, other):
+        super().check_intersection(other)
+        if self.material:
+            col = other.get_collision()
+            if col["type"] == "point":
+
+                if self.coords[0] - self.width / 2 < col["point"][0] < self.coords[0] + self.width / 2 and \
+                        self.coords[1] - self.height / 2 < col["point"][1] < self.coords[1] + self.height / 2:
+                    self.hit(other, 0)
+                    other.hit(self, 89)
+
+    def hit(self, other, force):
+        if other is not None and other != self.master:
+            other.health -= self.damage
+
+        if other != self.master:
+            self.health = -1
+            r = 100
+            Explosion(self.world.all_sprites, frames_tree2, self.world, health=150, coords=[*self.coords], width=r,
+                      height=r, damage=self.damage)
+
+
 class SmallRocket(Bullet):
     def update(self, mode):
         self.flip = False

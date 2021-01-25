@@ -11,7 +11,6 @@ class SkillList:
         self.x = x
         self.y = y
         self.master = master
-        print(skills)
         self.skills = [eval(s["skill"])(world, s["number"], self.master) if s is not None else None for s in skills]
         self.length = len(self.skills)
         self.world = world
@@ -98,6 +97,16 @@ class SkillList:
             return True
         return False
 
+    def get_width(self):
+        return self.length * SKILL_TILE_SIZE
+
+    def get_skills(self):
+        array = []
+        for i, skill in enumerate(self.skills):
+            if skill is not None:
+                array.append((skill.origin, i, 0, skill.number))
+        return array
+
 
 class Skill:
     def __init__(self, world, name, number, master):
@@ -110,7 +119,7 @@ class Skill:
         self.using_process = False
 
         skill_data = skills_data[name]
-
+        self.origin = skill_data["image"]
         self.image = load_image("./Assets/Images/Skills/" + skill_data["image"])
         self.image = pygame.transform.scale(self.image, (SKILL_TILE_SIZE - 2 * SKILL_TILE_PADDING,
                                                          SKILL_TILE_SIZE - 2 * SKILL_TILE_PADDING))
@@ -209,6 +218,46 @@ class CopperShellShot(Skill):
                     width=data["width"], height=data["height"], master=self.master.managed, friction=[0, 0],
                     max_speed=[data["speed"], data["speed"]], damage=data["damage"], health=data["health"],
                     rot=-angle, controller=None)
+
+
+class AntimatterShot(Skill):
+    def __init__(self, world, number, master):
+        super().__init__(world, "AntimatterShot", number, master)
+
+    def use_code(self, args):
+        data = guns_data["Antimatter"]
+        coords = self.master.managed.coords
+        coords2 = args["using_coords"]
+        angle = to_point(*coords, *coords2)
+        speed = [math.cos(angle * math.pi / 180) * data["speed"], math.sin(angle * math.pi / 180) * data["speed"]]
+        spawn_coords = [*self.master.managed.coords]
+        Antimatter(self.world.all_sprites, data["anim"], self.world, speed=speed,
+                   coords=spawn_coords,
+                    width=data["width"], height=data["height"], master=self.master.managed, friction=[0, 0],
+                    max_speed=[data["speed"], data["speed"]], damage=data["damage"], health=data["health"],
+                    rot=-angle, controller=None)
+
+
+class AntirocketDeviceLaunch(Skill):
+    def __init__(self, world, number, master):
+        super().__init__(world, "AntirocketDeviceLaunch", number, master)
+
+    def using_code(self, args):
+        if self.using_timer % 10 == 0:
+            data = guns_data["AntirocketDevice"]
+            coords = self.master.managed.coords
+            coords2 = args["using_coords"]
+            angle = to_point(*coords, *coords2)
+            acceleration = [math.cos(angle * math.pi / 180) * data["acceleration"],
+                            math.sin(angle * math.pi / 180) * data["acceleration"]]
+            d = max(self.master.managed.width, self.master.managed.height) + data["width"]
+            spawn_coords = [self.master.managed.coords[0] + math.cos(angle * math.pi / 180) * d,
+                            self.master.managed.coords[1] + math.sin(angle * math.pi / 180) * d]
+            AntirocketDevice(self.world.all_sprites, data["anim"], self.world, mass=data["mass"], coords=spawn_coords,
+                        width=data["width"], height=data["height"], master=self.master.managed, friction=[0, 0],
+                        max_speed=[100, 100], health=data["health"], acceleration=acceleration,
+                        rot=0, controller=None, rot_speed=data["rot_speed"], damage=data["damage"],
+                        direction=angle + 90)
 
 
 class SmallRocketLaunch(Skill):

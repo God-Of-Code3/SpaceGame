@@ -377,6 +377,34 @@ class Explosion(Entity):
             self.health -= 1
 
 
+class AnnihilationExplosion(Explosion):
+    def draw(self):
+        sc = self.world.screen
+        r = self.width - min(self.width,
+                             int(self.width * abs(self.max_health // 2 - self.health) / self.max_health) * 2)
+        r *= 1.1
+        r = min(self.width, r)
+        r *= self.world.cam.zoom
+        x = (self.coords[0] - self.world.cam.pos[0]) * self.world.cam.zoom + self.world.cam.size[0] // 2
+        y = (self.coords[1] - self.world.cam.pos[1]) * self.world.cam.zoom + self.world.cam.size[1] // 2
+        col = interpolate_color(ANNIHILATION_COLOR2, ANNIHILATION_COLOR, self.health, self.max_health)
+        pygame.draw.circle(sc, col, (x, y), int(r))
+
+    def update(self, mode):
+        self.material = False
+        super().update("check")
+        self.health -= 1
+        r = self.width - min(self.width,
+                             int(self.width * abs(self.max_health // 2 - self.health) / self.max_health) * 2)
+        r *= 1.1
+        r = min(self.width, r)
+        for sprite in self.world.all_sprites.sprites():
+            if isinstance(sprite, Entity) and sprite != self and not isinstance(sprite, Explosion):
+                if math.hypot(sprite.coords[0] - self.coords[0], sprite.coords[1] - self.coords[1]) < r:
+                    sprite.health -= ANNIHILATION_DAMAGE_PER_TICK
+        self.draw()
+
+
 class Station(Starship):
     def __init__(self, group, frames, world, state="main", width=100, height=100, rot=0, coords=None, speed=None,
                  acceleration=None, max_acceleration=None, max_speed=None, friction=None, mass=100, controller=None,

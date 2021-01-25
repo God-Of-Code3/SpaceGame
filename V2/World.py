@@ -33,8 +33,15 @@ goals = ["Уничтожить все командные пункты", "Уни�
 
 def generate_level(level_name):
     data = json.load(open("Data/Levels/" + level_name + ".json", "r"))
-
-    world = World()
+    player_data = json.load(open("Data/PlayerData.json", "r"))
+    save = True
+    array = [None] * player_data["player_inv_width"]
+    for skill in player_data["player_inv"]:
+        array[skill[1]] = {"skill": skill[0].rstrip(".png").rstrip(".jpg"), "number": skill[3]}
+    if data["player_skills"]:
+        array = data["player_skills"]
+        save = False
+    world = World(array)
     player_pos = data["player_pos"]
     world.create_ship("Inquisitor", player_pos[0], player_pos[1], world.player)
     for ship in data["ships"]:
@@ -44,23 +51,19 @@ def generate_level(level_name):
     world.goal = goals[data["goal"]]
     world.income = data["reward"]
     world.ranges = data["ranges"]
-    return world
+
+    return world, save
 
 
 class World:
-    def __init__(self):
+    def __init__(self, skills):
         self.all_sprites = pygame.sprite.Group()
         self.screen = pygame.display.set_mode(SIZE)
         self.events = []
 
         self.acceleration = 1
 
-        self.player = Player(self, skills=[None, None, {"skill": "PlasmaShot", "number": 200},
-                                           {"skill": "CopperShellShot", "number": 200},
-                                           {"skill": "LaserShot", "number": -1},
-                                           {"skill": "MediumRocketLaunch", "number": 200},
-                                           {"skill": "HealthBoost", "number": 200},
-                                           {"skill": "SmallRocketLaunch", "number": 200}])
+        self.player = Player(self, skills=skills)
         self.controllers = [self.player]
         self.planet = Planet(0, "Assets/Images/Planets/Planet1.png", 1000, 377, self)
         self.cam = Camera()
@@ -132,14 +135,16 @@ class World:
 
         fps = clock.get_fps()
         self.planet.draw(self.screen)
+        self.draw_health()
         if self.player.managed.health > 0:
+
             self.controllers[0].skills.draw()
 
+        self.draw_player_health()
         self.draw_fps(fps, 0, 300)
         self.draw_sprites_number(0, 300)
         self.draw_player_coords(0, 300)
         self.draw_minimap()
-        self.draw_health()
 
         if self.player.managed.coords[0] < self.ranges[0] or self.player.managed.coords[0] > self.ranges[1]:
             self.draw_warning(self.player.managed.coords[0] < self.ranges[0])
@@ -334,6 +339,17 @@ class World:
                     pygame.draw.rect(self.screen, HEALTH_BAR_BACKGROUND, (x, y, w, h))
                     pygame.draw.rect(self.screen, HEALTH_BAR_COLOR, (x, y, int(w * health), h))
 
+    def draw_player_health(self):
+        sprite = self.player.managed
+        health = max(0, sprite.health / sprite.max_health)
+        w = self.player.skills.get_width()
+        h = HEALTH_BAR_HEIGHT2
+        w = max(HEALTH_BAR_MIN_WIDTH, w)
+        x = 0
+        y = 0
+        pygame.draw.rect(self.screen, HEALTH_BAR_BACKGROUND, (x, y, w, h))
+        pygame.draw.rect(self.screen, HEALTH_BAR_COLOR, (x, y, int(w * health), h))
+
     def remove_sprite(self, sprite):
         if sprite.controller is not None:
             controller = self.controllers.index(sprite.controller)
@@ -395,18 +411,18 @@ class World:
                   width=d["width"], height=d["height"], controller=controller)
         self.nexuses.append(n)
 
+if __name__ == "__main__":
+    world = generate_level("level1")
+    """world = World()
+    world.create_ship("Inquisitor", -1000, -80, world.player)
+    for i in range(1):
+        for j in range(1):
+            world.create_ship("Bug", i * 500, j * 300 - 1200)
+    
+    for i in range(2):
+        world.create_ship("Hindenburg",  -200 - 100 * i, -MIN_AIR_ATTACK_HEIGHT-100)
+    world.create_nexus("Nexus",  0, -NEXUS_HEIGHT)"""
 
-world = generate_level("level1")
-"""world = World()
-world.create_ship("Inquisitor", -1000, -80, world.player)
-for i in range(1):
-    for j in range(1):
-        world.create_ship("Bug", i * 500, j * 300 - 1200)
-
-for i in range(2):
-    world.create_ship("Hindenburg",  -200 - 100 * i, -MIN_AIR_ATTACK_HEIGHT-100)
-world.create_nexus("Nexus",  0, -NEXUS_HEIGHT)"""
-
-while world.running:
-    world.update()
-    world.draw()
+    while world.running:
+        world.update()
+        world.draw()
