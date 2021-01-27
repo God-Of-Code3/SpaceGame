@@ -1,0 +1,51 @@
+{
+	"player_pos": [0, -4000],
+	"ranges": [-6000, 6000],
+	"player_skills": false,
+	"ships": [
+		{
+			"class": "Hindenburg",
+			"coords": [-1000, -1000]
+		},
+		{
+			"class": "Hindenburg",
+			"coords": [1000, -1000]
+		},
+		{
+			"class": "Auror",
+			"coords": [-1000, -1500]
+		},
+		{
+			"class": "Auror",
+			"coords": [-1000, -500]
+		},
+		{
+			"class": "Auror",
+			"coords": [-1500, -1000]
+		},
+		{
+			"class": "Auror",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Auror",
+			"coords": [1000, -1500]
+		},
+		{
+			"class": "Auror",
+			"coords": [1000, -500]
+		},
+		{
+			"class": "Auror",
+			"coords": [1500, -1000]
+		}
+	],
+	"nexuses": [
+
+	],
+	"goal": 1,
+	"planet": "Planet1.png",
+	"skills": null,
+	"reward": 750,
+	"next_level": "new_level13"
+}

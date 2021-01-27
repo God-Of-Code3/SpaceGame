@@ -1,0 +1,167 @@
+{
+	"player_pos": [0, -1000],
+	"ranges": [-3000, 3000],
+	"player_skills": [{"skill": "AntirocketDeviceLaunch", "number": -1},
+		              {"skill": "AntirocketDeviceLaunch", "number": -1},
+		              {"skill": "AntirocketDeviceLaunch", "number": -1},
+		              {"skill": "AntirocketDeviceLaunch", "number": -1},
+		              {"skill": "AntirocketDeviceLaunch", "number": -1},
+		              {"skill": "AntirocketDeviceLaunch", "number": -1},
+		              {"skill": "AntirocketDeviceLaunch", "number": -1},
+		              {"skill": "AntirocketDeviceLaunch", "number": -1},
+		              {"skill": "AntirocketDeviceLaunch", "number": -1}],
+	"ships": [
+		{
+			"class": "Bug",
+			"coords": [-2750, -5000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-2250, -5000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1750, -5000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1250, -5000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-750, -5000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-250, -5000]
+		},
+		{
+			"class": "Bug",
+			"coords": [250, -5000]
+		},
+		{
+			"class": "Bug",
+			"coords": [750, -5000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1250, -5000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1750, -5000]
+		},
+		{
+			"class": "Bug",
+			"coords": [2250, -5000]
+		},
+		{
+			"class": "Bug",
+			"coords": [2750, -5000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-2750, -4000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-2250, -4000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1750, -4000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1250, -4000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-750, -4000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-250, -4000]
+		},
+		{
+			"class": "Bug",
+			"coords": [250, -4000]
+		},
+		{
+			"class": "Bug",
+			"coords": [750, -4000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1250, -4000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1750, -4000]
+		},
+		{
+			"class": "Bug",
+			"coords": [2250, -4000]
+		},
+		{
+			"class": "Bug",
+			"coords": [2750, -4000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-2750, -3000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-2250, -3000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1750, -3000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1250, -3000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-750, -3000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-250, -3000]
+		},
+		{
+			"class": "Bug",
+			"coords": [250, -3000]
+		},
+		{
+			"class": "Bug",
+			"coords": [750, -3000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1250, -3000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1750, -3000]
+		},
+		{
+			"class": "Bug",
+			"coords": [2250, -3000]
+		},
+		{
+			"class": "Bug",
+			"coords": [2750, -3000]
+		}
+	],
+	"nexuses": [
+
+	],
+	"goal": 1,
+	"planet": "Planet1.png",
+	"skills": null,
+	"reward": 750,
+	"next_level": "new_level11"
+}

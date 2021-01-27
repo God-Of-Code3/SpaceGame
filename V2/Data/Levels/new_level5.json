@@ -1,0 +1,162 @@
+{
+	"player_pos": [0, -4000],
+	"ranges": [-3000, 3000],
+	"player_skills": [{"skill": "SmallRocketLaunch", "number": 50},
+		              {"skill": "MediumRocketLaunch", "number": 25},
+		              {"skill": "AntimatterShot", "number": -1},
+		              null, null, null, null, null, null],
+	"ships": [
+		{
+			"class": "Bug",
+			"coords": [-2000, -500]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1500, -500]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1000, -500]
+		},
+		{
+			"class": "Bug",
+			"coords": [-500, -500]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -500]
+		},
+		{
+			"class": "Bug",
+			"coords": [500, -500]
+		},
+		{
+			"class": "Bug",
+			"coords": [1000, -500]
+		},
+		{
+			"class": "Bug",
+			"coords": [1500, -500]
+		},
+		{
+			"class": "Bug",
+			"coords": [2000, -500]
+		},
+		{
+			"class": "Bug",
+			"coords": [-2000, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1500, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1000, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-500, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [500, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1000, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1500, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [2000, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-2000, -1500]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1500, -1500]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1000, -1500]
+		},
+		{
+			"class": "Bug",
+			"coords": [-500, -1500]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1500]
+		},
+		{
+			"class": "Bug",
+			"coords": [500, -1500]
+		},
+		{
+			"class": "Bug",
+			"coords": [1000, -1500]
+		},
+		{
+			"class": "Bug",
+			"coords": [1500, -1500]
+		},
+		{
+			"class": "Bug",
+			"coords": [2000, -1500]
+		},
+		{
+			"class": "Bug",
+			"coords": [-2000, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1500, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1000, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-500, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [500, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1000, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1500, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [2000, -2000]
+		}
+	],
+	"nexuses": [
+
+	],
+	"goal": 1,
+	"planet": "Planet1.png",
+	"skills": null,
+	"reward": 750,
+	"next_level": "new_level6"
+}

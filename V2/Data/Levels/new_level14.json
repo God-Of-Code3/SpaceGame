@@ -1,0 +1,59 @@
+{
+	"player_pos": [0, -3000],
+	"ranges": [-5000, 5000],
+	"player_skills": false,
+	"ships": [
+		{
+			"class": "Hindenburg",
+			"coords": [500, -1000]
+		},
+		{
+			"class": "Hindenburg",
+			"coords": [-500, -1000]
+		},
+		{
+			"class": "Hindenburg",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-250, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-750, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1250, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1750, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [250, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [750, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1250, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1750, -2000]
+		}
+	],
+	"nexuses": [
+
+	],
+	"goal": 1,
+	"planet": "Planet1.png",
+	"skills": null,
+	"reward": 750,
+	"next_level": "new_level15"
+}

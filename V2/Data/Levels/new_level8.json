@@ -1,0 +1,82 @@
+{
+	"player_pos": [0, -5000],
+	"ranges": [-5000, 5000],
+	"player_skills": [{"skill": "CopperShellShot", "number": 100},
+		              {"skill": "MediumRocketLaunch", "number": 15},
+					  {"skill": "LaserShot", "number": 10},
+		              {"skill": "AntirocketDeviceLaunch", "number": 100},
+					  null, null, null, null, null],
+	"ships": [
+		{
+			"class": "Auror",
+			"coords": [-2500, -2500]
+		},
+        {
+			"class": "Auror",
+			"coords": [2500, -2500]
+		},
+		{
+			"class": "Auror",
+			"coords": [-2500, -7500]
+		},
+        {
+			"class": "Auror",
+			"coords": [2500, -7500]
+		},
+        {
+			"class": "Bug",
+			"coords": [-2000, -3000]
+		},
+        {
+			"class": "Bug",
+			"coords": [2000, -3000]
+		},
+        {
+			"class": "Bug",
+			"coords": [-2000, -7000]
+		},
+        {
+			"class": "Bug",
+			"coords": [2000, -7000]
+		},
+        {
+			"class": "Bug",
+			"coords": [-1500, -4000]
+		},
+        {
+			"class": "Bug",
+			"coords": [1500, -4000]
+		},
+        {
+			"class": "Bug",
+			"coords": [-1500, -6000]
+		},
+        {
+			"class": "Bug",
+			"coords": [1500, -6000]
+		}
+	],
+	"nexuses": [
+		{
+			"class": "Nexus",
+			"coords": [4000, -9000]
+		},
+		{
+			"class": "Nexus",
+			"coords": [-4000, -9000]
+		},
+		{
+			"class": "Nexus",
+			"coords": [4000, -1000]
+		},
+		{
+			"class": "Nexus",
+			"coords": [-4000, -1000]
+		}
+	],
+	"goal": 0,
+	"planet": "Planet1.png",
+	"skills": null,
+	"reward": 1000,
+	"next_level": "new_level9"
+}

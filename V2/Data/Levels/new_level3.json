@@ -1,0 +1,82 @@
+{
+	"player_pos": [0, -7000],
+	"ranges": [-5000, 5000],
+	"player_skills": false,
+	"ships": [
+		{
+			"class": "Bug",
+			"coords": [1000, -7000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1000, -7000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -8000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -6000]
+		},
+		{
+			"class": "Bug",
+			"coords": [750, -7750]
+		},
+		{
+			"class": "Bug",
+			"coords": [-750, -7750]
+		},
+		{
+			"class": "Bug",
+			"coords": [750, -6250]
+		},
+		{
+			"class": "Bug",
+			"coords": [-750, -6250]
+		},
+		{
+			"class": "Bug",
+			"coords": [1500, -7000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1500, -7000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -8500]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -5500]
+		},
+		{
+			"class": "Bug",
+			"coords": [1000, -8000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1000, -8000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1000, -6000]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1000, -6000]
+		}
+	],
+	"nexuses": [
+        {
+			"class": "Nexus",
+			"coords": [0, 0]
+		}
+	],
+	"goal": 0,
+	"planet": "Planet1.png",
+	"skills": null,
+	"reward": 750,
+	"next_level": "new_level4"
+}

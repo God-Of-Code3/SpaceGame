@@ -1,0 +1,96 @@
+{
+	"player_pos": [-9000, -1000],
+	"ranges": [-10000, 10000],
+	"player_skills": [{"skill": "PlasmaShot", "number": -1},
+		              {"skill": "HealthBoost", "number": 1},
+		              null, null, null, null, null, null, null],
+	"ships": [
+		{
+			"class": "Auror",
+			"coords": [-9000, -19000]
+		},
+		{
+			"class": "Auror",
+			"coords": [-8000, -18000]
+		},
+		{
+			"class": "Auror",
+			"coords": [-7000, -17000]
+		},
+		{
+			"class": "Auror",
+			"coords": [-6000, -16000]
+		},
+		{
+			"class": "Auror",
+			"coords": [-5000, -15000]
+		},
+		{
+			"class": "Auror",
+			"coords": [-4000, -14000]
+		},
+		{
+			"class": "Auror",
+			"coords": [-3000, -13000]
+		},
+		{
+			"class": "Auror",
+			"coords": [-2000, -12000]
+		},
+		{
+			"class": "Auror",
+			"coords": [-1000, -11000]
+		},
+		{
+			"class": "Auror",
+			"coords": [0, -10000]
+		},
+		{
+			"class": "Auror",
+			"coords": [1000, -9000]
+		},
+		{
+			"class": "Auror",
+			"coords": [2000, -8000]
+		},
+		{
+			"class": "Auror",
+			"coords": [3000, -7000]
+		},
+		{
+			"class": "Auror",
+			"coords": [4000, -6000]
+		},
+		{
+			"class": "Auror",
+			"coords": [5000, -5000]
+		},
+		{
+			"class": "Auror",
+			"coords": [6000, -4000]
+		},
+		{
+			"class": "Auror",
+			"coords": [7000, -3000]
+		},
+		{
+			"class": "Auror",
+			"coords": [8000, -2000]
+		},
+		{
+			"class": "Auror",
+			"coords": [9000, -1000]
+		}
+	],
+	"nexuses": [
+        {
+			"class": "Nexus",
+			"coords": [9000, -19000]
+		}
+	],
+	"goal": 0,
+	"planet": "Planet1.png",
+	"skills": null,
+	"reward": 750,
+	"next_level": "new_level8"
+}

@@ -1,0 +1,56 @@
+{
+	"player_pos": [0, -4000],
+	"ranges": [-5000, 5000],
+	"player_skills": [{"skill": "AntimatterShot", "number": 10},
+		              null, null, null, null, null, null, null, null],
+	"ships": [
+
+	],
+	"nexuses": [
+        {
+			"class": "Nexus",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Nexus",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Nexus",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Nexus",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Nexus",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Nexus",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Nexus",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Nexus",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Nexus",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Nexus",
+			"coords": [0, -1000]
+		}
+	],
+	"goal": 0,
+	"planet": "Planet1.png",
+	"skills": null,
+	"reward": 750,
+	"next_level": "new_level10"
+}

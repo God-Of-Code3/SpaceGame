@@ -1,0 +1,96 @@
+{
+	"player_pos": [0, -1000],
+	"ranges": [-5000, 5000],
+	"player_skills": [{"skill": "HealthBoost", "number": 10},
+		              null, null, null, null, null, null, null, null],
+	"ships": [
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -1000]
+		}
+	],
+	"nexuses": [
+
+	],
+	"goal": 1,
+	"planet": "Planet1.png",
+	"skills": null,
+	"reward": 750,
+	"next_level": "new_level5"
+}
