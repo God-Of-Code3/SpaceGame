@@ -123,7 +123,8 @@ class Entity(pygame.sprite.Sprite):
         self.timer = 0
         self.flipped = False
 
-    def set_acceleration(self, x=0, y=0):  # Изменение ускорения корабля
+    # Установить ускорение
+    def set_acceleration(self, x=0, y=0):
         self.acceleration[0] += self.max_acceleration[0] * x
         self.acceleration[1] += self.max_acceleration[1] * y
         if abs(self.acceleration[0]) > abs(self.max_acceleration[0]):
@@ -132,6 +133,7 @@ class Entity(pygame.sprite.Sprite):
         if abs(self.acceleration[1]) > abs(self.max_acceleration[1]):
             self.acceleration[1] = self.max_acceleration[1] * (self.acceleration[1] / abs(self.acceleration[1]))
 
+    # Получение линий для проверки пересечения с ними. Возвращаются две линии: диагонали.
     def get_lines(self):
         x1 = self.coords[0] - self.width / 2
         x2 = self.coords[0] + self.width / 2
@@ -143,9 +145,12 @@ class Entity(pygame.sprite.Sprite):
                  [(x2, y1), (x1, y2)]]
         return lines
 
+    # Вернуть тип коллизии
     def get_collision(self):
         return {"type": "circle", "r": max(self.width, self.height)}
 
+
+    # Проверить пересечение с другим объектом
     def check_intersection(self, other):
         if other.material and self.material:
             col = other.get_collision()
@@ -175,6 +180,7 @@ class Entity(pygame.sprite.Sprite):
                                         math.sin(a * math.pi / 180) * min_d +
                                         self.coords[1]]
 
+    # Обработка итогов столкновения
     def hit(self, other, force):
         if other is not None:
             damage = force * HIT_DAMAGE_COEFFICIENT * other.mass / (self.mass + other.mass)
@@ -183,12 +189,14 @@ class Entity(pygame.sprite.Sprite):
             damage = force * HIT_DAMAGE_COEFFICIENT
             self.health -= damage
 
+    # Проверить переворот картинки
     def check_flip(self):
         if self.flip != self.flipped:
             self.origin = pygame.transform.flip(self.origin, True, False)
             self.flipped = self.flip
         self.flip_timer = max(0, self.flip_timer - 1)
 
+    # Отрисовка
     def draw(self):
         self.check_flip()
         self.rect.center = tuple([int(coord) for coord in self.coords])
@@ -198,6 +206,7 @@ class Entity(pygame.sprite.Sprite):
         self.world.cam.apply(self)
         self.image = img
 
+    # Остановить
     def stop(self, x=False, y=False):
         if x:
             self.acceleration[0] = 0
@@ -205,8 +214,9 @@ class Entity(pygame.sprite.Sprite):
         if y:
             self.acceleration[1] = 0
 
+    # Обновление
     def update(self, mode):
-        if mode == "standart":
+        if mode == "standart":  # Осуществление движения, отрисовка
             for i in range(2):
                 self.coords[i] += self.speed[i] * ACCELERATION * self.world.acceleration
                 self.speed[i] += self.acceleration[i] * ACCELERATION * self.world.acceleration
@@ -261,8 +271,8 @@ class Entity(pygame.sprite.Sprite):
 
             self.draw()
 
-        elif mode == "check":
-            if max(self.width, self.height) / 2 + self.coords[1] > self.world.planet.y and not isinstance(self, Station):
+        elif mode == "check":  # Коллизия
+            if max(self.width, self.height) / 2 + self.coords[1] > self.world.planet.y:
 
                 self.speed[1] = -self.speed[1]
                 self.coords[1] = self.world.planet.y - max(self.width, self.height) / 2
@@ -276,10 +286,12 @@ class Entity(pygame.sprite.Sprite):
                         self.controller.control_object(obj)
 
 
+# Класс корабля (нужен, чтобы было проще проверять наследственность)
 class Starship(Entity):
     pass
 
 
+# Взрыв
 class Explosion(Entity):
     def __init__(self, group, frames, world, state="main", width=100, height=100, rot=0, coords=None, speed=None,
                  acceleration=None, max_acceleration=None, max_speed=None, friction=None, mass=100, controller=None,
@@ -328,7 +340,7 @@ class Explosion(Entity):
 
         self.world.cam.apply(self)
 
-    def add_circle(self):
+    def add_circle(self):  # Добавление круга в эффекты
         if self.health > 10:
             direction = random.randint(0, 360)
             r = int(self.width * self.health / self.max_health)
@@ -340,7 +352,7 @@ class Explosion(Entity):
                                  "max_size": max(random.randint(int(self.health * 0.4), int(self.health * 0.6)), 1),
                                  "step": 2, "expansion": 1})
 
-    def add_particle(self):
+    def add_particle(self):  # Добавление частицы
         if self.health > 10:
             direction = random.randint(0, 360)
             speed = random.randint(0, 20) / 2
@@ -349,7 +361,7 @@ class Explosion(Entity):
             self.params["particles"].append({"x": 0, "y": 0, "speed": (speed_x, speed_y),
                                              "age": random.randint(10, 100)})
 
-    def update(self, mode):
+    def update(self, mode):  # Обновление
         self.material = False
         if mode == "standart":
             if "particles" not in self.params:
@@ -377,6 +389,7 @@ class Explosion(Entity):
             self.health -= 1
 
 
+# Аннигиляционный взрыв
 class AnnihilationExplosion(Explosion):
     def draw(self):
         sc = self.world.screen
@@ -403,23 +416,6 @@ class AnnihilationExplosion(Explosion):
                 if math.hypot(sprite.coords[0] - self.coords[0], sprite.coords[1] - self.coords[1]) < r:
                     sprite.health -= ANNIHILATION_DAMAGE_PER_TICK
         self.draw()
-
-
-class Station(Starship):
-    def __init__(self, group, frames, world, state="main", width=100, height=100, rot=0, coords=None, speed=None,
-                 acceleration=None, max_acceleration=None, max_speed=None, friction=None, mass=100, controller=None,
-                 health=1000):
-        super().__init__(group, frames, world, state=state, width=width, height=height, rot=rot, coords=coords,
-                         speed=speed, acceleration=acceleration, max_acceleration=max_acceleration,
-                         max_speed=max_speed, friction=friction, mass=mass, controller=controller, health=health)
-        self.params["direction"] = 0
-
-    def update(self, mode):
-        self.speed = [0, 0]
-        self.acceleration = [0, 0]
-        coords = self.coords.copy()
-        super().update(mode)
-        self.coords = coords.copy()
 
 
 class Nexus(Starship):

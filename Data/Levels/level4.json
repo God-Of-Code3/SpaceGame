@@ -1,0 +1,40 @@
+{
+	"player_pos": [0, -800],
+	"ranges": [-4000, 4000],
+	"player_skills": [{"skill": "LaserShot", "number": 5},
+					  {"skill": "PlasmaShot", "number": 30},
+					  null, null, null, null, null, null, null],
+	"ships": [
+		{
+			"class": "Auror",
+			"coords": [0, -3500]
+		},
+      {
+			"class": "Auror",
+			"coords": [-200, -3500]
+		},
+      {
+			"class": "Auror",
+			"coords": [200, -3500]
+		},
+      {
+			"class": "Bug",
+			"coords": [-200, -3300]
+		},
+      {
+			"class": "Bug",
+			"coords": [0, -3300]
+		},
+      {
+			"class": "Bug",
+			"coords": [200, -3300]
+		}
+	],
+	"nexuses": [
+	],
+	"goal": 1,
+	"planet": "Planet1.png",
+	"skills": null,
+	"reward": 1000,
+	"next_level": "level5"
+}

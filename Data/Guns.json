@@ -1,0 +1,119 @@
+{
+  "Plasma": {
+    "speed": 40,
+    "width": 56,
+    "height": 20,
+    "health": 1000,
+    "damage": 100,
+    "anim": {
+        "main": {
+            "frames": [["./Assets/Images/Bullets/Bullet1.png", 20]],
+            "next": "main"
+        }
+    }
+  },
+  "CopperShell": {
+    "speed": 40,
+    "width": 40,
+    "height": 15,
+    "health": 100,
+    "damage": 20,
+    "anim": {
+        "main": {
+            "frames": [["./Assets/Images/Bullets/Bullet2.png", 20]],
+            "next": "main"
+        }
+    }
+  },
+  "Laser": {
+    "damage": 4
+  },
+  "SmallRocket": {
+    "acceleration": 0.4,
+    "width": 126,
+    "height": 30,
+    "health": 500,
+    "damage": 100,
+    "anim": {
+        "main": {
+            "frames": [["./Assets/Images/Bullets/SmallRocket.png", 20]],
+            "next": "main"
+        }
+    }
+  },
+  "MediumRocket": {
+    "acceleration": 0.6,
+    "width": 104,
+    "height": 15,
+    "health": 500,
+    "damage": 150,
+    "anim": {
+        "main": {
+            "frames": [["./Assets/Images/Bullets/MediumRocket.png", 20]],
+            "next": "main"
+        }
+    }
+  },
+  "Antimatter": {
+    "speed": 40,
+    "width": 60,
+    "height": 60,
+    "health": 100,
+    "damage": 500,
+    "anim": {
+        "main": {
+            "frames": [["./Assets/Images/Bullets/Antimatter.png", 20]],
+            "next": "main"
+        }
+    }
+  },
+  "AntirocketDevice": {
+		"health": 1,
+        "mass": 1,
+		"acceleration": 0.1,
+		"rot_speed": 4,
+		"width": 58,
+		"height": 20,
+        "damage": 50,
+        "anim": {
+			"main": {
+				"frames": [
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice27.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice26.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice25.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice24.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice23.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice22.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice21.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice20.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice19.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice18.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice17.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice16.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice15.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice14.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice13.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice12.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice11.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice10.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice9.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice8.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice7.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice6.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice5.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice4.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice3.png", 20],
+					["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice2.png", 20]
+				],
+				"next": "main2"
+			},
+			"main2": {
+				"frames": [["./Assets/Images/Ships/AntiRocketDevice/AntirocketDevice.png", 20]],
+				"next": "main2"
+			}
+		}
+	},
+  "HealthBoost": {
+    "health": 500
+  }
+}

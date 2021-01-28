@@ -1,0 +1,45 @@
+{
+	"player_pos": [0, -200],
+	"ranges": [-4000, 4000],
+	"player_skills": [{"skill": "SmallRocketLaunch", "number": 20},
+                      {"skill": "MediumRocketLaunch", "number": 10},
+                      {"skill": "AntirocketDeviceLaunch", "number": 10},
+                      {"skill": "HealthBoost", "number": 10},
+                      {"skill": "AntimatterShot", "number": 1},
+      null, null, null
+    ],
+	"ships": [
+		{
+			"class": "Bug",
+			"coords": [-1000, -3400]
+		},
+      {
+			"class": "Bug",
+			"coords": [0, -3400]
+		},
+      {
+			"class": "Bug",
+			"coords": [1000, -3400]
+		},
+      {
+			"class": "Hindenburg",
+			"coords": [1000, -3600]
+		},
+      {
+			"class": "Hindenburg",
+			"coords": [0, -3600]
+		},
+      {
+			"class": "Hindenburg",
+			"coords": [-1000, -3600]
+		}
+    ],
+    "nexuses": [
+
+    ],
+	"goal": 1,
+	"planet": "Planet1.png",
+	"skills": null,
+	"reward": 3500,
+	"next_level": "level12"
+}

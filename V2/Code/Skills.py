@@ -16,7 +16,7 @@ class SkillList:
         self.world = world
         self.selected = 2
 
-    def draw(self):
+    def draw(self):  # Отрисовка
         sc = self.world.screen
 
         pygame.draw.rect(sc, SKILL_BACKGROUND, (self.x, self.y, self.length * SKILL_TILE_SIZE, SKILL_TILE_SIZE))
@@ -68,11 +68,12 @@ class SkillList:
             pygame.draw.rect(sc, col, (x, y, SKILL_TILE_SIZE, SKILL_TILE_SIZE - 1),
                              SKILL_BORDER_WIDTH)
 
-    def select(self, i):
-        if self.skills[i] is not None and self.skills[i].type == "active":
-            self.selected = i
+    def select(self, i):  # Выбор элемента
+        if -1 < i < len(self.skills):
+            if self.skills[i] is not None and self.skills[i].type == "active":
+                self.selected = i
 
-    def control(self):
+    def control(self):  # Проверка мыши
         for event in self.world.events:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
@@ -82,7 +83,7 @@ class SkillList:
                         x = min((pos[0] - self.x) // SKILL_TILE_SIZE, self.length - 1)
                         self.select(x)
 
-    def update(self, args):
+    def update(self, args):  # Обновление
         for i, skill in enumerate(self.skills):
             if skill is not None:
                 if self.selected == i:
@@ -91,16 +92,16 @@ class SkillList:
                     skill.selected = False
                 skill.update(args)
 
-    def check_pos(self, pos):
+    def check_pos(self, pos):  # Проверка вхождения координаты в прямоугольник слотов
         if self.x <= pos[0] <= self.x + self.length * SKILL_TILE_SIZE \
                 and self.y <= pos[1] <= self.y + SKILL_TILE_SIZE:
             return True
         return False
 
-    def get_width(self):
+    def get_width(self):  # Метод, возвращающий ширину
         return self.length * SKILL_TILE_SIZE
 
-    def get_skills(self):
+    def get_skills(self):  # Метод, возвращающий навыки в "инвентарном виде"
         array = []
         for i, skill in enumerate(self.skills):
             if skill is not None:
@@ -129,7 +130,7 @@ class Skill:
         self.using_time = skill_data["using_time"]
         self.auto_using = skill_data["auto_using"]
 
-    def use(self, args):
+    def use(self, args):  # Использование однократное (нажатие мыши)
         if self.type == "passive":
             return False
         if not (self.recharge_timer == 0 or (self.using_time != -1 and self.using_timer > 0)):
@@ -143,7 +144,7 @@ class Skill:
             self.using_timer = self.using_time
         return True
 
-    def using(self, args):
+    def using(self, args):  # Использование постоянное (удержание мыши)
         if self.type == "passive":
             return False
         if self.using_timer > 0 and (self.auto_using or args["using"]):
@@ -152,22 +153,22 @@ class Skill:
             return True
         return False
 
-    def use_code(self, args):
+    def use_code(self, args):  # Код, вызываемой функцией use()
         pass
 
-    def using_code(self, args):
+    def using_code(self, args):  # Код, вызываемой функцией using()
         pass
 
-    def passive_code(self):
+    def passive_code(self):  # Код, вызываемой у пассивных навыков
         pass
 
-    def start_using(self):
+    def start_using(self):  # Начало использования
         self.using_process = True
 
-    def end_using(self):
+    def end_using(self):  # Конец использования
         self.using_process = False
 
-    def update(self, args):
+    def update(self, args):  # Обновление
         self.number = max(-1, self.number)
         if self.type == "active" and (self.number == -1 or self.number > 0):
             self.recharge_timer = max(self.recharge_timer - ACCELERATION, 0)
@@ -186,6 +187,7 @@ class Skill:
             self.passive_code()
 
 
+# Дочерние навыки
 class PlasmaShot(Skill):
     def __init__(self, world, number, master):
         super().__init__(world, "PlasmaShot", number, master)
@@ -272,7 +274,7 @@ class SmallRocketLaunch(Skill):
         acceleration = [math.cos(math.pi / 180 * angle) * data["acceleration"],
                         math.sin(math.pi / 180 * angle) * data["acceleration"]]
 
-        speed = [*self.master.managed.speed]
+        speed = [0, 0]
         spawn_coords = [*self.master.managed.coords]
         rot = -angle
         SmallRocket(self.world.all_sprites, data["anim"], self.world, speed=speed, coords=spawn_coords,

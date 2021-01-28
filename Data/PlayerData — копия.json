@@ -1,0 +1,15 @@
+{
+  "money": 5024,
+  "inv": [
+    ["CopperShellShot.png", 4, 0, 5],
+    ["MediumRocketLaunch.png", 3, 1, -1]
+  ],
+  "inv_width": 9,
+  "inv_height": 3,
+  "player_inv": [
+    ["HealthBoost.png", 4, 0, 100]
+  ],
+  "player_inv_width": 9,
+  "player_inv_height": 1,
+  "level": "level1"
+}

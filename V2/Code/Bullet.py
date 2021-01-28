@@ -1,7 +1,7 @@
 from V2.Code.Entity import *
 
 
-class Bullet(Entity):
+class Bullet(Entity):  # Основной класс снарядов
     def __init__(self, groups, frames, world, state="main", width=100, height=100, rot=0, coords=None, speed=None,
                  acceleration=None, max_acceleration=None, max_speed=None, friction=None, mass=100, controller=None,
                  health=1000, master=None, damage=100):
@@ -29,6 +29,7 @@ class Bullet(Entity):
         pass
 
 
+# Дальше идут дочерние классы снарядов
 class Plasma(Bullet):
 
     def update(self, mode):

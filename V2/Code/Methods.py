@@ -26,7 +26,7 @@ def load_image(name, colorkey=None):
     return image
 
 
-def to_point(ax, ay, bx, by):
+def to_point(ax, ay, bx, by):  # Направление по двум точкам
     if ay == by:
         return 0 if bx > ax else 180
     elif ax == bx:
@@ -37,7 +37,7 @@ def to_point(ax, ay, bx, by):
         return angle / math.pi * 180
 
 
-def line_intersection(line1, line2, coords=False):
+def line_intersection(line1, line2, coords=False):  # Пересечение линий
     ln1_x1, ln1_y1 = line1[0]
     ln1_x2, ln1_y2 = line1[1]
     ln2_x1, ln2_y1 = line2[0]
@@ -73,7 +73,7 @@ def line_intersection(line1, line2, coords=False):
     return False
 
 
-def rotate_vector(v, a):
+def rotate_vector(v, a):  # Поворот вектора
     angle = to_point(0, 0, *v)
     angle -= a
     d = math.hypot(*v)
@@ -82,19 +82,19 @@ def rotate_vector(v, a):
     return v2
 
 
-def projection_on_vector(v1, v2):
+def projection_on_vector(v1, v2):  # Проекция вектора на вектор
     angle = to_point(0, 0, *v2)
     v3 = rotate_vector(v1, angle)
     return v3
 
 
-def speed_calcs(v1, v2, m1, m2):
+def speed_calcs(v1, v2, m1, m2):  # Обмен скоростями
     v3 = (2 * m2 * v2 + (m1 - m2) * v1) / (m1 + m2)
     v4 = (2 * m1 * v1 + (m2 - m1) * v2) / (m1 + m2)
     return v3, v4
 
 
-def collision(coords1, coords2, speed1, speed2, mass1, mass2):
+def collision(coords1, coords2, speed1, speed2, mass1, mass2):  # Столкновение двух объектов
     angle = to_point(*coords1, *coords2)
 
     speed1_r = rotate_vector(speed1, angle + 90)
@@ -112,14 +112,14 @@ def collision(coords1, coords2, speed1, speed2, mass1, mass2):
     return speed1, speed2, force
 
 
-def click_coords_to_real(camera, pos):
+def click_coords_to_real(camera, pos):  # Координаты клика в игровые координаты
 
     real_x = camera.pos[0] + (pos[0] - camera.size[0] / 2) / camera.zoom
     real_y = camera.pos[1] + (pos[1] - camera.size[1] / 2) / camera.zoom
     return real_x, real_y
 
 
-def get_angle(direction1, direction2):
+def get_angle(direction1, direction2):  # Вернуть угл *Возможно, не работает*
     angle = direction2 - direction1
     if angle > 180:
         angle = 180 - angle
@@ -129,7 +129,7 @@ def get_angle(direction1, direction2):
     return angle
 
 
-def interpolate_color(c1, c2, w1, w2):
+def interpolate_color(c1, c2, w1, w2):  # Интерполяция цвета
     interpolated_color = [0, 0, 0]
     for i in range(3):
         interpolated_color[i] = int((w1 / w2) * c2[i] +
@@ -147,7 +147,7 @@ def get_coords(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2):
     return values
 
 
-def check_line(objects, line, exceptions):
+def check_line(objects, line, exceptions):  # Пересечение линии с объектом
     min_dist = []
     for obj in objects:
         if obj.material and obj not in exceptions:

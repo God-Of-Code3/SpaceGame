@@ -64,6 +64,26 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\Pythonwin\\pywin\\dialogs\\status.py',
    'PYMODULE'),
+  ('_strptime',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\_strptime.py',
+   'PYMODULE'),
+  ('datetime',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\datetime.py',
+   'PYMODULE'),
+  ('calendar',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\calendar.py',
+   'PYMODULE'),
+  ('argparse',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\argparse.py',
+   'PYMODULE'),
+  ('textwrap',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\textwrap.py',
+   'PYMODULE'),
   ('threading',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\threading.py',
@@ -144,14 +164,6 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\zipfile.py',
    'PYMODULE'),
-  ('argparse',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\argparse.py',
-   'PYMODULE'),
-  ('textwrap',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\textwrap.py',
-   'PYMODULE'),
   ('py_compile',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\py_compile.py',
@@ -216,18 +228,6 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\_parseaddr.py',
    'PYMODULE'),
-  ('calendar',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\calendar.py',
-   'PYMODULE'),
-  ('datetime',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\datetime.py',
-   'PYMODULE'),
-  ('_strptime',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\_strptime.py',
-   'PYMODULE'),
   ('socket',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\socket.py',
@@ -236,101 +236,17 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\selectors.py',
    'PYMODULE'),
-  ('email.feedparser',
+  ('random',
    'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\feedparser.py',
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\random.py',
    'PYMODULE'),
-  ('email.message',
+  ('hashlib',
    'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\message.py',
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\hashlib.py',
    'PYMODULE'),
-  ('email.policy',
+  ('logging',
    'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\policy.py',
-   'PYMODULE'),
-  ('email.contentmanager',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\contentmanager.py',
-   'PYMODULE'),
-  ('email.quoprimime',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\quoprimime.py',
-   'PYMODULE'),
-  ('email.headerregistry',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\headerregistry.py',
-   'PYMODULE'),
-  ('email.iterators',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\iterators.py',
-   'PYMODULE'),
-  ('email.generator',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\generator.py',
-   'PYMODULE'),
-  ('email._encoded_words',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\_encoded_words.py',
-   'PYMODULE'),
-  ('base64',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\base64.py',
-   'PYMODULE'),
-  ('quopri',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\quopri.py',
-   'PYMODULE'),
-  ('uu',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\uu.py',
-   'PYMODULE'),
-  ('optparse',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\optparse.py',
-   'PYMODULE'),
-  ('email._header_value_parser',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\_header_value_parser.py',
-   'PYMODULE'),
-  ('email.header',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\header.py',
-   'PYMODULE'),
-  ('email.base64mime',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\base64mime.py',
-   'PYMODULE'),
-  ('email.charset',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\charset.py',
-   'PYMODULE'),
-  ('email.encoders',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\encoders.py',
-   'PYMODULE'),
-  ('email.errors',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\errors.py',
-   'PYMODULE'),
-  ('csv',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\csv.py',
-   'PYMODULE'),
-  ('tokenize',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\tokenize.py',
-   'PYMODULE'),
-  ('token',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\token.py',
-   'PYMODULE'),
-  ('importlib._bootstrap',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\importlib\\_bootstrap.py',
-   'PYMODULE'),
-  ('win32com.client.gencache',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\win32com\\client\\gencache.py',
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\logging\\__init__.py',
    'PYMODULE'),
   ('pickle',
    'C:\\Users\\Александр '
@@ -376,10 +292,6 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\unittest\\case.py',
    'PYMODULE'),
-  ('logging',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\logging\\__init__.py',
-   'PYMODULE'),
   ('unittest.async_case',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\unittest\\async_case.py',
@@ -415,6 +327,10 @@
   ('ssl',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\ssl.py',
+   'PYMODULE'),
+  ('base64',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\base64.py',
    'PYMODULE'),
   ('asyncio.proactor_events',
    'C:\\Users\\Александр '
@@ -491,10 +407,6 @@
   ('multiprocessing.heap',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\multiprocessing\\heap.py',
-   'PYMODULE'),
-  ('bisect',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\bisect.py',
    'PYMODULE'),
   ('multiprocessing.resource_tracker',
    'C:\\Users\\Александр '
@@ -724,6 +636,50 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\http\\client.py',
    'PYMODULE'),
+  ('email.message',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\message.py',
+   'PYMODULE'),
+  ('email.policy',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\policy.py',
+   'PYMODULE'),
+  ('email.contentmanager',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\contentmanager.py',
+   'PYMODULE'),
+  ('email.quoprimime',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\quoprimime.py',
+   'PYMODULE'),
+  ('email.headerregistry',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\headerregistry.py',
+   'PYMODULE'),
+  ('email.iterators',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\iterators.py',
+   'PYMODULE'),
+  ('email.generator',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\generator.py',
+   'PYMODULE'),
+  ('email._encoded_words',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\_encoded_words.py',
+   'PYMODULE'),
+  ('quopri',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\quopri.py',
+   'PYMODULE'),
+  ('uu',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\uu.py',
+   'PYMODULE'),
+  ('optparse',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\optparse.py',
+   'PYMODULE'),
   ('tkinter',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\tkinter\\__init__.py',
@@ -864,13 +820,17 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\smtplib.py',
    'PYMODULE'),
+  ('email.base64mime',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\base64mime.py',
+   'PYMODULE'),
   ('hmac',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\hmac.py',
    'PYMODULE'),
-  ('hashlib',
+  ('glob',
    'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\hashlib.py',
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\glob.py',
    'PYMODULE'),
   ('test',
    'C:\\Users\\Александр '
@@ -1084,6 +1044,10 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\ast.py',
    'PYMODULE'),
+  ('token',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\token.py',
+   'PYMODULE'),
   ('difflib',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\difflib.py',
@@ -1096,9 +1060,49 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\_compat_pickle.py',
    'PYMODULE'),
-  ('glob',
+  ('bisect',
    'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\glob.py',
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\bisect.py',
+   'PYMODULE'),
+  ('email.feedparser',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\feedparser.py',
+   'PYMODULE'),
+  ('email._header_value_parser',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\_header_value_parser.py',
+   'PYMODULE'),
+  ('email.header',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\header.py',
+   'PYMODULE'),
+  ('email.charset',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\charset.py',
+   'PYMODULE'),
+  ('email.encoders',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\encoders.py',
+   'PYMODULE'),
+  ('email.errors',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\email\\errors.py',
+   'PYMODULE'),
+  ('csv',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\csv.py',
+   'PYMODULE'),
+  ('tokenize',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\tokenize.py',
+   'PYMODULE'),
+  ('importlib._bootstrap',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\importlib\\_bootstrap.py',
+   'PYMODULE'),
+  ('win32com.client.gencache',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\win32com\\client\\gencache.py',
    'PYMODULE'),
   ('win32com.client.selecttlb',
    'C:\\Users\\Александр '
@@ -1156,10 +1160,6 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\shutil.py',
    'PYMODULE'),
-  ('os',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\os.py',
-   'PYMODULE'),
   ('pkg_resources',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\__init__.py',
@@ -1171,30 +1171,6 @@
   ('packaging.utils',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\utils.py',
-   'PYMODULE'),
-  ('packaging._structures',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\_structures.py',
-   'PYMODULE'),
-  ('packaging.version',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\version.py',
-   'PYMODULE'),
-  ('packaging.tags',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\tags.py',
-   'PYMODULE'),
-  ('packaging',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\__init__.py',
-   'PYMODULE'),
-  ('packaging._typing',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\_typing.py',
-   'PYMODULE'),
-  ('packaging.specifiers',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\specifiers.py',
    'PYMODULE'),
   ('packaging.markers',
    'C:\\Users\\Александр '
@@ -1212,9 +1188,65 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\win32\\lib\\netbios.py',
    'PYMODULE'),
+  ('packaging',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('packaging.version',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\version.py',
+   'PYMODULE'),
+  ('packaging._structures',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('packaging.specifiers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('packaging.tags',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\tags.py',
+   'PYMODULE'),
+  ('packaging._typing',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\_typing.py',
+   'PYMODULE'),
   ('packaging.requirements',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._structures',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.six',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\six.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.version',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.utils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\pyparsing.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.specifiers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.requirements',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
    'PYMODULE'),
   ('pkg_resources._vendor.appdirs',
    'C:\\Users\\Александр '
@@ -1228,53 +1260,21 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\win32comext\\shell\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.requirements',
+  ('pkg_resources._vendor',
    'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.markers',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.pyparsing',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\pyparsing.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.specifiers',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.utils',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
    'PYMODULE'),
   ('pkg_resources._vendor.packaging._compat',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_compat.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.six',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\six.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.version',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging._structures',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
-   'PYMODULE'),
   ('pkg_resources._vendor.packaging.__about__',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.markers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
    'PYMODULE'),
   ('pkg_resources.py31compat',
    'C:\\Users\\Александр '
@@ -1296,15 +1296,44 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\stringprep.py',
    'PYMODULE'),
-  ('random',
+  ('os',
    'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\random.py',
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\os.py',
    'PYMODULE'),
-  ('Classes.VisualHandler',
+  ('V2.Code.MainMenu',
    'C:\\Users\\Александр '
-   'Лебедев\\PycharmProjects\\SpaceGame\\Classes\\VisualHandler.py',
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\MainMenu.py',
    'PYMODULE'),
-  ('Classes', '-', 'PYMODULE'),
+  ('V2.Code', '-', 'PYMODULE'),
+  ('V2', '-', 'PYMODULE'),
+  ('V2.Code.InventoryConstants',
+   'C:\\Users\\Александр '
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\InventoryConstants.py',
+   'PYMODULE'),
+  ('V2.Code.Constants',
+   'C:\\Users\\Александр '
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\Constants.py',
+   'PYMODULE'),
+  ('json',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\json\\__init__.py',
+   'PYMODULE'),
+  ('json.encoder',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\json\\encoder.py',
+   'PYMODULE'),
+  ('json.decoder',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\json\\decoder.py',
+   'PYMODULE'),
+  ('json.scanner',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\json\\scanner.py',
+   'PYMODULE'),
+  ('V2.Code.Button',
+   'C:\\Users\\Александр '
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\Button.py',
+   'PYMODULE'),
   ('pygame',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygame\\__init__.py',
@@ -1505,9 +1534,37 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\__init__.py',
    'PYMODULE'),
-  ('setuptools._vendor',
+  ('setuptools._vendor.packaging.__about__',
    'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\__init__.py',
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__about__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.version',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
+  ('setuptools._vendor.pyparsing',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\pyparsing.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.utils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.specifiers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.markers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\markers.py',
+   'PYMODULE'),
+  ('setuptools._vendor.six',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\six.py',
    'PYMODULE'),
   ('setuptools._vendor.packaging._compat',
    'C:\\Users\\Александр '
@@ -1517,41 +1574,13 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\requirements.py',
    'PYMODULE'),
+  ('setuptools._vendor',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\__init__.py',
+   'PYMODULE'),
   ('setuptools._vendor.packaging._structures',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_structures.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.__about__',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__about__.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__init__.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.specifiers',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\specifiers.py',
-   'PYMODULE'),
-  ('setuptools._vendor.pyparsing',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\pyparsing.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.version',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.utils',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
-   'PYMODULE'),
-  ('setuptools._vendor.six',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\six.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.markers',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\setuptools\\_vendor\\packaging\\markers.py',
    'PYMODULE'),
   ('setuptools.msvc',
    'C:\\Users\\Александр '
@@ -1568,22 +1597,6 @@
   ('distutils._msvccompiler',
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\distutils\\_msvccompiler.py',
-   'PYMODULE'),
-  ('json',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\json\\__init__.py',
-   'PYMODULE'),
-  ('json.encoder',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\json\\encoder.py',
-   'PYMODULE'),
-  ('json.decoder',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\json\\decoder.py',
-   'PYMODULE'),
-  ('json.scanner',
-   'C:\\Users\\Александр '
-   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\json\\scanner.py',
    'PYMODULE'),
   ('setuptools.namespaces',
    'C:\\Users\\Александр '
@@ -2277,39 +2290,2931 @@
    'C:\\Users\\Александр '
    'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygame\\version.py',
    'PYMODULE'),
-  ('Classes.Starship',
+  ('V2.Code.Inventory',
    'C:\\Users\\Александр '
-   'Лебедев\\PycharmProjects\\SpaceGame\\Classes\\Starship.py',
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\Inventory.py',
    'PYMODULE'),
-  ('Classes.Skill',
+  ('V2.Code.Information',
    'C:\\Users\\Александр '
-   'Лебедев\\PycharmProjects\\SpaceGame\\Classes\\Skill.py',
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\Information.py',
    'PYMODULE'),
-  ('Classes.Bullet',
+  ('V2.Code.Shop',
    'C:\\Users\\Александр '
-   'Лебедев\\PycharmProjects\\SpaceGame\\Classes\\Bullet.py',
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\Shop.py',
    'PYMODULE'),
-  ('Functions.Math',
+  ('V2.Code.World',
    'C:\\Users\\Александр '
-   'Лебедев\\PycharmProjects\\SpaceGame\\Functions\\Math.py',
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\World.py',
    'PYMODULE'),
-  ('Functions', '-', 'PYMODULE'),
-  ('Classes.Level',
+  ('V2.Code.Skills',
    'C:\\Users\\Александр '
-   'Лебедев\\PycharmProjects\\SpaceGame\\Classes\\Level.py',
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\Skills.py',
    'PYMODULE'),
-  ('Classes.Animation',
+  ('V2.Code.Bullet',
    'C:\\Users\\Александр '
-   'Лебедев\\PycharmProjects\\SpaceGame\\Classes\\Animation.py',
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\Bullet.py',
    'PYMODULE'),
-  ('Classes.AI',
-   'C:\\Users\\Александр Лебедев\\PycharmProjects\\SpaceGame\\Classes\\AI.py',
-   'PYMODULE'),
-  ('Classes.Camera',
+  ('V2.Code.Planet',
    'C:\\Users\\Александр '
-   'Лебедев\\PycharmProjects\\SpaceGame\\Classes\\Camera.py',
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\Planet.py',
    'PYMODULE'),
-  ('Classes.Player',
+  ('V2.Code.Controller',
    'C:\\Users\\Александр '
-   'Лебедев\\PycharmProjects\\SpaceGame\\Classes\\Player.py',
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\Controller.py',
+   'PYMODULE'),
+  ('V2.Code.Camera',
+   'C:\\Users\\Александр '
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\Camera.py',
+   'PYMODULE'),
+  ('V2.Code.Entity',
+   'C:\\Users\\Александр '
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\Entity.py',
+   'PYMODULE'),
+  ('V2.Code.Methods',
+   'C:\\Users\\Александр '
+   'Лебедев\\PycharmProjects\\SpaceGame\\V2\\Code\\Methods.py',
+   'PYMODULE'),
+  ('numba',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\__init__.py',
+   'PYMODULE'),
+  ('numba.typed',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\typed\\__init__.py',
+   'PYMODULE'),
+  ('numba.typed.typedlist',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\typed\\typedlist.py',
+   'PYMODULE'),
+  ('numba.core.typing.templates',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\templates.py',
+   'PYMODULE'),
+  ('numba.core.inline_closurecall',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\inline_closurecall.py',
+   'PYMODULE'),
+  ('numba.core.bytecode',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\bytecode.py',
+   'PYMODULE'),
+  ('numba.core.serialize',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\serialize.py',
+   'PYMODULE'),
+  ('numba.core.untyped_passes',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\untyped_passes.py',
+   'PYMODULE'),
+  ('numba.core.cpu',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\cpu.py',
+   'PYMODULE'),
+  ('numba.misc.cffiimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\misc\\cffiimpl.py',
+   'PYMODULE'),
+  ('numba.np.arrayobj',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\arrayobj.py',
+   'PYMODULE'),
+  ('numba.cpython.unsafe.tuple',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\unsafe\\tuple.py',
+   'PYMODULE'),
+  ('numba.cpython.unsafe',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\unsafe\\__init__.py',
+   'PYMODULE'),
+  ('numba.cpython.slicing',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\slicing.py',
+   'PYMODULE'),
+  ('numba.misc.mergesort',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\misc\\mergesort.py',
+   'PYMODULE'),
+  ('numba.misc.quicksort',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\misc\\quicksort.py',
+   'PYMODULE'),
+  ('numba.misc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\misc\\__init__.py',
+   'PYMODULE'),
+  ('numba.misc.dummyarray',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\misc\\dummyarray.py',
+   'PYMODULE'),
+  ('numba.misc.literal',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\misc\\literal.py',
+   'PYMODULE'),
+  ('numba.misc.gdb_hook',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\misc\\gdb_hook.py',
+   'PYMODULE'),
+  ('numba.cpython.randomimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\randomimpl.py',
+   'PYMODULE'),
+  ('numba.cpython.printimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\printimpl.py',
+   'PYMODULE'),
+  ('numba.cpython.mathimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\mathimpl.py',
+   'PYMODULE'),
+  ('numba.cpython.unsafe.numbers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\unsafe\\numbers.py',
+   'PYMODULE'),
+  ('numba.cpython.cmathimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\cmathimpl.py',
+   'PYMODULE'),
+  ('numba.cpython.builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\builtins.py',
+   'PYMODULE'),
+  ('numba.extending',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\extending.py',
+   'PYMODULE'),
+  ('numba.core.typing.builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\builtins.py',
+   'PYMODULE'),
+  ('numba.core.typeconv',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typeconv\\__init__.py',
+   'PYMODULE'),
+  ('numba.core.typeconv.rules',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typeconv\\rules.py',
+   'PYMODULE'),
+  ('numba.core.typeconv.typeconv',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typeconv\\typeconv.py',
+   'PYMODULE'),
+  ('numba.core.typeconv.castgraph',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typeconv\\castgraph.py',
+   'PYMODULE'),
+  ('numba.np.npyimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\npyimpl.py',
+   'PYMODULE'),
+  ('numba.core.typing.npydecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\npydecl.py',
+   'PYMODULE'),
+  ('numba.np.ufunc_db',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\ufunc_db.py',
+   'PYMODULE'),
+  ('numba.np.npdatetime',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\npdatetime.py',
+   'PYMODULE'),
+  ('numba.np.npdatetime_helpers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\npdatetime_helpers.py',
+   'PYMODULE'),
+  ('numba.cpython.numbers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\numbers.py',
+   'PYMODULE'),
+  ('numba.core.optional',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\optional.py',
+   'PYMODULE'),
+  ('numba.np.npyfuncs',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\npyfuncs.py',
+   'PYMODULE'),
+  ('numba.core.lowering',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\lowering.py',
+   'PYMODULE'),
+  ('numba.core.pythonapi',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\pythonapi.py',
+   'PYMODULE'),
+  ('numba.core.boxing',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\boxing.py',
+   'PYMODULE'),
+  ('numba.core.unsafe.eh',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\unsafe\\eh.py',
+   'PYMODULE'),
+  ('numba.core.unsafe',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\unsafe\\__init__.py',
+   'PYMODULE'),
+  ('numba.misc.dump_style',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\misc\\dump_style.py',
+   'PYMODULE'),
+  ('pygments.style',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\style.py',
+   'PYMODULE'),
+  ('pygments.token',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\token.py',
+   'PYMODULE'),
+  ('pygments.lexer',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexer.py',
+   'PYMODULE'),
+  ('chardet',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\__init__.py',
+   'PYMODULE'),
+  ('chardet.version',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\version.py',
+   'PYMODULE'),
+  ('chardet.universaldetector',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\universaldetector.py',
+   'PYMODULE'),
+  ('chardet.sbcsgroupprober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\sbcsgroupprober.py',
+   'PYMODULE'),
+  ('chardet.langturkishmodel',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\langturkishmodel.py',
+   'PYMODULE'),
+  ('chardet.hebrewprober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\hebrewprober.py',
+   'PYMODULE'),
+  ('chardet.charsetprober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\charsetprober.py',
+   'PYMODULE'),
+  ('chardet.langhebrewmodel',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\langhebrewmodel.py',
+   'PYMODULE'),
+  ('chardet.langthaimodel',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\langthaimodel.py',
+   'PYMODULE'),
+  ('chardet.langbulgarianmodel',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\langbulgarianmodel.py',
+   'PYMODULE'),
+  ('chardet.langgreekmodel',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\langgreekmodel.py',
+   'PYMODULE'),
+  ('chardet.langcyrillicmodel',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\langcyrillicmodel.py',
+   'PYMODULE'),
+  ('chardet.sbcharsetprober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\sbcharsetprober.py',
+   'PYMODULE'),
+  ('chardet.mbcsgroupprober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\mbcsgroupprober.py',
+   'PYMODULE'),
+  ('chardet.euctwprober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\euctwprober.py',
+   'PYMODULE'),
+  ('chardet.mbcssm',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\mbcssm.py',
+   'PYMODULE'),
+  ('chardet.chardistribution',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\chardistribution.py',
+   'PYMODULE'),
+  ('chardet.jisfreq',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\jisfreq.py',
+   'PYMODULE'),
+  ('chardet.big5freq',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\big5freq.py',
+   'PYMODULE'),
+  ('chardet.gb2312freq',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\gb2312freq.py',
+   'PYMODULE'),
+  ('chardet.euckrfreq',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\euckrfreq.py',
+   'PYMODULE'),
+  ('chardet.euctwfreq',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\euctwfreq.py',
+   'PYMODULE'),
+  ('chardet.codingstatemachine',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\codingstatemachine.py',
+   'PYMODULE'),
+  ('chardet.mbcharsetprober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\mbcharsetprober.py',
+   'PYMODULE'),
+  ('chardet.big5prober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\big5prober.py',
+   'PYMODULE'),
+  ('chardet.cp949prober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\cp949prober.py',
+   'PYMODULE'),
+  ('chardet.euckrprober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\euckrprober.py',
+   'PYMODULE'),
+  ('chardet.gb2312prober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\gb2312prober.py',
+   'PYMODULE'),
+  ('chardet.eucjpprober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\eucjpprober.py',
+   'PYMODULE'),
+  ('chardet.jpcntx',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\jpcntx.py',
+   'PYMODULE'),
+  ('chardet.sjisprober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\sjisprober.py',
+   'PYMODULE'),
+  ('chardet.utf8prober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\utf8prober.py',
+   'PYMODULE'),
+  ('chardet.latin1prober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\latin1prober.py',
+   'PYMODULE'),
+  ('chardet.escprober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\escprober.py',
+   'PYMODULE'),
+  ('chardet.escsm',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\escsm.py',
+   'PYMODULE'),
+  ('chardet.enums',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\enums.py',
+   'PYMODULE'),
+  ('chardet.charsetgroupprober',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\charsetgroupprober.py',
+   'PYMODULE'),
+  ('chardet.compat',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\chardet\\compat.py',
+   'PYMODULE'),
+  ('pygments.regexopt',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\regexopt.py',
+   'PYMODULE'),
+  ('pygments.util',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\util.py',
+   'PYMODULE'),
+  ('pygments.filters',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\filters\\__init__.py',
+   'PYMODULE'),
+  ('pygments.plugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\plugin.py',
+   'PYMODULE'),
+  ('pygments.filter',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\filter.py',
+   'PYMODULE'),
+  ('pygments.styles.native',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\native.py',
+   'PYMODULE'),
+  ('pygments.styles',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\__init__.py',
+   'PYMODULE'),
+  ('pygments.styles.monokai',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\monokai.py',
+   'PYMODULE'),
+  ('pygments.styles.manni',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\manni.py',
+   'PYMODULE'),
+  ('pygments.styles.default',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\default.py',
+   'PYMODULE'),
+  ('pygments.formatters',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\formatters\\__init__.py',
+   'PYMODULE'),
+  ('pygments.formatters._mapping',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\formatters\\_mapping.py',
+   'PYMODULE'),
+  ('pygments.lexers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\__init__.py',
+   'PYMODULE'),
+  ('pygments.lexers._tsql_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_tsql_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers._stan_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_stan_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers._scilab_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_scilab_builtins.py',
+   'PYMODULE'),
+  ('pygments.modeline',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\modeline.py',
+   'PYMODULE'),
+  ('pygments.lexers._mapping',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_mapping.py',
+   'PYMODULE'),
+  ('pygments',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\__init__.py',
+   'PYMODULE'),
+  ('pygments.styles.tango',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\tango.py',
+   'PYMODULE'),
+  ('pygments.styles.fruity',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\fruity.py',
+   'PYMODULE'),
+  ('pygments.styles.stata_light',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\stata_light.py',
+   'PYMODULE'),
+  ('pygments.styles.rainbow_dash',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\rainbow_dash.py',
+   'PYMODULE'),
+  ('pygments.styles.algol_nu',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\algol_nu.py',
+   'PYMODULE'),
+  ('pygments.styles.arduino',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\arduino.py',
+   'PYMODULE'),
+  ('pygments.styles.solarized',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\solarized.py',
+   'PYMODULE'),
+  ('pygments.styles.rrt',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\rrt.py',
+   'PYMODULE'),
+  ('pygments.styles.autumn',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\autumn.py',
+   'PYMODULE'),
+  ('pygments.styles.bw',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\bw.py',
+   'PYMODULE'),
+  ('pygments.styles.friendly',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\friendly.py',
+   'PYMODULE'),
+  ('pygments.styles.algol',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\algol.py',
+   'PYMODULE'),
+  ('pygments.styles.paraiso_dark',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\paraiso_dark.py',
+   'PYMODULE'),
+  ('pygments.styles.abap',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\abap.py',
+   'PYMODULE'),
+  ('pygments.styles.emacs',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\emacs.py',
+   'PYMODULE'),
+  ('pygments.styles.trac',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\trac.py',
+   'PYMODULE'),
+  ('pygments.styles.paraiso_light',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\paraiso_light.py',
+   'PYMODULE'),
+  ('pygments.styles.vim',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\vim.py',
+   'PYMODULE'),
+  ('pygments.styles.perldoc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\perldoc.py',
+   'PYMODULE'),
+  ('pygments.styles.inkpot',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\inkpot.py',
+   'PYMODULE'),
+  ('pygments.styles.sas',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\sas.py',
+   'PYMODULE'),
+  ('pygments.styles.xcode',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\xcode.py',
+   'PYMODULE'),
+  ('pygments.styles.stata_dark',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\stata_dark.py',
+   'PYMODULE'),
+  ('pygments.styles.igor',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\igor.py',
+   'PYMODULE'),
+  ('pygments.styles.murphy',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\murphy.py',
+   'PYMODULE'),
+  ('pygments.styles.lovelace',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\lovelace.py',
+   'PYMODULE'),
+  ('pygments.styles.vs',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\vs.py',
+   'PYMODULE'),
+  ('pygments.styles.colorful',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\colorful.py',
+   'PYMODULE'),
+  ('pygments.styles.pastie',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\pastie.py',
+   'PYMODULE'),
+  ('pygments.styles.borland',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\styles\\borland.py',
+   'PYMODULE'),
+  ('pygments.lexers.console',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\console.py',
+   'PYMODULE'),
+  ('pygments.lexers.idl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\idl.py',
+   'PYMODULE'),
+  ('pygments.lexers.make',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\make.py',
+   'PYMODULE'),
+  ('pygments.lexers.nit',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\nit.py',
+   'PYMODULE'),
+  ('pygments.lexers.web',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\web.py',
+   'PYMODULE'),
+  ('pygments.lexers.mosel',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\mosel.py',
+   'PYMODULE'),
+  ('pygments.lexers._stata_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_stata_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers.markup',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\markup.py',
+   'PYMODULE'),
+  ('pygments.lexers.chapel',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\chapel.py',
+   'PYMODULE'),
+  ('pygments.lexers.templates',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\templates.py',
+   'PYMODULE'),
+  ('pygments.lexers.tnt',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\tnt.py',
+   'PYMODULE'),
+  ('pygments.lexers.hexdump',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\hexdump.py',
+   'PYMODULE'),
+  ('pygments.lexers.basic',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\basic.py',
+   'PYMODULE'),
+  ('pygments.lexers.text',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\text.py',
+   'PYMODULE'),
+  ('pygments.lexers.promql',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\promql.py',
+   'PYMODULE'),
+  ('pygments.lexers.prolog',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\prolog.py',
+   'PYMODULE'),
+  ('pygments.lexers.monte',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\monte.py',
+   'PYMODULE'),
+  ('pygments.lexers.usd',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\usd.py',
+   'PYMODULE'),
+  ('pygments.lexers.c_cpp',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\c_cpp.py',
+   'PYMODULE'),
+  ('pygments.lexers.textedit',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\textedit.py',
+   'PYMODULE'),
+  ('pygments.lexers.lisp',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\lisp.py',
+   'PYMODULE'),
+  ('pygments.lexers.trafficscript',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\trafficscript.py',
+   'PYMODULE'),
+  ('pygments.lexers.go',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\go.py',
+   'PYMODULE'),
+  ('pygments.lexers.installers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\installers.py',
+   'PYMODULE'),
+  ('pygments.lexers.php',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\php.py',
+   'PYMODULE'),
+  ('pygments.lexers.solidity',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\solidity.py',
+   'PYMODULE'),
+  ('pygments.lexers.supercollider',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\supercollider.py',
+   'PYMODULE'),
+  ('pygments.lexers.python',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\python.py',
+   'PYMODULE'),
+  ('pygments.lexers.gdscript',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\gdscript.py',
+   'PYMODULE'),
+  ('pygments.lexers.varnish',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\varnish.py',
+   'PYMODULE'),
+  ('pygments.lexers.tcl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\tcl.py',
+   'PYMODULE'),
+  ('pygments.lexers.elm',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\elm.py',
+   'PYMODULE'),
+  ('pygments.lexers.resource',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\resource.py',
+   'PYMODULE'),
+  ('pygments.lexers.urbi',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\urbi.py',
+   'PYMODULE'),
+  ('pygments.lexers.iolang',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\iolang.py',
+   'PYMODULE'),
+  ('pygments.lexers.grammar_notation',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\grammar_notation.py',
+   'PYMODULE'),
+  ('pygments.lexers.hdl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\hdl.py',
+   'PYMODULE'),
+  ('pygments.lexers.diff',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\diff.py',
+   'PYMODULE'),
+  ('pygments.lexers.actionscript',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\actionscript.py',
+   'PYMODULE'),
+  ('pygments.lexers.devicetree',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\devicetree.py',
+   'PYMODULE'),
+  ('pygments.lexers.textfmts',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\textfmts.py',
+   'PYMODULE'),
+  ('pygments.lexers.ecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\ecl.py',
+   'PYMODULE'),
+  ('pygments.lexers.asm',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\asm.py',
+   'PYMODULE'),
+  ('pygments.lexers.r',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\r.py',
+   'PYMODULE'),
+  ('pygments.lexers._postgres_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_postgres_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers.haxe',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\haxe.py',
+   'PYMODULE'),
+  ('pygments.lexers.stata',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\stata.py',
+   'PYMODULE'),
+  ('pygments.lexers.csound',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\csound.py',
+   'PYMODULE'),
+  ('pygments.lexers.css',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\css.py',
+   'PYMODULE'),
+  ('pygments.lexers.crystal',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\crystal.py',
+   'PYMODULE'),
+  ('pygments.lexers.int_fiction',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\int_fiction.py',
+   'PYMODULE'),
+  ('pygments.lexers.scripting',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\scripting.py',
+   'PYMODULE'),
+  ('pygments.lexers.snobol',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\snobol.py',
+   'PYMODULE'),
+  ('pygments.lexers.felix',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\felix.py',
+   'PYMODULE'),
+  ('pygments.lexers.x10',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\x10.py',
+   'PYMODULE'),
+  ('pygments.lexers.theorem',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\theorem.py',
+   'PYMODULE'),
+  ('pygments.lexers.smalltalk',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\smalltalk.py',
+   'PYMODULE'),
+  ('pygments.lexers.mime',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\mime.py',
+   'PYMODULE'),
+  ('pygments.lexers.sgf',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\sgf.py',
+   'PYMODULE'),
+  ('pygments.lexers.ride',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\ride.py',
+   'PYMODULE'),
+  ('pygments.lexers.configs',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\configs.py',
+   'PYMODULE'),
+  ('pygments.lexers.agile',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\agile.py',
+   'PYMODULE'),
+  ('pygments.lexers.slash',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\slash.py',
+   'PYMODULE'),
+  ('pygments.lexers.other',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\other.py',
+   'PYMODULE'),
+  ('pygments.lexers.rebol',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\rebol.py',
+   'PYMODULE'),
+  ('pygments.lexers.pascal',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\pascal.py',
+   'PYMODULE'),
+  ('pygments.scanner',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\scanner.py',
+   'PYMODULE'),
+  ('pygments.lexers._vim_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_vim_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers.typoscript',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\typoscript.py',
+   'PYMODULE'),
+  ('pygments.lexers.dylan',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\dylan.py',
+   'PYMODULE'),
+  ('pygments.lexers.forth',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\forth.py',
+   'PYMODULE'),
+  ('pygments.lexers.d',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\d.py',
+   'PYMODULE'),
+  ('pygments.lexers._asy_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_asy_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers._sourcemod_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_sourcemod_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers.html',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\html.py',
+   'PYMODULE'),
+  ('pygments.lexers.email',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\email.py',
+   'PYMODULE'),
+  ('pygments.lexers.verification',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\verification.py',
+   'PYMODULE'),
+  ('pygments.lexers.qvt',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\qvt.py',
+   'PYMODULE'),
+  ('pygments.lexers.scdoc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\scdoc.py',
+   'PYMODULE'),
+  ('pygments.lexers.sas',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\sas.py',
+   'PYMODULE'),
+  ('pygments.lexers.robotframework',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\robotframework.py',
+   'PYMODULE'),
+  ('pygments.lexers.ncl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\ncl.py',
+   'PYMODULE'),
+  ('pygments.lexers.oberon',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\oberon.py',
+   'PYMODULE'),
+  ('pygments.lexers.clean',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\clean.py',
+   'PYMODULE'),
+  ('pygments.lexers.esoteric',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\esoteric.py',
+   'PYMODULE'),
+  ('pygments.lexers.ambient',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\ambient.py',
+   'PYMODULE'),
+  ('pygments.lexers.ruby',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\ruby.py',
+   'PYMODULE'),
+  ('pygments.lexers.ampl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\ampl.py',
+   'PYMODULE'),
+  ('pygments.lexers.nimrod',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\nimrod.py',
+   'PYMODULE'),
+  ('pygments.lexers.shell',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\shell.py',
+   'PYMODULE'),
+  ('pygments.lexers.parsers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\parsers.py',
+   'PYMODULE'),
+  ('pygments.lexers.eiffel',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\eiffel.py',
+   'PYMODULE'),
+  ('pygments.lexers.roboconf',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\roboconf.py',
+   'PYMODULE'),
+  ('pygments.lexers.j',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\j.py',
+   'PYMODULE'),
+  ('pygments.lexers.factor',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\factor.py',
+   'PYMODULE'),
+  ('pygments.lexers.business',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\business.py',
+   'PYMODULE'),
+  ('pygments.lexers.inferno',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\inferno.py',
+   'PYMODULE'),
+  ('pygments.lexers.bibtex',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\bibtex.py',
+   'PYMODULE'),
+  ('pygments.lexers._usd_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_usd_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers.graphics',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\graphics.py',
+   'PYMODULE'),
+  ('pygments.lexers.webmisc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\webmisc.py',
+   'PYMODULE'),
+  ('pygments.lexers.rnc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\rnc.py',
+   'PYMODULE'),
+  ('pygments.lexers.pony',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\pony.py',
+   'PYMODULE'),
+  ('pygments.lexers.bare',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\bare.py',
+   'PYMODULE'),
+  ('pygments.lexers.zig',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\zig.py',
+   'PYMODULE'),
+  ('pygments.lexers.sql',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\sql.py',
+   'PYMODULE'),
+  ('pygments.lexers.xorg',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\xorg.py',
+   'PYMODULE'),
+  ('pygments.lexers.graph',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\graph.py',
+   'PYMODULE'),
+  ('pygments.lexers.perl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\perl.py',
+   'PYMODULE'),
+  ('pygments.lexers._openedge_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_openedge_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers.automation',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\automation.py',
+   'PYMODULE'),
+  ('pygments.lexers.erlang',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\erlang.py',
+   'PYMODULE'),
+  ('pygments.lexers.nix',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\nix.py',
+   'PYMODULE'),
+  ('pygments.lexers.teraterm',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\teraterm.py',
+   'PYMODULE'),
+  ('pygments.lexers.unicon',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\unicon.py',
+   'PYMODULE'),
+  ('pygments.lexers.c_like',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\c_like.py',
+   'PYMODULE'),
+  ('pygments.lexers._cl_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_cl_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers.rust',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\rust.py',
+   'PYMODULE'),
+  ('pygments.lexers.modula2',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\modula2.py',
+   'PYMODULE'),
+  ('pygments.lexers.archetype',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\archetype.py',
+   'PYMODULE'),
+  ('pygments.lexers._lua_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_lua_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers.praat',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\praat.py',
+   'PYMODULE'),
+  ('pygments.lexers.freefem',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\freefem.py',
+   'PYMODULE'),
+  ('pygments.lexers.yang',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\yang.py',
+   'PYMODULE'),
+  ('pygments.lexers.haskell',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\haskell.py',
+   'PYMODULE'),
+  ('pygments.lexers.pointless',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\pointless.py',
+   'PYMODULE'),
+  ('pygments.lexers.dotnet',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\dotnet.py',
+   'PYMODULE'),
+  ('pygments.lexers.modeling',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\modeling.py',
+   'PYMODULE'),
+  ('pygments.lexers.ml',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\ml.py',
+   'PYMODULE'),
+  ('pygments.lexers.fantom',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\fantom.py',
+   'PYMODULE'),
+  ('pygments.lexers._cocoa_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_cocoa_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers.math',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\math.py',
+   'PYMODULE'),
+  ('pygments.lexers.sieve',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\sieve.py',
+   'PYMODULE'),
+  ('pygments.lexers.ezhil',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\ezhil.py',
+   'PYMODULE'),
+  ('pygments.lexers.dsls',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\dsls.py',
+   'PYMODULE'),
+  ('pygments.lexers.javascript',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\javascript.py',
+   'PYMODULE'),
+  ('pygments.lexers.apl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\apl.py',
+   'PYMODULE'),
+  ('pygments.lexers._csound_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_csound_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers.objective',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\objective.py',
+   'PYMODULE'),
+  ('pygments.lexers.compiled',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\compiled.py',
+   'PYMODULE'),
+  ('pygments.lexers.webidl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\webidl.py',
+   'PYMODULE'),
+  ('pygments.lexers.whiley',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\whiley.py',
+   'PYMODULE'),
+  ('pygments.lexers.capnproto',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\capnproto.py',
+   'PYMODULE'),
+  ('pygments.lexers.parasail',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\parasail.py',
+   'PYMODULE'),
+  ('pygments.lexers.special',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\special.py',
+   'PYMODULE'),
+  ('pygments.lexers.dalvik',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\dalvik.py',
+   'PYMODULE'),
+  ('pygments.lexers.rdf',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\rdf.py',
+   'PYMODULE'),
+  ('pygments.lexers.ooc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\ooc.py',
+   'PYMODULE'),
+  ('pygments.lexers.arrow',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\arrow.py',
+   'PYMODULE'),
+  ('pygments.lexers.algebra',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\algebra.py',
+   'PYMODULE'),
+  ('pygments.lexers.smv',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\smv.py',
+   'PYMODULE'),
+  ('pygments.lexers.foxpro',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\foxpro.py',
+   'PYMODULE'),
+  ('pygments.lexers.data',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\data.py',
+   'PYMODULE'),
+  ('pygments.lexers._mysql_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_mysql_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers._lasso_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_lasso_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers.functional',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\functional.py',
+   'PYMODULE'),
+  ('pygments.lexers.fortran',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\fortran.py',
+   'PYMODULE'),
+  ('pygments.lexers.pawn',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\pawn.py',
+   'PYMODULE'),
+  ('pygments.lexers.julia',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\julia.py',
+   'PYMODULE'),
+  ('pygments.lexers._php_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_php_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers.matlab',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\matlab.py',
+   'PYMODULE'),
+  ('pygments.lexers.igor',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\igor.py',
+   'PYMODULE'),
+  ('pygments.lexers.boa',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\boa.py',
+   'PYMODULE'),
+  ('pygments.lexers.floscript',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\floscript.py',
+   'PYMODULE'),
+  ('pygments.lexers._vbscript_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_vbscript_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers._mql_builtins',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\_mql_builtins.py',
+   'PYMODULE'),
+  ('pygments.lexers.testing',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\testing.py',
+   'PYMODULE'),
+  ('pygments.lexers.jvm',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\lexers\\jvm.py',
+   'PYMODULE'),
+  ('pygments.unistring',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\unistring.py',
+   'PYMODULE'),
+  ('pygments.formatters.rtf',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\formatters\\rtf.py',
+   'PYMODULE'),
+  ('pygments.formatter',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\formatter.py',
+   'PYMODULE'),
+  ('pygments.formatters.bbcode',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\formatters\\bbcode.py',
+   'PYMODULE'),
+  ('pygments.formatters.irc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\formatters\\irc.py',
+   'PYMODULE'),
+  ('pygments.formatters.svg',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\formatters\\svg.py',
+   'PYMODULE'),
+  ('pygments.formatters.html',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\formatters\\html.py',
+   'PYMODULE'),
+  ('pygments.formatters.other',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\formatters\\other.py',
+   'PYMODULE'),
+  ('pygments.console',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\console.py',
+   'PYMODULE'),
+  ('pygments.formatters.terminal',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\formatters\\terminal.py',
+   'PYMODULE'),
+  ('pygments.formatters.terminal256',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\formatters\\terminal256.py',
+   'PYMODULE'),
+  ('pygments.formatters.latex',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\formatters\\latex.py',
+   'PYMODULE'),
+  ('pygments.formatters.img',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pygments\\formatters\\img.py',
+   'PYMODULE'),
+  ('PIL.ImageFont',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImageFont.py',
+   'PYMODULE'),
+  ('PIL._util',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\_util.py',
+   'PYMODULE'),
+  ('PIL.ImageDraw',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImageDraw.py',
+   'PYMODULE'),
+  ('PIL.ImageDraw2',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImageDraw2.py',
+   'PYMODULE'),
+  ('PIL.ImagePath',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImagePath.py',
+   'PYMODULE'),
+  ('PIL.ImageColor',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImageColor.py',
+   'PYMODULE'),
+  ('colorsys',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\colorsys.py',
+   'PYMODULE'),
+  ('PIL.Image',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\Image.py',
+   'PYMODULE'),
+  ('PIL.GbrImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\GbrImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImageFile',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImageFile.py',
+   'PYMODULE'),
+  ('PIL.ImImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.MpoImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\MpoImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PsdImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\PsdImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.BlpImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\BlpImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.IcnsImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\IcnsImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.MicImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\MicImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.WmfImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\WmfImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PalmImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\PalmImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.MspImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\MspImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.MpegImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\MpegImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.XVThumbImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\XVThumbImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.DdsImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\DdsImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PcdImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\PcdImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.SunImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\SunImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.XbmImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\XbmImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.CurImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\CurImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.TgaImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\TgaImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PixarImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\PixarImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.BufrStubImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\BufrStubImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.DcxImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\DcxImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.FitsStubImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\FitsStubImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.FtexImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\FtexImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImtImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImtImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.IcoImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\IcoImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PdfImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\PdfImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PdfParser',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\PdfParser.py',
+   'PYMODULE'),
+  ('PIL.ImageSequence',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImageSequence.py',
+   'PYMODULE'),
+  ('PIL.GribStubImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\GribStubImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.FliImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\FliImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.XpmImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\XpmImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.McIdasImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\McIdasImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.WebPImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\WebPImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.FpxImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\FpxImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.SgiImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\SgiImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.Hdf5StubImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\Hdf5StubImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PcxImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\PcxImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.Jpeg2KImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\Jpeg2KImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.EpsImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\EpsImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.IptcImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\IptcImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.SpiderImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\SpiderImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImageTk',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImageTk.py',
+   'PYMODULE'),
+  ('PIL.TiffImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\TiffImagePlugin.py',
+   'PYMODULE'),
+  ('fractions',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\fractions.py',
+   'PYMODULE'),
+  ('PIL.ImageShow',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImageShow.py',
+   'PYMODULE'),
+  ('PIL.ImageQt',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImageQt.py',
+   'PYMODULE'),
+  ('PIL.ImageFilter',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImageFilter.py',
+   'PYMODULE'),
+  ('PIL.PyAccess',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\PyAccess.py',
+   'PYMODULE'),
+  ('PIL.ImagePalette',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImagePalette.py',
+   'PYMODULE'),
+  ('PIL.PaletteFile',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\PaletteFile.py',
+   'PYMODULE'),
+  ('PIL.GimpPaletteFile',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\GimpPaletteFile.py',
+   'PYMODULE'),
+  ('PIL.GimpGradientFile',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\GimpGradientFile.py',
+   'PYMODULE'),
+  ('PIL.PngImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\PngImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImageChops',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImageChops.py',
+   'PYMODULE'),
+  ('PIL.PpmImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\PpmImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.JpegImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\JpegImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.JpegPresets',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\JpegPresets.py',
+   'PYMODULE'),
+  ('PIL.GifImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\GifImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.BmpImagePlugin',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\BmpImagePlugin.py',
+   'PYMODULE'),
+  ('cffi',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\__init__.py',
+   'PYMODULE'),
+  ('cffi.error',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\error.py',
+   'PYMODULE'),
+  ('cffi.api',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\api.py',
+   'PYMODULE'),
+  ('cffi.recompiler',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\recompiler.py',
+   'PYMODULE'),
+  ('cffi.cffi_opcode',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\cffi_opcode.py',
+   'PYMODULE'),
+  ('cffi.verifier',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\verifier.py',
+   'PYMODULE'),
+  ('cffi.lock',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\lock.py',
+   'PYMODULE'),
+  ('cffi.pkgconfig',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\pkgconfig.py',
+   'PYMODULE'),
+  ('cffi.vengine_cpy',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\vengine_cpy.py',
+   'PYMODULE'),
+  ('cffi.vengine_gen',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\vengine_gen.py',
+   'PYMODULE'),
+  ('cffi.ffiplatform',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\ffiplatform.py',
+   'PYMODULE'),
+  ('cffi.cparser',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\cparser.py',
+   'PYMODULE'),
+  ('pycparser.lextab',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pycparser\\lextab.py',
+   'PYMODULE'),
+  ('pycparser.yacctab',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pycparser\\yacctab.py',
+   'PYMODULE'),
+  ('pycparser',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pycparser\\__init__.py',
+   'PYMODULE'),
+  ('pycparser.c_parser',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pycparser\\c_parser.py',
+   'PYMODULE'),
+  ('pycparser.ast_transforms',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pycparser\\ast_transforms.py',
+   'PYMODULE'),
+  ('pycparser.plyparser',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pycparser\\plyparser.py',
+   'PYMODULE'),
+  ('pycparser.c_lexer',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pycparser\\c_lexer.py',
+   'PYMODULE'),
+  ('pycparser.ply.lex',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pycparser\\ply\\lex.py',
+   'PYMODULE'),
+  ('pycparser.ply.yacc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pycparser\\ply\\yacc.py',
+   'PYMODULE'),
+  ('pycparser.ply',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pycparser\\ply\\__init__.py',
+   'PYMODULE'),
+  ('pycparser.c_ast',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\pycparser\\c_ast.py',
+   'PYMODULE'),
+  ('cffi.commontypes',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\commontypes.py',
+   'PYMODULE'),
+  ('cffi.model',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\cffi\\model.py',
+   'PYMODULE'),
+  ('PIL._binary',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\_binary.py',
+   'PYMODULE'),
+  ('PIL.TiffTags',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\TiffTags.py',
+   'PYMODULE'),
+  ('PIL.ImageMode',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\ImageMode.py',
+   'PYMODULE'),
+  ('PIL',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\__init__.py',
+   'PYMODULE'),
+  ('PIL._version',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\PIL\\_version.py',
+   'PYMODULE'),
+  ('numba.core.environment',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\environment.py',
+   'PYMODULE'),
+  ('numba.core.removerefctpass',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\removerefctpass.py',
+   'PYMODULE'),
+  ('llvmlite.ir.transforms',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\ir\\transforms.py',
+   'PYMODULE'),
+  ('numba.core.generators',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\generators.py',
+   'PYMODULE'),
+  ('numba.core.funcdesc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\funcdesc.py',
+   'PYMODULE'),
+  ('numba.core.itanium_mangler',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\itanium_mangler.py',
+   'PYMODULE'),
+  ('numba.core.debuginfo',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\debuginfo.py',
+   'PYMODULE'),
+  ('llvmlite.llvmpy',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\llvmpy\\__init__.py',
+   'PYMODULE'),
+  ('numba.np',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\__init__.py',
+   'PYMODULE'),
+  ('numba.np.arraymath',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\arraymath.py',
+   'PYMODULE'),
+  ('numba.np.linalg',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\linalg.py',
+   'PYMODULE'),
+  ('numba.np.polynomial',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\polynomial.py',
+   'PYMODULE'),
+  ('numba.experimental.function_type',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\experimental\\function_type.py',
+   'PYMODULE'),
+  ('numba.core.ccallback',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\ccallback.py',
+   'PYMODULE'),
+  ('numba.core.typing.ctypes_utils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\ctypes_utils.py',
+   'PYMODULE'),
+  ('numba.core.typing.typeof',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\typeof.py',
+   'PYMODULE'),
+  ('numba.core.typing.bufproto',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\bufproto.py',
+   'PYMODULE'),
+  ('numba.core.typing.cffi_utils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\cffi_utils.py',
+   'PYMODULE'),
+  ('numba.core.caching',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\caching.py',
+   'PYMODULE'),
+  ('numba.misc.appdirs',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\misc\\appdirs.py',
+   'PYMODULE'),
+  ('numba.core.registry',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\registry.py',
+   'PYMODULE'),
+  ('numba.core.descriptors',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\descriptors.py',
+   'PYMODULE'),
+  ('numba.typed.dictimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\typed\\dictimpl.py',
+   'PYMODULE'),
+  ('numba.cpython.charseq',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\charseq.py',
+   'PYMODULE'),
+  ('numba.cpython.unicode',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\unicode.py',
+   'PYMODULE'),
+  ('numba.cpython.unicode_support',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\unicode_support.py',
+   'PYMODULE'),
+  ('numba.core.unsafe.bytes',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\unsafe\\bytes.py',
+   'PYMODULE'),
+  ('numba.cpython.hashing',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\hashing.py',
+   'PYMODULE'),
+  ('numba.core.datamodel',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\datamodel\\__init__.py',
+   'PYMODULE'),
+  ('numba.core.datamodel.models',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\datamodel\\models.py',
+   'PYMODULE'),
+  ('numba.core.datamodel.registry',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\datamodel\\registry.py',
+   'PYMODULE'),
+  ('numba.core.datamodel.packer',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\datamodel\\packer.py',
+   'PYMODULE'),
+  ('numba.core.datamodel.manager',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\datamodel\\manager.py',
+   'PYMODULE'),
+  ('numba.cpython.listobj',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\listobj.py',
+   'PYMODULE'),
+  ('numba.cpython.setobj',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\setobj.py',
+   'PYMODULE'),
+  ('numba.cpython',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\__init__.py',
+   'PYMODULE'),
+  ('numba.cpython.iterators',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\iterators.py',
+   'PYMODULE'),
+  ('numba.cpython.heapq',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\heapq.py',
+   'PYMODULE'),
+  ('numba.cpython.enumimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\enumimpl.py',
+   'PYMODULE'),
+  ('numba.cpython.tupleobj',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\tupleobj.py',
+   'PYMODULE'),
+  ('numba.core.entrypoints',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\entrypoints.py',
+   'PYMODULE'),
+  ('numba.core.compiler_lock',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\compiler_lock.py',
+   'PYMODULE'),
+  ('numba.core.runtime',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\runtime\\__init__.py',
+   'PYMODULE'),
+  ('numba.core.runtime.nrt',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\runtime\\nrt.py',
+   'PYMODULE'),
+  ('numba.core.runtime.nrtdynmod',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\runtime\\nrtdynmod.py',
+   'PYMODULE'),
+  ('numba.core.options',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\options.py',
+   'PYMODULE'),
+  ('numba.core.intrinsics',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\intrinsics.py',
+   'PYMODULE'),
+  ('numba.core.fastmathpass',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\fastmathpass.py',
+   'PYMODULE'),
+  ('numba.core.externals',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\externals.py',
+   'PYMODULE'),
+  ('numba.core.codegen',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\codegen.py',
+   'PYMODULE'),
+  ('numba.misc.inspection',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\misc\\inspection.py',
+   'PYMODULE'),
+  ('numba.core.runtime.nrtopt',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\runtime\\nrtopt.py',
+   'PYMODULE'),
+  ('llvmlite.llvmpy.passes',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\llvmpy\\passes.py',
+   'PYMODULE'),
+  ('numba.core.callconv',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\callconv.py',
+   'PYMODULE'),
+  ('numba.core.base',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\base.py',
+   'PYMODULE'),
+  ('numba.core.runtime.context',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\runtime\\context.py',
+   'PYMODULE'),
+  ('numba.core.callwrapper',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\callwrapper.py',
+   'PYMODULE'),
+  ('llvmlite.ir',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\ir\\__init__.py',
+   'PYMODULE'),
+  ('llvmlite.ir.builder',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\ir\\builder.py',
+   'PYMODULE'),
+  ('llvmlite.ir.instructions',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\ir\\instructions.py',
+   'PYMODULE'),
+  ('llvmlite.ir._utils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\ir\\_utils.py',
+   'PYMODULE'),
+  ('llvmlite.ir.module',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\ir\\module.py',
+   'PYMODULE'),
+  ('llvmlite.ir.context',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\ir\\context.py',
+   'PYMODULE'),
+  ('llvmlite.ir.values',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\ir\\values.py',
+   'PYMODULE'),
+  ('llvmlite.ir.types',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\ir\\types.py',
+   'PYMODULE'),
+  ('llvmlite.llvmpy.core',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\llvmpy\\core.py',
+   'PYMODULE'),
+  ('numba.core.interpreter',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\interpreter.py',
+   'PYMODULE'),
+  ('numba.core.byteflow',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\byteflow.py',
+   'PYMODULE'),
+  ('numba.core.controlflow',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\controlflow.py',
+   'PYMODULE'),
+  ('numba.core.dataflow',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\dataflow.py',
+   'PYMODULE'),
+  ('numba.core.ssa',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\ssa.py',
+   'PYMODULE'),
+  ('numba.core.transforms',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\transforms.py',
+   'PYMODULE'),
+  ('numba.core.compiler_machinery',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\compiler_machinery.py',
+   'PYMODULE'),
+  ('numba.core.tracing',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\tracing.py',
+   'PYMODULE'),
+  ('timeit',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\timeit.py',
+   'PYMODULE'),
+  ('numba.stencils.stencil',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\stencils\\stencil.py',
+   'PYMODULE'),
+  ('numba.stencils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\stencils\\__init__.py',
+   'PYMODULE'),
+  ('numba.np.unsafe.ndarray',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\unsafe\\ndarray.py',
+   'PYMODULE'),
+  ('numba.np.unsafe',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\unsafe\\__init__.py',
+   'PYMODULE'),
+  ('numba.cpython.rangeobj',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cpython\\rangeobj.py',
+   'PYMODULE'),
+  ('numba.core.postproc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\postproc.py',
+   'PYMODULE'),
+  ('numba.parfors.parfor',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\parfors\\parfor.py',
+   'PYMODULE'),
+  ('numba.parfors.array_analysis',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\parfors\\array_analysis.py',
+   'PYMODULE'),
+  ('numba.core.types.functions',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\types\\functions.py',
+   'PYMODULE'),
+  ('numba.core.types.misc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\types\\misc.py',
+   'PYMODULE'),
+  ('numba.core.types.common',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\types\\common.py',
+   'PYMODULE'),
+  ('numba.core.types.iterators',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\types\\iterators.py',
+   'PYMODULE'),
+  ('numba.core.types.abstract',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\types\\abstract.py',
+   'PYMODULE'),
+  ('numba.stencils.stencilparfor',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\stencils\\stencilparfor.py',
+   'PYMODULE'),
+  ('numba.core.annotations.type_annotations',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\annotations\\type_annotations.py',
+   'PYMODULE'),
+  ('numba.core.annotations',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\annotations\\__init__.py',
+   'PYMODULE'),
+  ('numba.parfors',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\parfors\\__init__.py',
+   'PYMODULE'),
+  ('numba.parfors.parfor_lowering',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\parfors\\parfor_lowering.py',
+   'PYMODULE'),
+  ('numba.np.ufunc.parallel',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\ufunc\\parallel.py',
+   'PYMODULE'),
+  ('numba.np.ufunc.ufuncbuilder',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\ufunc\\ufuncbuilder.py',
+   'PYMODULE'),
+  ('numba.np.ufunc.sigparse',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\ufunc\\sigparse.py',
+   'PYMODULE'),
+  ('numba.np.ufunc.wrappers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\ufunc\\wrappers.py',
+   'PYMODULE'),
+  ('numba.parfors.parfor_lowering_utils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\parfors\\parfor_lowering_utils.py',
+   'PYMODULE'),
+  ('numba.core.sigutils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\sigutils.py',
+   'PYMODULE'),
+  ('numba.core.typeinfer',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typeinfer.py',
+   'PYMODULE'),
+  ('numba.core.ir_utils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\ir_utils.py',
+   'PYMODULE'),
+  ('numba.core.rewrites',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\rewrites\\__init__.py',
+   'PYMODULE'),
+  ('numba.core.rewrites.ir_print',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\rewrites\\ir_print.py',
+   'PYMODULE'),
+  ('numba.core.rewrites.static_binop',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\rewrites\\static_binop.py',
+   'PYMODULE'),
+  ('numba.core.rewrites.static_raise',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\rewrites\\static_raise.py',
+   'PYMODULE'),
+  ('numba.core.rewrites.static_getitem',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\rewrites\\static_getitem.py',
+   'PYMODULE'),
+  ('numba.core.rewrites.registry',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\rewrites\\registry.py',
+   'PYMODULE'),
+  ('numba.core.ir',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\ir.py',
+   'PYMODULE'),
+  ('numba.core.consts',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\consts.py',
+   'PYMODULE'),
+  ('numba.core.analysis',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\analysis.py',
+   'PYMODULE'),
+  ('numba.core.compiler',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\compiler.py',
+   'PYMODULE'),
+  ('numba.core.object_mode_passes',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\object_mode_passes.py',
+   'PYMODULE'),
+  ('numba.core.pylowering',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\pylowering.py',
+   'PYMODULE'),
+  ('numba.core.typed_passes',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typed_passes.py',
+   'PYMODULE'),
+  ('numba.core.typing',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\__init__.py',
+   'PYMODULE'),
+  ('numba.core.typing.context',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\context.py',
+   'PYMODULE'),
+  ('numba.core.typing.dictdecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\dictdecl.py',
+   'PYMODULE'),
+  ('numba.core.typing.setdecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\setdecl.py',
+   'PYMODULE'),
+  ('numba.core.typing.randomdecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\randomdecl.py',
+   'PYMODULE'),
+  ('numba.core.typing.mathdecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\mathdecl.py',
+   'PYMODULE'),
+  ('numba.core.typing.listdecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\listdecl.py',
+   'PYMODULE'),
+  ('numba.core.typing.enumdecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\enumdecl.py',
+   'PYMODULE'),
+  ('numba.core.typing.cmathdecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\cmathdecl.py',
+   'PYMODULE'),
+  ('numba.core.typing.npdatetime',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\npdatetime.py',
+   'PYMODULE'),
+  ('numba.core.typing.arraydecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\arraydecl.py',
+   'PYMODULE'),
+  ('numba.core.typing.collections',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\collections.py',
+   'PYMODULE'),
+  ('numba.core.cpu_options',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\cpu_options.py',
+   'PYMODULE'),
+  ('numba.core.extending',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\extending.py',
+   'PYMODULE'),
+  ('numba.core.typing.asnumbatype',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\typing\\asnumbatype.py',
+   'PYMODULE'),
+  ('numba.core.cgutils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\cgutils.py',
+   'PYMODULE'),
+  ('numba.core.dispatcher',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\dispatcher.py',
+   'PYMODULE'),
+  ('numba.core.annotations.pretty_annotate',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\annotations\\pretty_annotate.py',
+   'PYMODULE'),
+  ('numba.core.imputils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\imputils.py',
+   'PYMODULE'),
+  ('numba.typed.listobject',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\typed\\listobject.py',
+   'PYMODULE'),
+  ('numba.typed.typedobjectutils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\typed\\typedobjectutils.py',
+   'PYMODULE'),
+  ('numba.typed.typeddict',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\typed\\typeddict.py',
+   'PYMODULE'),
+  ('numba.typed.dictobject',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\typed\\dictobject.py',
+   'PYMODULE'),
+  ('numba.core.utils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\utils.py',
+   'PYMODULE'),
+  ('llvmlite.binding',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\__init__.py',
+   'PYMODULE'),
+  ('llvmlite.binding.context',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\context.py',
+   'PYMODULE'),
+  ('llvmlite.binding.analysis',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\analysis.py',
+   'PYMODULE'),
+  ('llvmlite.binding.value',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\value.py',
+   'PYMODULE'),
+  ('llvmlite.binding.common',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\common.py',
+   'PYMODULE'),
+  ('llvmlite.binding.transforms',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\transforms.py',
+   'PYMODULE'),
+  ('llvmlite.binding.passmanagers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\passmanagers.py',
+   'PYMODULE'),
+  ('llvmlite.binding.options',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\options.py',
+   'PYMODULE'),
+  ('llvmlite.binding.module',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\module.py',
+   'PYMODULE'),
+  ('llvmlite.binding.linker',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\linker.py',
+   'PYMODULE'),
+  ('llvmlite.binding.initfini',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\initfini.py',
+   'PYMODULE'),
+  ('llvmlite.binding.executionengine',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\executionengine.py',
+   'PYMODULE'),
+  ('llvmlite.binding.object_file',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\object_file.py',
+   'PYMODULE'),
+  ('llvmlite.binding.targets',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\targets.py',
+   'PYMODULE'),
+  ('llvmlite.binding.dylib',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\dylib.py',
+   'PYMODULE'),
+  ('llvmlite.binding.ffi',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\binding\\ffi.py',
+   'PYMODULE'),
+  ('llvmlite.utils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\utils.py',
+   'PYMODULE'),
+  ('llvmlite',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\__init__.py',
+   'PYMODULE'),
+  ('llvmlite._version',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\llvmlite\\_version.py',
+   'PYMODULE'),
+  ('numba.core.withcontexts',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\withcontexts.py',
+   'PYMODULE'),
+  ('numba.experimental',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\experimental\\__init__.py',
+   'PYMODULE'),
+  ('numba.experimental.jitclass',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\experimental\\jitclass\\__init__.py',
+   'PYMODULE'),
+  ('numba.experimental.jitclass.boxing',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\experimental\\jitclass\\boxing.py',
+   'PYMODULE'),
+  ('numba.experimental.jitclass.decorators',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\experimental\\jitclass\\decorators.py',
+   'PYMODULE'),
+  ('numba.experimental.jitclass.base',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\experimental\\jitclass\\base.py',
+   'PYMODULE'),
+  ('numba.np.numpy_support',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\numpy_support.py',
+   'PYMODULE'),
+  ('numba.np.ufunc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\ufunc\\__init__.py',
+   'PYMODULE'),
+  ('numba.roc.vectorizers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\vectorizers.py',
+   'PYMODULE'),
+  ('numba.np.ufunc.deviceufunc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\ufunc\\deviceufunc.py',
+   'PYMODULE'),
+  ('numba.roc.dispatch',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\dispatch.py',
+   'PYMODULE'),
+  ('numba.roc.api',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\api.py',
+   'PYMODULE'),
+  ('numba.roc.hsadrv',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hsadrv\\__init__.py',
+   'PYMODULE'),
+  ('numba.roc.hsadrv.drvapi',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hsadrv\\drvapi.py',
+   'PYMODULE'),
+  ('numba.roc.hsadrv.error',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hsadrv\\error.py',
+   'PYMODULE'),
+  ('numba.roc.hsadrv.enums_ext',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hsadrv\\enums_ext.py',
+   'PYMODULE'),
+  ('numba.roc.hsadrv.enums',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hsadrv\\enums.py',
+   'PYMODULE'),
+  ('numba.roc.enums',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\enums.py',
+   'PYMODULE'),
+  ('numba.roc.decorators',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\decorators.py',
+   'PYMODULE'),
+  ('numba.roc.compiler',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\compiler.py',
+   'PYMODULE'),
+  ('numba.roc.descriptor',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\descriptor.py',
+   'PYMODULE'),
+  ('numba.roc.target',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\target.py',
+   'PYMODULE'),
+  ('numba.roc.mathimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\mathimpl.py',
+   'PYMODULE'),
+  ('numba.roc.hsaimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hsaimpl.py',
+   'PYMODULE'),
+  ('numba.roc.mathdecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\mathdecl.py',
+   'PYMODULE'),
+  ('numba.roc.hsadecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hsadecl.py',
+   'PYMODULE'),
+  ('numba.roc.codegen',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\codegen.py',
+   'PYMODULE'),
+  ('numba.roc.gcn_occupancy',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\gcn_occupancy.py',
+   'PYMODULE'),
+  ('numba.roc.hlc.hlc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hlc\\hlc.py',
+   'PYMODULE'),
+  ('numba.roc.hlc.config',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hlc\\config.py',
+   'PYMODULE'),
+  ('numba.roc.hlc.common',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hlc\\common.py',
+   'PYMODULE'),
+  ('numba.roc.hlc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hlc\\__init__.py',
+   'PYMODULE'),
+  ('numba.roc.hlc.libhlc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hlc\\libhlc.py',
+   'PYMODULE'),
+  ('numba.roc.stubs',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\stubs.py',
+   'PYMODULE'),
+  ('numba.roc.hsadrv.devices',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hsadrv\\devices.py',
+   'PYMODULE'),
+  ('numba.roc.servicelib',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\servicelib\\__init__.py',
+   'PYMODULE'),
+  ('numba.roc.servicelib.threadlocal',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\servicelib\\threadlocal.py',
+   'PYMODULE'),
+  ('numba.roc.servicelib.service',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\servicelib\\service.py',
+   'PYMODULE'),
+  ('numba.roc.hsadrv.devicearray',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hsadrv\\devicearray.py',
+   'PYMODULE'),
+  ('numba.roc.hsadrv.driver',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\hsadrv\\driver.py',
+   'PYMODULE'),
+  ('numba.roc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\roc\\__init__.py',
+   'PYMODULE'),
+  ('numba.cuda.vectorizers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\vectorizers.py',
+   'PYMODULE'),
+  ('numba.cuda.dispatcher',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\dispatcher.py',
+   'PYMODULE'),
+  ('numba.cuda.cudadrv.devicearray',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudadrv\\devicearray.py',
+   'PYMODULE'),
+  ('numba.cuda.kernels.transpose',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\kernels\\transpose.py',
+   'PYMODULE'),
+  ('numba.cuda.kernels',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\kernels\\__init__.py',
+   'PYMODULE'),
+  ('numba.cuda.kernels.reduction',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\kernels\\reduction.py',
+   'PYMODULE'),
+  ('numba.cuda.cudadrv.devices',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudadrv\\devices.py',
+   'PYMODULE'),
+  ('numba.cuda.cudadrv.driver',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudadrv\\driver.py',
+   'PYMODULE'),
+  ('numba.cuda.envvars',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\envvars.py',
+   'PYMODULE'),
+  ('numba.cuda.cudadrv.enums',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudadrv\\enums.py',
+   'PYMODULE'),
+  ('numba.cuda.cudadrv.drvapi',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudadrv\\drvapi.py',
+   'PYMODULE'),
+  ('numba.cuda.cudadrv.error',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudadrv\\error.py',
+   'PYMODULE'),
+  ('numba.cuda.cudadrv',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudadrv\\__init__.py',
+   'PYMODULE'),
+  ('numba.cuda.cudadrv.nvvm',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudadrv\\nvvm.py',
+   'PYMODULE'),
+  ('numba.cuda.cudadrv.runtime',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudadrv\\runtime.py',
+   'PYMODULE'),
+  ('numba.cuda.cudadrv.rtapi',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudadrv\\rtapi.py',
+   'PYMODULE'),
+  ('numba.cuda.cudadrv.libs',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudadrv\\libs.py',
+   'PYMODULE'),
+  ('numba.cuda.cuda_paths',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cuda_paths.py',
+   'PYMODULE'),
+  ('numba.misc.findlib',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\misc\\findlib.py',
+   'PYMODULE'),
+  ('numba.np.ufunc.array_exprs',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\ufunc\\array_exprs.py',
+   'PYMODULE'),
+  ('numba.np.ufunc.decorators',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\ufunc\\decorators.py',
+   'PYMODULE'),
+  ('numba.np.ufunc.dufunc',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\np\\ufunc\\dufunc.py',
+   'PYMODULE'),
+  ('numba.core.decorators',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\decorators.py',
+   'PYMODULE'),
+  ('numba.misc.special',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\misc\\special.py',
+   'PYMODULE'),
+  ('numba.core.errors',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\errors.py',
+   'PYMODULE'),
+  ('colorama',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\colorama\\__init__.py',
+   'PYMODULE'),
+  ('colorama.ansitowin32',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\colorama\\ansitowin32.py',
+   'PYMODULE'),
+  ('colorama.winterm',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\colorama\\winterm.py',
+   'PYMODULE'),
+  ('colorama.ansi',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\colorama\\ansi.py',
+   'PYMODULE'),
+  ('colorama.initialise',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\colorama\\initialise.py',
+   'PYMODULE'),
+  ('colorama.win32',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\colorama\\win32.py',
+   'PYMODULE'),
+  ('numba.core.types',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\types\\__init__.py',
+   'PYMODULE'),
+  ('numba.core.types.function_type',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\types\\function_type.py',
+   'PYMODULE'),
+  ('numba.core.types.scalars',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\types\\scalars.py',
+   'PYMODULE'),
+  ('numba.core.types.npytypes',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\types\\npytypes.py',
+   'PYMODULE'),
+  ('numba.core.types.containers',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\types\\containers.py',
+   'PYMODULE'),
+  ('numba.testing._runtests',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\testing\\_runtests.py',
+   'PYMODULE'),
+  ('numba.tests.support',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\tests\\support.py',
+   'PYMODULE'),
+  ('numba.tests',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\tests\\__init__.py',
+   'PYMODULE'),
+  ('numba.testing',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\testing\\__init__.py',
+   'PYMODULE'),
+  ('numba.testing.main',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\testing\\main.py',
+   'PYMODULE'),
+  ('numba.cuda.testing',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\testing.py',
+   'PYMODULE'),
+  ('numba.testing.loader',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\testing\\loader.py',
+   'PYMODULE'),
+  ('cProfile',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\cProfile.py',
+   'PYMODULE'),
+  ('pstats',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\pstats.py',
+   'PYMODULE'),
+  ('profile',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\profile.py',
+   'PYMODULE'),
+  ('numba.core.config',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\config.py',
+   'PYMODULE'),
+  ('yaml',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\__init__.py',
+   'PYMODULE'),
+  ('yaml.cyaml',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\cyaml.py',
+   'PYMODULE'),
+  ('yaml.resolver',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\resolver.py',
+   'PYMODULE'),
+  ('yaml.representer',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\representer.py',
+   'PYMODULE'),
+  ('yaml.serializer',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\serializer.py',
+   'PYMODULE'),
+  ('yaml.constructor',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\constructor.py',
+   'PYMODULE'),
+  ('yaml.dumper',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\dumper.py',
+   'PYMODULE'),
+  ('yaml.emitter',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\emitter.py',
+   'PYMODULE'),
+  ('yaml.loader',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\loader.py',
+   'PYMODULE'),
+  ('yaml.composer',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\composer.py',
+   'PYMODULE'),
+  ('yaml.parser',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\parser.py',
+   'PYMODULE'),
+  ('yaml.scanner',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\scanner.py',
+   'PYMODULE'),
+  ('yaml.reader',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\reader.py',
+   'PYMODULE'),
+  ('yaml.nodes',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\nodes.py',
+   'PYMODULE'),
+  ('yaml.events',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\events.py',
+   'PYMODULE'),
+  ('yaml.tokens',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\tokens.py',
+   'PYMODULE'),
+  ('yaml.error',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\yaml\\error.py',
+   'PYMODULE'),
+  ('numba.cuda',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\__init__.py',
+   'PYMODULE'),
+  ('numba.cuda.compiler',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\compiler.py',
+   'PYMODULE'),
+  ('numba.cuda.descriptor',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\descriptor.py',
+   'PYMODULE'),
+  ('numba.cuda.target',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\target.py',
+   'PYMODULE'),
+  ('numba.cuda.decorators',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\decorators.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator.kernel',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator\\kernel.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator\\__init__.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator.compiler',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator\\compiler.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator.cudadrv.runtime',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator\\cudadrv\\runtime.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator.cudadrv.devices',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator\\cudadrv\\devices.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator.cudadrv',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator\\cudadrv\\__init__.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator.cudadrv.nvvm',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator\\cudadrv\\nvvm.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator.cudadrv.drvapi',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator\\cudadrv\\drvapi.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator.cudadrv.driver',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator\\cudadrv\\driver.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator.reduction',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator\\reduction.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator.api',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator\\api.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator.kernelapi',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator\\kernelapi.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator.cudadrv.devicearray',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator\\cudadrv\\devicearray.py',
+   'PYMODULE'),
+  ('numba.cuda.args',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\args.py',
+   'PYMODULE'),
+  ('numba.cuda.api',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\api.py',
+   'PYMODULE'),
+  ('numba.cuda.errors',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\errors.py',
+   'PYMODULE'),
+  ('numba.cuda.device_init',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\device_init.py',
+   'PYMODULE'),
+  ('numba.cuda.intrinsic_wrapper',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\intrinsic_wrapper.py',
+   'PYMODULE'),
+  ('numba.cuda.stubs',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\stubs.py',
+   'PYMODULE'),
+  ('numba.cuda.initialize',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\initialize.py',
+   'PYMODULE'),
+  ('numba.cuda.models',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\models.py',
+   'PYMODULE'),
+  ('numba.cuda.types',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\types.py',
+   'PYMODULE'),
+  ('numba.cuda.mathimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\mathimpl.py',
+   'PYMODULE'),
+  ('numba.types',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\types\\__init__.py',
+   'PYMODULE'),
+  ('numba.cuda.libdeviceimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\libdeviceimpl.py',
+   'PYMODULE'),
+  ('numba.cuda.printimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\printimpl.py',
+   'PYMODULE'),
+  ('numba.cuda.cudaimpl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudaimpl.py',
+   'PYMODULE'),
+  ('numba.cuda.libdevicedecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\libdevicedecl.py',
+   'PYMODULE'),
+  ('numba.cuda.libdevicefuncs',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\libdevicefuncs.py',
+   'PYMODULE'),
+  ('numba.cuda.libdevice',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\libdevice.py',
+   'PYMODULE'),
+  ('numba.cuda.cudamath',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudamath.py',
+   'PYMODULE'),
+  ('numba.cuda.cudadecl',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\cudadecl.py',
+   'PYMODULE'),
+  ('numba.cuda.nvvmutils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\nvvmutils.py',
+   'PYMODULE'),
+  ('numba.cuda.codegen',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\codegen.py',
+   'PYMODULE'),
+  ('numba.cuda.simulator_init',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\cuda\\simulator_init.py',
+   'PYMODULE'),
+  ('numba.runtests',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\runtests.py',
+   'PYMODULE'),
+  ('numba.core',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\core\\__init__.py',
+   'PYMODULE'),
+  ('numba.misc.init_utils',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\misc\\init_utils.py',
+   'PYMODULE'),
+  ('numba._version',
+   'C:\\Users\\Александр '
+   'Лебедев\\AppData\\Local\\Programs\\Python\\Python38-32\\lib\\site-packages\\numba\\_version.py',
    'PYMODULE')])

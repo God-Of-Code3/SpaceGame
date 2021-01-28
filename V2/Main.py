@@ -1,4 +1,4 @@
-from V2.World import *
+from V2.Code.World import *
 from V2.Code.Inventory import *
 from V2.Code.MainMenu import *
 import os
@@ -39,11 +39,13 @@ while running:
         if not level_data["player_skills"]:
             items = []
             for d in inv_data["inv"]:
-                items.append(tuple(d))
+                if d[3] != 0:
+                    items.append(tuple(d))
 
             items2 = []
             for d in inv_data["player_inv"]:
-                items2.append(tuple(d))
+                if d[3] != 0:
+                    items2.append(tuple(d))
 
             inv = Inventory(screen, items, inv_data["inv_width"], inv_data["inv_height"],
                             items2, inv_data["player_inv_width"], inv_data["player_inv_height"],
@@ -82,6 +84,10 @@ while running:
         while world.running:
             world.update()
             world.draw()
+            for event in world.events:
+                if event.type == pygame.QUIT:
+                    world.running = False
+                    running = False
 
         if save_inventary:
             skills = world.player.skills.get_skills()

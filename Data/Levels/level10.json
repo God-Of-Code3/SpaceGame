@@ -1,0 +1,74 @@
+{
+	"player_pos": [0, -200],
+	"ranges": [-500, 15000],
+	"player_skills": false,
+	"ships": [
+		{
+			"class": "Auror",
+			"coords": [500, -400]
+		},
+      {
+			"class": "Auror",
+			"coords": [1500, -400]
+		},
+      {
+			"class": "Auror",
+			"coords": [2500, -400]
+		},
+      {
+			"class": "Auror",
+			"coords": [3500, -400]
+		},
+      {
+			"class": "Auror",
+			"coords": [4500, -400]
+		},
+      {
+			"class": "Bug",
+			"coords": [500, -1400]
+		},
+      {
+			"class": "Bug",
+			"coords": [1500, -1400]
+		},
+      {
+			"class": "Bug",
+			"coords": [2500, -1400]
+		},
+      {
+			"class": "Bug",
+			"coords": [3500, -1400]
+		},
+      {
+			"class": "Bug",
+			"coords": [4500, -1400]
+		},
+      {
+			"class": "Hindenburg",
+			"coords": [500, -3600]
+		},
+      {
+			"class": "Hindenburg",
+			"coords": [1500, -3600]
+		},
+      {
+			"class": "Hindenburg",
+			"coords": [2500, -3600]
+		},
+      {
+			"class": "Hindenburg",
+			"coords": [3500, -3600]
+		},
+      {
+			"class": "Hindenburg",
+			"coords": [4500, -3600]
+		}
+    ],
+	"nexuses": [
+	],
+	"goal": 1,
+	"planet": "Planet1.png",
+	"skills": null,
+	"reward": 7500,
+	"next_level": "level11"
+}

@@ -1,0 +1,25 @@
+{
+	"player_pos": [0, -800],
+	"ranges": [-2000, 2000],
+	"player_skills": [{"skill": "CopperShellShot", "number": 50},
+					  {"skill": "PlasmaShot", "number": 10},
+					  null, null, null, null, null, null, null],
+	"ships": [
+		{
+			"class": "Bug",
+			"coords": [2000, -800]
+		},
+		{
+			"class": "Bug",
+			"coords": [2000, -800]
+		}
+	],
+	"nexuses": [
+
+	],
+	"goal": 1,
+	"planet": "Planet1.png",
+	"skills": null,
+	"reward": 500,
+	"next_level": "level2"
+}

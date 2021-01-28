@@ -62,6 +62,29 @@ class Player(Controller):
                 if event.key == pygame.K_s:
                     self.managed.set_acceleration(y=1)
 
+                if event.key == pygame.K_1:
+                    self.skills.select(0)
+                if event.key == pygame.K_2:
+                    self.skills.select(1)
+                if event.key == pygame.K_3:
+                    self.skills.select(2)
+                if event.key == pygame.K_4:
+                    self.skills.select(3)
+                if event.key == pygame.K_5:
+                    self.skills.select(4)
+                if event.key == pygame.K_6:
+                    self.skills.select(5)
+                if event.key == pygame.K_7:
+                    self.skills.select(6)
+                if event.key == pygame.K_8:
+                    self.skills.select(7)
+                if event.key == pygame.K_9:
+                    self.skills.select(8)
+
+                if event.key == pygame.K_SPACE or event.key == pygame.K_ESCAPE:
+                    self.world.start = True
+                    pygame.event.set_grab(False)
+
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_d:
                     self.managed.set_acceleration(x=-1)

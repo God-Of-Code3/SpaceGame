@@ -26,11 +26,11 @@ BTN_PAD = 5  # отступ кнопки от предмета
 
 SHOP_COLOR = pygame.Color(150, 150, 150)  # цвета
 SHOP_SQUARE_COLOR = pygame.Color(255, 255, 255)
-SHOP_ICON_COLOR = pygame.Color(0, 0, 0)
+SHOP_ICON_COLOR = pygame.Color(255, 255, 255)
 SELECTED_ICON_COLOR = pygame.Color(50, 50, 50)
 PRESSED_ICON_COLOR = pygame.Color(100, 100, 100)
 
-TO_SHOP_NAME = 'LaserShot.png'  # имя файла иконки магазина
+TO_SHOP_NAME = 'shopping-basket.png'  # имя файла иконки магазина
 SHOP_HEIGHT = 80  # размер панели магазина
 # Отступы магазина
 PAD5 = 30  # панель магазина от инвентаря (-PAD2)
@@ -67,9 +67,7 @@ def get_info(image_name):
             'name': inf["name"],
             'description': inf["description"],
             'cost': inf["cost"],
-            'specifications': {'spec1': "Значение свойства spec1",
-                               'spec2': "Значение свойства spec2",
-                               'spec3': "Значение свойства spec3"},
+            "specifications": {},
             "indivisible": inf["indivisible"]}
 
     return {'image': HIGH_FILES_WAY + image_name,

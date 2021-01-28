@@ -1,0 +1,215 @@
+{
+	"Bug": {
+		"class": "Жук",
+		"hp": 100,
+		"mass": 100,
+		"msx": 8,
+		"msy": 8,
+		"ax": 0.3,
+		"ay": 0.3,
+		"fx": 0.1,
+		"fy": 0.1,
+		"width": 100,
+		"height": 83,
+		"behaviour": "attack",
+		"description": "Беспилотные корабли, сотнями тысяч производимые на заводах Содружества. Они составляют основную часть истребителей на планетах. Однако далеко не все они принадлежат Содружеству, их выкупают и используют различные группировки. Корабли класса \"Жук\" являются одними из самых легких.",
+		"anim": {
+			"main": {
+				"frames": [
+					["./Assets/Images/Ships/Bug/Spaceship2.png", 20]
+				],
+				"next": "main"
+			}
+		},
+		"equipment": {
+			"CopperShellShot": 125
+		}
+	},
+	"Inquisitor": {
+		"class": "Инквизитор",
+		"hp": 1000,
+		"mass": 1000,
+		"msx": 10,
+		"msy": 10,
+		"ax": 0.5,
+		"ay": 0.5,
+		"fx": 0.03,
+		"fy": 0.05,
+		"width": 152,
+		"height": 80,
+		"behaviour": "attack",
+		"description": "Класс кораблей, созданный для поиска и уничтожения баз незаконных объединений: пиратов, рэкетиров.",
+		"anim": {
+			"main": {
+				"frames": [
+					["./Assets/Images/Ships/Inquisitor/Starship1_frame1.png", 20],
+					["./Assets/Images/Ships/Inquisitor/Starship1_frame2.png", 20],
+					["./Assets/Images/Ships/Inquisitor/Starship1_frame3.png", 20],
+					["./Assets/Images/Ships/Inquisitor/Starship1_frame2.png", 20],
+					["./Assets/Images/Ships/Inquisitor/Starship1_frame1.png", 20]
+				],
+				"next": "main"
+			}
+		},
+		"equipment": {
+			"CopperShellShot": 50,
+			"PlasmaShot": 5,
+			"SmallRocketLaunch": 120
+		}
+	},
+	"Auror": {
+		"class": "Auror",
+		"hp": 1000,
+		"mass": 1000,
+		"msx": 9.9,
+		"msy": 9.9,
+		"ax": 0.8,
+		"ay": 0.5,
+		"fx": 0.3,
+		"fy": 0.5,
+		"width": 200,
+		"height": 86,
+		"behaviour": "up-down-attack",
+		"description": "Класс кораблей, созданный для поиска и уничтожения баз незаконных объединений: пиратов, рэкетиров.",
+		"anim": {
+			"main": {
+				"frames": [
+					["./Assets/Images/Ships/Auror/auror_main.png", 20],
+					["./Assets/Images/Ships/Auror/auror_main2.png", 20],
+					["./Assets/Images/Ships/Auror/auror_main3.png", 20],
+					["./Assets/Images/Ships/Auror/auror_main4.png", 20],
+					["./Assets/Images/Ships/Auror/auror_main5.png", 20],
+					["./Assets/Images/Ships/Auror/auror_main6.png", 20],
+					["./Assets/Images/Ships/Auror/auror_main7.png", 20]
+				],
+				"next": "main"
+			}
+		},
+		"equipment": {
+			"PlasmaShot": 50,
+			"SmallRocketLaunch": 120
+		}
+	},
+	"Hindenburg": {
+		"class": "Гинденбург",
+		"hp": 4000,
+		"mass": 10000,
+		"msx": 6,
+		"msy": 6,
+		"ax": 0.1,
+		"ay": 0.03,
+		"fx": 0.03,
+		"fy": 0.05,
+		"width": 660,
+		"height": 240,
+		"behaviour": "air_attack",
+		"description": "Конструкция корабля была изначально разработана Содружеством, однако впоследвстии чертежи были выкрадены и стали общедоступными, \"Авроры\" стали производиться противниками Содружества. Вскоре Содружество признало конструкцию и оснащение кораблей класса \"Аврор\" неудачными для реального боя.",
+		"anim": {
+			"moving": {
+				"frames": [
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame1.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame2.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame3.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame4.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame5.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame6.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame7.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame8.png", 20]
+				],
+				"next": "moving"
+			},
+			"start_x": {
+				"frames": [
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start1.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start2.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start3.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start4.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start5.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start6.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start7.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start8.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start9.png", 20]
+				],
+				"next": "moving"
+			},
+			"stop_x": {
+				"frames": [
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start9.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start8.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start7.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start6.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start5.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start4.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start3.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start2.png", 20],
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_start1.png", 20]
+				],
+				"next": "main"
+			},
+			"main": {
+				"frames": [
+					["./Assets/Images/Ships/Hindenburg/Starship4_frame_main.png", 20]
+				],
+				"next": "main"
+			}
+		},
+		"equipment": {
+			"MediumRocketLaunch": 200,
+			"LaserShot": -1
+
+		}
+	},
+	"Station1": {
+		"class": "Защитная станция - 1",
+		"hp": 10000,
+		"mass": 1000000000000,
+		"msx": 8,
+		"msy": 8,
+		"ax": 0.3,
+		"ay": 0.3,
+		"fx": 0.1,
+		"fy": 0.1,
+		"width": 400,
+		"height": 400,
+		"behaviour": "attack",
+		"description": "Защитная станция.",
+		"anim": {
+			"main": {
+				"frames": [
+					["./Assets/Images/Station/Station1.png", 20]
+				],
+				"next": "main"
+			}
+		},
+		"equipment": {
+			"LaserShot": 125
+		}
+	},
+
+	"Nexus": {
+		"class": "Командный пункт",
+		"hp": 1000,
+		"mass": 10000,
+		"msx": 12,
+		"msy": 12,
+		"ax": 0.1,
+		"ay": 0.5,
+		"fx": 0.05,
+		"fy": 0.05,
+		"width": 349,
+		"height": 315,
+		"behaviour": "nexus",
+		"description": "Главные пункты управления планетарными флотами",
+		"anim": {
+			"main": {
+				"frames": [
+					["./Assets/Images/Ships/Nexus/Nexus.png", 20]
+				],
+				"next": "main"
+			}
+		},
+		"equipment": {
+			"HealthBoost": 50
+		}
+	}
+}
