@@ -51,7 +51,7 @@ def generate_level(level_name):
     world.goal = goals[data["goal"]]
     world.income = data["reward"]
     world.ranges = data["ranges"]
-    world.planet = Planet(0, f"Assets/Images/Planets/{data['planet']}", 1000, 377, wolrd)
+    world.planet = Planet(0, f"Assets/Images/Planets/{data['planet']}", 1000, 377, world)
 
     return world, save
 
