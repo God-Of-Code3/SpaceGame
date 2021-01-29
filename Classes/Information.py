@@ -1,10 +1,13 @@
 import pygame
+import json
 from Button import Button
 from Constants import *
 
 
 class Information():
-    def __init__(self, item_name, money_score, info, free_slots=None):
+    def __init__(self, item_name, money_score, info, size, free_slots=None):
+        self.size = size
+
         self.free_slots = free_slots
         self.got_space = True
         
@@ -22,11 +25,11 @@ class Information():
         # Для покупки
         x = PAD11 + PAD8 + HIGH_QUALITY[0] + PAD10 * 2 + PAD9
         y = PAD11 + PAD8 + HIGH_QUALITY[1] + PAD10 * 2 + PAD9
-        w = SIZE[0] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[0] - PAD9
-        h = SIZE[1] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[1] - PAD9
+        w = self.size[0] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[0] - PAD9
+        h = self.size[1] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[1] - PAD9
         
         self.buttons = [Button('X', TEXT_COLOR, CLOSE_BUTTON, FONT,
-                               SIZE[0] - PAD11 - CLOSE_BUTTON,
+                               self.size[0] - PAD11 - CLOSE_BUTTON,
                                PAD11 - CLOSE_BUTTON,
                                CLOSE_BUTTON, CLOSE_BUTTON,
                                (CLOSE_COLOR1, CLOSE_COLOR2, CLOSE_COLOR3), True),
@@ -68,25 +71,25 @@ class Information():
         
         # Верхняя панель
         pygame.draw.rect(screen, CLOSE_PANEL_COLOR, (PAD11, PAD11 - CLOSE_BUTTON,
-                                                     SIZE[0] - PAD11 * 2,
+                                                     self.size[0] - PAD11 * 2,
                                                      CLOSE_BUTTON))
         window = pygame.font.SysFont(FONT, int(CLOSE_BUTTON - PAD10)).render('Оборудование и снаряжение', True, TEXT_COLOR)
         screen.blit(window, (PAD11 + PAD10,
                              PAD11 - CLOSE_BUTTON + window.get_height() / 2))
         # Окно
         pygame.draw.rect(screen, INFO_COLOR, (PAD11, PAD11,
-                                              SIZE[0] - PAD11 * 2,
-                                              SIZE[1] - PAD11 * 2))
+                                              self.size[0] - PAD11 * 2,
+                                              self.size[1] - PAD11 * 2))
         # Картинка
         pygame.draw.rect(screen, PANEL_COLOR, (PAD11 + PAD8, PAD11 + PAD8,
-                                              HIGH_QUALITY[0] + PAD10 * 2,
-                                              HIGH_QUALITY[1] + PAD10 * 2))
+                                               HIGH_QUALITY[0] + PAD10 * 2,
+                                               HIGH_QUALITY[1] + PAD10 * 2))
         screen.blit(self.item_icon, (PAD11 + PAD8 + PAD10, PAD11 + PAD8 + PAD10))
         # Значения
         pygame.draw.rect(screen, PANEL_COLOR, (PAD11 + PAD8,
                                                PAD11 + PAD8 + HIGH_QUALITY[1] + PAD10 * 2 + PAD9,
                                                HIGH_QUALITY[0] + PAD10 * 2,
-                                               SIZE[1] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[1] - PAD9))
+                                               self.size[1] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[1] - PAD9))
         line = 0
         for value in list(self.info['specifications'].keys()):
             line += 1
@@ -96,7 +99,7 @@ class Information():
         # Описание
         x = PAD11 + PAD8 + HIGH_QUALITY[0] + PAD10 * 2 + PAD9
         y = PAD11 + PAD8
-        w = SIZE[0] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[0] - PAD9
+        w = self.size[0] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[0] - PAD9
         h = HIGH_QUALITY[1] + PAD10 * 2
         pygame.draw.rect(screen, DESCR_COLOR, (x, y, w, h))
         
@@ -145,16 +148,16 @@ class Information():
         # Покупка
         x = PAD11 + PAD8 + HIGH_QUALITY[0] + PAD10 * 2 + PAD9
         y = PAD11 + PAD8 + HIGH_QUALITY[1] + PAD10 * 2 + PAD9
-        w = SIZE[0] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[0] - PAD9
-        h = SIZE[1] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[1] - PAD9
+        w = self.size[0] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[0] - PAD9
+        h = self.size[1] - (PAD8 + PAD11 + PAD10) * 2 - HIGH_QUALITY[1] - PAD9
         pygame.draw.rect(screen, PANEL_COLOR, (x, y, w, h))
         pygame.draw.rect(screen, BUY_COLOR1, (x + PAD10, y + PAD10,
                                              w - PAD10 * 2,
                                              h / 3 - PAD10))
-        cost1 = pygame.font.SysFont(FONT, int(h / 4 - PAD10)).render('Цена', True, TEXT_COLOR)
+        cost1 = pygame.font.SysFont(FONT, int(TEXT_SIZE)).render('Цена', True, TEXT_COLOR)
         screen.blit(cost1, (x + PAD10 * 2,
                             (y + h / 5) - cost1.get_height() / 2))
-        cost2 = pygame.font.SysFont(FONT, int(h / 4 - PAD10)).render(str(self.info['cost']) + '$', True, TEXT_COLOR)
+        cost2 = pygame.font.SysFont(FONT, int(TEXT_SIZE)).render(str(self.info['cost']) + '$', True, TEXT_COLOR)
         screen.blit(cost2, (x + w - cost2.get_width() - PAD10 * 2,
                             (y + h / 5) - cost2.get_height() / 2))
         if self.got_money:
@@ -162,14 +165,14 @@ class Information():
                                                  y + h / 3 + PAD10,
                                                  w / 10 * 3 - PAD10,
                                                  h / 3 - PAD10))
-            buy = pygame.font.SysFont(FONT, int(h / 4 - PAD10)).render(str(self.count), True, TEXT_COLOR)
+            buy = pygame.font.SysFont(FONT, int(TEXT_SIZE)).render(str(self.count), True, TEXT_COLOR)
             screen.blit(buy, ((x + w / 4 + PAD10 / 2) - buy.get_width() / 2,
                               (y + h / 2 + PAD10 / 2) - buy.get_height() / 2))        
             
             pygame.draw.rect(screen, BUY_COLOR1, (x + PAD10, y + h * 2 / 3 + PAD10,
                                                  w / 2 - PAD10,
                                                  h / 3 - PAD10 * 2))        
-            money = pygame.font.SysFont(FONT, int(h / 4 - PAD10)).render(str(self.info['cost'] * self.count) + '$', True, TEXT_COLOR) # + ' (-' + str(self.info['cost'] * self.count) + '$)'
+            money = pygame.font.SysFont(FONT, int(TEXT_SIZE)).render(str(self.info['cost'] * self.count) + '$', True, TEXT_COLOR) # + ' (-' + str(self.info['cost'] * self.count) + '$)'
             screen.blit(money, ((x + w / 4) - money.get_width() / 2,
                                 (y + h / 6 * 5) - money.get_height() / 2))
             
@@ -181,14 +184,14 @@ class Information():
                                                       y + h / 3 + PAD10,
                                                       w / 2 - PAD10 * 2,
                                                       h * 2 / 3 - PAD10 * 2))
-                no_space = pygame.font.SysFont(FONT, int(TEXT_SIZE / 1.5)).render('Недостаточно места', True, TEXT_COLOR)
+                no_space = pygame.font.SysFont(FONT, int(TEXT_SIZE)).render('Недостаточно места', True, TEXT_COLOR)
                 screen.blit(no_space, ((x + w / 4 * 3) - no_space.get_width() / 2,
                                        (y + h / 3 * 2) - no_space.get_height() / 2))
                 self.buttons[0].drawing(screen)
                 self.buttons[2].drawing(screen)
                 self.buttons[3].drawing(screen)
         else:
-            no_money = pygame.font.SysFont(FONT, int(h / 3 - PAD10)).render('Недостаточно средств', True, TEXT_COLOR)
+            no_money = pygame.font.SysFont(FONT, int(TEXT_SIZE)).render('Недостаточно средств', True, TEXT_COLOR)
             screen.blit(no_money, ((x + w / 2) - no_money.get_width() / 2,
                                    (y + h / 3 * 2) - no_money.get_height() / 2))
             self.buttons[0].drawing(screen)
