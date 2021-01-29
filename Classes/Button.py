@@ -1,15 +1,26 @@
 import pygame
+from Constants import FILES_WAY
 from math import pi
 
 
 class Button:
     def __init__(self, text, text_color, text_size, font,
-                 x, y, w, h, colors, rounding=False):
+                 x, y, w, h, colors, rounding=False,
+                 images=None):
+        self.images = None
+        if images:
+            self.text_color = pygame.Color(255, 255, 255)
+            self.sequence = 0
+            self.images = []
+            for frame in images:
+                self.images.append(pygame.transform.scale(pygame.image.load(FILES_WAY + frame), (w, h)))
+        else:
+            self.text_color = text_color
+
         self.blocked = False
         
         self.text = text
         self.text_size = text_size
-        self.text_color = text_color
         self.font = font
         
         self.colors = colors
@@ -30,31 +41,49 @@ class Button:
         self.on = False
         self.down = False
 
+    def frames_animation(self):
+        if self.images:
+            if len(self.images) == self.sequence + 1:
+                self.sequence = 0
+            else:
+                self.sequence += 1
+
     def animation(self): # Анимация при нажатии
         if len(self.colors) == 4 and self.blocked:
             self.color = self.colors[3]
+            if self.images:
+                self.text_color = pygame.Color(100, 100, 100)
         elif self.on and self.down:
             self.color = self.colors[2]
+            if self.images:
+                self.text_color = pygame.Color(150, 150, 150)
         elif self.on:
             self.color = self.colors[1]
+            if self.images:
+                self.text_color = pygame.Color(200, 200, 200)
         else:
             self.color = self.colors[0]
+            if self.images:
+                self.text_color = pygame.Color(255, 255, 255)
 
     def drawing(self, screen):  # Нарисовать кнопку
-        self.animation() # Запуск анимации
+        self.animation()  # Запуск анимации
 
-        # Рисование кнопки
-        if self.rounding:
-            round = int(self.h / 2)
+        if self.images:
+            screen.blit(self.images[self.sequence], (self.x, self.y))
         else:
-            round = 0
-        pygame.draw.rect(screen, self.color, (self.x, self.y,
-                                              self.w, self.h), 0, round)
-        
+            # Рисование кнопки
+            if self.rounding:
+                round = int(self.h / 2)
+            else:
+                round = 0
+            pygame.draw.rect(screen, self.color, (self.x, self.y,
+                                                  self.w, self.h), 0, round)
 
         # Отрисовка текста
         to_write = pygame.font.SysFont(self.font, self.text_size).render(self.text, 1, self.text_color)
-        screen.blit(to_write, ((self.x + self.w / 2) - to_write.get_width() / 2, (self.y + self.h / 2) - to_write.get_height() / 2))
+        screen.blit(to_write, (
+        (self.x + self.w / 2) - to_write.get_width() / 2, (self.y + self.h / 2) - to_write.get_height() / 2))
         
     def block(self, value):
         self.blocked = value
