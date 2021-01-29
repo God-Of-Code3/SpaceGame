@@ -1,34 +1,106 @@
 {
-	"player_pos": [0, -800],
-	"ranges": [-4000, 4000],
+	"player_pos": [0, -3000],
+	"ranges": [-1000, 9000],
 	"player_skills": false,
 	"ships": [
+        {
+			"class": "Bug",
+			"coords": [1000, -3000]
+		},
 		{
-			"class": "Hindenburg",
-			"coords": [-200, -3700]
+			"class": "Bug",
+			"coords": [-1000, -3000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -4000]
+		},
+		{
+			"class": "Bug",
+			"coords": [0, -2000]
+		},
+		{
+			"class": "Bug",
+			"coords": [1500, -3500]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1500, -3500]
+		},
+		{
+			"class": "Bug",
+			"coords": [1500, -2500]
+		},
+		{
+			"class": "Bug",
+			"coords": [-1500, -2500]
+		},
+		{
+			"class": "Auror",
+			"coords": [5000, -2500]
+		},
+		{
+			"class": "Auror",
+			"coords": [5000, -2750]
+		},
+		{
+			"class": "Auror",
+			"coords": [5000, -3000]
+		},
+		{
+			"class": "Auror",
+			"coords": [5000, -3250]
+		},
+		{
+			"class": "Auror",
+			"coords": [5000, -3500]
 		},
 		{
 			"class": "Hindenburg",
-			"coords": [-400, -3700]
+			"coords": [1000, -5000]
+		},
+		{
+			"class": "Hindenburg",
+			"coords": [2000, -5000]
+		},
+		{
+			"class": "Hindenburg",
+			"coords": [3000, -5000]
+		},
+		{
+			"class": "Hindenburg",
+			"coords": [4000, -5000]
+		},
+		{
+			"class": "Hindenburg",
+			"coords": [5000, -5000]
+		},
+		{
+			"class": "Hindenburg",
+			"coords": [6000, -5000]
+		},
+		{
+			"class": "Hindenburg",
+			"coords": [7000, -5000]
+		},
+		{
+			"class": "Hindenburg",
+			"coords": [8000, -5000]
 		}
 	],
 	"nexuses": [
-		{
+        {
 			"class": "Nexus",
-			"coords": [0, -1800]
+			"coords": [8000, -5000]
 		},
 		{
 			"class": "Nexus",
-			"coords": [100, -1800]
-		},
-		{
-			"class": "Nexus",
-			"coords": [200, -1800]
+			"coords": [8000, -1000]
 		}
 	],
 	"goal": 0,
 	"planet": "Planet1.png",
 	"skills": null,
-	"reward": 500,
-	"next_level": "level_hard"
+	"reward": 750,
+	"next_level": "new_level1"
 }

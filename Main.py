@@ -88,6 +88,7 @@ while running:
                 if event.type == pygame.QUIT:
                     world.running = False
                     running = False
+        pygame.event.set_grab(False)
 
         if save_inventary:
             skills = world.player.skills.get_skills()

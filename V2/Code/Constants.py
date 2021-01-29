@@ -3,7 +3,7 @@ import json
 
 # Экран
 BACKGROUND_COLOR = (42, 18, 148)
-SIZE = 1500, 900
+SIZE = 1600, 900
 CAM_SIZE = SIZE
 
 # Частота кадров
