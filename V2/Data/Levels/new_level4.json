@@ -1,96 +1,66 @@
 {
-	"player_pos": [0, -1000],
+	"player_pos": [-4000, -9000],
 	"ranges": [-5000, 5000],
-	"player_skills": [{"skill": "HealthBoost", "number": 10},
-		              null, null, null, null, null, null, null, null],
+	"player_skills": false,
 	"ships": [
 		{
 			"class": "Bug",
-			"coords": [0, -1000]
+			"coords": [2000, -5000]
 		},
 		{
 			"class": "Bug",
-			"coords": [0, -1000]
+			"coords": [-2000, -5000]
 		},
 		{
 			"class": "Bug",
-			"coords": [0, -1000]
+			"coords": [0, -7000]
 		},
 		{
 			"class": "Bug",
-			"coords": [0, -1000]
+			"coords": [0, -3000]
 		},
 		{
 			"class": "Bug",
-			"coords": [0, -1000]
+			"coords": [500, -6500]
 		},
 		{
 			"class": "Bug",
-			"coords": [0, -1000]
+			"coords": [-500, -6500]
 		},
 		{
 			"class": "Bug",
-			"coords": [0, -1000]
+			"coords": [500, -3500]
 		},
 		{
 			"class": "Bug",
-			"coords": [0, -1000]
+			"coords": [-500, -3500]
 		},
 		{
 			"class": "Bug",
-			"coords": [0, -1000]
+			"coords": [1500, -5500]
 		},
 		{
 			"class": "Bug",
-			"coords": [0, -1000]
+			"coords": [1500, -4500]
 		},
 		{
 			"class": "Bug",
-			"coords": [0, -1000]
+			"coords": [-1500, -5500]
 		},
 		{
 			"class": "Bug",
-			"coords": [0, -1000]
-		},
-		{
-			"class": "Bug",
-			"coords": [0, -1000]
-		},
-		{
-			"class": "Bug",
-			"coords": [0, -1000]
-		},
-		{
-			"class": "Bug",
-			"coords": [0, -1000]
-		},
-		{
-			"class": "Bug",
-			"coords": [0, -1000]
-		},
-		{
-			"class": "Bug",
-			"coords": [0, -1000]
-		},
-		{
-			"class": "Bug",
-			"coords": [0, -1000]
-		},
-		{
-			"class": "Bug",
-			"coords": [0, -1000]
-		},
-		{
-			"class": "Bug",
-			"coords": [0, -1000]
+			"coords": [-1500, -4500]
 		}
 	],
 	"nexuses": [
-
+        {
+			"class": "Nexus",
+			"coords": [0, -5000]
+		}
 	],
-	"goal": 1,
+	"goal": 0,
 	"planet": "Planet1.png",
 	"skills": null,
-	"reward": 750,
-	"next_level": "new_level5"
+	"reward": 1250,
+	"next_level": "new_level2"
 }

@@ -99,8 +99,8 @@
 		}
 	],
 	"goal": 0,
-	"planet": "Planet1.png",
+	"planet": "Planet3.png",
 	"skills": null,
-	"reward": 750,
+	"reward": 4000,
 	"next_level": "new_level1"
 }

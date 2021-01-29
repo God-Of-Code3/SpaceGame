@@ -1,7 +1,9 @@
 {
 	"player_pos": [0, -7500],
 	"ranges": [-4500, 4500],
-	"player_skills": false,
+	"player_skills": [{"skill": "LaserShot", "number": -1},
+		              {"skill": "HealthBoost", "number": 10},
+		              null, null, null, null, null, null, null],
 	"ships": [
 		{
 			"class": "Bug",
@@ -92,8 +94,8 @@
 
 	],
 	"goal": 1,
-	"planet": "Planet1.png",
+	"planet": "Planet3.png",
 	"skills": null,
-	"reward": 750,
+	"reward": 3000,
 	"next_level": "new_level12"
 }

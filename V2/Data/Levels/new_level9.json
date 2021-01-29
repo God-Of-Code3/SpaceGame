@@ -1,7 +1,7 @@
 {
 	"player_pos": [0, -4000],
 	"ranges": [-5000, 5000],
-	"player_skills": [{"skill": "AntimatterShot", "number": 10},
+	"player_skills": [{"skill": "AntimatterShot", "number": -1},
 		              null, null, null, null, null, null, null, null],
 	"ships": [
 
@@ -49,8 +49,8 @@
 		}
 	],
 	"goal": 0,
-	"planet": "Planet1.png",
+	"planet": "Planet2.png",
 	"skills": null,
-	"reward": 750,
+	"reward": 2500,
 	"next_level": "new_level10"
 }
