@@ -62,6 +62,15 @@ class Settings:
             self.buttons[2].down = False
             self.count += 1
 
+        if not self.count > 0:
+            self.buttons[1].block(True)
+        else:
+            self.buttons[1].block(False)
+        if not self.count + 1 < len(RESOLUTIONS):
+            self.buttons[2].block(True)
+        else:
+            self.buttons[2].block(False)
+
         if event.type == pygame.MOUSEMOTION:
             for button in self.buttons:
                 if button.on_button(event.pos):
