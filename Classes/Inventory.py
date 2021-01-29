@@ -18,7 +18,9 @@ class Inventory():
     def __init__(self, screen,
                  inv_slots, wi, hi,
                  player_slots, wp, hp,
-                 money_score):
+                 money_score, size):
+        self.screen_size = size
+
         self.items_away = None
         self.tick = 0
 
@@ -58,13 +60,13 @@ class Inventory():
         self.w2, self.h2 = wp, hp
         
         if self.w1 >= self.w2:
-            self.size = (SIZE[0] - PAD1 * 2) / self.w1
+            self.size = (self.screen_size[0] - PAD1 * 2) / self.w1
         else:
-            self.size = (SIZE[0] - PAD1 * 2) / self.w2
+            self.size = (self.screen_size[0] - PAD1 * 2) / self.w2
             
         self.to_battle = Button('Начать', TEXT_COLOR, TEXT_SIZE, FONT, 
-                                (SIZE[0] - TO_BATTLE_BTN_SIZE[0]) / 2,
-                                SIZE[1] - self.size * self.h2 - PAD1 - PAD2 - TO_BATTLE_BTN_SIZE[1] - BTN_PAD,
+                                (self.screen_size[0] - TO_BATTLE_BTN_SIZE[0]) / 2,
+                                self.screen_size[1] - self.size * self.h2 - PAD1 - PAD2 - TO_BATTLE_BTN_SIZE[1] - BTN_PAD,
                                 *TO_BATTLE_BTN_SIZE,
                                 (BTN_CLR1, BTN_CLR2, BTN_CLR3), True)
 
@@ -75,7 +77,7 @@ class Inventory():
         
         for i in self.inv_slots:
             x, y, n = i[1], i[2], i[3]
-            xpos = (SIZE[0] - self.size * self.w1) / 2 + x * self.size + PAD3
+            xpos = (self.screen_size[0] - self.size * self.w1) / 2 + x * self.size + PAD3
             ypos = y * self.size + PAD3 + SHOP_HEIGHT + PAD5
             self.items[x][y] = Square(screen, i[0], xpos, ypos,
                                       self.size - PAD3 * 2,
@@ -88,8 +90,8 @@ class Inventory():
         
         for i in self.player_slots:
             x, y, n = i[1], i[2], i[3]
-            xpos = (SIZE[0] - self.size * self.w2) / 2 + x * self.size + PAD3
-            ypos = SIZE[1] - self.size * self.h2 + y * self.size - PAD1 + PAD3
+            xpos = (self.screen_size[0] - self.size * self.w2) / 2 + x * self.size + PAD3
+            ypos = self.screen_size[1] - self.size * self.h2 + y * self.size - PAD1 + PAD3
             self.player_items[x][y] = Square(screen, i[0], xpos, ypos,
                                           self.size - PAD3 * 2,
                                           self.size - PAD3 * 2, n)
@@ -104,7 +106,7 @@ class Inventory():
                 self.tick = 0
 
             # Рисование панели магазина
-            pygame.draw.rect(screen, SHOP_COLOR, (0, 0, SIZE[0], SHOP_HEIGHT))
+            pygame.draw.rect(screen, SHOP_COLOR, (0, 0, self.screen_size[0], SHOP_HEIGHT))
             
             self.shop_color()
             pygame.draw.rect(screen, SHOP_SQUARE_COLOR,
@@ -120,22 +122,22 @@ class Inventory():
 
             self.trash_color()
             pygame.draw.rect(screen, SHOP_SQUARE_COLOR,
-                             (SIZE[0] - SHOP_HEIGHT, 0, SHOP_HEIGHT, SHOP_HEIGHT))
+                             (self.screen_size[0] - SHOP_HEIGHT, 0, SHOP_HEIGHT, SHOP_HEIGHT))
             pygame.draw.circle(screen, self.trash_icon_color,
-                               (SIZE[0] - SHOP_HEIGHT / 2, SHOP_HEIGHT / 2),
+                               (self.screen_size[0] - SHOP_HEIGHT / 2, SHOP_HEIGHT / 2),
                                SHOP_HEIGHT / 2 - PAD7 * 2)
-            screen.blit(self.trash_icon, (SIZE[0] - SHOP_HEIGHT * 3 / 4, SHOP_HEIGHT / 4))
+            screen.blit(self.trash_icon, (self.screen_size[0] - SHOP_HEIGHT * 3 / 4, SHOP_HEIGHT / 4))
             
             # Рисование инвентаря
             pygame.draw.rect(screen, INVENTORY_COLOR,
-                             ((SIZE[0] - self.size * self.w1) / 2 - PAD2,
+                             ((self.screen_size[0] - self.size * self.w1) / 2 - PAD2,
                               SHOP_HEIGHT + PAD5 - PAD2,
                               self.size * self.w1 + PAD2 * 2,
                               self.size * self.h1 + PAD2 * 2))
             
             pygame.draw.rect(screen, INVENTORY_COLOR,
-                             ((SIZE[0] - self.size * self.w2) / 2 - PAD2,
-                             SIZE[1] - self.size * self.h2 - PAD1 - PAD2,
+                             ((self.screen_size[0] - self.size * self.w2) / 2 - PAD2,
+                             self.screen_size[1] - self.size * self.h2 - PAD1 - PAD2,
                              self.size * self.w2 + PAD2 * 2,
                              self.size * self.h2 + PAD2 * 2))
             
@@ -143,7 +145,7 @@ class Inventory():
             for i in range(self.w1):
                 for j in range(self.h1):
                     pygame.draw.rect(screen, CELLS_COLOR,
-                                     ((SIZE[0] - self.size * self.w1) / 2 + i * self.size,
+                                     ((self.screen_size[0] - self.size * self.w1) / 2 + i * self.size,
                                      j * self.size + SHOP_HEIGHT + PAD5,
                                      self.size + 1,
                                      self.size + j % 2 + 1),
@@ -151,8 +153,8 @@ class Inventory():
             for i in range(self.w2):
                 for j in range(self.h2):
                     pygame.draw.rect(screen, CELLS_COLOR,
-                                     ((SIZE[0] - self.size * self.w2) / 2 + i * self.size,
-                                     SIZE[1] - (j + 1) * self.size - PAD1,
+                                     ((self.screen_size[0] - self.size * self.w2) / 2 + i * self.size,
+                                     self.screen_size[1] - (j + 1) * self.size - PAD1,
                                      self.size + 1,
                                      self.size + j % 2 + 1),
                                      CELLS_WIDTH)
@@ -220,7 +222,7 @@ class Inventory():
                    (arr[x][y].count != -1 and self.items[i][j] == None) or\
                    (arr[x][y].count != -1 and self.items[i][j] != None and\
                    q == self.items[i][j].image_name and self.items[i][j].count != -1):
-                    sqx = (SIZE[0] - self.size * self.w1) / 2 + (i + 0.5) * self.size
+                    sqx = (self.screen_size[0] - self.size * self.w1) / 2 + (i + 0.5) * self.size
                     sqy = (j + 0.5) * self.size + SHOP_HEIGHT + PAD5
                     
                     if ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5 <= m:
@@ -244,8 +246,8 @@ class Inventory():
                    (arr[x][y].count != -1 and self.player_items[i][j] != None and\
                    q == self.player_items[i][j].image_name and\
                    self.player_items[i][j].count != -1):
-                    sqx = (SIZE[0] - self.size * self.w2) / 2 + (i + 0.5) * self.size
-                    sqy = SIZE[1] - (j + 0.5) * self.size - PAD1
+                    sqx = (self.screen_size[0] - self.size * self.w2) / 2 + (i + 0.5) * self.size
+                    sqy = self.screen_size[1] - (j + 0.5) * self.size - PAD1
                         
                     if ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5 <= m:
                         pos = (i, j)
@@ -261,11 +263,11 @@ class Inventory():
                             
         if self.square_clone:
             if self.clone_info[5] == self.inv_slots:
-                sqx = (SIZE[0] - self.size * self.w1) / 2 + (self.clone_info[1] + 0.5) * self.size
+                sqx = (self.screen_size[0] - self.size * self.w1) / 2 + (self.clone_info[1] + 0.5) * self.size
                 sqy = (self.clone_info[2] + 0.5) * self.size + SHOP_HEIGHT + PAD5
             else:
-                sqx = (SIZE[0] - self.size * self.w2) / 2 + (self.clone_info[1] + 0.5) * self.size
-                sqy = SIZE[1] - (self.clone_info[2] + 0.5) * self.size - PAD1
+                sqx = (self.screen_size[0] - self.size * self.w2) / 2 + (self.clone_info[1] + 0.5) * self.size
+                sqy = self.screen_size[1] - (self.clone_info[2] + 0.5) * self.size - PAD1
             
             if ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5 <= m:
                 pos = (self.clone_info[1], self.clone_info[2])
@@ -355,7 +357,7 @@ class Inventory():
             return False
     
     def go_to_skills_shop(self):
-        self.shop = Shop(self)
+        self.shop = Shop(self, self.screen_size)
     
     def shop_color(self):
         if self.selected:
@@ -389,7 +391,7 @@ class Inventory():
                     if SHOP_HEIGHT > event.pos[0] > 0 and SHOP_HEIGHT > event.pos[1] > 0:
                         self.pressed = True
                         self.go_to_skills_shop()
-                    elif SIZE[0] > event.pos[0] > SIZE[0] - SHOP_HEIGHT and SHOP_HEIGHT > event.pos[1] > 0:
+                    elif self.screen_size[0] > event.pos[0] > self.screen_size[0] - SHOP_HEIGHT and SHOP_HEIGHT > event.pos[1] > 0:
                         self.trsh_prssd = True
                         if global_pressed:
                             self.delete_square()
@@ -400,7 +402,7 @@ class Inventory():
                         self.selected = False
                         self.pressed = False
 
-                    if SIZE[0] > event.pos[0] > SIZE[0] - SHOP_HEIGHT and SHOP_HEIGHT > event.pos[1] > 0:
+                    if self.screen_size[0] > event.pos[0] > self.screen_size[0] - SHOP_HEIGHT and SHOP_HEIGHT > event.pos[1] > 0:
                         self.trsh_slctd = True
                     else:
                         self.trsh_slctd = False
@@ -529,9 +531,10 @@ class Inventory():
                         if self.first_click[2][x][y].count == -1:
                             self.info = Information(name, self.money_score,
                                                     get_info(name),
+                                                    self.screen_size,
                                                     self.get_free_slots(self.first_click[2]))
                         else:
-                            self.info = Information(name, self.money_score, get_info(name))                        
+                            self.info = Information(name, self.money_score, get_info(name), self.screen_size)
                         self.first_click[2][x][y].down = False
                     else:
                         self.show_info = False                
@@ -589,11 +592,11 @@ class Inventory():
             a = [(i[0], i[1], i[2]) for i in slots].index((image, x, y))
             
             if slots == self.inv_slots:
-                xp = (SIZE[0] - self.size * self.w1) / 2 + (self.inv_slots[a][1] + 0.5) * self.size
+                xp = (self.screen_size[0] - self.size * self.w1) / 2 + (self.inv_slots[a][1] + 0.5) * self.size
                 yp = (self.inv_slots[a][2] + 0.5) * self.size + SHOP_HEIGHT + PAD5
             else:
-                xp = (SIZE[0] - self.size * self.w2) / 2 + (self.player_slots[a][1] + 0.5) * self.size
-                yp = SIZE[1] - (self.player_slots[a][2] + 0.5) * self.size - PAD1            
+                xp = (self.screen_size[0] - self.size * self.w2) / 2 + (self.player_slots[a][1] + 0.5) * self.size
+                yp = self.screen_size[1] - (self.player_slots[a][2] + 0.5) * self.size - PAD1
             
             if self.square_clone:
                 n = self.square_clone.count + 1
@@ -608,11 +611,11 @@ class Inventory():
                                n, arr, slots)
         else:
             if slots == self.inv_slots:
-                xp = (SIZE[0] - self.size * self.w1) / 2 + x * self.size + PAD3
+                xp = (self.screen_size[0] - self.size * self.w1) / 2 + x * self.size + PAD3
                 yp = y * self.size + PAD3 + SHOP_HEIGHT + PAD5
             else:
-                xp = (SIZE[0] - self.size * self.w2) / 2 + x * self.size + PAD3
-                yp = SIZE[1] - self.size * self.h2 + y * self.size - PAD1 + PAD3
+                xp = (self.screen_size[0] - self.size * self.w2) / 2 + x * self.size + PAD3
+                yp = self.screen_size[1] - self.size * self.h2 + y * self.size - PAD1 + PAD3
             
             if (image, x, y) in [(i[0], i[1], i[2]) for i in slots]:
                 a = [(i[0], i[1], i[2]) for i in slots].index((image, x, y))
@@ -646,7 +649,7 @@ class Inventory():
                                     (self.items[i][j] != None and\
                        q == self.items[i][j].image_name and\
                        self.items[i][j].count != -1)):
-                        sqx = (SIZE[0] - self.size * self.w1) / 2 + (i + 0.5) * self.size
+                        sqx = (self.screen_size[0] - self.size * self.w1) / 2 + (i + 0.5) * self.size
                         sqy = (j + 0.5) * self.size + SHOP_HEIGHT + PAD5
                         
                         if ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5 <= m:
@@ -662,8 +665,8 @@ class Inventory():
                        (self.player_items[i][j] != None and\
                        q == self.player_items[i][j].image_name and\
                        self.player_items[i][j].count != -1)):
-                        sqx = (SIZE[0] - self.size * self.w2) / 2 + (i + 0.5) * self.size
-                        sqy = SIZE[1] - (j + 0.5) * self.size - PAD1
+                        sqx = (self.screen_size[0] - self.size * self.w2) / 2 + (i + 0.5) * self.size
+                        sqy = self.screen_size[1] - (j + 0.5) * self.size - PAD1
                             
                         if ((px - sqx) ** 2 + (py - sqy) ** 2) ** 0.5 <= m:
                             pos = (i, j)
@@ -699,11 +702,11 @@ class Inventory():
                     arr[x][y].count // 2 + arr[x][y].count % 2)
         
         if slots == self.inv_slots:
-            xp = (SIZE[0] - self.size * self.w1) / 2 + (slots[a][1] + 0.5) * self.size
+            xp = (self.screen_size[0] - self.size * self.w1) / 2 + (slots[a][1] + 0.5) * self.size
             yp = (slots[a][2] + 0.5) * self.size + SHOP_HEIGHT + PAD5
         else:
-            xp = (SIZE[0] - self.size * self.w2) / 2 + (slots[a][1] + 0.5) * self.size
-            yp = SIZE[1] - (slots[a][2] + 0.5) * self.size - PAD1        
+            xp = (self.screen_size[0] - self.size * self.w2) / 2 + (slots[a][1] + 0.5) * self.size
+            yp = self.screen_size[1] - (slots[a][2] + 0.5) * self.size - PAD1
         
         self.square_clone = Square(screen, slots[a][0],
                                    xp - self.size / 2 + PAD3 + 1,
